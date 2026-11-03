@@ -14,8 +14,8 @@
     </repositories>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>26</maven.compiler.release>
-        <exec.mainClass>com.mycompany.cobaltminingoperationsystem.CobaltMiningOperationSystem</exec.mainClass>
+        <maven.compiler.release>21</maven.compiler.release>
+        <exec.mainClass>app.Main</exec.mainClass>
     </properties>
     <dependencies>
         <dependency>
@@ -23,16 +23,32 @@
             <artifactId>mysql-connector-j</artifactId>
             <version>8.3.0</version>
         </dependency>
+        
         <dependency>
             <groupId>unknown.binary</groupId>
             <artifactId>AbsoluteLayout</artifactId>
             <version>SNAPSHOT</version>
         </dependency>
+        
         <dependency>
             <groupId>org.swinglabs</groupId>
             <artifactId>swing-layout</artifactId>
             <version>1.0.3</version>
         </dependency>
+        
+        <!-- Source: https://mvnrepository.com/artifact/com.toedter/jcalendar -->
+        <dependency>
+            <groupId>com.toedter</groupId>
+            <artifactId>jcalendar</artifactId>
+            <version>1.4</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Grafik dashboard (KPI chart) -->
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.5.4</version>
+        </dependency>
     </dependencies>
-    
 </project>

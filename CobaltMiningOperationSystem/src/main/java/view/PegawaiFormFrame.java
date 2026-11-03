@@ -1,4 +1,5 @@
 package view;
+import com.toedter.calendar.JDateChooser;
 import config.AppConfig;
 import controller.*;
 import model.*;
@@ -15,7 +16,18 @@ public class PegawaiFormFrame extends javax.swing.JFrame {
 
     public PegawaiFormFrame() {
         initComponents();
-        setSize(720, 610);
+
+        JButton[] navButtons = {btnSimpan, btnBatal};
+
+        for (JButton btn : navButtons) {
+            btn.setOpaque(true);
+            btn.setContentAreaFilled(true);
+            btn.setBorderPainted(false);
+        }
+
+        txtTanggal.setDateFormatString("dd/MM/yyyy");
+        txtKhusus2.setDateFormatString("dd/MM/yyyy");
+        setSize(720, 575);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -26,6 +38,7 @@ public class PegawaiFormFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         lblTitle = new javax.swing.JLabel();
         lblHint = new javax.swing.JLabel();
         lblJenis = new javax.swing.JLabel();
@@ -35,14 +48,15 @@ public class PegawaiFormFrame extends javax.swing.JFrame {
         lblHp = new javax.swing.JLabel();
         txtHp = new javax.swing.JTextField();
         lblTanggal = new javax.swing.JLabel();
-        txtTanggal = new javax.swing.JTextField();
+        txtTanggal = new com.toedter.calendar.JDateChooser();
         lblStatus = new javax.swing.JLabel();
         cmbStatus = new javax.swing.JComboBox();
         lblKhusus1 = new javax.swing.JLabel();
         txtKhusus1 = new javax.swing.JTextField();
+        cmbKhusus1 = new javax.swing.JComboBox();
         lblKhusus2 = new javax.swing.JLabel();
-        txtKhusus2 = new javax.swing.JTextField();
-        lblDriverstatus = new javax.swing.JLabel();
+        txtKhusus2 = new com.toedter.calendar.JDateChooser();
+        lblDriverStatus = new javax.swing.JLabel();
         cmbDriverStatus = new javax.swing.JComboBox();
         btnSimpan = new javax.swing.JButton();
         btnBatal = new javax.swing.JButton();
@@ -51,7 +65,7 @@ public class PegawaiFormFrame extends javax.swing.JFrame {
         lblTitle.setText("FORM PEGAWAI");
         lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22));
         lblHint.setForeground(new java.awt.Color(103, 121, 143));
-        lblHint.setText("Isi data sesuai ketentuan C-MOS.");
+        lblHint.setText("Pilih jenis pegawai; kolom khusus menyesuaikan otomatis.");
         lblHint.setFont(new java.awt.Font("SansSerif", 1, 12));
         lblJenis.setForeground(new java.awt.Color(26, 43, 66));
         lblJenis.setText("Jenis Pegawai");
@@ -63,19 +77,17 @@ public class PegawaiFormFrame extends javax.swing.JFrame {
         lblHp.setText("Nomor HP");
         txtHp.setBackground(new java.awt.Color(255, 255, 255));
         lblTanggal.setForeground(new java.awt.Color(26, 43, 66));
-        lblTanggal.setText("Tanggal Masuk (yyyy-MM-dd)");
-        txtTanggal.setBackground(new java.awt.Color(255, 255, 255));
+        lblTanggal.setText("Tanggal Masuk");
         lblStatus.setForeground(new java.awt.Color(26, 43, 66));
         lblStatus.setText("Status Pegawai");
         cmbStatus.setBackground(new java.awt.Color(255, 255, 255));
         lblKhusus1.setForeground(new java.awt.Color(26, 43, 66));
-        lblKhusus1.setText("Data Khusus 1");
+        lblKhusus1.setText("Data Khusus");
         txtKhusus1.setBackground(new java.awt.Color(255, 255, 255));
         lblKhusus2.setForeground(new java.awt.Color(26, 43, 66));
-        lblKhusus2.setText("Data Khusus 2 (tanggal)");
-        txtKhusus2.setBackground(new java.awt.Color(255, 255, 255));
-        lblDriverstatus.setForeground(new java.awt.Color(26, 43, 66));
-        lblDriverstatus.setText("Status Driver");
+        lblKhusus2.setText("Tanggal Khusus");
+        lblDriverStatus.setForeground(new java.awt.Color(26, 43, 66));
+        lblDriverStatus.setText("Status Driver");
         cmbDriverStatus.setBackground(new java.awt.Color(255, 255, 255));
         btnSimpan.setBackground(new java.awt.Color(43, 106, 230));
         btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
@@ -87,6 +99,7 @@ public class PegawaiFormFrame extends javax.swing.JFrame {
         btnBatal.setText("Batal");
         btnBatal.setFont(new java.awt.Font("SansSerif", 1, 13));
         btnBatal.setFocusPainted(false);
+        cmbJenis.addActionListener(this::cmbJenisActionPerformed);
         btnSimpan.addActionListener(this::btnSimpanActionPerformed);
         btnBatal.addActionListener(this::btnBatalActionPerformed);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -97,47 +110,82 @@ public class PegawaiFormFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup().addGap(34).addComponent(lblTitle, 650, 650, 650))
                 .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblHint, 650, 650, 650))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblJenis, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(cmbJenis, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblNama, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(txtNama, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblHp, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(txtHp, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblTanggal, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(txtTanggal, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblStatus, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(cmbStatus, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblKhusus1, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(txtKhusus1, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblKhusus2, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(txtKhusus2, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblDriverstatus, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(cmbDriverStatus, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(btnSimpan, 173, 173, 173))
-                .addGroup(layout.createSequentialGroup().addGap(501).addComponent(btnBatal, 174, 174, 174))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(35).addComponent(lblJenis, 260, 260, 260)
+                    .addGap(15).addComponent(cmbJenis, 365, 365, 365))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(35).addComponent(lblNama, 260, 260, 260)
+                    .addGap(15).addComponent(txtNama, 365, 365, 365))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(35).addComponent(lblHp, 260, 260, 260)
+                    .addGap(15).addComponent(txtHp, 365, 365, 365))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(35).addComponent(lblTanggal, 260, 260, 260)
+                    .addGap(15).addComponent(txtTanggal, 365, 365, 365))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(35).addComponent(lblStatus, 260, 260, 260)
+                    .addGap(15).addComponent(cmbStatus, 365, 365, 365))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(35).addComponent(lblKhusus1, 260, 260, 260)
+                    .addGap(15)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtKhusus1, 365, 365, 365)
+                        .addComponent(cmbKhusus1, 365, 365, 365)))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(35).addComponent(lblKhusus2, 260, 260, 260)
+                    .addGap(15).addComponent(txtKhusus2, 365, 365, 365))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(35).addComponent(lblDriverStatus, 260, 260, 260)
+                    .addGap(15).addComponent(cmbDriverStatus, 365, 365, 365))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(310).addComponent(btnSimpan, 173, 173, 173)
+                    .addGap(18).addComponent(btnBatal, 174, 174, 174))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup().addGap(24).addComponent(lblTitle, 43, 43, 43))
-                .addGroup(layout.createSequentialGroup().addGap(69).addComponent(lblHint, 25, 25, 25))
-                .addGroup(layout.createSequentialGroup().addGap(115).addComponent(lblJenis, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(115).addComponent(cmbJenis, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(162).addComponent(lblNama, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(162).addComponent(txtNama, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(209).addComponent(lblHp, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(209).addComponent(txtHp, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(256).addComponent(lblTanggal, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(256).addComponent(txtTanggal, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(303).addComponent(lblStatus, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(303).addComponent(cmbStatus, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(350).addComponent(lblKhusus1, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(350).addComponent(txtKhusus1, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(397).addComponent(lblKhusus2, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(397).addComponent(txtKhusus2, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(444).addComponent(lblDriverstatus, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(444).addComponent(cmbDriverStatus, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(506).addComponent(btnSimpan, 42, 42, 42))
-                .addGroup(layout.createSequentialGroup().addGap(506).addComponent(btnBatal, 42, 42, 42))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(24)
+                    .addComponent(lblTitle, 43, 43, 43)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(lblHint, 25, 25, 25)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblJenis, 20, 20, 20)
+                        .addComponent(cmbJenis, 32, 32, 32))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblNama, 20, 20, 20)
+                        .addComponent(txtNama, 32, 32, 32))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblHp, 20, 20, 20)
+                        .addComponent(txtHp, 32, 32, 32))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblTanggal, 20, 20, 20)
+                        .addComponent(txtTanggal, 32, 32, 32))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblStatus, 20, 20, 20)
+                        .addComponent(cmbStatus, 32, 32, 32))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblKhusus1, 20, 20, 20)
+                        .addComponent(txtKhusus1, 32, 32, 32)
+                        .addComponent(cmbKhusus1, 32, 32, 32))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblKhusus2, 20, 20, 20)
+                        .addComponent(txtKhusus2, 32, 32, 32))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblDriverStatus, 20, 20, 20)
+                        .addComponent(cmbDriverStatus, 32, 32, 32))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSimpan, 42, 42, 42)
+                        .addComponent(btnBatal, 42, 42, 42))
+                    .addContainerGap(24, Short.MAX_VALUE))
         );
 
     }//GEN-END:initComponents
@@ -145,42 +193,114 @@ public class PegawaiFormFrame extends javax.swing.JFrame {
     private void loadOptions() {
         cmbJenis.setModel(new DefaultComboBoxModel<>(new String[]{"ADMIN","OPERASIONAL","HSE","MANAGER","DRIVER"}));
         cmbStatus.setModel(new DefaultComboBoxModel<>(new String[]{"AKTIF","NONAKTIF"}));
-        cmbDriverStatus.setModel(new DefaultComboBoxModel<>(new String[]{"TERSEDIA","BERTUGAS","NONAKTIF"}));
+        cmbKhusus1.setModel(new DefaultComboBoxModel<>(new String[]{"PAGI","SIANG","MALAM"}));
+        cmbDriverStatus.setModel(new DefaultComboBoxModel<>(new String[]{"TERSEDIA","NONAKTIF"}));
+        cmbJenis.setSelectedIndex(-1);
+        terapkanKolomDinamis();
     }
-    
+
+    /** Menampilkan hanya kolom khusus yang relevan untuk jenis pegawai terpilih. */
+    private void terapkanKolomDinamis() {
+        String jenis = cmbJenis.getSelectedItem() == null ? "" : String.valueOf(cmbJenis.getSelectedItem());
+
+        boolean isAdmin = "ADMIN".equals(jenis);
+        boolean isOps = "OPERASIONAL".equals(jenis);
+        boolean isHse = "HSE".equals(jenis);
+        boolean isManager = "MANAGER".equals(jenis);
+        boolean isDriver = "DRIVER".equals(jenis);
+
+        lblKhusus1.setText(isAdmin ? "Kode Admin" : isOps ? "Shift Kerja" : isHse ? "No. Sertifikasi HSE"
+                : isManager ? "Divisi Tanggung Jawab" : "No. SIM");
+        txtKhusus1.setVisible(isAdmin || isHse || isManager || isDriver);
+        cmbKhusus1.setVisible(isOps);
+
+        boolean pakaiTanggalKhusus = isAdmin || isHse || isDriver;
+        lblKhusus2.setText(isAdmin ? "Tanggal Mulai Akses" : isHse ? "Masa Berlaku Sertifikasi" : "Masa Berlaku SIM");
+        lblKhusus2.setVisible(pakaiTanggalKhusus);
+        txtKhusus2.setVisible(pakaiTanggalKhusus);
+
+        lblDriverStatus.setVisible(isDriver);
+        cmbDriverStatus.setVisible(isDriver);
+    }
+
+    private void cmbJenisActionPerformed(java.awt.event.ActionEvent evt) {
+        // Kolom dinamis mengikuti jenis; isian lama dibersihkan saat membuat data baru.
+        terapkanKolomDinamis();
+
+        if (original == null) {
+            txtKhusus1.setText("");
+            cmbKhusus1.setSelectedIndex(-1);
+            txtKhusus2.setDate(null);
+            cmbDriverStatus.setSelectedIndex(-1);
+        }
+    }
+
     public PegawaiFormFrame(Pegawai original) {
         this();
         this.original=original;
         if(original!=null) {
-        cmbJenis.setSelectedItem(original.getJenisPegawai().replace("PETUGAS", ""));
-        txtNama.setText(original.getNamaPegawai());
-        txtHp.setText(original.getNoHp());
-        txtTanggal.setText(String.valueOf(original.getTanggalMasuk()));
-        cmbStatus.setSelectedItem(String.valueOf(original.getStatusPegawai()));
-        if(original instanceof Admin){txtKhusus1.setText(((Admin)original).getKodeAdmin());txtKhusus2.setText(String.valueOf(((Admin)original).getTanggalMulaiAkses()));}
-        if(original instanceof PetugasOperasional){txtKhusus1.setText(String.valueOf(((PetugasOperasional)original).getShiftKerja()));}
-        if(original instanceof PetugasHSE){txtKhusus1.setText(((PetugasHSE)original).getNoSertifikasiHSE());txtKhusus2.setText(String.valueOf(((PetugasHSE)original).getMasaBerlakuSertifikasi()));}
-        if(original instanceof Manager){txtKhusus1.setText(((Manager)original).getDivisiTanggungJawab());}
-        if(original instanceof Driver){txtKhusus1.setText(((Driver)original).getNoSim());txtKhusus2.setText(String.valueOf(((Driver)original).getMasaBerlakuSim()));cmbDriverStatus.setSelectedItem(String.valueOf(((Driver)original).getStatusDriver()));}
+            setTitle("Ubah Pegawai #" + original.getIdPegawai());
+            lblTitle.setText("FORM PEGAWAI (UBAH)");
+            String jenis = original.getJenisPegawai();
+            String pilihan = jenis.startsWith("PETUGAS") ? jenis.substring("PETUGAS".length()) : jenis;
+            cmbJenis.setSelectedItem(pilihan);
+            cmbJenis.setEnabled(false);
+            txtNama.setText(original.getNamaPegawai());
+            txtHp.setText(original.getNoHp());
+            txtTanggal.setDate(java.sql.Date.valueOf(original.getTanggalMasuk()));
+            cmbStatus.setSelectedItem(String.valueOf(original.getStatusPegawai()));
+            terapkanKolomDinamis();
+
+            if(original instanceof Admin){
+                txtKhusus1.setText(((Admin)original).getKodeAdmin());
+                txtKhusus2.setDate(java.sql.Date.valueOf(((Admin)original).getTanggalMulaiAkses()));
+            }
+            if(original instanceof PetugasOperasional){cmbKhusus1.setSelectedItem(String.valueOf(((PetugasOperasional)original).getShiftKerja()));}
+            if(original instanceof PetugasHSE){
+                txtKhusus1.setText(((PetugasHSE)original).getNoSertifikasiHSE());
+                txtKhusus2.setDate(java.sql.Date.valueOf(((PetugasHSE)original).getMasaBerlakuSertifikasi()));
+            }
+            if(original instanceof Manager){txtKhusus1.setText(((Manager)original).getDivisiTanggungJawab());}
+            if(original instanceof Driver){
+                txtKhusus1.setText(((Driver)original).getNoSim());
+                txtKhusus2.setDate(java.sql.Date.valueOf(((Driver)original).getMasaBerlakuSim()));
+                // Status BERTUGAS hanya terjadi lewat pengangkutan; tetap ditampilkan agar tidak terganti.
+                if(((Driver)original).getStatusDriver()==StatusDriver.BERTUGAS)cmbDriverStatus.addItem("BERTUGAS");
+                cmbDriverStatus.setSelectedItem(String.valueOf(((Driver)original).getStatusDriver()));
+            }
         }
+    }
+
+    private LocalDate tanggal(JDateChooser chooser, String label) {
+        Date nilai = chooser.getDate();
+
+        if (nilai == null)throw new IllegalArgumentException(label+" wajib dipilih.");
+        return nilai.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {
         try {
 
-        String kind=String.valueOf(cmbJenis.getSelectedItem()).toUpperCase().replace("PETUGAS", "");
-        String nama=FormUtil.text(txtNama), hp=FormUtil.text(txtHp), khusus=FormUtil.text(txtKhusus1), k2=FormUtil.text(txtKhusus2);
+        String kind=String.valueOf(cmbJenis.getSelectedItem());
+        String nama=FormUtil.text(txtNama), hp=FormUtil.text(txtHp), khusus=FormUtil.text(txtKhusus1);
         FormUtil.require(nama,"Nama pegawai");FormUtil.require(hp,"Nomor HP");
         int id=original==null?0:original.getIdPegawai();
-        LocalDate tanggal=LocalDate.parse(FormUtil.text(txtTanggal));
+        LocalDate tanggal=tanggal(txtTanggal,"Tanggal masuk");
         StatusPegawai status=StatusPegawai.valueOf(String.valueOf(cmbStatus.getSelectedItem()));
         Pegawai p;
         switch(kind){
-          case "ADMIN":p=new Admin(id,nama,hp,tanggal,status,khusus,LocalDate.parse(k2));break;
-          case "OPERASIONAL":p=new PetugasOperasional(id,nama,hp,tanggal,status,ShiftKerja.valueOf(khusus.toUpperCase()));break;
-          case "HSE":p=new PetugasHSE(id,nama,hp,tanggal,status,khusus,LocalDate.parse(k2));break;
+          case "ADMIN":p=new Admin(id,nama,hp,tanggal,status,khusus,tanggal(txtKhusus2,"Tanggal mulai akses"));break;
+          case "OPERASIONAL":{
+              if(cmbKhusus1.getSelectedItem()==null)throw new IllegalArgumentException("Shift kerja wajib dipilih.");
+              p=new PetugasOperasional(id,nama,hp,tanggal,status,ShiftKerja.valueOf(String.valueOf(cmbKhusus1.getSelectedItem())));break;
+          }
+          case "HSE":p=new PetugasHSE(id,nama,hp,tanggal,status,khusus,tanggal(txtKhusus2,"Masa berlaku sertifikasi"));break;
           case "MANAGER":p=new Manager(id,nama,hp,tanggal,status,khusus);break;
-          case "DRIVER":p=new Driver(id,nama,hp,tanggal,status,khusus,LocalDate.parse(k2),StatusDriver.valueOf(String.valueOf(cmbDriverStatus.getSelectedItem())));break;
+          case "DRIVER":{
+              if(cmbDriverStatus.getSelectedItem()==null)throw new IllegalArgumentException("Status driver wajib dipilih.");
+              p=new Driver(id,nama,hp,tanggal,status,khusus,tanggal(txtKhusus2,"Masa berlaku SIM"),
+                      StatusDriver.valueOf(String.valueOf(cmbDriverStatus.getSelectedItem())));break;
+          }
           default:throw new IllegalArgumentException("Jenis pegawai tidak dikenal.");
         }
         if(original==null) AppConfig.getMasterDataController().tambahPegawai(p);
@@ -194,25 +314,26 @@ public class PegawaiFormFrame extends javax.swing.JFrame {
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) { dispose(); }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblTitle;
-    private javax.swing.JLabel lblHint;
-    private javax.swing.JLabel lblJenis;
-    private javax.swing.JComboBox cmbJenis;
-    private javax.swing.JLabel lblNama;
-    private javax.swing.JTextField txtNama;
-    private javax.swing.JLabel lblHp;
-    private javax.swing.JTextField txtHp;
-    private javax.swing.JLabel lblTanggal;
-    private javax.swing.JTextField txtTanggal;
-    private javax.swing.JLabel lblStatus;
-    private javax.swing.JComboBox cmbStatus;
-    private javax.swing.JLabel lblKhusus1;
-    private javax.swing.JTextField txtKhusus1;
-    private javax.swing.JLabel lblKhusus2;
-    private javax.swing.JTextField txtKhusus2;
-    private javax.swing.JLabel lblDriverstatus;
-    private javax.swing.JComboBox cmbDriverStatus;
-    private javax.swing.JButton btnSimpan;
     private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JComboBox cmbDriverStatus;
+    private javax.swing.JComboBox cmbJenis;
+    private javax.swing.JComboBox cmbKhusus1;
+    private javax.swing.JComboBox cmbStatus;
+    private javax.swing.JLabel lblDriverStatus;
+    private javax.swing.JLabel lblHint;
+    private javax.swing.JLabel lblHp;
+    private javax.swing.JLabel lblJenis;
+    private javax.swing.JLabel lblKhusus1;
+    private javax.swing.JLabel lblKhusus2;
+    private javax.swing.JLabel lblNama;
+    private javax.swing.JLabel lblStatus;
+    private javax.swing.JLabel lblTanggal;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JTextField txtHp;
+    private javax.swing.JTextField txtKhusus1;
+    private javax.swing.JTextField txtNama;
+    private com.toedter.calendar.JDateChooser txtKhusus2;
+    private com.toedter.calendar.JDateChooser txtTanggal;
     // End of variables declaration//GEN-END:variables
 }

@@ -34,6 +34,15 @@ public class MainFrameHSE extends javax.swing.JFrame {
 
     public MainFrameHSE() {
         initComponents();
+        
+        JButton[] navButtons = {btnDashboard, btnMonitoring, btnLogout};
+
+        for (JButton btn : navButtons) {
+            btn.setOpaque(true);
+            btn.setContentAreaFilled(true);
+            btn.setBorderPainted(false);
+        }
+        
         if (auth == null || !auth.isLoggedIn() || !auth.isPetugasHSE()) {
             throw new IllegalStateException("Akses pengguna tidak sesuai.");
         }
@@ -85,15 +94,21 @@ public class MainFrameHSE extends javax.swing.JFrame {
         lblNavTitle.setForeground(new java.awt.Color(145, 167, 194));
         lblNavTitle.setText("NAVIGASI  /  HSE");
 
+        btnDashboard.setBackground(new java.awt.Color(27, 47, 74));
         btnDashboard.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnDashboard.setForeground(new java.awt.Color(255, 255, 255));
         btnDashboard.setText("Dashboard");
         btnDashboard.addActionListener(this::btnDashboardActionPerformed);
 
+        btnMonitoring.setBackground(new java.awt.Color(27, 47, 74));
         btnMonitoring.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnMonitoring.setForeground(new java.awt.Color(255, 255, 255));
         btnMonitoring.setText("Monitoring Lingkungan");
         btnMonitoring.addActionListener(this::btnMonitoringActionPerformed);
 
+        btnLogout.setBackground(new java.awt.Color(27, 47, 74));
         btnLogout.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(255, 255, 255));
         btnLogout.setText("Keluar Akun");
         btnLogout.addActionListener(this::btnLogoutActionPerformed);
 
@@ -158,9 +173,7 @@ public class MainFrameHSE extends javax.swing.JFrame {
         );
         pnlRootLayout.setVerticalGroup(
             pnlRootLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(pnlRootLayout.createSequentialGroup()
-                .add(pnlSidebar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(0, 0, Short.MAX_VALUE))
+            .add(pnlSidebar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnlWorkspace.setBackground(new java.awt.Color(244, 247, 252));
@@ -198,7 +211,7 @@ public class MainFrameHSE extends javax.swing.JFrame {
                 .add(pnlHeaderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(lblUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(lblRole, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         pnlHeaderLayout.setVerticalGroup(
             pnlHeaderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -222,11 +235,11 @@ public class MainFrameHSE extends javax.swing.JFrame {
         pnlContent.setLayout(pnlContentLayout);
         pnlContentLayout.setHorizontalGroup(
             pnlContentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 902, Short.MAX_VALUE)
+            .add(0, 0, Short.MAX_VALUE)
         );
         pnlContentLayout.setVerticalGroup(
             pnlContentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 593, Short.MAX_VALUE)
+            .add(0, 616, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout pnlWorkspaceLayout = new org.jdesktop.layout.GroupLayout(pnlWorkspace);
@@ -234,20 +247,20 @@ public class MainFrameHSE extends javax.swing.JFrame {
         pnlWorkspaceLayout.setHorizontalGroup(
             pnlWorkspaceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(pnlWorkspaceLayout.createSequentialGroup()
-                .add(20, 20, 20)
-                .add(pnlWorkspaceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(pnlContent, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(pnlHeader, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .add(pnlWorkspaceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(pnlHeader, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(pnlContent, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         pnlWorkspaceLayout.setVerticalGroup(
             pnlWorkspaceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(pnlWorkspaceLayout.createSequentialGroup()
-                .add(18, 18, 18)
-                .add(pnlHeader, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-            .add(pnlWorkspaceLayout.createSequentialGroup()
-                .add(127, 127, 127)
-                .add(pnlContent, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(12, 12, 12)
+                .add(pnlHeader, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(pnlContent, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
@@ -261,8 +274,8 @@ public class MainFrameHSE extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(pnlRoot, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-            .add(pnlWorkspace, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+            .add(pnlRoot, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(pnlWorkspace, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 720, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

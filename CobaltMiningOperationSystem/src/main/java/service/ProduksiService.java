@@ -21,6 +21,7 @@ public final class ProduksiService {
     private final MaterialRepository mat;
     private final LokasiRepository loc;
     private final PengangkutanRepository haul;
+    
     public ProduksiService(ProduksiRepository p, MaterialRepository m, LokasiRepository l,
             PengangkutanRepository h) {
         prod = p;
@@ -28,6 +29,7 @@ public final class ProduksiService {
         loc = l;
         haul = h;
     }
+    
     public ProduksiTambang tambahProduksi(int idProduksi, int idMaterial, int idLokasi,
             PetugasOperasional petugas, LocalDate tanggal, double jumlah) {
         if (idProduksi != 0)throw new ValidationException("ID baru harus 0.");
@@ -38,10 +40,12 @@ public final class ProduksiService {
         validasiLokasi(l);
         return prod.save(new ProduksiTambang(0, m, l, petugas, tanggal, jumlah, jumlah, StatusProduksi.TERSEDIA));
     }
+    
     public ProduksiTambang tambahProduksi(int idMaterial, int idLokasi, PetugasOperasional p, LocalDate t,
             double j) {
         return tambahProduksi(0, idMaterial, idLokasi, p, t, j);
     }
+    
     public void ubahProduksi(int id, int idMaterial, int idLokasi, LocalDate t, double j) {
         ProduksiTambang p = cariProduksiById(id);
         checkHistory(id);
@@ -57,32 +61,39 @@ public final class ProduksiService {
         p.setStatusProduksi(StatusProduksi.TERSEDIA);
         prod.update(p);
     }
+    
     public void hapusProduksi(int id) {
         cariProduksiById(id);
         checkHistory(id);
         prod.delete(id);
     }
+    
     private void checkHistory(int id) {
-        if (!haul.findByProduksi(id).isEmpty())throw new ValidationException("Produksi sudah memiliki riwayat pengangkutan.");
+        if (!haul.findByProduksi(id).isEmpty())throw new ValidationException("Produksi sudah memiliki riwayat pengangkutan sehingga tidak dapat diubah atau dihapus.");
     }
+    
     private void validasi(LocalDate t, double j) {
         if (t == null || t.isAfter(LocalDate.now()))throw new ValidationException("Tanggal produksi tidak valid.");
-        if (!Double.isFinite(j) || j <= 0
- || Math.abs(j*100-Math.rint(j*100))>0.00001)throw new ValidationException("Jumlah produksi harus positif dengan maksimal 2 desimal.");
+        
+        if (!Double.isFinite(j) || j <= 0 || Math.abs(j*100-Math.rint(j*100))>0.00001)throw new ValidationException("Jumlah produksi harus positif dengan maksimal 2 desimal.");
     }
+    
     private void validasiLokasi(Lokasi l) {
-        if (l.getJenisLokasi() != JenisLokasi.PIT
- || l.getStatusOperasional() != StatusLokasi.AKTIF)throw new ValidationException("Produksi hanya pada PIT aktif.");
+        if (l.getJenisLokasi() != JenisLokasi.PIT || l.getStatusOperasional() != StatusLokasi.AKTIF)throw new ValidationException("Produksi hanya pada PIT aktif.");
     }
+    
     private Lokasi lokasi(int id) {
         return loc.findById(id).orElseThrow(()->new DataNotFoundException("Lokasi tidak ditemukan."));
     }
+    
     public ProduksiTambang cariProduksiById(int id) {
         return prod.findById(id).orElseThrow(()->new DataNotFoundException("Produksi tidak ditemukan."));
     }
+    
     public List<ProduksiTambang> tampilkanSemuaProduksi() {
         return prod.findAll();
     }
+    
     public List<ProduksiTambang> tampilkanProduksiTersedia() {
         return prod.findTersedia();
     }

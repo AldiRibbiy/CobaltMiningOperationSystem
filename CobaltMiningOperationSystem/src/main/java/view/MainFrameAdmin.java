@@ -18,6 +18,7 @@ public class MainFrameAdmin extends javax.swing.JFrame {
             }
             return;
         }
+        
         if (!buttons.containsKey(menu)) return;
         active = menu;
         
@@ -32,6 +33,15 @@ public class MainFrameAdmin extends javax.swing.JFrame {
 
     public MainFrameAdmin() {
         initComponents();
+        
+        JButton[] navButtons = {btnDashboard, btnPegawai, btnUser, btnLokasi, btnMaterial, btnKendaraan, btnParameter, btnLogout};
+
+        for (JButton btn : navButtons) {
+            btn.setOpaque(true);
+            btn.setContentAreaFilled(true);
+            btn.setBorderPainted(false);
+        }
+        
         if (auth == null || !auth.isLoggedIn() || !auth.isAdmin()) {
             throw new IllegalStateException("Akses pengguna tidak sesuai.");
         }
@@ -93,36 +103,52 @@ public class MainFrameAdmin extends javax.swing.JFrame {
         lblNavTitle.setForeground(new java.awt.Color(145, 167, 194));
         lblNavTitle.setText("NAVIGASI  /  ADMIN");
 
+        btnDashboard.setBackground(new java.awt.Color(27, 47, 74));
         btnDashboard.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnDashboard.setForeground(new java.awt.Color(255, 255, 255));
         btnDashboard.setText("Dashboard");
         btnDashboard.setFocusPainted(false);
         btnDashboard.addActionListener(this::btnDashboardActionPerformed);
 
+        btnPegawai.setBackground(new java.awt.Color(27, 47, 74));
         btnPegawai.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnPegawai.setForeground(new java.awt.Color(255, 255, 255));
         btnPegawai.setText("Data Pegawai");
         btnPegawai.addActionListener(this::btnPegawaiActionPerformed);
 
+        btnUser.setBackground(new java.awt.Color(27, 47, 74));
         btnUser.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnUser.setForeground(new java.awt.Color(255, 255, 255));
         btnUser.setText("Akun Pengguna");
         btnUser.addActionListener(this::btnUserActionPerformed);
 
+        btnLokasi.setBackground(new java.awt.Color(27, 47, 74));
         btnLokasi.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnLokasi.setForeground(new java.awt.Color(255, 255, 255));
         btnLokasi.setText("Lokasi Tambang");
         btnLokasi.addActionListener(this::btnLokasiActionPerformed);
 
+        btnMaterial.setBackground(new java.awt.Color(27, 47, 74));
         btnMaterial.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnMaterial.setForeground(new java.awt.Color(255, 255, 255));
         btnMaterial.setText("Jenis Material");
         btnMaterial.addActionListener(this::btnMaterialActionPerformed);
 
+        btnKendaraan.setBackground(new java.awt.Color(27, 47, 74));
         btnKendaraan.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnKendaraan.setForeground(new java.awt.Color(255, 255, 255));
         btnKendaraan.setText("Kendaraan");
         btnKendaraan.addActionListener(this::btnKendaraanActionPerformed);
 
+        btnParameter.setBackground(new java.awt.Color(27, 47, 74));
         btnParameter.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnParameter.setForeground(new java.awt.Color(255, 255, 255));
         btnParameter.setText("Parameter Lingkungan");
         btnParameter.addActionListener(this::btnParameterActionPerformed);
 
+        btnLogout.setBackground(new java.awt.Color(27, 47, 74));
         btnLogout.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(255, 255, 255));
         btnLogout.setText("Keluar Akun");
         btnLogout.addActionListener(this::btnLogoutActionPerformed);
 
@@ -203,7 +229,7 @@ public class MainFrameAdmin extends javax.swing.JFrame {
                         .add(btnParameter, 42, 42, 42)))
                 .add(122, 122, 122)
                 .add(btnLogout, 42, 42, 42)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pnlWorkspace.setBackground(new java.awt.Color(244, 247, 252));
@@ -241,7 +267,7 @@ public class MainFrameAdmin extends javax.swing.JFrame {
                 .add(pnlHeaderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(lblRole, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(lblUser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         pnlHeaderLayout.setVerticalGroup(
             pnlHeaderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -268,7 +294,7 @@ public class MainFrameAdmin extends javax.swing.JFrame {
         );
         pnlContentLayout.setVerticalGroup(
             pnlContentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 292, Short.MAX_VALUE)
+            .add(0, 606, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout pnlWorkspaceLayout = new org.jdesktop.layout.GroupLayout(pnlWorkspace);
@@ -276,24 +302,19 @@ public class MainFrameAdmin extends javax.swing.JFrame {
         pnlWorkspaceLayout.setHorizontalGroup(
             pnlWorkspaceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(pnlWorkspaceLayout.createSequentialGroup()
-                .add(20, 20, 20)
-                .add(pnlWorkspaceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(pnlWorkspaceLayout.createSequentialGroup()
-                        .add(pnlHeader, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(23, Short.MAX_VALUE))
-                    .add(pnlContent, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap()
+                .add(pnlWorkspaceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(pnlContent, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(pnlHeader, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         pnlWorkspaceLayout.setVerticalGroup(
             pnlWorkspaceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(pnlWorkspaceLayout.createSequentialGroup()
-                .add(pnlWorkspaceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(pnlWorkspaceLayout.createSequentialGroup()
-                        .add(18, 18, 18)
-                        .add(pnlHeader, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(pnlWorkspaceLayout.createSequentialGroup()
-                        .add(127, 127, 127)
-                        .add(pnlContent, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(301, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE)
+                .add(pnlHeader, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(pnlContent, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
 
         org.jdesktop.layout.GroupLayout pnlRootLayout = new org.jdesktop.layout.GroupLayout(pnlRoot);
@@ -309,10 +330,10 @@ public class MainFrameAdmin extends javax.swing.JFrame {
         pnlRootLayout.setVerticalGroup(
             pnlRootLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlRootLayout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(pnlRootLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(pnlWorkspace, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(pnlSidebar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .add(0, 0, Short.MAX_VALUE)
+                .add(pnlRootLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(pnlWorkspace, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(pnlSidebar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
@@ -323,7 +344,9 @@ public class MainFrameAdmin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(pnlRoot, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+            .add(layout.createSequentialGroup()
+                .add(pnlRoot, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

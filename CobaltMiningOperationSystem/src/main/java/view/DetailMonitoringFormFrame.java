@@ -16,6 +16,15 @@ public class DetailMonitoringFormFrame extends javax.swing.JFrame {
 
     public DetailMonitoringFormFrame() {
         initComponents();
+        
+        JButton[] navButtons = {btnSimpan, btnBatal};
+
+        for (JButton btn : navButtons) {
+            btn.setOpaque(true);
+            btn.setContentAreaFilled(true);
+            btn.setBorderPainted(false);
+        }
+        
         setSize(720, 525);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -99,20 +108,37 @@ public class DetailMonitoringFormFrame extends javax.swing.JFrame {
     }//GEN-END:initComponents
 
     private void loadOptions() {
-        for (ParameterLingkungan v : AppConfig.getMasterDataController().tampilkanSemuaParameter()) { cmbParameter.addItem(new PilihanData(v.getIdParameter(), String.valueOf(v.getNamaParameter()))); }
+        for (ParameterLingkungan v : AppConfig.getMasterDataController().tampilkanSemuaParameter()) { cmbParameter.addItem(new PilihanData(v.getIdParameter(), v.getNamaParameter() + " (" + v.getSatuan() + ")")); }
     }
     public DetailMonitoringFormFrame(int monitoringId) {
         this();this.monitoringId=monitoringId;
     }
 
+    /** Mode ubah: parameter, nilai, dan catatan dipra-isi dari detail terpilih. */
+    public DetailMonitoringFormFrame(DetailMonitoring original) {
+        this(original.getMonitoring().getIdMonitoring());
+        this.original = original;
+
+        if (original != null) {
+            setTitle("Ubah Pengukuran #" + original.getIdDetail());
+            lblTitle.setText("FORM DETAIL MONITORING (UBAH)");
+            FormUtil.select(cmbParameter, original.getParameter().getIdParameter());
+            txtNilai.setText(String.valueOf(original.getNilaiPengukuran()));
+            txtCatatan.setText(original.getCatatan() == null ? "" : original.getCatatan());
+        }
+    }
+
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {
         try {
 
-        double nilai=Double.parseDouble(FormUtil.text(txtNilai));
-        AppConfig.getMonitoringController().tambahDetail(monitoringId,FormUtil.id(cmbParameter),nilai,FormUtil.text(txtCatatan));
+        double nilai;
+        try { nilai=Double.parseDouble(FormUtil.text(txtNilai).replace(',', '.')); }
+        catch(NumberFormatException e){throw new IllegalArgumentException("Nilai pengukuran harus berupa angka, contoh: 7.5");}
+        if(original==null)AppConfig.getMonitoringController().tambahDetail(monitoringId,FormUtil.id(cmbParameter),nilai,FormUtil.text(txtCatatan));
+        else AppConfig.getMonitoringController().ubahDetail(original.getIdDetail(),FormUtil.id(cmbParameter),nilai,FormUtil.text(txtCatatan));
 
             saved=true;
-            JOptionPane.showMessageDialog(this,"Data berhasil disimpan.");
+            JOptionPane.showMessageDialog(this,original==null?"Data berhasil disimpan.":"Data berhasil diperbarui.");
             dispose();
         } catch(Exception ex) { FormUtil.error(this,ex); }
     }

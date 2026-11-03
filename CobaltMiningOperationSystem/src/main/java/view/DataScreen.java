@@ -4,7 +4,7 @@ import model.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.*;
-/** Read-only table data binder; never constructs visual components or editor forms. */
+
 public final class DataScreen {
     private final String name;
     private java.util.List<?> records=Collections.emptyList();
@@ -17,6 +17,7 @@ public final class DataScreen {
         if(!"Refresh".equals(action))throw new UnsupportedOperationException("Aksi harus melalui JFrame Form khusus.");
         refresh(table);
     }
+    
     public void refresh(JTable table) {
         switch (name) {
             case "Pegawai": records = master.tampilkanSemuaPegawai(); break;
@@ -28,9 +29,6 @@ public final class DataScreen {
             case "Produksi": records = produksi.tampilkanSemuaProduksi(); break;
             case "Pengangkutan": records = angkut.tampilkanSemuaPengangkutan(); break;
             case "Monitoring": records = monitoring.tampilkanSemuaMonitoring(); break;
-            case "LaporanProduksi": records = AppConfig.getProduksiRepository().findAll(); break;
-            case "LaporanPengangkutan": records = AppConfig.getPengangkutanRepository().findAll(); break;
-            case "LaporanMonitoring": records = AppConfig.getMonitoringRepository().findAll(); break;
             default: records = Collections.emptyList();
         }
         String[] headings = headings();
@@ -51,13 +49,11 @@ public final class DataScreen {
             case "Material": return new String[]{"ID", "Material", "Satuan", "Keterangan"};
             case "Kendaraan": return new String[]{"ID", "Jenis", "No Polisi", "Kapasitas", "Status"};
             case "Parameter": return new String[]{"ID", "Parameter", "Satuan", "Min", "Maks"};
-            case "Produksi": case "LaporanProduksi":
+            case "Produksi":
                 return new String[]{"ID", "Tanggal", "Material", "Lokasi", "Produksi (ton)", "Tersedia (ton)"};
             case "Pengangkutan":
                 return new String[]{"ID", "Tanggal", "Produksi", "Driver", "Muatan (ton)", "Status"};
-            case "LaporanPengangkutan":
-                return new String[]{"ID", "Tanggal", "Produksi", "Driver", "Muatan (ton)"};
-            case "Monitoring": case "LaporanMonitoring":
+            case "Monitoring":
                 return new String[]{"ID", "Tanggal", "Lokasi", "Status", "Penanganan", "Detail"};
             default: return new String[]{"Data"};
         }
@@ -95,10 +91,6 @@ public final class DataScreen {
         }
         if (o instanceof Pengangkutan) {
             Pengangkutan p = (Pengangkutan)o;
-            if ("LaporanPengangkutan".equals(name)) {
-                return new Object[]{p.getIdPengangkutan(), p.getTanggalPengangkutan(),
-                    p.getProduksi().getIdProduksi(), p.getDriver().getNamaPegawai(), p.getJumlahMuatan()};
-            }
             return new Object[]{p.getIdPengangkutan(), p.getTanggalPengangkutan(), p.getProduksi().getIdProduksi(),
                 p.getDriver().getNamaPegawai(), p.getJumlahMuatan(), p.getStatusPengangkutan()};
         }

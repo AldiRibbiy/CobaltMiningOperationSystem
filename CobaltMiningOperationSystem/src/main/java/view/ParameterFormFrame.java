@@ -15,6 +15,15 @@ public class ParameterFormFrame extends javax.swing.JFrame {
 
     public ParameterFormFrame() {
         initComponents();
+        
+        JButton[] navButtons = {btnSimpan, btnBatal};
+
+        for (JButton btn : navButtons) {
+            btn.setOpaque(true);
+            btn.setContentAreaFilled(true);
+            btn.setBorderPainted(false);
+        }
+        
         setSize(720, 525);
         setResizable(false);
         setLocationRelativeTo(null);

@@ -51,11 +51,13 @@ public final class LaporanService {
         int normal = 0;
         int peringatan = 0;
         int penangananSelesai = 0;
+        
         for (ProduksiTambang p : produksiRepository.findAll()) {
             if (dalamPeriode(p.getTanggalProduksi(), awal, akhir)) {
                 produksi += p.getJumlahProduksi();
             }
         }
+        
         for (Pengangkutan p : pengangkutanRepository.findAll()) {
             if (p.getStatusPengangkutan() == StatusPengangkutan.SELESAI
                     && p.getWaktuSelesai() != null
@@ -64,20 +66,24 @@ public final class LaporanService {
                 selesai++;
             }
         }
+        
         for (MonitoringLingkungan m : monitoringRepository.findAll()) {
             if (m.getTanggalMonitoring() == null
                     || !dalamPeriode(m.getTanggalMonitoring().toLocalDate(), awal, akhir)) {
                 continue;
             }
+        
             if (m.getStatusMonitoring() == StatusMonitoring.PERINGATAN) {
                 peringatan++;
             } else if (m.getStatusMonitoring() == StatusMonitoring.NORMAL) {
                 normal++;
             }
+            
             if (m.getStatusPenanganan() == StatusPenanganan.SELESAI) {
                 penangananSelesai++;
             }
         }
+        
         return new Ringkasan(produksi, angkut, selesai,
                 normal, peringatan, penangananSelesai);
     }
@@ -85,6 +91,7 @@ public final class LaporanService {
     public List<BarisProduksi> laporanProduksi(LocalDate awal, LocalDate akhir) {
         validasiPeriode(awal, akhir);
         List<BarisProduksi> hasil = new ArrayList<>();
+        
         for (ProduksiTambang p : produksiRepository.findAll()) {
             if (dalamPeriode(p.getTanggalProduksi(), awal, akhir)) {
                 hasil.add(new BarisProduksi(p.getIdProduksi(), p.getTanggalProduksi(),
@@ -92,51 +99,57 @@ public final class LaporanService {
                         p.getJumlahProduksi(), p.getJumlahTersedia()));
             }
         }
+        
         return Collections.unmodifiableList(hasil);
     }
 
     public List<BarisPengangkutan> laporanPengangkutan(LocalDate awal, LocalDate akhir) {
         validasiPeriode(awal, akhir);
         List<BarisPengangkutan> hasil = new ArrayList<>();
+        
         for (Pengangkutan p : pengangkutanRepository.findAll()) {
             if (p.getStatusPengangkutan() != StatusPengangkutan.SELESAI
                     || p.getWaktuSelesai() == null
                     || !dalamPeriode(p.getWaktuSelesai().toLocalDate(), awal, akhir)) {
                 continue;
             }
+
             hasil.add(new BarisPengangkutan(p.getIdPengangkutan(),
                     p.getWaktuSelesai().toLocalDate(),
                     p.getProduksi().getMaterial().getNamaMaterial(),
                     p.getLokasiTujuan().getNamaLokasi(), p.getJumlahMuatan()));
         }
+
         return Collections.unmodifiableList(hasil);
     }
 
     public List<BarisMonitoring> laporanMonitoring(LocalDate awal, LocalDate akhir) {
         validasiPeriode(awal, akhir);
         List<BarisMonitoring> hasil = new ArrayList<>();
+
         for (MonitoringLingkungan m : monitoringRepository.findAll()) {
-            if (m.getTanggalMonitoring() != null
-                    && dalamPeriode(m.getTanggalMonitoring().toLocalDate(), awal, akhir)) {
+            if (m.getTanggalMonitoring() != null && dalamPeriode(m.getTanggalMonitoring().toLocalDate(), awal, akhir)) {
                 hasil.add(new BarisMonitoring(m.getIdMonitoring(),
                         m.getTanggalMonitoring().toLocalDate(),
                         m.getLokasi().getNamaLokasi(), m.getStatusMonitoring().name(),
                         m.getStatusPenanganan().name()));
             }
         }
+        
         return Collections.unmodifiableList(hasil);
     }
 
     public DetailLaporanMonitoring detailMonitoring(int idMonitoring) {
-        MonitoringLingkungan m = monitoringRepository.findById(idMonitoring)
-                .orElseThrow(() -> new exception.DataNotFoundException("Monitoring tidak ditemukan."));
+        MonitoringLingkungan m = monitoringRepository.findById(idMonitoring).orElseThrow(() -> new exception.DataNotFoundException("Monitoring tidak ditemukan."));
         List<BarisDetail> detail = new ArrayList<>();
+        
         for (DetailMonitoring d : m.getDetailMonitoring()) {
             detail.add(new BarisDetail(d.getParameter().getNamaParameter(),
                     d.getParameter().getSatuan(), d.getNilaiPengukuran(),
                     d.getParameter().getBatasMinimum(), d.getParameter().getBatasMaksimum(),
                     d.getStatusDetail().name(), d.getCatatan()));
         }
+        
         return new DetailLaporanMonitoring(m.getIdMonitoring(),
                 m.getLokasi().getNamaLokasi(), m.getTanggalMonitoring().toLocalDate(),
                 m.getStatusMonitoring().name(), m.getStatusPenanganan().name(),
@@ -155,9 +168,7 @@ public final class LaporanService {
         public final int monitoringPeringatan;
         public final int penangananSelesai;
 
-        private Ringkasan(double totalProduksi, double totalDiangkut,
-                int pengangkutanSelesai, int monitoringNormal,
-                int monitoringPeringatan, int penangananSelesai) {
+        private Ringkasan(double totalProduksi, double totalDiangkut, int pengangkutanSelesai, int monitoringNormal, int monitoringPeringatan, int penangananSelesai) {
             this.totalProduksi = totalProduksi;
             this.totalDiangkut = totalDiangkut;
             this.pengangkutanSelesai = pengangkutanSelesai;
@@ -175,8 +186,7 @@ public final class LaporanService {
         public final double jumlahProduksi;
         public final double sisaSaatIni;
 
-        private BarisProduksi(int id, LocalDate tanggal, String material,
-                String lokasi, double jumlahProduksi, double sisaSaatIni) {
+        private BarisProduksi(int id, LocalDate tanggal, String material, String lokasi, double jumlahProduksi, double sisaSaatIni) {
             this.id = id;
             this.tanggal = tanggal;
             this.material = material;
@@ -193,8 +203,7 @@ public final class LaporanService {
         public final String tujuan;
         public final double jumlahMuatan;
 
-        private BarisPengangkutan(int id, LocalDate tanggalSelesai,
-                String material, String tujuan, double jumlahMuatan) {
+        private BarisPengangkutan(int id, LocalDate tanggalSelesai, String material, String tujuan, double jumlahMuatan) {
             this.id = id;
             this.tanggalSelesai = tanggalSelesai;
             this.material = material;
@@ -210,8 +219,7 @@ public final class LaporanService {
         public final String status;
         public final String penanganan;
 
-        private BarisMonitoring(int id, LocalDate tanggal,
-                String lokasi, String status, String penanganan) {
+        private BarisMonitoring(int id, LocalDate tanggal, String lokasi, String status, String penanganan) {
             this.id = id;
             this.tanggal = tanggal;
             this.lokasi = lokasi;
@@ -229,8 +237,7 @@ public final class LaporanService {
         public final String status;
         public final String catatan;
 
-        private BarisDetail(String parameter, String satuan, double nilai,
-                Double minimum, Double maksimum, String status, String catatan) {
+        private BarisDetail(String parameter, String satuan, double nilai, Double minimum, Double maksimum, String status, String catatan) {
             this.parameter = parameter;
             this.satuan = satuan;
             this.nilai = nilai;
@@ -252,8 +259,7 @@ public final class LaporanService {
         public final List<BarisDetail> detail;
 
         private DetailLaporanMonitoring(int id, String lokasi, LocalDate tanggal,
-                String status, String penanganan, String tindakLanjut,
-                String catatan, List<BarisDetail> detail) {
+                String status, String penanganan, String tindakLanjut, String catatan, List<BarisDetail> detail) {
             this.id = id;
             this.lokasi = lokasi;
             this.tanggal = tanggal;

@@ -33,6 +33,26 @@ public final class MonitoringController {
         return service.tambahDetail(id, parameter, nilai, catatan);
     }
     
+    public MonitoringLingkungan ubahMonitoring(int id, int lokasi, LocalDateTime tanggal, String catatan) {
+        auth.requirePetugasHSE();
+        return service.ubahMonitoring(id, lokasi, tanggal, catatan);
+    }
+
+    public void hapusMonitoring(int id) {
+        auth.requirePetugasHSE();
+        service.hapusMonitoring(id);
+    }
+
+    public DetailMonitoring ubahDetail(int idDetail, int parameter, double nilai, String catatan) {
+        auth.requirePetugasHSE();
+        return service.ubahDetail(idDetail, parameter, nilai, catatan);
+    }
+
+    public void hapusDetail(int idDetail) {
+        auth.requirePetugasHSE();
+        service.hapusDetail(idDetail);
+    }
+
     public void aturTindakLanjut(int id, String tindak) {
         auth.requirePetugasHSE();
         service.aturTindakLanjut(id, tindak);
@@ -53,8 +73,9 @@ public final class MonitoringController {
         service.ubahStatusLokasi(id, status);
     }
     
+    /** Detail monitoring boleh dilihat Petugas HSE (pemilik modul) dan Manager (laporan). */
     public MonitoringLingkungan cariMonitoringById(int id) {
-        auth.requirePetugasHSE();
+        if (!auth.isPetugasHSE() && !auth.isManager())throw new exception.ValidationException("Akses ditolak: hanya Petugas HSE dan Manager.");
         return service.cariMonitoringById(id);
     }
     

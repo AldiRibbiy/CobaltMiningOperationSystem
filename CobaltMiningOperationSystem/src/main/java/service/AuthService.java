@@ -19,57 +19,76 @@ import util.PasswordUtil;
 public final class AuthService {
     private final UserRepository users;
     private User current;
+    
     public AuthService(UserRepository users) {
         this.users = users;
     }
+    
     public User login(String username, String password) {
-        if (username == null || username.trim().isEmpty() || password == null
- || password.isEmpty())throw new ValidationException("Username dan password wajib diisi.");
+        if (username == null || username.trim().isEmpty() || password == null || password.isEmpty())throw new ValidationException("Username dan password wajib diisi.");
         User u = users.findByUsername(username.trim()).orElseThrow(()->new ValidationException("Username atau password salah."));
-        if (!PasswordUtil.verifyPassword(password,
-                u.getPassword()))throw new ValidationException("Username atau password salah.");
+        
+        if (!PasswordUtil.verifyPassword(password, u.getPassword()))throw new ValidationException("Username atau password salah.");
         Pegawai p = u.getPegawai();
+        
         if (p == null || p.getStatusPegawai() != StatusPegawai.AKTIF)throw new ValidationException("Pegawai tidak aktif atau tidak ditemukan.");
-        if (!(p instanceof Admin || p instanceof PetugasOperasional || p instanceof PetugasHSE
- || p instanceof Manager))throw new ValidationException("Tidak memiliki akses login.");
+        
+        if (!(p instanceof Admin || p instanceof PetugasOperasional || p instanceof PetugasHSE || p instanceof Manager))throw new ValidationException("Tidak memiliki akses login.");
         current = u;
         return u;
     }
+    
     public void logout() {
         current = null;
     }
+    
     public boolean isLoggedIn() {
         return current != null;
     }
+    
     public User getCurrentUser() {
         if (current == null)throw new ValidationException("Belum login.");
         return current;
     }
+    
     public Pegawai getCurrentPegawai() {
         return getCurrentUser().getPegawai();
     }
+    
     public boolean isAdmin() {
         return isLoggedIn() && getCurrentPegawai() instanceof Admin;
     }
+    
     public boolean isPetugasOperasional() {
         return isLoggedIn() && getCurrentPegawai() instanceof PetugasOperasional;
     }
+    
     public boolean isPetugasHSE() {
         return isLoggedIn() && getCurrentPegawai() instanceof PetugasHSE;
     }
+    
     public boolean isManager() {
         return isLoggedIn() && getCurrentPegawai() instanceof Manager;
     }
+    
+    /** Setiap peran yang sudah login boleh membaca data referensi (dropdown, dashboard, laporan). */
+    public void requireLoggedIn() {
+        if (!isLoggedIn())throw new ValidationException("Silakan login terlebih dahulu.");
+    }
+
     public void requireAdmin() {
-        if (!isAdmin())throw new ValidationException("Hanya Admin.");
+        if (!isAdmin())throw new ValidationException("Akses ditolak: fitur ini hanya untuk Admin.");
     }
+
     public void requirePetugasOperasional() {
-        if (!isPetugasOperasional())throw new ValidationException("Hanya Petugas Operasional.");
+        if (!isPetugasOperasional())throw new ValidationException("Akses ditolak: fitur ini hanya untuk Petugas Operasional.");
     }
+
     public void requirePetugasHSE() {
-        if (!isPetugasHSE())throw new ValidationException("Hanya Petugas HSE.");
+        if (!isPetugasHSE())throw new ValidationException("Akses ditolak: fitur ini hanya untuk Petugas HSE.");
     }
+
     public void requireManager() {
-        if (!isManager())throw new ValidationException("Hanya Manager.");
+        if (!isManager())throw new ValidationException("Akses ditolak: fitur ini hanya untuk Manager.");
     }
 }

@@ -3,6 +3,7 @@ import config.AppConfig;
 import controller.*;
 import model.*;
 import enums.*;
+import java.awt.Color;
 import java.time.*;
 import java.util.*;
 import javax.swing.*;
@@ -14,80 +15,146 @@ public class PegawaiPanel extends javax.swing.JPanel {
 
     public PegawaiPanel() {
         initComponents();
-        try { refreshData(); } catch(Exception ex) { FormUtil.error(this,ex); }
+        
+        JButton[] navButtons = {btnAdd, btnEdit, btnDelete, btnRefresh};
 
-    }
+        for (JButton btn : navButtons) {
+            btn.setOpaque(true);
+            btn.setContentAreaFilled(true);
+            btn.setBorderPainted(false);
+        }
+        
+        try { refreshData(); } catch(Exception ex) { FormUtil.error(this,ex); }
+     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         lblTitle = new javax.swing.JLabel();
         lblSubtitle = new javax.swing.JLabel();
         scrollTable = new javax.swing.JScrollPane();
+        tblData = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
 
+        lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(26, 43, 66));
         lblTitle.setText("Pegawai");
-        lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22));
+
+        lblSubtitle.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         lblSubtitle.setForeground(new java.awt.Color(103, 121, 143));
         lblSubtitle.setText("C-MOS / Pegawai");
-        lblSubtitle.setFont(new java.awt.Font("SansSerif", 1, 12));
+
         scrollTable.setBackground(new java.awt.Color(255, 255, 255));
+
+        tblData.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Data"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblData.setRowHeight(28);
+        scrollTable.setViewportView(tblData);
+
         btnAdd.setBackground(new java.awt.Color(43, 106, 230));
+        btnAdd.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setText("Tambah Data");
-        btnAdd.setFont(new java.awt.Font("SansSerif", 1, 12));
         btnAdd.setFocusPainted(false);
+        btnAdd.addActionListener(this::btnAddActionPerformed);
+
         btnEdit.setBackground(new java.awt.Color(26, 43, 66));
+        btnEdit.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnEdit.setText("Ubah Data");
-        btnEdit.setFont(new java.awt.Font("SansSerif", 1, 12));
         btnEdit.setFocusPainted(false);
+        btnEdit.addActionListener(this::btnEditActionPerformed);
+
         btnDelete.setBackground(new java.awt.Color(160, 45, 62));
+        btnDelete.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Hapus Data");
-        btnDelete.setFont(new java.awt.Font("SansSerif", 1, 12));
         btnDelete.setFocusPainted(false);
+        btnDelete.addActionListener(this::btnDeleteActionPerformed);
+
         btnRefresh.setBackground(new java.awt.Color(26, 43, 66));
+        btnRefresh.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
         btnRefresh.setText("Muat Ulang");
-        btnRefresh.setFont(new java.awt.Font("SansSerif", 1, 12));
         btnRefresh.setFocusPainted(false);
-        tblData = new javax.swing.JTable();
-        tblData.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{},new String[]{"Data"}));
-        tblData.setRowHeight(28);
-        tblData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        scrollTable.setViewportView(tblData);
-        btnAdd.addActionListener(this::btnAddActionPerformed);
-        btnEdit.addActionListener(this::btnEditActionPerformed);
-        btnDelete.addActionListener(this::btnDeleteActionPerformed);
         btnRefresh.addActionListener(this::btnRefreshActionPerformed);
-        javax.swing.GroupLayout thisLayout = new javax.swing.GroupLayout(this);
-        this.setLayout(thisLayout);
-        thisLayout.setHorizontalGroup(
-            thisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(thisLayout.createSequentialGroup().addGap(20).addComponent(lblTitle, 800, 800, 800))
-                .addGroup(thisLayout.createSequentialGroup().addGap(20).addComponent(lblSubtitle, 840, 840, 840))
-                .addGroup(thisLayout.createSequentialGroup().addGap(20).addComponent(scrollTable, 865, 865, 865))
-                .addGroup(thisLayout.createSequentialGroup().addGap(20).addComponent(btnAdd, 155, 155, 155))
-                .addGroup(thisLayout.createSequentialGroup().addGap(185).addComponent(btnEdit, 155, 155, 155))
-                .addGroup(thisLayout.createSequentialGroup().addGap(350).addComponent(btnDelete, 155, 155, 155))
-                .addGroup(thisLayout.createSequentialGroup().addGap(730).addComponent(btnRefresh, 155, 155, 155))
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(lblTitle, 800, 800, 800))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(20, 20, 20)
+                                    .addComponent(btnAdd, 155, 155, 155))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(185, 185, 185)
+                                    .addComponent(btnEdit, 155, 155, 155))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(350, 350, 350)
+                                    .addComponent(btnDelete, 155, 155, 155)))
+                            .addGap(200, 200, 200)
+                            .addComponent(btnRefresh, 155, 155, 155))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addComponent(lblSubtitle, 840, 840, 840))))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrollTable, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
-        thisLayout.setVerticalGroup(
-            thisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(thisLayout.createSequentialGroup().addGap(14).addComponent(lblTitle, 42, 42, 42))
-                .addGroup(thisLayout.createSequentialGroup().addGap(55).addComponent(lblSubtitle, 25, 25, 25))
-                .addGroup(thisLayout.createSequentialGroup().addGap(150).addComponent(scrollTable, 370, 370, 370))
-                .addGroup(thisLayout.createSequentialGroup().addGap(94).addComponent(btnAdd, 40, 40, 40))
-                .addGroup(thisLayout.createSequentialGroup().addGap(94).addComponent(btnEdit, 40, 40, 40))
-                .addGroup(thisLayout.createSequentialGroup().addGap(94).addComponent(btnDelete, 40, 40, 40))
-                .addGroup(thisLayout.createSequentialGroup().addGap(94).addComponent(btnRefresh, 40, 40, 40))
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(lblTitle, 42, 42, 42))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(lblSubtitle, 25, 25, 25)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRefresh, 40, 40, 40)
+                        .addGap(2, 2, 2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAdd, 40, 40, 40)
+                            .addComponent(btnEdit, 40, 40, 40)
+                            .addComponent(btnDelete, 40, 40, 40))))
+                .addGap(18, 18, 18)
+                .addComponent(scrollTable, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                .addContainerGap())
         );
-    }//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
 
     private void refreshData() {
         records.clear();records.addAll(AppConfig.getMasterDataController().tampilkanSemuaPegawai());
@@ -129,13 +196,13 @@ public class PegawaiPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblTitle;
-    private javax.swing.JLabel lblSubtitle;
-    private javax.swing.JScrollPane scrollTable;
     private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnRefresh;
+    private javax.swing.JLabel lblSubtitle;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JScrollPane scrollTable;
     private javax.swing.JTable tblData;
     // End of variables declaration//GEN-END:variables
 }

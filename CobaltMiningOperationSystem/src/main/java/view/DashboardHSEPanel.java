@@ -1,185 +1,365 @@
 package view;
 import config.AppConfig;
-import controller.*;
 import model.*;
 import enums.*;
-import java.time.*;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.JFreeChart;
 
+/** Dashboard Dashboard Petugas HSE - KPI dan grafik dibangun dari data DashboardController. */
 public class DashboardHSEPanel extends javax.swing.JPanel {
-    private void refreshDashboard(){
-        try{
-            java.util.List<String> labels=new java.util.ArrayList<>();
-            java.util.List<Double> values=new java.util.ArrayList<>();
-            java.util.List<MonitoringLingkungan> list=AppConfig.getMonitoringRepository().findAll();
-            int warning=0;for(MonitoringLingkungan m:list)if("PERINGATAN".equals(String.valueOf(m.getStatusMonitoring())))warning++;
-            lblKpiValue0.setText(""+list.size());lblKpiValue1.setText(""+warning);lblKpiValue2.setText(""+(list.size()-warning));
-            labels.add("Normal");values.add((double)(list.size()-warning));
-            labels.add("Peringatan");values.add((double)warning);
-            double max=1;for(Double d:values)max=Math.max(max,d);
-            javax.swing.JLabel[] names={lblBar0,lblBar1,lblBar2};
-            javax.swing.JLabel[] nums={lblBarValue0,lblBarValue1,lblBarValue2};
-            javax.swing.JProgressBar[] bars={bar0,bar1,bar2};
-            for(int i=0;i<3;i++){
-                if(i<labels.size()){
-                    names[i].setText(labels.get(i));nums[i].setText(String.format("%.1f",values.get(i)));
-                    bars[i].setValue((int)Math.round(values.get(i)*100/max));
-                }else{names[i].setText("-");nums[i].setText("-");bars[i].setValue(0);}
-            }
-        }catch(Exception ex){lblDesc.setText("Data belum dapat dimuat: "+ex.getMessage());}
-    }
-
     public DashboardHSEPanel() {
         initComponents();
-        refreshDashboard();
+        try { muatData(); } catch(Exception ex) { FormUtil.error(this,ex); }
+    }
 
+    private void muatData() {
+        service.DashboardService.Data d = AppConfig.getDashboardController().hse();
+
+        lblKpiValue0.setText(String.valueOf(d.monitoringTotal));
+        lblKpiValue1.setText(String.valueOf(d.monitoringNormal));
+        lblKpiValue2.setText(String.valueOf(d.monitoringPeringatan));
+        lblKpiValue3.setText(String.valueOf(d.penangananBelum));
+        lblKpiValue4.setText(String.valueOf(d.penangananProses));
+        lblKpiValue5.setText(String.valueOf(d.penangananSelesai));
+
+
+        org.jfree.data.general.DefaultPieDataset<String> dsPie = new org.jfree.data.general.DefaultPieDataset<>();
+        dsPie.setValue("Normal", d.monitoringNormal);
+        dsPie.setValue("Peringatan", d.monitoringPeringatan);
+
+        DashboardCharts.render(pnlChart1, DashboardCharts.pie("Status Monitoring", dsPie));
+
+        if (d.peringatanPerParameter.isEmpty()) {
+            DashboardCharts.kosong(pnlChart2, "Belum ada peringatan parameter lingkungan.");
+        } else {
+            org.jfree.data.category.DefaultCategoryDataset dsBar = new org.jfree.data.category.DefaultCategoryDataset();
+
+            for (java.util.Map.Entry<String, Integer> e : d.peringatanPerParameter.entrySet()) {
+                dsBar.addValue(e.getValue(), "Peringatan", e.getKey());
+            }
+            DashboardCharts.render(pnlChart2, DashboardCharts.bar("Peringatan per Parameter", dsBar));
+        }
+    }
+
+    static String ton(double nilai) {
+        return (Math.round(nilai * 10.0) / 10.0) + " ton";
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         lblTitle = new javax.swing.JLabel();
         lblHint = new javax.swing.JLabel();
+        pnlKpi0 = new javax.swing.JPanel();
         lblKpiTitle0 = new javax.swing.JLabel();
         lblKpiValue0 = new javax.swing.JLabel();
+
+        pnlKpi0.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblKpiTitle0.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        lblKpiTitle0.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiTitle0.setText("TOTAL MONITORING");
+
+        lblKpiValue0.setFont(new java.awt.Font("SansSerif", 1, 26)); // NOI18N
+        lblKpiValue0.setForeground(new java.awt.Color(26, 43, 66));
+        lblKpiValue0.setText("-");
+
+        javax.swing.GroupLayout kpiLayout0 = new javax.swing.GroupLayout(pnlKpi0);
+        pnlKpi0.setLayout(kpiLayout0);
+        kpiLayout0.setHorizontalGroup(
+            kpiLayout0.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kpiLayout0.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(kpiLayout0.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblKpiTitle0, 240, 240, 240)
+                    .addComponent(lblKpiValue0, 240, 240, 240))
+                .addGap(16, 16, 16))
+        );
+        kpiLayout0.setVerticalGroup(
+            kpiLayout0.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kpiLayout0.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblKpiTitle0, 16, 16, 16)
+                .addGap(4, 4, 4)
+                .addComponent(lblKpiValue0, 36, 36, 36)
+                .addGap(10, 10, 10))
+        );
+
+        pnlKpi1 = new javax.swing.JPanel();
         lblKpiTitle1 = new javax.swing.JLabel();
         lblKpiValue1 = new javax.swing.JLabel();
+
+        pnlKpi1.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblKpiTitle1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        lblKpiTitle1.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiTitle1.setText("HASIL NORMAL");
+
+        lblKpiValue1.setFont(new java.awt.Font("SansSerif", 1, 26)); // NOI18N
+        lblKpiValue1.setForeground(new java.awt.Color(46, 125, 70));
+        lblKpiValue1.setText("-");
+
+        javax.swing.GroupLayout kpiLayout1 = new javax.swing.GroupLayout(pnlKpi1);
+        pnlKpi1.setLayout(kpiLayout1);
+        kpiLayout1.setHorizontalGroup(
+            kpiLayout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kpiLayout1.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(kpiLayout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblKpiTitle1, 240, 240, 240)
+                    .addComponent(lblKpiValue1, 240, 240, 240))
+                .addGap(16, 16, 16))
+        );
+        kpiLayout1.setVerticalGroup(
+            kpiLayout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kpiLayout1.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblKpiTitle1, 16, 16, 16)
+                .addGap(4, 4, 4)
+                .addComponent(lblKpiValue1, 36, 36, 36)
+                .addGap(10, 10, 10))
+        );
+
+        pnlKpi2 = new javax.swing.JPanel();
         lblKpiTitle2 = new javax.swing.JLabel();
         lblKpiValue2 = new javax.swing.JLabel();
-        lblChart = new javax.swing.JLabel();
-        lblDesc = new javax.swing.JLabel();
-        lblBar0 = new javax.swing.JLabel();
-        bar0 = new javax.swing.JProgressBar();
-        lblBarValue0 = new javax.swing.JLabel();
-        lblBar1 = new javax.swing.JLabel();
-        bar1 = new javax.swing.JProgressBar();
-        lblBarValue1 = new javax.swing.JLabel();
-        lblBar2 = new javax.swing.JLabel();
-        bar2 = new javax.swing.JProgressBar();
-        lblBarValue2 = new javax.swing.JLabel();
 
-        lblTitle.setForeground(new java.awt.Color(26, 43, 66));
-        lblTitle.setText("Dashboard HSE");
-        lblTitle.setFont(new java.awt.Font("SansSerif", 1, 23));
-        lblHint.setForeground(new java.awt.Color(103, 121, 143));
-        lblHint.setText("Ringkasan pengawasan lingkungan");
-        lblHint.setFont(new java.awt.Font("SansSerif", 1, 12));
-        lblKpiTitle0.setForeground(new java.awt.Color(103, 121, 143));
-        lblKpiTitle0.setText("MONITORING");
-        lblKpiTitle0.setFont(new java.awt.Font("SansSerif", 1, 12));
-        lblKpiValue0.setForeground(new java.awt.Color(26, 43, 66));
-        lblKpiValue0.setText("0");
-        lblKpiValue0.setFont(new java.awt.Font("SansSerif", 1, 32));
-        lblKpiTitle1.setForeground(new java.awt.Color(103, 121, 143));
-        lblKpiTitle1.setText("PERINGATAN");
-        lblKpiTitle1.setFont(new java.awt.Font("SansSerif", 1, 12));
-        lblKpiValue1.setForeground(new java.awt.Color(26, 43, 66));
-        lblKpiValue1.setText("0");
-        lblKpiValue1.setFont(new java.awt.Font("SansSerif", 1, 32));
+        pnlKpi2.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblKpiTitle2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         lblKpiTitle2.setForeground(new java.awt.Color(103, 121, 143));
-        lblKpiTitle2.setText("NORMAL");
-        lblKpiTitle2.setFont(new java.awt.Font("SansSerif", 1, 12));
-        lblKpiValue2.setForeground(new java.awt.Color(26, 43, 66));
-        lblKpiValue2.setText("0");
-        lblKpiValue2.setFont(new java.awt.Font("SansSerif", 1, 32));
-        lblChart.setForeground(new java.awt.Color(26, 43, 66));
-        lblChart.setText("DISTRIBUSI DATA  /  INDIKATOR");
-        lblChart.setFont(new java.awt.Font("SansSerif", 1, 17));
-        lblDesc.setForeground(new java.awt.Color(103, 121, 143));
-        lblDesc.setText("Perbandingan berdasarkan data aktual yang tercatat.");
-        lblDesc.setFont(new java.awt.Font("SansSerif", 1, 12));
-        lblBar0.setForeground(new java.awt.Color(26, 43, 66));
-        lblBar0.setText("Kategori 1");
-        lblBar0.setFont(new java.awt.Font("SansSerif", 1, 12));
-        bar0.setBackground(new java.awt.Color(255, 255, 255));
-        lblBarValue0.setForeground(new java.awt.Color(26, 43, 66));
-        lblBarValue0.setText("0");
-        lblBarValue0.setFont(new java.awt.Font("SansSerif", 1, 12));
-        lblBar1.setForeground(new java.awt.Color(26, 43, 66));
-        lblBar1.setText("Kategori 2");
-        lblBar1.setFont(new java.awt.Font("SansSerif", 1, 12));
-        bar1.setBackground(new java.awt.Color(255, 255, 255));
-        lblBarValue1.setForeground(new java.awt.Color(26, 43, 66));
-        lblBarValue1.setText("0");
-        lblBarValue1.setFont(new java.awt.Font("SansSerif", 1, 12));
-        lblBar2.setForeground(new java.awt.Color(26, 43, 66));
-        lblBar2.setText("Kategori 3");
-        lblBar2.setFont(new java.awt.Font("SansSerif", 1, 12));
-        bar2.setBackground(new java.awt.Color(255, 255, 255));
-        lblBarValue2.setForeground(new java.awt.Color(26, 43, 66));
-        lblBarValue2.setText("0");
-        lblBarValue2.setFont(new java.awt.Font("SansSerif", 1, 12));
+        lblKpiTitle2.setText("PERINGATAN");
 
-        javax.swing.GroupLayout thisLayout = new javax.swing.GroupLayout(this);
-        this.setLayout(thisLayout);
-        thisLayout.setHorizontalGroup(
-            thisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(thisLayout.createSequentialGroup().addGap(24).addComponent(lblTitle, 810, 810, 810))
-                .addGroup(thisLayout.createSequentialGroup().addGap(24).addComponent(lblHint, 810, 810, 810))
-                .addGroup(thisLayout.createSequentialGroup().addGap(24).addComponent(lblKpiTitle0, 275, 275, 275))
-                .addGroup(thisLayout.createSequentialGroup().addGap(24).addComponent(lblKpiValue0, 275, 275, 275))
-                .addGroup(thisLayout.createSequentialGroup().addGap(314).addComponent(lblKpiTitle1, 275, 275, 275))
-                .addGroup(thisLayout.createSequentialGroup().addGap(314).addComponent(lblKpiValue1, 275, 275, 275))
-                .addGroup(thisLayout.createSequentialGroup().addGap(604).addComponent(lblKpiTitle2, 275, 275, 275))
-                .addGroup(thisLayout.createSequentialGroup().addGap(604).addComponent(lblKpiValue2, 275, 275, 275))
-                .addGroup(thisLayout.createSequentialGroup().addGap(24).addComponent(lblChart, 820, 820, 820))
-                .addGroup(thisLayout.createSequentialGroup().addGap(24).addComponent(lblDesc, 830, 830, 830))
-                .addGroup(thisLayout.createSequentialGroup().addGap(24).addComponent(lblBar0, 200, 200, 200))
-                .addGroup(thisLayout.createSequentialGroup().addGap(227).addComponent(bar0, 565, 565, 565))
-                .addGroup(thisLayout.createSequentialGroup().addGap(801).addComponent(lblBarValue0, 70, 70, 70))
-                .addGroup(thisLayout.createSequentialGroup().addGap(24).addComponent(lblBar1, 200, 200, 200))
-                .addGroup(thisLayout.createSequentialGroup().addGap(227).addComponent(bar1, 565, 565, 565))
-                .addGroup(thisLayout.createSequentialGroup().addGap(801).addComponent(lblBarValue1, 70, 70, 70))
-                .addGroup(thisLayout.createSequentialGroup().addGap(24).addComponent(lblBar2, 200, 200, 200))
-                .addGroup(thisLayout.createSequentialGroup().addGap(227).addComponent(bar2, 565, 565, 565))
-                .addGroup(thisLayout.createSequentialGroup().addGap(801).addComponent(lblBarValue2, 70, 70, 70))
-        );
-        thisLayout.setVerticalGroup(
-            thisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(thisLayout.createSequentialGroup().addGap(18).addComponent(lblTitle, 42, 42, 42))
-                .addGroup(thisLayout.createSequentialGroup().addGap(62).addComponent(lblHint, 25, 25, 25))
-                .addGroup(thisLayout.createSequentialGroup().addGap(116).addComponent(lblKpiTitle0, 26, 26, 26))
-                .addGroup(thisLayout.createSequentialGroup().addGap(147).addComponent(lblKpiValue0, 70, 70, 70))
-                .addGroup(thisLayout.createSequentialGroup().addGap(116).addComponent(lblKpiTitle1, 26, 26, 26))
-                .addGroup(thisLayout.createSequentialGroup().addGap(147).addComponent(lblKpiValue1, 70, 70, 70))
-                .addGroup(thisLayout.createSequentialGroup().addGap(116).addComponent(lblKpiTitle2, 26, 26, 26))
-                .addGroup(thisLayout.createSequentialGroup().addGap(147).addComponent(lblKpiValue2, 70, 70, 70))
-                .addGroup(thisLayout.createSequentialGroup().addGap(251).addComponent(lblChart, 36, 36, 36))
-                .addGroup(thisLayout.createSequentialGroup().addGap(289).addComponent(lblDesc, 24, 24, 24))
-                .addGroup(thisLayout.createSequentialGroup().addGap(337).addComponent(lblBar0, 28, 28, 28))
-                .addGroup(thisLayout.createSequentialGroup().addGap(339).addComponent(bar0, 27, 27, 27))
-                .addGroup(thisLayout.createSequentialGroup().addGap(337).addComponent(lblBarValue0, 28, 28, 28))
-                .addGroup(thisLayout.createSequentialGroup().addGap(397).addComponent(lblBar1, 28, 28, 28))
-                .addGroup(thisLayout.createSequentialGroup().addGap(399).addComponent(bar1, 27, 27, 27))
-                .addGroup(thisLayout.createSequentialGroup().addGap(397).addComponent(lblBarValue1, 28, 28, 28))
-                .addGroup(thisLayout.createSequentialGroup().addGap(457).addComponent(lblBar2, 28, 28, 28))
-                .addGroup(thisLayout.createSequentialGroup().addGap(459).addComponent(bar2, 27, 27, 27))
-                .addGroup(thisLayout.createSequentialGroup().addGap(457).addComponent(lblBarValue2, 28, 28, 28))
-        );
-    }//GEN-END:initComponents
+        lblKpiValue2.setFont(new java.awt.Font("SansSerif", 1, 26)); // NOI18N
+        lblKpiValue2.setForeground(new java.awt.Color(160, 45, 62));
+        lblKpiValue2.setText("-");
 
+        javax.swing.GroupLayout kpiLayout2 = new javax.swing.GroupLayout(pnlKpi2);
+        pnlKpi2.setLayout(kpiLayout2);
+        kpiLayout2.setHorizontalGroup(
+            kpiLayout2.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kpiLayout2.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(kpiLayout2.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblKpiTitle2, 240, 240, 240)
+                    .addComponent(lblKpiValue2, 240, 240, 240))
+                .addGap(16, 16, 16))
+        );
+        kpiLayout2.setVerticalGroup(
+            kpiLayout2.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kpiLayout2.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblKpiTitle2, 16, 16, 16)
+                .addGap(4, 4, 4)
+                .addComponent(lblKpiValue2, 36, 36, 36)
+                .addGap(10, 10, 10))
+        );
+
+        pnlKpi3 = new javax.swing.JPanel();
+        lblKpiTitle3 = new javax.swing.JLabel();
+        lblKpiValue3 = new javax.swing.JLabel();
+
+        pnlKpi3.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblKpiTitle3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        lblKpiTitle3.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiTitle3.setText("BELUM DITANGANI");
+
+        lblKpiValue3.setFont(new java.awt.Font("SansSerif", 1, 26)); // NOI18N
+        lblKpiValue3.setForeground(new java.awt.Color(183, 121, 31));
+        lblKpiValue3.setText("-");
+
+        javax.swing.GroupLayout kpiLayout3 = new javax.swing.GroupLayout(pnlKpi3);
+        pnlKpi3.setLayout(kpiLayout3);
+        kpiLayout3.setHorizontalGroup(
+            kpiLayout3.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kpiLayout3.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(kpiLayout3.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblKpiTitle3, 240, 240, 240)
+                    .addComponent(lblKpiValue3, 240, 240, 240))
+                .addGap(16, 16, 16))
+        );
+        kpiLayout3.setVerticalGroup(
+            kpiLayout3.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kpiLayout3.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblKpiTitle3, 16, 16, 16)
+                .addGap(4, 4, 4)
+                .addComponent(lblKpiValue3, 36, 36, 36)
+                .addGap(10, 10, 10))
+        );
+
+        pnlKpi4 = new javax.swing.JPanel();
+        lblKpiTitle4 = new javax.swing.JLabel();
+        lblKpiValue4 = new javax.swing.JLabel();
+
+        pnlKpi4.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblKpiTitle4.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        lblKpiTitle4.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiTitle4.setText("DALAM PENANGANAN");
+
+        lblKpiValue4.setFont(new java.awt.Font("SansSerif", 1, 26)); // NOI18N
+        lblKpiValue4.setForeground(new java.awt.Color(43, 106, 230));
+        lblKpiValue4.setText("-");
+
+        javax.swing.GroupLayout kpiLayout4 = new javax.swing.GroupLayout(pnlKpi4);
+        pnlKpi4.setLayout(kpiLayout4);
+        kpiLayout4.setHorizontalGroup(
+            kpiLayout4.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kpiLayout4.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(kpiLayout4.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblKpiTitle4, 240, 240, 240)
+                    .addComponent(lblKpiValue4, 240, 240, 240))
+                .addGap(16, 16, 16))
+        );
+        kpiLayout4.setVerticalGroup(
+            kpiLayout4.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kpiLayout4.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblKpiTitle4, 16, 16, 16)
+                .addGap(4, 4, 4)
+                .addComponent(lblKpiValue4, 36, 36, 36)
+                .addGap(10, 10, 10))
+        );
+
+        pnlKpi5 = new javax.swing.JPanel();
+        lblKpiTitle5 = new javax.swing.JLabel();
+        lblKpiValue5 = new javax.swing.JLabel();
+
+        pnlKpi5.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblKpiTitle5.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        lblKpiTitle5.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiTitle5.setText("PENANGANAN SELESAI");
+
+        lblKpiValue5.setFont(new java.awt.Font("SansSerif", 1, 26)); // NOI18N
+        lblKpiValue5.setForeground(new java.awt.Color(31, 122, 140));
+        lblKpiValue5.setText("-");
+
+        javax.swing.GroupLayout kpiLayout5 = new javax.swing.GroupLayout(pnlKpi5);
+        pnlKpi5.setLayout(kpiLayout5);
+        kpiLayout5.setHorizontalGroup(
+            kpiLayout5.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kpiLayout5.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(kpiLayout5.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblKpiTitle5, 240, 240, 240)
+                    .addComponent(lblKpiValue5, 240, 240, 240))
+                .addGap(16, 16, 16))
+        );
+        kpiLayout5.setVerticalGroup(
+            kpiLayout5.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kpiLayout5.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblKpiTitle5, 16, 16, 16)
+                .addGap(4, 4, 4)
+                .addComponent(lblKpiValue5, 36, 36, 36)
+                .addGap(10, 10, 10))
+        );
+
+        pnlChart1 = new javax.swing.JPanel();
+        pnlChart2 = new javax.swing.JPanel();
+
+        lblTitle.setFont(new java.awt.Font("SansSerif", 1, 23)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(26, 43, 66));
+        lblTitle.setText("Dashboard Petugas HSE");
+
+        lblHint.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lblHint.setForeground(new java.awt.Color(103, 121, 143));
+        lblHint.setText("Kondisi lingkungan, peringatan, dan progres penanganan");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblTitle, 810, 810, 810))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblHint, 810, 810, 810))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(pnlKpi0, 275, 275, 275)
+                .addGap(12, 12, 12)
+                .addComponent(pnlKpi1, 275, 275, 275)
+                .addGap(12, 12, 12)
+                .addComponent(pnlKpi2, 275, 275, 275))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(pnlKpi3, 275, 275, 275)
+                .addGap(12, 12, 12)
+                .addComponent(pnlKpi4, 275, 275, 275)
+                .addGap(12, 12, 12)
+                .addComponent(pnlKpi5, 275, 275, 275))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(pnlChart1, 415, 415, 415)
+                .addGap(14, 14, 14)
+                .addComponent(pnlChart2, 415, 415, 415))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(lblTitle, 42, 42, 42))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(lblHint, 24, 24, 24))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addComponent(pnlKpi0, 76, 76, 76))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addComponent(pnlKpi1, 76, 76, 76))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addComponent(pnlKpi2, 76, 76, 76))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(202, 202, 202)
+                .addComponent(pnlKpi3, 76, 76, 76))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(202, 202, 202)
+                .addComponent(pnlKpi4, 76, 76, 76))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(202, 202, 202)
+                .addComponent(pnlKpi5, 76, 76, 76))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(292, 292, 292)
+                .addComponent(pnlChart1, 300, 300, 300))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(292, 292, 292)
+                .addComponent(pnlChart2, 300, 300, 300))
+        );
+    }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblHint;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JPanel pnlChart1;
+    private javax.swing.JPanel pnlChart2;
+    private javax.swing.JPanel pnlKpi0;
+    private javax.swing.JPanel pnlKpi1;
+    private javax.swing.JPanel pnlKpi2;
+    private javax.swing.JPanel pnlKpi3;
+    private javax.swing.JPanel pnlKpi4;
+    private javax.swing.JPanel pnlKpi5;
     private javax.swing.JLabel lblKpiTitle0;
-    private javax.swing.JLabel lblKpiValue0;
     private javax.swing.JLabel lblKpiTitle1;
-    private javax.swing.JLabel lblKpiValue1;
     private javax.swing.JLabel lblKpiTitle2;
+    private javax.swing.JLabel lblKpiTitle3;
+    private javax.swing.JLabel lblKpiTitle4;
+    private javax.swing.JLabel lblKpiTitle5;
+    private javax.swing.JLabel lblKpiValue0;
+    private javax.swing.JLabel lblKpiValue1;
     private javax.swing.JLabel lblKpiValue2;
-    private javax.swing.JLabel lblChart;
-    private javax.swing.JLabel lblDesc;
-    private javax.swing.JLabel lblBar0;
-    private javax.swing.JProgressBar bar0;
-    private javax.swing.JLabel lblBarValue0;
-    private javax.swing.JLabel lblBar1;
-    private javax.swing.JProgressBar bar1;
-    private javax.swing.JLabel lblBarValue1;
-    private javax.swing.JLabel lblBar2;
-    private javax.swing.JProgressBar bar2;
-    private javax.swing.JLabel lblBarValue2;
+    private javax.swing.JLabel lblKpiValue3;
+    private javax.swing.JLabel lblKpiValue4;
+    private javax.swing.JLabel lblKpiValue5;
     // End of variables declaration//GEN-END:variables
 }

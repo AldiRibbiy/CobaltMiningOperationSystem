@@ -7,6 +7,7 @@ package controller;
 import service.*;
 import model.*;
 import java.util.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -23,6 +24,11 @@ public final class MasterDataController {
     
     private void guard() {
         auth.requireAdmin();
+    }
+
+    /** Master data boleh dibaca oleh setiap peran yang sudah login (Admin, Ops, HSE, Manager). */
+    private void requireLogin() {
+        auth.requireLoggedIn();
     }
     
     public void tambahPegawai(Pegawai x) {
@@ -41,17 +47,17 @@ public final class MasterDataController {
     }
     
     public Pegawai cariPegawaiById(int id) {
-        guard();
+        requireLogin();
         return data.cariPegawaiById(id);
     }
     
     public List<Pegawai> tampilkanSemuaPegawai() {
-        guard();
+        requireLogin();
         return data.tampilkanSemuaPegawai();
     }
     
     public List<Pegawai> cariPegawaiByNama(String n) {
-        guard();
+        requireLogin();
         return data.cariPegawaiByNama(n);
     }
     
@@ -71,17 +77,17 @@ public final class MasterDataController {
     }
     
     public User cariUserById(int id) {
-        guard();
+        requireLogin();
         return data.cariUserById(id);
     }
     
     public Optional<User> cariUserByPegawai(int id) {
-        guard();
+        requireLogin();
         return data.cariUserByPegawai(id);
     }
     
     public List<User> tampilkanSemuaUser() {
-        guard();
+        requireLogin();
         return data.tampilkanSemuaUser();
     }
     
@@ -101,17 +107,17 @@ public final class MasterDataController {
     }
     
     public Lokasi cariLokasiById(int id) {
-        guard();
+        requireLogin();
         return data.cariLokasiById(id);
     }
     
     public List<Lokasi> tampilkanSemuaLokasi() {
-        guard();
+        requireLogin();
         return data.tampilkanSemuaLokasi();
     }
     
     public List<Lokasi> cariLokasiByNama(String n) {
-        guard();
+        requireLogin();
         return data.cariLokasiByNama(n);
     }
     
@@ -131,17 +137,17 @@ public final class MasterDataController {
     }
     
     public JenisMaterial cariMaterialById(int id) {
-        guard();
+        requireLogin();
         return data.cariMaterialById(id);
     }
     
     public List<JenisMaterial> tampilkanSemuaMaterial() {
-        guard();
+        requireLogin();
         return data.tampilkanSemuaMaterial();
     }
     
     public List<JenisMaterial> cariMaterialByNama(String n) {
-        guard();
+        requireLogin();
         return data.cariMaterialByNama(n);
     }
     
@@ -161,12 +167,12 @@ public final class MasterDataController {
     }
     
     public Kendaraan cariKendaraanById(int id) {
-        guard();
+        requireLogin();
         return data.cariKendaraanById(id);
     }
     
     public List<Kendaraan> tampilkanSemuaKendaraan() {
-        guard();
+        requireLogin();
         return data.tampilkanSemuaKendaraan();
     }
     
@@ -186,32 +192,44 @@ public final class MasterDataController {
     }
     
     public ParameterLingkungan cariParameterById(int id) {
-        guard();
+        requireLogin();
         return data.cariParameterById(id);
     }
     
     public List<ParameterLingkungan> tampilkanSemuaParameter() {
-        guard();
+        requireLogin();
         return data.tampilkanSemuaParameter();
     }
     
     public List<ParameterLingkungan> cariParameterByNama(String n) {
-        guard();
+        requireLogin();
         return data.cariParameterByNama(n);
     }
     
     public List<Kendaraan> tampilkanKendaraanTersedia() {
-        if (!auth.isAdmin() && !auth.isPetugasOperasional())throw new exception.ValidationException("Akses ditolak.");
+        requireLogin();
         return data.tampilkanKendaraanTersedia();
     }
-    
+
     public List<Lokasi> tampilkanLokasiPitAktif() {
-        if (!auth.isAdmin() && !auth.isPetugasOperasional())throw new exception.ValidationException("Akses ditolak.");
+        requireLogin();
         return data.tampilkanLokasiPitAktif();
     }
-    
+
     public List<Lokasi> tampilkanLokasiAktif() {
-        if (!auth.isAdmin() && !auth.isPetugasOperasional() && !auth.isPetugasHSE())throw new exception.ValidationException("Akses ditolak.");
+        requireLogin();
         return data.tampilkanLokasiAktif();
+    }
+
+    /** Driver tersedia untuk penugasan pengangkutan (dipakai form Petugas Operasional). */
+    public List<Pegawai> tampilkanDriverTersedia() {
+        requireLogin();
+        List<Pegawai> hasil = new ArrayList<>();
+        for (Pegawai p : data.tampilkanSemuaPegawai()) {
+            if (p instanceof Driver && ((Driver) p).getStatusDriver() == enums.StatusDriver.TERSEDIA) {
+                hasil.add(p);
+            }
+        }
+        return hasil;
     }
 }

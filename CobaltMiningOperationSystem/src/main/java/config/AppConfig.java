@@ -49,7 +49,11 @@ public final class AppConfig {
 
     private static LaporanService laporanService;
 
+    private static DashboardService dashboardService;
+
     private static LaporanController laporanController;
+
+    private static DashboardController dashboardController;
 
     private static AuthController authController;
 
@@ -87,6 +91,10 @@ public final class AppConfig {
         monitoringController = new MonitoringController(monitoringService, authService);
         laporanService = new LaporanService(produksiRepository, pengangkutanRepository, monitoringRepository);
         laporanController = new LaporanController(laporanService, authService);
+        dashboardService = new DashboardService(pegawaiRepository, userRepository, lokasiRepository,
+                materialRepository, kendaraanRepository, parameterRepository, produksiRepository,
+                pengangkutanRepository, monitoringRepository);
+        dashboardController = new DashboardController(dashboardService, authService);
         initialized = true;
     }
     
@@ -172,5 +180,13 @@ public final class AppConfig {
     
     public static MonitoringController getMonitoringController() {
         return monitoringController;
+    }
+
+    public static DashboardService getDashboardService() {
+        return dashboardService;
+    }
+
+    public static DashboardController getDashboardController() {
+        return dashboardController;
     }
 }

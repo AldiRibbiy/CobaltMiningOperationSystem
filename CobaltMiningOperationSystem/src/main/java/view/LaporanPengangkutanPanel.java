@@ -1,19 +1,28 @@
 package view;
 import config.AppConfig;
 import controller.*;
-import model.*;
-import enums.*;
+import service.LaporanService;
 import java.time.*;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import com.toedter.calendar.JDateChooser;
 
 public class LaporanPengangkutanPanel extends javax.swing.JPanel {
-    private final DataScreen screen=new DataScreen("LaporanPengangkutan");
-    private final java.util.List<Pengangkutan> records=new java.util.ArrayList<>();
+    private final LaporanController laporan = AppConfig.getLaporanController();
 
     public LaporanPengangkutanPanel() {
         initComponents();
+
+        JButton[] navButtons = {btnTampilkan};
+
+        for (JButton btn : navButtons) {
+            btn.setOpaque(true);
+            btn.setContentAreaFilled(true);
+            btn.setBorderPainted(false);
+        }
+
+        choAwal.setDate(java.sql.Date.valueOf(LocalDate.now().minusDays(29)));
+        choAkhir.setDate(java.sql.Date.valueOf(LocalDate.now()));
         try { refreshData(); } catch(Exception ex) { FormUtil.error(this,ex); }
 
     }
@@ -21,79 +30,149 @@ public class LaporanPengangkutanPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        lblTitle = new javax.swing.JLabel();
-        lblSubtitle = new javax.swing.JLabel();
-        scrollTable = new javax.swing.JScrollPane();
-        btnDetail = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
 
-        lblTitle.setForeground(new java.awt.Color(26, 43, 66));
-        lblTitle.setText("Laporan Pengangkutan");
-        lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22));
-        lblSubtitle.setForeground(new java.awt.Color(103, 121, 143));
-        lblSubtitle.setText("C-MOS / LaporanPengangkutan");
-        lblSubtitle.setFont(new java.awt.Font("SansSerif", 1, 12));
-        scrollTable.setBackground(new java.awt.Color(255, 255, 255));
-        btnDetail.setBackground(new java.awt.Color(43, 106, 230));
-        btnDetail.setForeground(new java.awt.Color(255, 255, 255));
-        btnDetail.setText("Lihat Detail");
-        btnDetail.setFont(new java.awt.Font("SansSerif", 1, 12));
-        btnDetail.setFocusPainted(false);
-        btnRefresh.setBackground(new java.awt.Color(26, 43, 66));
-        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
-        btnRefresh.setText("Muat Ulang");
-        btnRefresh.setFont(new java.awt.Font("SansSerif", 1, 12));
-        btnRefresh.setFocusPainted(false);
+        lblTitle = new javax.swing.JLabel();
+        lblHint = new javax.swing.JLabel();
+        lblAwal = new javax.swing.JLabel();
+        choAwal = new com.toedter.calendar.JDateChooser();
+        lblAkhir = new javax.swing.JLabel();
+        choAkhir = new com.toedter.calendar.JDateChooser();
+        btnTampilkan = new javax.swing.JButton();
+        scrollTable = new javax.swing.JScrollPane();
         tblData = new javax.swing.JTable();
-        tblData.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{},new String[]{"Data"}));
+
+        lblTitle.setText("Laporan Pengangkutan");
+        lblTitle.setForeground(new java.awt.Color(26, 43, 66));
+        lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
+
+        lblHint.setText("Periode tanggal selesai pengangkutan (status SELESAI).");
+        lblHint.setForeground(new java.awt.Color(103, 121, 143));
+        lblHint.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+
+        lblAwal.setText("Tanggal Awal");
+        lblAwal.setForeground(new java.awt.Color(26, 43, 66));
+
+        lblAkhir.setText("Tanggal Akhir");
+        lblAkhir.setForeground(new java.awt.Color(26, 43, 66));
+
+        btnTampilkan.setText("Tampilkan");
+        btnTampilkan.setBackground(new java.awt.Color(43, 106, 230));
+        btnTampilkan.setForeground(new java.awt.Color(255, 255, 255));
+        btnTampilkan.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnTampilkan.setFocusPainted(false);
+        btnTampilkan.addActionListener(this::btnTampilkanActionPerformed);
+
+        scrollTable.setBackground(new java.awt.Color(255, 255, 255));
+
+        tblData.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Data"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblData.setRowHeight(28);
-        tblData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrollTable.setViewportView(tblData);
-        btnDetail.addActionListener(this::btnDetailActionPerformed);
-        btnRefresh.addActionListener(this::btnRefreshActionPerformed);
-        javax.swing.GroupLayout thisLayout = new javax.swing.GroupLayout(this);
-        this.setLayout(thisLayout);
-        thisLayout.setHorizontalGroup(
-            thisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(thisLayout.createSequentialGroup().addGap(20).addComponent(lblTitle, 800, 800, 800))
-                .addGroup(thisLayout.createSequentialGroup().addGap(20).addComponent(lblSubtitle, 840, 840, 840))
-                .addGroup(thisLayout.createSequentialGroup().addGap(20).addComponent(scrollTable, 865, 865, 865))
-                .addGroup(thisLayout.createSequentialGroup().addGap(20).addComponent(btnDetail, 156, 156, 156))
-                .addGroup(thisLayout.createSequentialGroup().addGap(730).addComponent(btnRefresh, 155, 155, 155))
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblTitle, 800, 800, 800))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblHint, 840, 840, 840))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblAwal, 110, 110, 110)
+                .addGap(8, 8, 8)
+                .addComponent(choAwal, 165, 165, 165)
+                .addGap(24, 24, 24)
+                .addComponent(lblAkhir, 110, 110, 110)
+                .addGap(8, 8, 8)
+                .addComponent(choAkhir, 165, 165, 165)
+                .addGap(24, 24, 24)
+                .addComponent(btnTampilkan, 140, 140, 140))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(scrollTable, 865, 865, 865))
         );
-        thisLayout.setVerticalGroup(
-            thisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(thisLayout.createSequentialGroup().addGap(14).addComponent(lblTitle, 42, 42, 42))
-                .addGroup(thisLayout.createSequentialGroup().addGap(55).addComponent(lblSubtitle, 25, 25, 25))
-                .addGroup(thisLayout.createSequentialGroup().addGap(150).addComponent(scrollTable, 370, 370, 370))
-                .addGroup(thisLayout.createSequentialGroup().addGap(94).addComponent(btnDetail, 40, 40, 40))
-                .addGroup(thisLayout.createSequentialGroup().addGap(94).addComponent(btnRefresh, 40, 40, 40))
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lblTitle, 42, 42, 42))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(lblHint, 25, 25, 25))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(lblAwal, 32, 32, 32))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(choAwal, 32, 32, 32))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(lblAkhir, 32, 32, 32))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(choAkhir, 32, 32, 32))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(btnTampilkan, 32, 32, 32))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addComponent(scrollTable, 370, 370, 370))
         );
-    }//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
+
+    private LocalDate tanggal(JDateChooser chooser, String label) {
+        java.util.Date nilai = chooser.getDate();
+
+        if (nilai == null)throw new IllegalArgumentException(label+" wajib dipilih.");
+        return nilai.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
 
     private void refreshData() {
-        records.clear();records.addAll(AppConfig.getPengangkutanRepository().findAll());
-        screen.handle("Refresh",tblData,this);
+        LocalDate awal = tanggal(choAwal, "Tanggal awal"), akhir = tanggal(choAkhir, "Tanggal akhir");
+
+        if (awal.isAfter(akhir))throw new IllegalArgumentException("Tanggal awal tidak boleh setelah tanggal akhir.");
+        java.util.List<LaporanService.BarisPengangkutan> data = laporan.laporanPengangkutan(awal, akhir);
+        javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
+            new String[]{"ID", "Tanggal Selesai", "Material", "Lokasi Tujuan", "Muatan (ton)"}, 0){
+            @Override public boolean isCellEditable(int r,int c){return false;}
+        };
+
+        for (LaporanService.BarisPengangkutan b : data)model.addRow(new Object[]{b.id, b.tanggalSelesai, b.material, b.tujuan, b.jumlahMuatan});
+        tblData.setModel(model);
+        tblData.setAutoCreateRowSorter(true);
+        tblData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
     }
-    private Pengangkutan selected() {
-        int row=tblData.getSelectedRow();
-        if(row<0)throw new IllegalArgumentException("Pilih satu baris data terlebih dahulu.");
-        return records.get(tblData.convertRowIndexToModel(row));
-    }
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {
+
+    private void btnTampilkanActionPerformed(java.awt.event.ActionEvent evt) {
         try{refreshData();}catch(Exception ex){FormUtil.error(this,ex);}
-    }
-    private void btnDetailActionPerformed(java.awt.event.ActionEvent evt) {
-        try { JOptionPane.showMessageDialog(this,"Data laporan terpilih: "+selected(),"Detail Laporan",JOptionPane.INFORMATION_MESSAGE); }
-        catch(Exception ex){FormUtil.error(this,ex);}
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser choAkhir;
+    private com.toedter.calendar.JDateChooser choAwal;
+    private javax.swing.JButton btnTampilkan;
+    private javax.swing.JLabel lblAkhir;
+    private javax.swing.JLabel lblAwal;
+    private javax.swing.JLabel lblHint;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JLabel lblSubtitle;
     private javax.swing.JScrollPane scrollTable;
-    private javax.swing.JButton btnDetail;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JTable tblData;
     // End of variables declaration//GEN-END:variables
 }
