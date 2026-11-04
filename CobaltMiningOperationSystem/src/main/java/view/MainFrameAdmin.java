@@ -92,7 +92,7 @@ public class MainFrameAdmin extends javax.swing.JFrame {
         pnlSidebar.setBackground(new java.awt.Color(69, 40, 41));
 
         lblBrand.setFont(new java.awt.Font("SansSerif", 1, 31)); // NOI18N
-        lblBrand.setForeground(new java.awt.Color(243, 232, 223));
+        lblBrand.setForeground(new java.awt.Color(255, 255, 255));
         lblBrand.setText("C-MOS");
 
         lblBrandSub.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N

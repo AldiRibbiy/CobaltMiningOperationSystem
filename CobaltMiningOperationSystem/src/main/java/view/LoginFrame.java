@@ -72,7 +72,7 @@ public class LoginFrame extends javax.swing.JFrame {
         lblSub.setForeground(new java.awt.Color(232, 209, 197));
         lblSub.setText("COBALT MINING OPERATIONS SYSTEMS");
 
-        jPanel1.setBackground(new java.awt.Color(66, 91, 124));
+        jPanel1.setBackground(new java.awt.Color(232, 209, 197));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 17)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(243, 232, 223));
