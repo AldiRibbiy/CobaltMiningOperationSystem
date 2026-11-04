@@ -16,7 +16,7 @@ public class PegawaiPanel extends javax.swing.JPanel {
     public PegawaiPanel() {
         initComponents();
         
-        JButton[] navButtons = {btnAdd, btnEdit, btnDelete, btnRefresh};
+        JButton[] navButtons = {btnAdd, btnEdit, btnDelete};
 
         for (JButton btn : navButtons) {
             btn.setOpaque(true);
@@ -38,7 +38,6 @@ public class PegawaiPanel extends javax.swing.JPanel {
         btnAdd = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
 
         lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(26, 43, 66));
@@ -90,13 +89,6 @@ public class PegawaiPanel extends javax.swing.JPanel {
         btnDelete.setFocusPainted(false);
         btnDelete.addActionListener(this::btnDeleteActionPerformed);
 
-        btnRefresh.setBackground(new java.awt.Color(26, 43, 66));
-        btnRefresh.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
-        btnRefresh.setText("Muat Ulang");
-        btnRefresh.setFocusPainted(false);
-        btnRefresh.addActionListener(this::btnRefreshActionPerformed);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,8 +110,7 @@ public class PegawaiPanel extends javax.swing.JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(350, 350, 350)
                                     .addComponent(btnDelete, 155, 155, 155)))
-                            .addGap(200, 200, 200)
-                            .addComponent(btnRefresh, 155, 155, 155))
+                            .addGap(355, 355, 355))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(20, 20, 20)
                             .addComponent(lblSubtitle, 840, 840, 840))))
@@ -132,7 +123,7 @@ public class PegawaiPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -141,8 +132,6 @@ public class PegawaiPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(55, 55, 55)
                                 .addComponent(lblSubtitle, 25, 25, 25)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRefresh, 40, 40, 40)
                         .addGap(2, 2, 2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(94, 94, 94)
@@ -150,8 +139,7 @@ public class PegawaiPanel extends javax.swing.JPanel {
                             .addComponent(btnAdd, 40, 40, 40)
                             .addComponent(btnEdit, 40, 40, 40)
                             .addComponent(btnDelete, 40, 40, 40))))
-                .addGap(18, 18, 18)
-                .addComponent(scrollTable, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                .addComponent(scrollTable, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -160,14 +148,13 @@ public class PegawaiPanel extends javax.swing.JPanel {
         records.clear();records.addAll(AppConfig.getMasterDataController().tampilkanSemuaPegawai());
         screen.handle("Refresh",tblData,this);
     }
+    
     private Pegawai selected() {
         int row=tblData.getSelectedRow();
         if(row<0)throw new IllegalArgumentException("Pilih satu baris data terlebih dahulu.");
         return records.get(tblData.convertRowIndexToModel(row));
     }
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {
-        try{refreshData();}catch(Exception ex){FormUtil.error(this,ex);}
-    }
+    
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {
         try{
             PegawaiFormFrame f=new PegawaiFormFrame();
@@ -177,6 +164,7 @@ public class PegawaiPanel extends javax.swing.JPanel {
             });
         }catch(Exception ex){FormUtil.error(this,ex);}
     }
+    
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {
         try{
             PegawaiFormFrame f=new PegawaiFormFrame(selected());
@@ -186,6 +174,7 @@ public class PegawaiPanel extends javax.swing.JPanel {
             });
         }catch(Exception ex){FormUtil.error(this,ex);}
     }
+    
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {
         try{
             Pegawai item=selected();
@@ -199,7 +188,6 @@ public class PegawaiPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel lblSubtitle;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JScrollPane scrollTable;

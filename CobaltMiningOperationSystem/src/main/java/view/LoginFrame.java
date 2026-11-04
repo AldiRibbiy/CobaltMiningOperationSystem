@@ -58,32 +58,32 @@ public class LoginFrame extends javax.swing.JFrame {
 
         pnlRoot.setBackground(new java.awt.Color(245, 247, 251));
 
-        pnlLeft.setBackground(new java.awt.Color(20, 34, 55));
+        pnlLeft.setBackground(new java.awt.Color(69, 40, 41));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(125, 180, 255));
+        jLabel5.setForeground(new java.awt.Color(243, 232, 223));
         jLabel5.setText("◆  LOGIN FORM");
 
         lblBrand.setFont(new java.awt.Font("SansSerif", 1, 44)); // NOI18N
-        lblBrand.setForeground(new java.awt.Color(255, 255, 255));
+        lblBrand.setForeground(new java.awt.Color(243, 232, 223));
         lblBrand.setText("C-MOS");
 
         lblSub.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        lblSub.setForeground(new java.awt.Color(176, 199, 228));
+        lblSub.setForeground(new java.awt.Color(232, 209, 197));
         lblSub.setText("COBALT MINING OPERATIONS SYSTEMS");
 
         jPanel1.setBackground(new java.awt.Color(66, 91, 124));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 17)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(243, 232, 223));
         jLabel4.setText("OPERATIONS PORTAL");
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(183, 198, 218));
+        jLabel3.setForeground(new java.awt.Color(232, 209, 197));
         jLabel3.setText("<html>Pengelolaan data pertambangan<br>terintegrasi dalam satu sistem.</html>");
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(145, 166, 193));
+        jLabel1.setForeground(new java.awt.Color(232, 209, 197));
         jLabel1.setText("CAPSTONE 2026");
 
         org.jdesktop.layout.GroupLayout pnlLeftLayout = new org.jdesktop.layout.GroupLayout(pnlLeft);
@@ -170,7 +170,7 @@ public class LoginFrame extends javax.swing.JFrame {
         chkPassword.setText("Tampilkan password");
         chkPassword.addActionListener(this::chkPasswordActionPerformed);
 
-        btnLogin.setBackground(new java.awt.Color(37, 99, 235));
+        btnLogin.setBackground(new java.awt.Color(87, 89, 91));
         btnLogin.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("MASUK KE C-MOS");

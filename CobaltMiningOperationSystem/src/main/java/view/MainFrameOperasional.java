@@ -83,41 +83,41 @@ public class MainFrameOperasional extends javax.swing.JFrame {
 
         pnlRoot.setBackground(new java.awt.Color(244, 247, 252));
 
-        pnlSidebar.setBackground(new java.awt.Color(16, 30, 51));
+        pnlSidebar.setBackground(new java.awt.Color(69, 40, 41));
 
         lblBrand.setFont(new java.awt.Font("SansSerif", 1, 31)); // NOI18N
-        lblBrand.setForeground(new java.awt.Color(255, 255, 255));
+        lblBrand.setForeground(new java.awt.Color(243, 232, 223));
         lblBrand.setText("C-MOS");
 
         lblBrandSub.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
-        lblBrandSub.setForeground(new java.awt.Color(145, 167, 194));
+        lblBrandSub.setForeground(new java.awt.Color(232, 209, 197));
         lblBrandSub.setText("COBALT MINING SYSTEM");
 
         lblNavTitle.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
-        lblNavTitle.setForeground(new java.awt.Color(145, 167, 194));
+        lblNavTitle.setForeground(new java.awt.Color(232, 209, 197));
         lblNavTitle.setText("NAVIGASI  /  OPERASIONAL");
 
-        btnDashboard.setBackground(new java.awt.Color(27, 47, 74));
-        btnDashboard.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        btnDashboard.setForeground(new java.awt.Color(255, 255, 255));
+        btnDashboard.setBackground(new java.awt.Color(232, 209, 197));
+        btnDashboard.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnDashboard.setForeground(new java.awt.Color(87, 89, 91));
         btnDashboard.setText("Dashboard");
         btnDashboard.addActionListener(this::btnDashboardActionPerformed);
 
-        btnProduksi.setBackground(new java.awt.Color(27, 47, 74));
-        btnProduksi.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        btnProduksi.setForeground(new java.awt.Color(255, 255, 255));
+        btnProduksi.setBackground(new java.awt.Color(232, 209, 197));
+        btnProduksi.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnProduksi.setForeground(new java.awt.Color(87, 89, 91));
         btnProduksi.setText("Produksi Tambang");
         btnProduksi.addActionListener(this::btnProduksiActionPerformed);
 
-        btnPengangkutan.setBackground(new java.awt.Color(27, 47, 74));
-        btnPengangkutan.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        btnPengangkutan.setForeground(new java.awt.Color(255, 255, 255));
+        btnPengangkutan.setBackground(new java.awt.Color(232, 209, 197));
+        btnPengangkutan.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnPengangkutan.setForeground(new java.awt.Color(87, 89, 91));
         btnPengangkutan.setText("Pengangkutan");
         btnPengangkutan.addActionListener(this::btnPengangkutanActionPerformed);
 
-        btnLogout.setBackground(new java.awt.Color(27, 47, 74));
+        btnLogout.setBackground(new java.awt.Color(232, 209, 197));
         btnLogout.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        btnLogout.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogout.setForeground(new java.awt.Color(87, 89, 91));
         btnLogout.setText("Keluar Akun");
         btnLogout.addActionListener(this::btnLogoutActionPerformed);
 

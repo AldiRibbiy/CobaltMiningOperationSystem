@@ -70,7 +70,7 @@
         <Container class="javax.swing.JPanel" name="pnlSidebar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="1e" red="10" type="rgb"/>
+              <Color blue="29" green="28" red="45" type="rgb"/>
             </Property>
           </Properties>
 
@@ -187,7 +187,7 @@
                   <Font name="SansSerif" size="31" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="df" green="e8" red="f3" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="C-MOS"/>
               </Properties>
@@ -198,7 +198,7 @@
                   <Font name="SansSerif" size="10" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c2" green="a7" red="91" type="rgb"/>
+                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="COBALT MINING SYSTEM"/>
               </Properties>
@@ -209,7 +209,7 @@
                   <Font name="SansSerif" size="10" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c2" green="a7" red="91" type="rgb"/>
+                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="NAVIGASI  /  ADMIN"/>
               </Properties>
@@ -217,13 +217,13 @@
             <Component class="javax.swing.JButton" name="btnDashboard">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4a" green="2f" red="1b" type="rgb"/>
+                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="0"/>
+                  <Font name="SansSerif" size="12" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="5b" green="59" red="57" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Dashboard"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
@@ -235,13 +235,13 @@
             <Component class="javax.swing.JButton" name="btnPegawai">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4a" green="2f" red="1b" type="rgb"/>
+                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="0"/>
+                  <Font name="SansSerif" size="12" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="5b" green="59" red="57" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Data Pegawai"/>
               </Properties>
@@ -252,13 +252,13 @@
             <Component class="javax.swing.JButton" name="btnUser">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4a" green="2f" red="1b" type="rgb"/>
+                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="0"/>
+                  <Font name="SansSerif" size="12" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="5b" green="59" red="57" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Akun Pengguna"/>
               </Properties>
@@ -269,13 +269,13 @@
             <Component class="javax.swing.JButton" name="btnLokasi">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4a" green="2f" red="1b" type="rgb"/>
+                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="0"/>
+                  <Font name="SansSerif" size="12" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="5b" green="59" red="57" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Lokasi Tambang"/>
               </Properties>
@@ -286,13 +286,13 @@
             <Component class="javax.swing.JButton" name="btnMaterial">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4a" green="2f" red="1b" type="rgb"/>
+                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="0"/>
+                  <Font name="SansSerif" size="12" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="5b" green="59" red="57" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Jenis Material"/>
               </Properties>
@@ -303,13 +303,13 @@
             <Component class="javax.swing.JButton" name="btnKendaraan">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4a" green="2f" red="1b" type="rgb"/>
+                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="0"/>
+                  <Font name="SansSerif" size="12" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="5b" green="59" red="57" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Kendaraan"/>
               </Properties>
@@ -320,13 +320,13 @@
             <Component class="javax.swing.JButton" name="btnParameter">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4a" green="2f" red="1b" type="rgb"/>
+                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="0"/>
+                  <Font name="SansSerif" size="12" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="5b" green="59" red="57" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Parameter Lingkungan"/>
               </Properties>
@@ -337,13 +337,13 @@
             <Component class="javax.swing.JButton" name="btnLogout">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4a" green="2f" red="1b" type="rgb"/>
+                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="12" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="5b" green="59" red="57" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Keluar Akun"/>
               </Properties>

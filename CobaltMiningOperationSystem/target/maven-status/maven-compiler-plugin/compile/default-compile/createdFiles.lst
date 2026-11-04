@@ -63,6 +63,7 @@ view/PengangkutanPanel$1.class
 view/ViewFactory.class
 view/DashboardHSEPanel.class
 model/PetugasHSE.class
+view/Ui.class
 view/UserPanel$1.class
 model/MonitoringLingkungan.class
 view/LaporanPengangkutanPanel.class
@@ -113,6 +114,7 @@ repository/KendaraanRepository.class
 view/LaporanPengangkutanPanel$1.class
 view/ProduksiPanel.class
 controller/ProduksiController.class
+view/Ui$HeaderRenderer.class
 view/ParameterPanel$2.class
 repository/UserRepository.class
 view/LokasiPanel$2.class
@@ -146,6 +148,7 @@ view/LaporanProduksiPanel$2.class
 exception/BusinessException.class
 repository/MonitoringRepository.class
 dao/ParameterDAO.class
+view/Ui$RowRenderer.class
 repository/CrudRepository.class
 service/LaporanService.class
 enums/StatusDetail.class
