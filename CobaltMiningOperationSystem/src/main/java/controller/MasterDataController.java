@@ -7,7 +7,6 @@ package controller;
 import service.*;
 import model.*;
 import java.util.*;
-import java.util.ArrayList;
 
 /**
  *
@@ -24,11 +23,6 @@ public final class MasterDataController {
     
     private void guard() {
         auth.requireAdmin();
-    }
-
-    /** Master data boleh dibaca oleh setiap peran yang sudah login (Admin, Ops, HSE, Manager). */
-    private void requireLogin() {
-        auth.requireLoggedIn();
     }
     
     public void tambahPegawai(Pegawai x) {
@@ -47,17 +41,17 @@ public final class MasterDataController {
     }
     
     public Pegawai cariPegawaiById(int id) {
-        requireLogin();
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
         return data.cariPegawaiById(id);
     }
     
     public List<Pegawai> tampilkanSemuaPegawai() {
-        requireLogin();
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
         return data.tampilkanSemuaPegawai();
     }
     
     public List<Pegawai> cariPegawaiByNama(String n) {
-        requireLogin();
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
         return data.cariPegawaiByNama(n);
     }
     
@@ -66,28 +60,25 @@ public final class MasterDataController {
         data.tambahUser(x);
     }
     
-    public void ubahUser(User x) {
-        guard();
-        data.ubahUser(x);
-    }
-    
+    /* Pembaruan akun hanya dapat dilakukan pemilik akun sendiri (UbahAkunFrame);
+     * Admin hanya membuat dan menghapus akun, sehingga tidak ada ubahUser di sini. */
     public void hapusUser(int id) {
         guard();
         data.hapusUser(id);
     }
     
     public User cariUserById(int id) {
-        requireLogin();
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
         return data.cariUserById(id);
     }
     
     public Optional<User> cariUserByPegawai(int id) {
-        requireLogin();
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
         return data.cariUserByPegawai(id);
     }
     
     public List<User> tampilkanSemuaUser() {
-        requireLogin();
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
         return data.tampilkanSemuaUser();
     }
     
@@ -107,17 +98,17 @@ public final class MasterDataController {
     }
     
     public Lokasi cariLokasiById(int id) {
-        requireLogin();
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
         return data.cariLokasiById(id);
     }
     
     public List<Lokasi> tampilkanSemuaLokasi() {
-        requireLogin();
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
         return data.tampilkanSemuaLokasi();
     }
     
     public List<Lokasi> cariLokasiByNama(String n) {
-        requireLogin();
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
         return data.cariLokasiByNama(n);
     }
     
@@ -137,17 +128,17 @@ public final class MasterDataController {
     }
     
     public JenisMaterial cariMaterialById(int id) {
-        requireLogin();
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
         return data.cariMaterialById(id);
     }
     
     public List<JenisMaterial> tampilkanSemuaMaterial() {
-        requireLogin();
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
         return data.tampilkanSemuaMaterial();
     }
     
     public List<JenisMaterial> cariMaterialByNama(String n) {
-        requireLogin();
+        guard();
         return data.cariMaterialByNama(n);
     }
     
@@ -167,12 +158,12 @@ public final class MasterDataController {
     }
     
     public Kendaraan cariKendaraanById(int id) {
-        requireLogin();
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
         return data.cariKendaraanById(id);
     }
     
     public List<Kendaraan> tampilkanSemuaKendaraan() {
-        requireLogin();
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
         return data.tampilkanSemuaKendaraan();
     }
     
@@ -192,44 +183,72 @@ public final class MasterDataController {
     }
     
     public ParameterLingkungan cariParameterById(int id) {
-        requireLogin();
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
         return data.cariParameterById(id);
     }
     
     public List<ParameterLingkungan> tampilkanSemuaParameter() {
-        requireLogin();
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
         return data.tampilkanSemuaParameter();
     }
     
     public List<ParameterLingkungan> cariParameterByNama(String n) {
-        requireLogin();
+        guard();
         return data.cariParameterByNama(n);
     }
     
+    public List<Pegawai> tampilkanDriverTersedia() {
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
+        return data.tampilkanDriverTersedia();
+    }
+    
+    public List<Pegawai> tampilkanPegawaiTanpaAkun() {
+        guard();
+        return data.tampilkanPegawaiTanpaAkun();
+    }
+    
+    public int[] ringkasanPegawai() {
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
+        return data.ringkasanPegawai();
+    }
+    
+    public int[] ringkasanUser() {
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
+        return data.ringkasanUser();
+    }
+    
+    public int[] ringkasanLokasi() {
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
+        return data.ringkasanLokasi();
+    }
+    
+    public int[] ringkasanKendaraan() {
+        if (!auth.isLoggedIn())throw new IllegalStateException("Silakan login terlebih dahulu.");
+        return data.ringkasanKendaraan();
+    }
+    
+    public int totalMaterial() {
+        guard();
+        return data.totalMaterial();
+    }
+    
+    public int totalParameter() {
+        guard();
+        return data.totalParameter();
+    }
+
     public List<Kendaraan> tampilkanKendaraanTersedia() {
-        requireLogin();
+        if (!auth.isAdmin() && !auth.isPetugasOperasional())throw new exception.ValidationException("Akses ditolak.");
         return data.tampilkanKendaraanTersedia();
     }
-
+    
     public List<Lokasi> tampilkanLokasiPitAktif() {
-        requireLogin();
+        if (!auth.isAdmin() && !auth.isPetugasOperasional())throw new exception.ValidationException("Akses ditolak.");
         return data.tampilkanLokasiPitAktif();
     }
-
+    
     public List<Lokasi> tampilkanLokasiAktif() {
-        requireLogin();
+        if (!auth.isAdmin() && !auth.isPetugasOperasional() && !auth.isPetugasHSE())throw new exception.ValidationException("Akses ditolak.");
         return data.tampilkanLokasiAktif();
-    }
-
-    /** Driver tersedia untuk penugasan pengangkutan (dipakai form Petugas Operasional). */
-    public List<Pegawai> tampilkanDriverTersedia() {
-        requireLogin();
-        List<Pegawai> hasil = new ArrayList<>();
-        for (Pegawai p : data.tampilkanSemuaPegawai()) {
-            if (p instanceof Driver && ((Driver) p).getStatusDriver() == enums.StatusDriver.TERSEDIA) {
-                hasil.add(p);
-            }
-        }
-        return hasil;
     }
 }

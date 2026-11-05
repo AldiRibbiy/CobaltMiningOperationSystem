@@ -33,14 +33,35 @@ public final class MonitoringController {
         return service.tambahDetail(id, parameter, nilai, catatan);
     }
     
-    public MonitoringLingkungan ubahMonitoring(int id, int lokasi, LocalDateTime tanggal, String catatan) {
-        auth.requirePetugasHSE();
-        return service.ubahMonitoring(id, lokasi, tanggal, catatan);
+    public void aturTindakLanjut(int id, String tindak) {
+        auth.requireManager();
+        service.aturTindakLanjut(id, tindak);
     }
-
+    
+    public void mulaiPenanganan(int id) {
+        auth.requireManager();
+        service.mulaiPenanganan(id);
+    }
+    
+    public void selesaikanPenanganan(int id) {
+        auth.requireManager();
+        service.selesaikanPenanganan(id);
+    }
+    
+    /** HSE meneruskan informasi peringatan lokasi kepada Manager. */
+    public void informasikanManager(int id) {
+        auth.requirePetugasHSE();
+        service.informasikanManager(id, auth.getCurrentPegawai().getNamaPegawai());
+    }
+    
     public void hapusMonitoring(int id) {
         auth.requirePetugasHSE();
         service.hapusMonitoring(id);
+    }
+
+    public MonitoringLingkungan ubahMonitoring(int id, int lokasi, LocalDateTime tanggal, String catatan) {
+        auth.requirePetugasHSE();
+        return service.ubahMonitoring(id, lokasi, tanggal, catatan);
     }
 
     public DetailMonitoring ubahDetail(int idDetail, int parameter, double nilai, String catatan) {
@@ -53,39 +74,28 @@ public final class MonitoringController {
         service.hapusDetail(idDetail);
     }
 
-    public void aturTindakLanjut(int id, String tindak) {
-        auth.requirePetugasHSE();
-        service.aturTindakLanjut(id, tindak);
-    }
-    
-    public void mulaiPenanganan(int id) {
-        auth.requirePetugasHSE();
-        service.mulaiPenanganan(id);
-    }
-    
-    public void selesaikanPenanganan(int id) {
-        auth.requirePetugasHSE();
-        service.selesaikanPenanganan(id);
-    }
-    
     public void ubahStatusLokasi(int id, StatusLokasi status) {
         auth.requirePetugasHSE();
         service.ubahStatusLokasi(id, status);
     }
     
-    /** Detail monitoring boleh dilihat Petugas HSE (pemilik modul) dan Manager (laporan). */
     public MonitoringLingkungan cariMonitoringById(int id) {
-        if (!auth.isPetugasHSE() && !auth.isManager())throw new exception.ValidationException("Akses ditolak: hanya Petugas HSE dan Manager.");
+        if (!auth.isPetugasHSE() && !auth.isManager())throw new IllegalStateException("Akses monitoring tidak tersedia.");
         return service.cariMonitoringById(id);
     }
     
     public List<MonitoringLingkungan> tampilkanSemuaMonitoring() {
-        auth.requirePetugasHSE();
+        if (!auth.isPetugasHSE() && !auth.isManager())throw new IllegalStateException("Akses monitoring tidak tersedia.");
         return service.tampilkanSemuaMonitoring();
     }
     
     public List<MonitoringLingkungan> tampilkanMonitoringByLokasi(int id) {
-        auth.requirePetugasHSE();
+        if (!auth.isPetugasHSE() && !auth.isManager())throw new IllegalStateException("Akses monitoring tidak tersedia.");
         return service.tampilkanMonitoringByLokasi(id);
+    }
+    
+    public List<model.Lokasi> tampilkanSemuaLokasi() {
+        if (!auth.isPetugasHSE() && !auth.isManager())throw new IllegalStateException("Akses monitoring tidak tersedia.");
+        return service.tampilkanSemuaLokasi();
     }
 }

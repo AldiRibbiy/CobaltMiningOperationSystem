@@ -62,8 +62,17 @@ public final class ParameterDAO implements ParameterRepository {
             JdbcSupport.requireChanged(ps.executeUpdate(),"Parameter");
         }
         catch (SQLException e) {
+            if (isForeignKeyViolation(e))throw new exception.ValidationException(
+                    "Parameter tidak dapat dihapus karena sudah dipakai pada data monitoring.");
             throw JdbcSupport.fail("menghapus parameter", e);
         }
+    }
+    
+    private static boolean isForeignKeyViolation(SQLException e) {
+        String pesan = e.getMessage() == null ? "" : e.getMessage();
+        String sqlState = e.getSQLState() == null ? "" : e.getSQLState();
+        return sqlState.startsWith("23") || pesan.contains("CONSTRAINT")
+                || pesan.contains("foreign key") || pesan.contains("FOREIGN KEY");
     }
     
     @Override

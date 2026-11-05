@@ -179,28 +179,12 @@ public final class PegawaiDAO implements PegawaiRepository {
     
     @Override
     public void delete(int id) {
-        try(Connection c = JdbcSupport.open()) {
-            c.setAutoCommit(false);
-            
-            try {
-                String type = typeForUpdate(c, id);
-            
-                try(PreparedStatement ps = c.prepareStatement("DELETE FROM "+type+" WHERE id_pegawai=?")) {
-                    ps.setInt(1, id);
-                    ps.executeUpdate();
-                }
-                
-                try(PreparedStatement ps = c.prepareStatement("DELETE FROM pegawai WHERE id_pegawai=?")) {
-                    ps.setInt(1, id);
-                    JdbcSupport.requireChanged(ps.executeUpdate(),"Pegawai");
-                }
-                c.commit();
-            }
-            
-            catch (Exception e) {
-                JdbcSupport.rollback(c, e);
-                throw e;
-            }
+        /* Soft delete: pegawai tidak benar-benar dihapus karena data ini
+         * berpengaruh ke data lain (akun, produksi, pengangkutan, monitoring).
+         * Status diubah menjadi NONAKTIF dan pegawai tidak ditampilkan lagi. */
+        try(Connection c = JdbcSupport.open();PreparedStatement ps = c.prepareStatement("UPDATE pegawai SET status_pegawai='NONAKTIF' WHERE id_pegawai=?")) {
+            ps.setInt(1, id);
+            JdbcSupport.requireChanged(ps.executeUpdate(),"Pegawai");
         }
         
         catch (SQLException e) {
@@ -226,6 +210,11 @@ public final class PegawaiDAO implements PegawaiRepository {
     @Override
     public List<Pegawai> findAll() {
         return search(SELECT+"ORDER BY p.id_pegawai", null);
+    }
+    
+    @Override
+    public List<Pegawai> findAllAktif() {
+        return search(SELECT+"WHERE p.status_pegawai='AKTIF' ORDER BY p.id_pegawai", null);
     }
     
     @Override

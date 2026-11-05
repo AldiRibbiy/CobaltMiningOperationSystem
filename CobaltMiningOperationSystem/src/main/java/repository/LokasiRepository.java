@@ -14,4 +14,6 @@ import model.Lokasi;
 
 public interface LokasiRepository extends CrudRepository<Lokasi> {
     List<Lokasi> findByNama(String nama);
+    /** Seluruh lokasi termasuk yang NONAKTIF (dihapus lembut) - untuk KPI dashboard. */
+    List<Lokasi> findAllDenganNonaktif();
 }

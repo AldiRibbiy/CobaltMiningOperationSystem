@@ -43,18 +43,18 @@ public final class DataScreen {
 
     private String[] headings() {
         switch (name) {
-            case "Pegawai": return new String[]{"ID", "Nama", "Jenis", "Telepon", "Status"};
-            case "User": return new String[]{"ID", "Username", "Pemilik Akun"};
+            case "Pegawai": return new String[]{"ID", "Nama", "Jenis", "Telepon", "Tanggal Masuk"};
+            case "User": return new String[]{"ID", "Username", "Nama Pegawai", "Jenis Pegawai", "Status Akses"};
             case "Lokasi": return new String[]{"ID", "Lokasi", "Jenis", "Status"};
             case "Material": return new String[]{"ID", "Material", "Satuan", "Keterangan"};
             case "Kendaraan": return new String[]{"ID", "Jenis", "No Polisi", "Kapasitas", "Status"};
             case "Parameter": return new String[]{"ID", "Parameter", "Satuan", "Min", "Maks"};
             case "Produksi":
-                return new String[]{"ID", "Tanggal", "Material", "Lokasi", "Produksi (ton)", "Tersedia (ton)"};
+                return new String[]{"ID", "Tanggal", "Material", "Lokasi", "Produksi (ton)", "Tersedia (ton)", "Status"};
             case "Pengangkutan":
-                return new String[]{"ID", "Tanggal", "Produksi", "Driver", "Muatan (ton)", "Status"};
+                return new String[]{"ID", "Tanggal", "Produksi", "Kendaraan", "Driver", "Muatan (ton)", "Status"};
             case "Monitoring":
-                return new String[]{"ID", "Tanggal", "Lokasi", "Status", "Penanganan", "Detail"};
+                return new String[]{"ID", "Tanggal", "Lokasi", "Status", "Penanganan", "Tindak Lanjut"};
             default: return new String[]{"Data"};
         }
     }
@@ -62,11 +62,14 @@ public final class DataScreen {
     private Object[] row(Object o) {
         if (o instanceof Pegawai) {
             Pegawai p = (Pegawai)o;
-            return new Object[]{p.getIdPegawai(), p.getNamaPegawai(), p.getJenisPegawai(), p.getNoHp(), p.getStatusPegawai()};
+            return new Object[]{p.getIdPegawai(), p.getNamaPegawai(), p.getJenisPegawai(), p.getNoHp(), p.getTanggalMasuk()};
         }
         if (o instanceof User) {
             User u = (User)o;
-            return new Object[]{u.getIdUser(), u.getUsername(), u.getPegawai().getNamaPegawai()};
+            Pegawai pemilik = u.getPegawai();
+            boolean aktif = pemilik != null && "AKTIF".equals(String.valueOf(pemilik.getStatusPegawai()));
+            return new Object[]{u.getIdUser(), u.getUsername(), pemilik == null ? "-" : pemilik.getNamaPegawai(),
+                pemilik == null ? "-" : pemilik.getJenisPegawai(), aktif ? "AKTIF" : "NONAKTIF"};
         }
         if (o instanceof Lokasi) {
             Lokasi l = (Lokasi)o;
@@ -87,17 +90,19 @@ public final class DataScreen {
         if (o instanceof ProduksiTambang) {
             ProduksiTambang p = (ProduksiTambang)o;
             return new Object[]{p.getIdProduksi(), p.getTanggalProduksi(), p.getMaterial().getNamaMaterial(),
-                p.getLokasi().getNamaLokasi(), p.getJumlahProduksi(), p.getJumlahTersedia()};
+                p.getLokasi().getNamaLokasi(), p.getJumlahProduksi(), p.getJumlahTersedia(), p.getStatusProduksi()};
         }
         if (o instanceof Pengangkutan) {
             Pengangkutan p = (Pengangkutan)o;
             return new Object[]{p.getIdPengangkutan(), p.getTanggalPengangkutan(), p.getProduksi().getIdProduksi(),
-                p.getDriver().getNamaPegawai(), p.getJumlahMuatan(), p.getStatusPengangkutan()};
+                p.getKendaraan() == null ? "-" : p.getKendaraan().getNomorPolisi(),
+                p.getDriver() == null ? "-" : p.getDriver().getNamaPegawai(), p.getJumlahMuatan(), p.getStatusPengangkutan()};
         }
         if (o instanceof MonitoringLingkungan) {
             MonitoringLingkungan m = (MonitoringLingkungan)o;
             return new Object[]{m.getIdMonitoring(), m.getTanggalMonitoring(), m.getLokasi().getNamaLokasi(),
-                m.getStatusMonitoring(), m.getStatusPenanganan(), m.getDetailMonitoring().size()};
+                m.getStatusMonitoring(), m.getStatusPenanganan(),
+                m.getTindakLanjut() == null || m.getTindakLanjut().trim().isEmpty() ? "-" : m.getTindakLanjut()};
         }
         return new Object[]{String.valueOf(o)};
     }

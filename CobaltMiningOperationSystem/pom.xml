@@ -14,7 +14,7 @@
     </repositories>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>21</maven.compiler.release>
+        <maven.compiler.release>8</maven.compiler.release>
         <exec.mainClass>app.Main</exec.mainClass>
     </properties>
     <dependencies>
@@ -43,8 +43,7 @@
             <version>1.4</version>
             <scope>compile</scope>
         </dependency>
-
-        <!-- Grafik dashboard (KPI chart) -->
+        <!-- Grafik dashboard -->
         <dependency>
             <groupId>org.jfree</groupId>
             <artifactId>jfreechart</artifactId>

@@ -49,9 +49,9 @@ public final class AppConfig {
 
     private static LaporanService laporanService;
 
-    private static DashboardService dashboardService;
-
     private static LaporanController laporanController;
+
+    private static DashboardService dashboardService;
 
     private static DashboardController dashboardController;
 
@@ -98,6 +98,10 @@ public final class AppConfig {
         initialized = true;
     }
     
+    public static DashboardController getDashboardController() {
+        return dashboardController;
+    }
+
     public static PegawaiRepository getPegawaiRepository() {
         return pegawaiRepository;
     }
@@ -180,13 +184,5 @@ public final class AppConfig {
     
     public static MonitoringController getMonitoringController() {
         return monitoringController;
-    }
-
-    public static DashboardService getDashboardService() {
-        return dashboardService;
-    }
-
-    public static DashboardController getDashboardController() {
-        return dashboardController;
     }
 }

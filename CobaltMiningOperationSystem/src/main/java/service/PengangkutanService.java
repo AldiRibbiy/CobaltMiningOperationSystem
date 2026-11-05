@@ -175,7 +175,7 @@ public final class PengangkutanService {
                     }
                 }
                 
-                require(!date.isAfter(LocalDate.now()), "Pengangkutan belum dapat dimulai: tanggal jadwal belum tiba.");
+                require(date.equals(LocalDate.now()), "Pengangkutan hanya dapat dimulai pada tanggal jadwal.");
                 lock(c,"SELECT id_lokasi FROM lokasi WHERE id_lokasi=? AND status_operasional='AKTIF' FOR UPDATE", idAsal);
                 lock(c,"SELECT id_lokasi FROM lokasi WHERE id_lokasi=? AND status_operasional='AKTIF' FOR UPDATE", idTujuan);
                 require(update(c,"UPDATE kendaraan SET status_kendaraan='DIGUNAKAN' WHERE id_kendaraan=? AND status_kendaraan='TERSEDIA'", idVehicle) == 1,"Kendaraan tidak tersedia.");

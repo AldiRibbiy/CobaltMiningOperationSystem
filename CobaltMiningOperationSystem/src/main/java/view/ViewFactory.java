@@ -10,10 +10,10 @@ public final class ViewFactory {
     public static JPanel create(String menu, String role, Consumer<String> navigate) {
         if ("Dashboard".equals(menu)) {
             switch (role) {
-                case "Admin": return new DashboardAdminPanel();
-                case "Operasional": return new DashboardOperasionalPanel();
-                case "HSE": return new DashboardHSEPanel();
-                case "Manager": return new DashboardManagerPanel();
+                case "Admin": return new DashboardAdminPanel(navigate);
+                case "Operasional": return new DashboardOperasionalPanel(navigate);
+                case "HSE": return new DashboardHSEPanel(navigate);
+                case "Manager": return new DashboardManagerPanel(navigate);
                 default: throw new IllegalArgumentException("Role tidak dikenal.");
             }
         }
@@ -26,6 +26,7 @@ public final class ViewFactory {
             case "Parameter": return new ParameterPanel();
             case "Produksi": return new ProduksiPanel();
             case "Pengangkutan": return new PengangkutanPanel();
+            case "KondisiLokasi": return new KondisiLokasiPanel();
             case "Monitoring": return new MonitoringPanel();
             case "LaporanProduksi": return new LaporanProduksiPanel();
             case "LaporanPengangkutan": return new LaporanPengangkutanPanel();

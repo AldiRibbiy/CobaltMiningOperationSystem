@@ -4,9 +4,15 @@ import java.awt.Font;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
+import org.jfree.chart.ui.TextAnchor;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.chart.ChartFactory;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
@@ -19,12 +25,14 @@ import org.jfree.data.general.DefaultPieDataset;
 public final class DashboardCharts {
     private static final Color NAVY = new Color(26, 43, 66);
     private static final Color SLATE = new Color(103, 121, 143);
+    private static final Color BLUE = new Color(43, 106, 230);
+    private static final Color RED = new Color(160, 45, 62);
     private static final Color[] PALET = {
-        new Color(43, 106, 230),
+        BLUE,
         NAVY,
         new Color(46, 125, 70),
         new Color(183, 121, 31),
-        new Color(160, 45, 62),
+        RED,
         new Color(31, 122, 140),
         SLATE
     };
@@ -42,6 +50,64 @@ public final class DashboardCharts {
         plot.getRenderer().setDefaultItemLabelFont(new Font("SansSerif", Font.PLAIN, 11));
         plot.setBackgroundPaint(Color.WHITE);
         plot.setRangeGridlinePaint(new Color(226, 232, 240));
+        return chart;
+    }
+
+    /** Bar chart horizontal: nama kategori lengkap terbaca dan jumlah ditampilkan pada ujung bar. */
+    public static JFreeChart barHorizontal(String judul, DefaultCategoryDataset data) {
+        JFreeChart chart = ChartFactory.createBarChart(judul, null, null, data,
+                PlotOrientation.HORIZONTAL, false, true, false);
+        gaya(chart, 15);
+
+        CategoryPlot plot = chart.getCategoryPlot();
+        CategoryAxis sumbuKategori = plot.getDomainAxis();
+        sumbuKategori.setTickLabelFont(new Font("SansSerif", Font.PLAIN, 13));
+        sumbuKategori.setMaximumCategoryLabelWidthRatio(0.85f);
+        NumberAxis sumbuNilai = (NumberAxis) plot.getRangeAxis();
+        sumbuNilai.setTickLabelFont(new Font("SansSerif", Font.PLAIN, 12));
+
+        BarRenderer renderer = (BarRenderer) plot.getRenderer();
+        renderer.setSeriesPaint(0, BLUE);
+        renderer.setDefaultItemLabelGenerator(new StandardCategoryItemLabelGenerator());
+        renderer.setDefaultItemLabelsVisible(true);
+        renderer.setDefaultItemLabelFont(new Font("SansSerif", Font.BOLD, 12));
+        renderer.setDefaultItemLabelPaint(NAVY);
+        renderer.setPositiveItemLabelPositionFallback(new org.jfree.chart.labels.ItemLabelPosition(
+                org.jfree.chart.labels.ItemLabelAnchor.OUTSIDE3,
+                TextAnchor.BASELINE_LEFT));
+        renderer.setItemMargin(0.12);
+        renderer.setShadowVisible(false);
+        plot.setBackgroundPaint(Color.WHITE);
+        plot.setRangeGridlinePaint(new Color(226, 232, 240));
+        return chart;
+    }
+
+    /** Line chart tren berdasarkan waktu dengan titik penanda dan font besar. */
+    public static JFreeChart line(String judul, DefaultCategoryDataset data) {
+        JFreeChart chart = ChartFactory.createLineChart(judul, null, null, data,
+                PlotOrientation.VERTICAL, false, true, false);
+        gaya(chart, 15);
+
+        CategoryPlot plot = chart.getCategoryPlot();
+        CategoryAxis sumbuKategori = plot.getDomainAxis();
+        sumbuKategori.setTickLabelFont(new Font("SansSerif", Font.PLAIN, 12));
+        sumbuKategori.setMaximumCategoryLabelWidthRatio(1.2f);
+        NumberAxis sumbuNilai = (NumberAxis) plot.getRangeAxis();
+        sumbuNilai.setTickLabelFont(new Font("SansSerif", Font.PLAIN, 12));
+
+        LineAndShapeRenderer renderer = (LineAndShapeRenderer) plot.getRenderer();
+        renderer.setDefaultPaint(BLUE);
+        renderer.setDefaultStroke(new java.awt.BasicStroke(2.4f));
+        renderer.setDefaultShapesVisible(true);
+        renderer.setDefaultShapesFilled(true);
+        renderer.setSeriesShape(0, new java.awt.geom.Ellipse2D.Double(-3.5, -3.5, 7, 7));
+        renderer.setDefaultItemLabelGenerator(new StandardCategoryItemLabelGenerator());
+        renderer.setDefaultItemLabelsVisible(true);
+        renderer.setDefaultItemLabelFont(new Font("SansSerif", Font.BOLD, 11));
+        renderer.setDefaultItemLabelPaint(NAVY);
+        plot.setBackgroundPaint(Color.WHITE);
+        plot.setRangeGridlinePaint(new Color(226, 232, 240));
+        plot.setDomainGridlinePaint(new Color(226, 232, 240));
         return chart;
     }
 
@@ -83,13 +149,19 @@ public final class DashboardCharts {
     }
 
     private static void gaya(JFreeChart chart) {
+        gaya(chart, 13);
+    }
+
+    private static void gaya(JFreeChart chart, int ukuranJudul) {
         chart.setBackgroundPaint(Color.WHITE);
-        chart.getTitle().setFont(new Font("SansSerif", Font.BOLD, 13));
-        chart.getTitle().setPaint(NAVY);
+        if (chart.getTitle() != null) {
+            chart.getTitle().setFont(new Font("SansSerif", Font.BOLD, ukuranJudul));
+            chart.getTitle().setPaint(NAVY);
+        }
 
         if (chart.getLegend() != null) {
             chart.getLegend().setBackgroundPaint(Color.WHITE);
-            chart.getLegend().setItemFont(new Font("SansSerif", Font.PLAIN, 11));
+            chart.getLegend().setItemFont(new Font("SansSerif", Font.PLAIN, 12));
         }
     }
 }

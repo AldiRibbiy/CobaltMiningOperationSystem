@@ -40,17 +40,17 @@ public final class ProduksiController {
     }
     
     public ProduksiTambang cariProduksiById(int id) {
-        auth.requirePetugasOperasional();
+        if (!auth.isPetugasOperasional() && !auth.isManager())throw new IllegalStateException("Akses produksi tidak tersedia.");
         return service.cariProduksiById(id);
     }
     
     public List<ProduksiTambang> tampilkanSemuaProduksi() {
-        auth.requirePetugasOperasional();
+        if (!auth.isPetugasOperasional() && !auth.isManager())throw new IllegalStateException("Akses produksi tidak tersedia.");
         return service.tampilkanSemuaProduksi();
     }
     
     public List<ProduksiTambang> tampilkanProduksiTersedia() {
-        auth.requirePetugasOperasional();
+        if (!auth.isPetugasOperasional() && !auth.isManager())throw new IllegalStateException("Akses produksi tidak tersedia.");
         return service.tampilkanProduksiTersedia();
     }
 }

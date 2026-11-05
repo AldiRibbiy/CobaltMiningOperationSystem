@@ -15,6 +15,8 @@ public class ProduksiFormFrame extends javax.swing.JFrame {
 
     public ProduksiFormFrame() {
         initComponents();
+        btnSimpan.addActionListener(this::btnSimpanActionPerformed);
+        btnBatal.addActionListener(this::btnBatalActionPerformed);
         
         JButton[] navButtons = {btnSimpan, btnBatal};
 
@@ -26,7 +28,7 @@ public class ProduksiFormFrame extends javax.swing.JFrame {
         
         txtTanggal.setDateFormatString("dd/MM/yyyy");
         txtTanggal.setMaxSelectableDate(new Date());
-        setSize(720, 525);
+        pack();
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -59,128 +61,167 @@ public class ProduksiFormFrame extends javax.swing.JFrame {
         txtTanggal = new com.toedter.calendar.JDateChooser();
         lblJumlah = new javax.swing.JLabel();
         txtJumlah = new javax.swing.JTextField();
+        pnlCard = new javax.swing.JPanel();
         btnSimpan = new javax.swing.JButton();
         btnBatal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        lblTitle.setText("FORM PRODUKSI");
-        lblTitle.setForeground(new java.awt.Color(26, 43, 66));
+        lblTitle.setText("Form Produksi Tambang");
         lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(26, 43, 66));
 
         lblHint.setText("Isi data sesuai ketentuan C-MOS.");
-        lblHint.setForeground(new java.awt.Color(103, 121, 143));
         lblHint.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lblHint.setForeground(new java.awt.Color(103, 121, 143));
 
         lblMaterial.setText("Material");
+        lblMaterial.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblMaterial.setForeground(new java.awt.Color(26, 43, 66));
 
+        cmbMaterial.setBackground(new java.awt.Color(255, 255, 255));
+
         lblLokasi.setText("Lokasi PIT Aktif");
+        lblLokasi.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblLokasi.setForeground(new java.awt.Color(26, 43, 66));
 
+        cmbLokasi.setBackground(new java.awt.Color(255, 255, 255));
+
         lblTanggal.setText("Tanggal Produksi");
+        lblTanggal.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblTanggal.setForeground(new java.awt.Color(26, 43, 66));
 
+        txtTanggal.setBackground(new java.awt.Color(255, 255, 255));
+
         lblJumlah.setText("Jumlah Produksi (ton)");
+        lblJumlah.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblJumlah.setForeground(new java.awt.Color(26, 43, 66));
 
+        txtJumlah.setBackground(new java.awt.Color(255, 255, 255));
+
+        pnlCard.setBackground(new java.awt.Color(255, 255, 255));
+
         btnSimpan.setText("Simpan");
-        btnSimpan.setBackground(new java.awt.Color(43, 106, 230));
-        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
-        btnSimpan.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnSimpan.setFocusPainted(false);
-        btnSimpan.addActionListener(this::btnSimpanActionPerformed);
+        btnSimpan.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setBackground(new java.awt.Color(43, 106, 230));
 
         btnBatal.setText("Batal");
-        btnBatal.setBackground(new java.awt.Color(26, 43, 66));
-        btnBatal.setForeground(new java.awt.Color(255, 255, 255));
-        btnBatal.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnBatal.setFocusPainted(false);
-        btnBatal.addActionListener(this::btnBatalActionPerformed);
+        btnBatal.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnBatal.setForeground(new java.awt.Color(255, 255, 255));
+        btnBatal.setBackground(new java.awt.Color(26, 43, 66));
+
+        javax.swing.GroupLayout pnlCardLayout = new javax.swing.GroupLayout(pnlCard);
+        pnlCard.setLayout(pnlCardLayout);
+        pnlCardLayout.setHorizontalGroup(
+            pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlCardLayout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addComponent(lblMaterial, 230, 230, 230)
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(cmbMaterial, 352, 352, 352)
+             )
+            )
+                .addGroup(pnlCardLayout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addComponent(lblLokasi, 230, 230, 230)
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(cmbLokasi, 352, 352, 352)
+             )
+            )
+                .addGroup(pnlCardLayout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addComponent(lblTanggal, 230, 230, 230)
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(txtTanggal, 352, 352, 352)
+             )
+            )
+                .addGroup(pnlCardLayout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addComponent(lblJumlah, 230, 230, 230)
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(txtJumlah, 352, 352, 352)
+             )
+            )
+        );
+        pnlCardLayout.setVerticalGroup(
+            pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlCardLayout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(lblMaterial, 20, 20, 20)
+                  .addComponent(cmbMaterial, 32, 32, 32)
+             )
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(lblLokasi, 20, 20, 20)
+                  .addComponent(cmbLokasi, 32, 32, 32)
+             )
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(lblTanggal, 20, 20, 20)
+                  .addComponent(txtTanggal, 32, 32, 32)
+             )
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(lblJumlah, 20, 20, 20)
+                  .addComponent(txtJumlah, 32, 32, 32)
+             )
+                 .addGap(14, 14, 14)
+            )
+        );
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(lblTitle, 650, 650, 650))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(lblHint, 650, 650, 650))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(lblMaterial, 260, 260, 260))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(310, 310, 310)
-                .addComponent(cmbMaterial, 365, 365, 365))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(lblLokasi, 260, 260, 260))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(310, 310, 310)
-                .addComponent(cmbLokasi, 365, 365, 365))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(lblTanggal, 260, 260, 260))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(310, 310, 310)
-                .addComponent(txtTanggal, 365, 365, 365))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(lblJumlah, 260, 260, 260))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(310, 310, 310)
-                .addComponent(txtJumlah, 365, 365, 365))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(310, 310, 310)
-                .addComponent(btnSimpan, 173, 173, 173))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(501, 501, 501)
-                .addComponent(btnBatal, 174, 174, 174))
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(38, 38, 38)
+                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(layout.createSequentialGroup()
+                   .addComponent(lblTitle, 644, 644, 644)
+              )
+                  .addGroup(layout.createSequentialGroup()
+                   .addComponent(lblHint, 644, 644, 644)
+              )
+                  .addGroup(layout.createSequentialGroup()
+                   .addComponent(pnlCard, 644, 644, 644)
+              )
+             )
+                 .addGap(38, 38, 38)
+            )
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(0, 0, Short.MAX_VALUE)
+                 .addComponent(btnBatal, 120, 120, 120)
+                 .addGap(10, 10, 10)
+                 .addComponent(btnSimpan, 150, 150, 150)
+                 .addGap(38, 38, 38)
+            )
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(lblTitle, 43, 43, 43))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(lblHint, 25, 25, 25))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(lblMaterial, 32, 32, 32))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(cmbMaterial, 32, 32, 32))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(lblLokasi, 32, 32, 32))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(cmbLokasi, 32, 32, 32))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addComponent(lblTanggal, 32, 32, 32))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addComponent(txtTanggal, 32, 32, 32))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(256, 256, 256)
-                        .addComponent(lblJumlah, 32, 32, 32))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(256, 256, 256)
-                        .addComponent(txtJumlah, 32, 32, 32))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(318, 318, 318)
-                        .addComponent(btnSimpan, 42, 42, 42))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(318, 318, 318)
-                        .addComponent(btnBatal, 42, 42, 42)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(26, 26, 26)
+                 .addComponent(lblTitle, 40, 40, 40)
+                 .addGap(6, 6, 6)
+                 .addComponent(lblHint, 22, 22, 22)
+                 .addGap(18, 18, 18)
+                 .addComponent(pnlCard, 218, 218, 218)
+                 .addGap(22, 22, 22)
+                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(btnSimpan, 42, 42, 42)
+                  .addComponent(btnBatal, 42, 42, 42)
+             )
+                 .addGap(26, 26, 26)
+            )
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -193,7 +234,7 @@ public class ProduksiFormFrame extends javax.swing.JFrame {
         this.original=original;
         if(original!=null) {
         setTitle("Ubah Produksi #" + original.getIdProduksi());
-        lblTitle.setText("FORM PRODUKSI (UBAH)");
+        lblTitle.setText("Form Produksi Tambang (Ubah)");
         FormUtil.select(cmbMaterial,original.getMaterial().getIdMaterial());
         FormUtil.select(cmbLokasi,original.getLokasi().getIdLokasi());
         setTanggalProduksi(original.getTanggalProduksi());
@@ -231,6 +272,7 @@ public class ProduksiFormFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblMaterial;
     private javax.swing.JLabel lblTanggal;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JPanel pnlCard;
     private javax.swing.JTextField txtJumlah;
     private com.toedter.calendar.JDateChooser txtTanggal;
     // End of variables declaration//GEN-END:variables

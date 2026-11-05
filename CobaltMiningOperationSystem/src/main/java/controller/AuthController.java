@@ -27,6 +27,11 @@ public final class AuthController {
         auth.logout();
     }
     
+    /** Pemilik akun memperbarui username/password-nya sendiri. */
+    public void ubahAkunSendiri(String usernameBaru, String passwordLama, String passwordBaru) {
+        auth.ubahAkunSendiri(usernameBaru, passwordLama, passwordBaru);
+    }
+    
     public boolean isLoggedIn() {
         return auth.isLoggedIn();
     }

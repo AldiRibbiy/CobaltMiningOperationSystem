@@ -6,6 +6,7 @@
 package service;
 
 import enums.StatusPegawai;
+import java.util.Optional;
 import exception.ValidationException;
 import model.*;
 import repository.UserRepository;
@@ -42,6 +43,29 @@ public final class AuthService {
         current = null;
     }
     
+    /** Pemilik akun memperbarui username/password-nya sendiri.
+     *  Update akun hanya boleh dilakukan oleh pengguna itu sendiri (bukan Admin). */
+    public void ubahAkunSendiri(String usernameBaru, String passwordLama, String passwordBaru) {
+        User saya = getCurrentUser();
+        if (usernameBaru == null || usernameBaru.trim().isEmpty())throw new ValidationException("Username baru wajib diisi.");
+        if (passwordLama == null || passwordLama.isEmpty())throw new ValidationException("Password lama wajib diisi untuk konfirmasi perubahan.");
+        if (!PasswordUtil.verifyPassword(passwordLama, saya.getPassword()))throw new ValidationException("Password lama tidak sesuai.");
+        
+        String username = usernameBaru.trim();
+        Optional<User> sama = users.findByUsername(username);
+        if (sama.isPresent() && sama.get().getIdUser() != saya.getIdUser())throw new ValidationException("Username sudah digunakan pengguna lain.");
+        
+        String passwordHash = saya.getPassword();
+        if (passwordBaru != null && !passwordBaru.isEmpty()) {
+            if (passwordBaru.length() < 8)throw new ValidationException("Password baru minimal 8 karakter.");
+            passwordHash = PasswordUtil.hashPassword(passwordBaru);
+        }
+        
+        User perubahan = new User(saya.getIdUser(), saya.getPegawai(), username, passwordHash);
+        users.update(perubahan);
+        current = perubahan;
+    }
+    
     public boolean isLoggedIn() {
         return current != null;
     }
@@ -71,24 +95,19 @@ public final class AuthService {
         return isLoggedIn() && getCurrentPegawai() instanceof Manager;
     }
     
-    /** Setiap peran yang sudah login boleh membaca data referensi (dropdown, dashboard, laporan). */
-    public void requireLoggedIn() {
-        if (!isLoggedIn())throw new ValidationException("Silakan login terlebih dahulu.");
-    }
-
     public void requireAdmin() {
-        if (!isAdmin())throw new ValidationException("Akses ditolak: fitur ini hanya untuk Admin.");
+        if (!isAdmin())throw new ValidationException("Hanya Admin.");
     }
-
+    
     public void requirePetugasOperasional() {
-        if (!isPetugasOperasional())throw new ValidationException("Akses ditolak: fitur ini hanya untuk Petugas Operasional.");
+        if (!isPetugasOperasional())throw new ValidationException("Hanya Petugas Operasional.");
     }
-
+    
     public void requirePetugasHSE() {
-        if (!isPetugasHSE())throw new ValidationException("Akses ditolak: fitur ini hanya untuk Petugas HSE.");
+        if (!isPetugasHSE())throw new ValidationException("Hanya Petugas HSE.");
     }
-
+    
     public void requireManager() {
-        if (!isManager())throw new ValidationException("Akses ditolak: fitur ini hanya untuk Manager.");
+        if (!isManager())throw new ValidationException("Hanya Manager.");
     }
 }

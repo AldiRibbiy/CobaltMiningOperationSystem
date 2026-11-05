@@ -15,6 +15,8 @@ public class LokasiFormFrame extends javax.swing.JFrame {
 
     public LokasiFormFrame() {
         initComponents();
+        btnSimpan.addActionListener(this::btnSimpanActionPerformed);
+        btnBatal.addActionListener(this::btnBatalActionPerformed);
         
         JButton[] navButtons = {btnSimpan, btnBatal};
 
@@ -24,7 +26,7 @@ public class LokasiFormFrame extends javax.swing.JFrame {
             btn.setBorderPainted(false);
         }
         
-        setSize(720, 525);
+        pack();
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -35,6 +37,7 @@ public class LokasiFormFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         lblTitle = new javax.swing.JLabel();
         lblHint = new javax.swing.JLabel();
         lblNama = new javax.swing.JLabel();
@@ -45,78 +48,175 @@ public class LokasiFormFrame extends javax.swing.JFrame {
         cmbStatus = new javax.swing.JComboBox();
         lblKet = new javax.swing.JLabel();
         txtKet = new javax.swing.JTextField();
+        pnlCard = new javax.swing.JPanel();
         btnSimpan = new javax.swing.JButton();
         btnBatal = new javax.swing.JButton();
 
-        lblTitle.setForeground(new java.awt.Color(26, 43, 66));
-        lblTitle.setText("FORM LOKASI");
-        lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22));
-        lblHint.setForeground(new java.awt.Color(103, 121, 143));
-        lblHint.setText("Isi data sesuai ketentuan C-MOS.");
-        lblHint.setFont(new java.awt.Font("SansSerif", 1, 12));
-        lblNama.setForeground(new java.awt.Color(26, 43, 66));
-        lblNama.setText("Nama Lokasi");
-        txtNama.setBackground(new java.awt.Color(255, 255, 255));
-        lblJenis.setForeground(new java.awt.Color(26, 43, 66));
-        lblJenis.setText("Jenis Lokasi");
-        cmbJenis.setBackground(new java.awt.Color(255, 255, 255));
-        lblStatus.setForeground(new java.awt.Color(26, 43, 66));
-        lblStatus.setText("Status Lokasi");
-        cmbStatus.setBackground(new java.awt.Color(255, 255, 255));
-        lblKet.setForeground(new java.awt.Color(26, 43, 66));
-        lblKet.setText("Keterangan");
-        txtKet.setBackground(new java.awt.Color(255, 255, 255));
-        btnSimpan.setBackground(new java.awt.Color(43, 106, 230));
-        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
-        btnSimpan.setText("Simpan");
-        btnSimpan.setFont(new java.awt.Font("SansSerif", 1, 13));
-        btnSimpan.setFocusPainted(false);
-        btnBatal.setBackground(new java.awt.Color(26, 43, 66));
-        btnBatal.setForeground(new java.awt.Color(255, 255, 255));
-        btnBatal.setText("Batal");
-        btnBatal.setFont(new java.awt.Font("SansSerif", 1, 13));
-        btnBatal.setFocusPainted(false);
-        btnSimpan.addActionListener(this::btnSimpanActionPerformed);
-        btnBatal.addActionListener(this::btnBatalActionPerformed);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+
+        lblTitle.setText("Form Lokasi Tambang");
+        lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(26, 43, 66));
+
+        lblHint.setText("Isi data sesuai ketentuan C-MOS.");
+        lblHint.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lblHint.setForeground(new java.awt.Color(103, 121, 143));
+
+        lblNama.setText("Nama Lokasi");
+        lblNama.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblNama.setForeground(new java.awt.Color(26, 43, 66));
+
+        txtNama.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblJenis.setText("Jenis Lokasi");
+        lblJenis.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblJenis.setForeground(new java.awt.Color(26, 43, 66));
+
+        cmbJenis.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblStatus.setText("Status Lokasi");
+        lblStatus.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblStatus.setForeground(new java.awt.Color(26, 43, 66));
+
+        cmbStatus.setEnabled(false);
+        cmbStatus.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblKet.setText("Keterangan");
+        lblKet.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblKet.setForeground(new java.awt.Color(26, 43, 66));
+
+        txtKet.setBackground(new java.awt.Color(255, 255, 255));
+
+        pnlCard.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnSimpan.setText("Simpan");
+        btnSimpan.setFocusPainted(false);
+        btnSimpan.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setBackground(new java.awt.Color(43, 106, 230));
+
+        btnBatal.setText("Batal");
+        btnBatal.setFocusPainted(false);
+        btnBatal.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnBatal.setForeground(new java.awt.Color(255, 255, 255));
+        btnBatal.setBackground(new java.awt.Color(26, 43, 66));
+
+        javax.swing.GroupLayout pnlCardLayout = new javax.swing.GroupLayout(pnlCard);
+        pnlCard.setLayout(pnlCardLayout);
+        pnlCardLayout.setHorizontalGroup(
+            pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlCardLayout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addComponent(lblNama, 230, 230, 230)
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(txtNama, 352, 352, 352)
+             )
+            )
+                .addGroup(pnlCardLayout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addComponent(lblJenis, 230, 230, 230)
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(cmbJenis, 352, 352, 352)
+             )
+            )
+                .addGroup(pnlCardLayout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addComponent(lblStatus, 230, 230, 230)
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(cmbStatus, 352, 352, 352)
+             )
+            )
+                .addGroup(pnlCardLayout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addComponent(lblKet, 230, 230, 230)
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(txtKet, 352, 352, 352)
+             )
+            )
+        );
+        pnlCardLayout.setVerticalGroup(
+            pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlCardLayout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(lblNama, 20, 20, 20)
+                  .addComponent(txtNama, 32, 32, 32)
+             )
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(lblJenis, 20, 20, 20)
+                  .addComponent(cmbJenis, 32, 32, 32)
+             )
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(lblStatus, 20, 20, 20)
+                  .addComponent(cmbStatus, 32, 32, 32)
+             )
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(lblKet, 20, 20, 20)
+                  .addComponent(txtKet, 32, 32, 32)
+             )
+                 .addGap(14, 14, 14)
+            )
+        );
+
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup().addGap(34).addComponent(lblTitle, 650, 650, 650))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblHint, 650, 650, 650))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblNama, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(txtNama, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblJenis, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(cmbJenis, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblStatus, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(cmbStatus, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblKet, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(txtKet, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(btnSimpan, 173, 173, 173))
-                .addGroup(layout.createSequentialGroup().addGap(501).addComponent(btnBatal, 174, 174, 174))
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(38, 38, 38)
+                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(layout.createSequentialGroup()
+                   .addComponent(lblTitle, 644, 644, 644)
+              )
+                  .addGroup(layout.createSequentialGroup()
+                   .addComponent(lblHint, 644, 644, 644)
+              )
+                  .addGroup(layout.createSequentialGroup()
+                   .addComponent(pnlCard, 644, 644, 644)
+              )
+             )
+                 .addGap(38, 38, 38)
+            )
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(0, 0, Short.MAX_VALUE)
+                 .addComponent(btnBatal, 120, 120, 120)
+                 .addGap(10, 10, 10)
+                 .addComponent(btnSimpan, 150, 150, 150)
+                 .addGap(38, 38, 38)
+            )
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup().addGap(24).addComponent(lblTitle, 43, 43, 43))
-                .addGroup(layout.createSequentialGroup().addGap(69).addComponent(lblHint, 25, 25, 25))
-                .addGroup(layout.createSequentialGroup().addGap(115).addComponent(lblNama, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(115).addComponent(txtNama, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(162).addComponent(lblJenis, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(162).addComponent(cmbJenis, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(209).addComponent(lblStatus, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(209).addComponent(cmbStatus, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(256).addComponent(lblKet, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(256).addComponent(txtKet, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(318).addComponent(btnSimpan, 42, 42, 42))
-                .addGroup(layout.createSequentialGroup().addGap(318).addComponent(btnBatal, 42, 42, 42))
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(26, 26, 26)
+                 .addComponent(lblTitle, 40, 40, 40)
+                 .addGap(6, 6, 6)
+                 .addComponent(lblHint, 22, 22, 22)
+                 .addGap(18, 18, 18)
+                 .addComponent(pnlCard, 218, 218, 218)
+                 .addGap(22, 22, 22)
+                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(btnSimpan, 42, 42, 42)
+                  .addComponent(btnBatal, 42, 42, 42)
+             )
+                 .addGap(26, 26, 26)
+            )
         );
-
-    }//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
 
     private void loadOptions() {
         cmbJenis.setModel(new DefaultComboBoxModel<>(new String[]{"PIT","STOCKPILE"}));
+        cmbStatus.setEnabled(false);
+        cmbStatus.setToolTipText("Status otomatis dari sistem");
         cmbStatus.setModel(new DefaultComboBoxModel<>(new String[]{"AKTIF","DIBATASI","DITUTUP_SEMENTARA"}));
     }
     public LokasiFormFrame(Lokasi original) {
@@ -134,7 +234,7 @@ public class LokasiFormFrame extends javax.swing.JFrame {
         try {
 
         FormUtil.require(FormUtil.text(txtNama),"Nama lokasi");
-        Lokasi l=new Lokasi(original==null?0:original.getIdLokasi(),FormUtil.text(txtNama),JenisLokasi.valueOf(String.valueOf(cmbJenis.getSelectedItem())),StatusLokasi.valueOf(String.valueOf(cmbStatus.getSelectedItem())),FormUtil.text(txtKet));
+        Lokasi l=new Lokasi(original==null?0:original.getIdLokasi(),FormUtil.text(txtNama),JenisLokasi.valueOf(String.valueOf(cmbJenis.getSelectedItem())),(original == null ? StatusLokasi.AKTIF : original.getStatusOperasional()),FormUtil.text(txtKet));
         if(original==null)AppConfig.getMasterDataController().tambahLokasi(l);
         else AppConfig.getMasterDataController().ubahLokasi(l);
 
@@ -146,17 +246,18 @@ public class LokasiFormFrame extends javax.swing.JFrame {
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) { dispose(); }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblTitle;
-    private javax.swing.JLabel lblHint;
-    private javax.swing.JLabel lblNama;
-    private javax.swing.JTextField txtNama;
-    private javax.swing.JLabel lblJenis;
-    private javax.swing.JComboBox cmbJenis;
-    private javax.swing.JLabel lblStatus;
-    private javax.swing.JComboBox cmbStatus;
-    private javax.swing.JLabel lblKet;
-    private javax.swing.JTextField txtKet;
-    private javax.swing.JButton btnSimpan;
     private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JComboBox cmbJenis;
+    private javax.swing.JComboBox cmbStatus;
+    private javax.swing.JLabel lblHint;
+    private javax.swing.JLabel lblJenis;
+    private javax.swing.JLabel lblKet;
+    private javax.swing.JLabel lblNama;
+    private javax.swing.JLabel lblStatus;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JPanel pnlCard;
+    private javax.swing.JTextField txtKet;
+    private javax.swing.JTextField txtNama;
     // End of variables declaration//GEN-END:variables
 }

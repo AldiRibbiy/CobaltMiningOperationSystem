@@ -3,42 +3,58 @@
  */
 package controller;
 
+import enums.Periode;
+import java.time.LocalDate;
 import service.AuthService;
 import service.DashboardService;
 
 /**
- * Penghubung dashboard per peran. Setiap peran hanya boleh membuka dashboard miliknya,
- * kecuali Manager yang memperoleh ringkasan lintas modul.
+ * Menyediakan data dashboard sesuai hak akses pengguna yang sedang login.
  *
  * @author zefrialrizkullah
  */
+public class DashboardController {
+    private final DashboardService dashboardService;
+    private final AuthService authService;
 
-public final class DashboardController {
-    private final DashboardService service;
-    private final AuthService auth;
+    public DashboardController(DashboardService dashboardService, AuthService authService) {
+        this.dashboardService = dashboardService;
+        this.authService = authService;
+    }
 
-    public DashboardController(DashboardService service, AuthService auth) {
-        this.service = service;
-        this.auth = auth;
+    private void guard() {
+        if (authService == null || !authService.isLoggedIn()) {
+            throw new exception.BusinessException("Silakan login terlebih dahulu.");
+        }
     }
 
     public DashboardService.Data admin() {
-        auth.requireAdmin();
-        return service.admin();
+        guard();
+        authService.requireAdmin();
+        return dashboardService.admin();
     }
 
-    public DashboardService.Data operasional() {
-        auth.requirePetugasOperasional();
-        return service.operasional();
+    public java.util.Set<Integer> materialTerpakaiSet() {
+        guard();
+        authService.requireAdmin();
+        return dashboardService.materialTerpakaiSet();
     }
 
-    public DashboardService.Data hse() {
-        auth.requirePetugasHSE();
-        return service.hse();
+    public DashboardService.Data operasional(Periode periode, LocalDate kustomAwal, LocalDate kustomAkhir) {
+        guard();
+        authService.requirePetugasOperasional();
+        return dashboardService.operasional(periode, kustomAwal, kustomAkhir);
     }
 
-    public DashboardService.Data manager() {
-        auth.requireManager();
-        return service.manager();
+    public DashboardService.Data hse(Periode periode, LocalDate kustomAwal, LocalDate kustomAkhir) {
+        guard();
+        authService.requirePetugasHSE();
+        return dashboardService.hse(periode, kustomAwal, kustomAkhir);
+    }
+
+    public DashboardService.Data manager(Periode periode, LocalDate kustomAwal, LocalDate kustomAkhir) {
+        guard();
+        authService.requireManager();
+        return dashboardService.manager(periode, kustomAwal, kustomAkhir);
     }
 }

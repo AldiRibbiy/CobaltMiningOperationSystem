@@ -8,7 +8,7 @@ import config.AppConfig;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import view.LoginFrame;
+import view.SplashFrame;
 
 /**
  *
@@ -23,8 +23,7 @@ public final class Main {
         SwingUtilities.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                AppConfig.initialize();
-                new LoginFrame().setVisible(true);
+                new SplashFrame().setVisible(true);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Aplikasi tidak dapat dijalankan.\n" + ex.getMessage() 
                         + "\n\nPeriksa koneksi Database.", "C-MOS - Kesalahan Terjadi", JOptionPane.ERROR_MESSAGE);

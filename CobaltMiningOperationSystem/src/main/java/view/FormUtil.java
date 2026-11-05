@@ -15,6 +15,22 @@ public final class FormUtil {
     public static void require(String value, String label) {
         if(value==null||value.trim().isEmpty()) throw new IllegalArgumentException(label+" wajib diisi.");
     }
+    /** Angka urut mengikuti tampilan setelah pencarian, filter, dan pengurutan. */
+    public static void nomorUrut(javax.swing.JTable table) {
+        if (table.getColumnCount() == 0) return;
+        javax.swing.table.DefaultTableCellRenderer renderer = new javax.swing.table.DefaultTableCellRenderer() {
+            @Override public java.awt.Component getTableCellRendererComponent(javax.swing.JTable t, Object value,
+                    boolean selected, boolean focus, int row, int column) {
+                super.getTableCellRendererComponent(t, row + 1, selected, focus, row, column);
+                setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                return this;
+            }
+        };
+        table.getColumnModel().getColumn(0).setCellRenderer(renderer);
+        table.getColumnModel().getColumn(0).setMinWidth(48);
+        table.getColumnModel().getColumn(0).setMaxWidth(72);
+        table.getColumnModel().getColumn(0).setPreferredWidth(56);
+    }
     public static void error(java.awt.Component parent,Exception e) {
         JOptionPane.showMessageDialog(parent,e.getMessage(),"C-MOS / Validasi",JOptionPane.ERROR_MESSAGE);
     }

@@ -60,7 +60,9 @@ public final class KendaraanDAO implements KendaraanRepository {
     
     @Override
     public void delete(int id) {
-        try (Connection c = JdbcSupport.open(); PreparedStatement ps = c.prepareStatement("DELETE FROM kendaraan WHERE id_kendaraan=?")) {
+        /* Soft delete: kendaraan tidak dihapus fisik karena direferensikan
+         * oleh riwayat pengangkutan. Status menjadi NONAKTIF. */
+        try (Connection c = JdbcSupport.open(); PreparedStatement ps = c.prepareStatement("UPDATE kendaraan SET status_kendaraan='NONAKTIF' WHERE id_kendaraan=?")) {
             ps.setInt(1, id);
             JdbcSupport.requireChanged(ps.executeUpdate(),"Kendaraan");
         }
@@ -97,6 +99,21 @@ public final class KendaraanDAO implements KendaraanRepository {
     
     @Override
     public List<Kendaraan> findAll() {
+        /* Soft delete: kendaraan berstatus NONAKTIF disembunyikan dari daftar. */
+        List<Kendaraan> result = new ArrayList<>();
+        
+        try(Connection c = JdbcSupport.open(); PreparedStatement ps = c.prepareStatement("SELECT * FROM kendaraan WHERE status_kendaraan <> 'NONAKTIF' ORDER BY id_kendaraan");ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) result.add(map(rs));
+            return result;
+        }
+        
+        catch (SQLException e) {
+            throw JdbcSupport.fail("membaca kendaraan", e);
+        }
+    }
+    
+    @Override
+    public List<Kendaraan> findAllDenganNonaktif() {
         List<Kendaraan> result = new ArrayList<>();
         
         try(Connection c = JdbcSupport.open(); PreparedStatement ps = c.prepareStatement("SELECT * FROM kendaraan ORDER BY id_kendaraan");ResultSet rs = ps.executeQuery()) {

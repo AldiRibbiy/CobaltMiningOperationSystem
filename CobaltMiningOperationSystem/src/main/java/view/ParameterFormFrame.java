@@ -15,6 +15,8 @@ public class ParameterFormFrame extends javax.swing.JFrame {
 
     public ParameterFormFrame() {
         initComponents();
+        btnSimpan.addActionListener(this::btnSimpanActionPerformed);
+        btnBatal.addActionListener(this::btnBatalActionPerformed);
         
         JButton[] navButtons = {btnSimpan, btnBatal};
 
@@ -24,7 +26,7 @@ public class ParameterFormFrame extends javax.swing.JFrame {
             btn.setBorderPainted(false);
         }
         
-        setSize(720, 525);
+        pack();
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -35,6 +37,7 @@ public class ParameterFormFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         lblTitle = new javax.swing.JLabel();
         lblHint = new javax.swing.JLabel();
         lblNama = new javax.swing.JLabel();
@@ -47,82 +50,188 @@ public class ParameterFormFrame extends javax.swing.JFrame {
         txtMax = new javax.swing.JTextField();
         lblKet = new javax.swing.JLabel();
         txtKet = new javax.swing.JTextField();
+        pnlCard = new javax.swing.JPanel();
         btnSimpan = new javax.swing.JButton();
         btnBatal = new javax.swing.JButton();
 
-        lblTitle.setForeground(new java.awt.Color(26, 43, 66));
-        lblTitle.setText("FORM PARAMETER");
-        lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22));
-        lblHint.setForeground(new java.awt.Color(103, 121, 143));
-        lblHint.setText("Isi data sesuai ketentuan C-MOS.");
-        lblHint.setFont(new java.awt.Font("SansSerif", 1, 12));
-        lblNama.setForeground(new java.awt.Color(26, 43, 66));
-        lblNama.setText("Nama Parameter");
-        txtNama.setBackground(new java.awt.Color(255, 255, 255));
-        lblSatuan.setForeground(new java.awt.Color(26, 43, 66));
-        lblSatuan.setText("Satuan");
-        txtSatuan.setBackground(new java.awt.Color(255, 255, 255));
-        lblMin.setForeground(new java.awt.Color(26, 43, 66));
-        lblMin.setText("Batas Minimum (opsional)");
-        txtMin.setBackground(new java.awt.Color(255, 255, 255));
-        lblMax.setForeground(new java.awt.Color(26, 43, 66));
-        lblMax.setText("Batas Maksimum (opsional)");
-        txtMax.setBackground(new java.awt.Color(255, 255, 255));
-        lblKet.setForeground(new java.awt.Color(26, 43, 66));
-        lblKet.setText("Keterangan");
-        txtKet.setBackground(new java.awt.Color(255, 255, 255));
-        btnSimpan.setBackground(new java.awt.Color(43, 106, 230));
-        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
-        btnSimpan.setText("Simpan");
-        btnSimpan.setFont(new java.awt.Font("SansSerif", 1, 13));
-        btnSimpan.setFocusPainted(false);
-        btnBatal.setBackground(new java.awt.Color(26, 43, 66));
-        btnBatal.setForeground(new java.awt.Color(255, 255, 255));
-        btnBatal.setText("Batal");
-        btnBatal.setFont(new java.awt.Font("SansSerif", 1, 13));
-        btnBatal.setFocusPainted(false);
-        btnSimpan.addActionListener(this::btnSimpanActionPerformed);
-        btnBatal.addActionListener(this::btnBatalActionPerformed);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+
+        lblTitle.setText("Form Parameter Lingkungan");
+        lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(26, 43, 66));
+
+        lblHint.setText("Isi data sesuai ketentuan C-MOS.");
+        lblHint.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lblHint.setForeground(new java.awt.Color(103, 121, 143));
+
+        lblNama.setText("Nama Parameter");
+        lblNama.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblNama.setForeground(new java.awt.Color(26, 43, 66));
+
+        txtNama.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblSatuan.setText("Satuan");
+        lblSatuan.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblSatuan.setForeground(new java.awt.Color(26, 43, 66));
+
+        txtSatuan.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblMin.setText("Batas Minimum (opsional)");
+        lblMin.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblMin.setForeground(new java.awt.Color(26, 43, 66));
+
+        txtMin.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblMax.setText("Batas Maksimum (opsional)");
+        lblMax.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblMax.setForeground(new java.awt.Color(26, 43, 66));
+
+        txtMax.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblKet.setText("Keterangan");
+        lblKet.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblKet.setForeground(new java.awt.Color(26, 43, 66));
+
+        txtKet.setBackground(new java.awt.Color(255, 255, 255));
+
+        pnlCard.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnSimpan.setText("Simpan");
+        btnSimpan.setFocusPainted(false);
+        btnSimpan.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setBackground(new java.awt.Color(43, 106, 230));
+
+        btnBatal.setText("Batal");
+        btnBatal.setFocusPainted(false);
+        btnBatal.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnBatal.setForeground(new java.awt.Color(255, 255, 255));
+        btnBatal.setBackground(new java.awt.Color(26, 43, 66));
+
+        javax.swing.GroupLayout pnlCardLayout = new javax.swing.GroupLayout(pnlCard);
+        pnlCard.setLayout(pnlCardLayout);
+        pnlCardLayout.setHorizontalGroup(
+            pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlCardLayout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addComponent(lblNama, 230, 230, 230)
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(txtNama, 352, 352, 352)
+             )
+            )
+                .addGroup(pnlCardLayout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addComponent(lblSatuan, 230, 230, 230)
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(txtSatuan, 352, 352, 352)
+             )
+            )
+                .addGroup(pnlCardLayout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addComponent(lblMin, 230, 230, 230)
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(txtMin, 352, 352, 352)
+             )
+            )
+                .addGroup(pnlCardLayout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addComponent(lblMax, 230, 230, 230)
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(txtMax, 352, 352, 352)
+             )
+            )
+                .addGroup(pnlCardLayout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addComponent(lblKet, 230, 230, 230)
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(txtKet, 352, 352, 352)
+             )
+            )
+        );
+        pnlCardLayout.setVerticalGroup(
+            pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlCardLayout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(lblNama, 20, 20, 20)
+                  .addComponent(txtNama, 32, 32, 32)
+             )
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(lblSatuan, 20, 20, 20)
+                  .addComponent(txtSatuan, 32, 32, 32)
+             )
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(lblMin, 20, 20, 20)
+                  .addComponent(txtMin, 32, 32, 32)
+             )
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(lblMax, 20, 20, 20)
+                  .addComponent(txtMax, 32, 32, 32)
+             )
+                 .addGap(14, 14, 14)
+                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(lblKet, 20, 20, 20)
+                  .addComponent(txtKet, 32, 32, 32)
+             )
+                 .addGap(14, 14, 14)
+            )
+        );
+
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup().addGap(34).addComponent(lblTitle, 650, 650, 650))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblHint, 650, 650, 650))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblNama, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(txtNama, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblSatuan, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(txtSatuan, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblMin, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(txtMin, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblMax, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(txtMax, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblKet, 260, 260, 260))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(txtKet, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup().addGap(310).addComponent(btnSimpan, 173, 173, 173))
-                .addGroup(layout.createSequentialGroup().addGap(501).addComponent(btnBatal, 174, 174, 174))
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(38, 38, 38)
+                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(layout.createSequentialGroup()
+                   .addComponent(lblTitle, 644, 644, 644)
+              )
+                  .addGroup(layout.createSequentialGroup()
+                   .addComponent(lblHint, 644, 644, 644)
+              )
+                  .addGroup(layout.createSequentialGroup()
+                   .addComponent(pnlCard, 644, 644, 644)
+              )
+             )
+                 .addGap(38, 38, 38)
+            )
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(0, 0, Short.MAX_VALUE)
+                 .addComponent(btnBatal, 120, 120, 120)
+                 .addGap(10, 10, 10)
+                 .addComponent(btnSimpan, 150, 150, 150)
+                 .addGap(38, 38, 38)
+            )
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup().addGap(24).addComponent(lblTitle, 43, 43, 43))
-                .addGroup(layout.createSequentialGroup().addGap(69).addComponent(lblHint, 25, 25, 25))
-                .addGroup(layout.createSequentialGroup().addGap(115).addComponent(lblNama, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(115).addComponent(txtNama, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(162).addComponent(lblSatuan, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(162).addComponent(txtSatuan, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(209).addComponent(lblMin, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(209).addComponent(txtMin, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(256).addComponent(lblMax, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(256).addComponent(txtMax, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(303).addComponent(lblKet, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(303).addComponent(txtKet, 32, 32, 32))
-                .addGroup(layout.createSequentialGroup().addGap(365).addComponent(btnSimpan, 42, 42, 42))
-                .addGroup(layout.createSequentialGroup().addGap(365).addComponent(btnBatal, 42, 42, 42))
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(26, 26, 26)
+                 .addComponent(lblTitle, 40, 40, 40)
+                 .addGap(6, 6, 6)
+                 .addComponent(lblHint, 22, 22, 22)
+                 .addGap(18, 18, 18)
+                 .addComponent(pnlCard, 264, 264, 264)
+                 .addGap(22, 22, 22)
+                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(btnSimpan, 42, 42, 42)
+                  .addComponent(btnBatal, 42, 42, 42)
+             )
+                 .addGap(26, 26, 26)
+            )
         );
-
-    }//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
 
     private void loadOptions() {
 
@@ -158,19 +267,20 @@ public class ParameterFormFrame extends javax.swing.JFrame {
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) { dispose(); }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblTitle;
-    private javax.swing.JLabel lblHint;
-    private javax.swing.JLabel lblNama;
-    private javax.swing.JTextField txtNama;
-    private javax.swing.JLabel lblSatuan;
-    private javax.swing.JTextField txtSatuan;
-    private javax.swing.JLabel lblMin;
-    private javax.swing.JTextField txtMin;
-    private javax.swing.JLabel lblMax;
-    private javax.swing.JTextField txtMax;
-    private javax.swing.JLabel lblKet;
-    private javax.swing.JTextField txtKet;
-    private javax.swing.JButton btnSimpan;
     private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JLabel lblHint;
+    private javax.swing.JLabel lblKet;
+    private javax.swing.JLabel lblMax;
+    private javax.swing.JLabel lblMin;
+    private javax.swing.JLabel lblNama;
+    private javax.swing.JLabel lblSatuan;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JPanel pnlCard;
+    private javax.swing.JTextField txtKet;
+    private javax.swing.JTextField txtMax;
+    private javax.swing.JTextField txtMin;
+    private javax.swing.JTextField txtNama;
+    private javax.swing.JTextField txtSatuan;
     // End of variables declaration//GEN-END:variables
 }

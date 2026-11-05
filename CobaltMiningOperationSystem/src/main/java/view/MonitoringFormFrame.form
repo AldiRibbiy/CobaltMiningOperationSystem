@@ -13,91 +13,54 @@
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
   </AuxValues>
-
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="34" pref="34" max="34" attributes="0"/>
-              <Component id="lblTitle" min="650" pref="650" max="650" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="35" pref="35" max="35" attributes="0"/>
-              <Component id="lblHint" min="650" pref="650" max="650" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="35" pref="35" max="35" attributes="0"/>
-              <Component id="lblLokasi" min="260" pref="260" max="260" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="310" max="-2" attributes="0"/>
-              <Component id="btnSimpan" min="173" pref="173" max="173" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnBatal" min="174" pref="174" max="174" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblTanggal" alignment="1" min="260" pref="260" max="260" attributes="0"/>
-                  <Component id="lblCatatan" alignment="0" min="260" pref="260" max="260" attributes="0"/>
-              </Group>
-              <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="txtCatatan" max="32767" attributes="0"/>
-                  <Component id="cmbLokasi" alignment="0" min="365" pref="365" max="32767" attributes="0"/>
-                  <Component id="txtTanggal" alignment="0" max="32767" attributes="0"/>
-              </Group>
-          </Group>
+        <Group type="102" attributes="0">
+            <EmptySpace min="38" pref="38" max="38" attributes="0"/>
+            <Group type="103" groupAlignment="0" attributes="0">
+                <Group type="102" attributes="0">
+                    <Component id="lblTitle" min="644" pref="644" max="644" attributes="0"/>
+                </Group>
+                <Group type="102" attributes="0">
+                    <Component id="lblHint" min="644" pref="644" max="644" attributes="0"/>
+                </Group>
+                <Group type="102" attributes="0">
+                    <Component id="pnlCard" min="644" pref="644" max="644" attributes="0"/>
+                </Group>
+            </Group>
+            <EmptySpace min="38" pref="38" max="38" attributes="0"/>
+        </Group>
+        <Group type="102" attributes="0">
+            <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+            <Component id="btnBatal" min="120" pref="120" max="120" attributes="0"/>
+            <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+            <Component id="btnSimpan" min="150" pref="150" max="150" attributes="0"/>
+            <EmptySpace min="38" pref="38" max="38" attributes="0"/>
+        </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="115" pref="115" max="115" attributes="0"/>
-                      <Component id="lblLokasi" min="32" pref="32" max="32" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="209" pref="209" max="209" attributes="0"/>
-                      <Component id="lblCatatan" min="32" pref="32" max="32" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="24" pref="24" max="24" attributes="0"/>
-                              <Component id="lblTitle" min="43" pref="43" max="43" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="69" pref="69" max="69" attributes="0"/>
-                              <Component id="lblHint" min="25" pref="25" max="25" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="115" pref="115" max="115" attributes="0"/>
-                              <Component id="cmbLokasi" min="32" pref="32" max="32" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblTanggal" min="32" pref="32" max="32" attributes="0"/>
-                          <Component id="txtTanggal" min="-2" pref="32" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="txtCatatan" min="32" pref="32" max="32" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace pref="63" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnBatal" alignment="3" min="42" pref="42" max="42" attributes="0"/>
-                  <Component id="btnSimpan" alignment="3" min="42" pref="42" max="42" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-          </Group>
+        <Group type="102" attributes="0">
+            <EmptySpace min="26" pref="26" max="26" attributes="0"/>
+            <Component id="lblTitle" min="40" pref="40" max="40" attributes="0"/>
+            <EmptySpace min="6" pref="6" max="6" attributes="0"/>
+            <Component id="lblHint" min="22" pref="22" max="22" attributes="0"/>
+            <EmptySpace min="18" pref="18" max="18" attributes="0"/>
+            <Component id="pnlCard" min="172" pref="172" max="172" attributes="0"/>
+            <EmptySpace min="22" pref="22" max="22" attributes="0"/>
+            <Group type="103" groupAlignment="2" attributes="0">
+                <Component id="btnSimpan" min="42" pref="42" max="42" attributes="0"/>
+                <Component id="btnBatal" min="42" pref="42" max="42" attributes="0"/>
+            </Group>
+            <EmptySpace min="26" pref="26" max="26" attributes="0"/>
+        </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -110,7 +73,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="42" green="2b" red="1a" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="FORM MONITORING"/>
+        <Property name="text" type="java.lang.String" value="Form Monitoring Lingkungan"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblHint">
@@ -124,34 +87,145 @@
         <Property name="text" type="java.lang.String" value="Isi data sesuai ketentuan C-MOS."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblLokasi">
+    <Container class="javax.swing.JPanel" name="pnlCard">
       <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="42" green="2b" red="1a" type="rgb"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Lokasi"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cmbLokasi">
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblTanggal">
-      <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="42" green="2b" red="1a" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Tanggal Waktu"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblCatatan">
-      <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="42" green="2b" red="1a" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Catatan"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtCatatan">
-    </Component>
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+            <Group type="102" attributes="0">
+                <EmptySpace min="24" pref="24" max="24" attributes="0"/>
+                <Component id="lblLokasi" min="230" pref="230" max="230" attributes="0"/>
+                <EmptySpace min="14" pref="14" max="14" attributes="0"/>
+                <Group type="103" groupAlignment="0" attributes="0">
+                    <Component id="cmbLokasi" min="352" pref="352" max="352" attributes="0"/>
+                </Group>
+            </Group>
+            <Group type="102" attributes="0">
+                <EmptySpace min="24" pref="24" max="24" attributes="0"/>
+                <Component id="lblTanggal" min="230" pref="230" max="230" attributes="0"/>
+                <EmptySpace min="14" pref="14" max="14" attributes="0"/>
+                <Group type="103" groupAlignment="0" attributes="0">
+                    <Component id="txtTanggal" min="352" pref="352" max="352" attributes="0"/>
+                </Group>
+            </Group>
+            <Group type="102" attributes="0">
+                <EmptySpace min="24" pref="24" max="24" attributes="0"/>
+                <Component id="lblCatatan" min="230" pref="230" max="230" attributes="0"/>
+                <EmptySpace min="14" pref="14" max="14" attributes="0"/>
+                <Group type="103" groupAlignment="0" attributes="0">
+                    <Component id="txtCatatan" min="352" pref="352" max="352" attributes="0"/>
+                </Group>
+            </Group>
+            <Group type="102" attributes="0">
+                <EmptySpace min="24" pref="24" max="24" attributes="0"/>
+                <Component id="lblLokasi" min="230" pref="230" max="230" attributes="0"/>
+                <EmptySpace min="14" pref="14" max="14" attributes="0"/>
+                <Group type="103" groupAlignment="0" attributes="0">
+                    <Component id="cmbLokasi" min="352" pref="352" max="352" attributes="0"/>
+                </Group>
+            </Group>
+            <Group type="102" attributes="0">
+                <EmptySpace min="24" pref="24" max="24" attributes="0"/>
+                <Component id="lblTanggal" min="230" pref="230" max="230" attributes="0"/>
+                <EmptySpace min="14" pref="14" max="14" attributes="0"/>
+                <Group type="103" groupAlignment="0" attributes="0">
+                    <Component id="txtTanggal" min="352" pref="352" max="352" attributes="0"/>
+                </Group>
+            </Group>
+            <Group type="102" attributes="0">
+                <EmptySpace min="24" pref="24" max="24" attributes="0"/>
+                <Component id="lblCatatan" min="230" pref="230" max="230" attributes="0"/>
+                <EmptySpace min="14" pref="14" max="14" attributes="0"/>
+                <Group type="103" groupAlignment="0" attributes="0">
+                    <Component id="txtCatatan" min="352" pref="352" max="352" attributes="0"/>
+                </Group>
+            </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+            <Group type="102" attributes="0">
+                <EmptySpace min="24" pref="24" max="24" attributes="0"/>
+                <Group type="103" groupAlignment="2" attributes="0">
+                    <Component id="lblLokasi" min="20" pref="20" max="20" attributes="0"/>
+                    <Component id="cmbLokasi" min="32" pref="32" max="32" attributes="0"/>
+                </Group>
+                <EmptySpace min="14" pref="14" max="14" attributes="0"/>
+                <Group type="103" groupAlignment="2" attributes="0">
+                    <Component id="lblTanggal" min="20" pref="20" max="20" attributes="0"/>
+                    <Component id="txtTanggal" min="32" pref="32" max="32" attributes="0"/>
+                </Group>
+                <EmptySpace min="14" pref="14" max="14" attributes="0"/>
+                <Group type="103" groupAlignment="2" attributes="0">
+                    <Component id="lblCatatan" min="20" pref="20" max="20" attributes="0"/>
+                    <Component id="txtCatatan" min="32" pref="32" max="32" attributes="0"/>
+                </Group>
+                <EmptySpace min="14" pref="14" max="14" attributes="0"/>
+            </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+      <Component class="javax.swing.JLabel" name="lblLokasi">
+        <Properties>
+          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+            <Font name="SansSerif" size="13" style="0"/>
+          </Property>
+          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+            <Color blue="42" green="2b" red="1a" type="rgb"/>
+          </Property>
+          <Property name="text" type="java.lang.String" value="Lokasi"/>
+        </Properties>
+      </Component>
+      <Component class="javax.swing.JComboBox" name="cmbLokasi">
+        <Properties>
+          <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+            <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          </Property>
+        </Properties>
+      </Component>
+      <Component class="javax.swing.JLabel" name="lblTanggal">
+        <Properties>
+          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+            <Font name="SansSerif" size="13" style="0"/>
+          </Property>
+          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+            <Color blue="42" green="2b" red="1a" type="rgb"/>
+          </Property>
+          <Property name="text" type="java.lang.String" value="Tanggal Monitoring"/>
+        </Properties>
+      </Component>
+      <Component class="com.toedter.calendar.JDateChooser" name="txtTanggal">
+        <Properties>
+          <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+            <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          </Property>
+        </Properties>
+      </Component>
+      <Component class="javax.swing.JLabel" name="lblCatatan">
+        <Properties>
+          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+            <Font name="SansSerif" size="13" style="0"/>
+          </Property>
+          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+            <Color blue="42" green="2b" red="1a" type="rgb"/>
+          </Property>
+          <Property name="text" type="java.lang.String" value="Catatan"/>
+        </Properties>
+      </Component>
+      <Component class="javax.swing.JTextField" name="txtCatatan">
+        <Properties>
+          <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+            <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          </Property>
+        </Properties>
+      </Component>
+      </SubComponents>
+    </Container>
     <Component class="javax.swing.JButton" name="btnSimpan">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -166,10 +240,10 @@
         <Property name="text" type="java.lang.String" value="Simpan"/>
         <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
-      <Events>
+          <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSimpanActionPerformed"/>
       </Events>
-    </Component>
+</Component>
     <Component class="javax.swing.JButton" name="btnBatal">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -184,11 +258,9 @@
         <Property name="text" type="java.lang.String" value="Batal"/>
         <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
-      <Events>
+          <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatalActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="txtTanggal">
-    </Component>
+</Component>
   </SubComponents>
 </Form>

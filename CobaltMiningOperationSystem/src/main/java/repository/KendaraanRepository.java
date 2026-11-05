@@ -4,6 +4,7 @@
  */
 package repository;
 
+import java.util.List;
 import java.util.Optional;
 import model.Kendaraan;
 
@@ -14,4 +15,6 @@ import model.Kendaraan;
 
 public interface KendaraanRepository extends CrudRepository<Kendaraan> {
     Optional<Kendaraan> findByNomorPolisi(String nomorPolisi);
+    /** Seluruh kendaraan termasuk yang NONAKTIF (dihapus lembut) - untuk KPI dashboard. */
+    List<Kendaraan> findAllDenganNonaktif();
 }

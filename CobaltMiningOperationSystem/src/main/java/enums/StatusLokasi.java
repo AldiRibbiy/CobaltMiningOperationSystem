@@ -12,5 +12,6 @@ package enums;
 public enum StatusLokasi {
     AKTIF,
     DIBATASI,
-    DITUTUP_SEMENTARA
+    DITUTUP_SEMENTARA,
+    NONAKTIF
 }

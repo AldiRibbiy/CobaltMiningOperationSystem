@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="2" />
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0" />
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true" />
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2" />
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3" />
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2" />
+  </AuxValues>
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+        <Group type="102" attributes="0">
+            <Component id="pnlStripe" min="10" pref="10" max="10" attributes="0" />
+            <EmptySpace min="14" pref="14" max="14" attributes="0" />
+            <Group type="103" groupAlignment="0" attributes="0">
+                <Group type="102" attributes="0">
+                    <Component id="lblNama" min="10" pref="300" max="32767" attributes="0" />
+                    <EmptySpace min="0" pref="0" max="32767" attributes="0" />
+                    <Component id="lblBadge" min="10" pref="170" max="170" attributes="0" />
+                </Group>
+                <Group type="102" attributes="0">
+                    <Component id="lblJenis" min="90" pref="90" max="90" attributes="0" />
+                    <EmptySpace min="8" pref="8" max="8" attributes="0" />
+                    <Component id="lblStatusOps" min="10" pref="150" max="32767" attributes="0" />
+                </Group>
+                <Group type="102" attributes="0">
+                    <Component id="lblMonitoring" min="10" pref="470" max="32767" attributes="0" />
+                </Group>
+                <Group type="102" attributes="0">
+                    <Component id="lblHasil" min="10" pref="470" max="32767" attributes="0" />
+                </Group>
+                <Group type="102" attributes="0">
+                    <Component id="lblPenanganan" min="10" pref="470" max="32767" attributes="0" />
+                </Group>
+            </Group>
+            <EmptySpace min="14" pref="14" max="14" attributes="0" />
+        </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+        <Group type="102" attributes="0">
+            <EmptySpace min="12" pref="12" max="12" attributes="0" />
+            <Group type="103" groupAlignment="0" attributes="0">
+                <Component id="pnlStripe" min="108" pref="108" max="32767" attributes="0" />
+                <Group type="102" attributes="0">
+                    <Group type="103" groupAlignment="0" attributes="0">
+                        <Component id="lblNama" min="20" pref="20" max="20" attributes="0" />
+                        <Component id="lblBadge" min="18" pref="18" max="18" attributes="0" />
+                    </Group>
+                    <EmptySpace min="4" pref="4" max="4" attributes="0" />
+                    <Group type="103" groupAlignment="0" attributes="0">
+                        <Component id="lblJenis" min="18" pref="18" max="18" attributes="0" />
+                        <Component id="lblStatusOps" min="18" pref="18" max="18" attributes="0" />
+                    </Group>
+                    <EmptySpace min="5" pref="5" max="5" attributes="0" />
+                    <Component id="lblMonitoring" min="17" pref="17" max="17" attributes="0" />
+                    <EmptySpace min="3" pref="3" max="3" attributes="0" />
+                    <Component id="lblHasil" min="18" pref="18" max="18" attributes="0" />
+                    <EmptySpace min="3" pref="3" max="3" attributes="0" />
+                    <Component id="lblPenanganan" min="15" pref="15" max="15" attributes="0" />
+                </Group>
+            </Group>
+            <EmptySpace min="12" pref="12" max="12" attributes="0" />
+        </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+  <Container class="javax.swing.JPanel" name="pnlStripe"><Properties /><Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" /></Container><Component class="javax.swing.JLabel" name="lblNama"><Properties><Property name="text" type="java.lang.String" value="Nama Lokasi" /></Properties></Component><Component class="javax.swing.JLabel" name="lblJenis"><Properties><Property name="text" type="java.lang.String" value="PIT" /><Property name="opaque" type="boolean" value="true" /><Property name="horizontalAlignment" type="int" value="0" /></Properties></Component><Component class="javax.swing.JLabel" name="lblStatusOps"><Properties><Property name="text" type="java.lang.String" value="AKTIF" /></Properties></Component><Component class="javax.swing.JLabel" name="lblMonitoring"><Properties><Property name="text" type="java.lang.String" value="Monitoring terakhir: belum ada" /></Properties></Component><Component class="javax.swing.JLabel" name="lblHasil"><Properties><Property name="text" type="java.lang.String" value="Hasil: belum ada data" /></Properties></Component><Component class="javax.swing.JLabel" name="lblPenanganan"><Properties><Property name="text" type="java.lang.String" value="Penanganan: -" /></Properties></Component><Component class="javax.swing.JLabel" name="lblBadge"><Properties><Property name="text" type="java.lang.String" value="PERLU TINDAK LANJUT" /><Property name="opaque" type="boolean" value="true" /><Property name="horizontalAlignment" type="int" value="0" /></Properties></Component></SubComponents>
+</Form>

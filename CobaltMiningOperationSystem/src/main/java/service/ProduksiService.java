@@ -69,7 +69,7 @@ public final class ProduksiService {
     }
     
     private void checkHistory(int id) {
-        if (!haul.findByProduksi(id).isEmpty())throw new ValidationException("Produksi sudah memiliki riwayat pengangkutan sehingga tidak dapat diubah atau dihapus.");
+        if (!haul.findByProduksi(id).isEmpty())throw new ValidationException("Produksi sudah memiliki riwayat pengangkutan.");
     }
     
     private void validasi(LocalDate t, double j) {

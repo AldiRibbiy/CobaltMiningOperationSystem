@@ -40,100 +40,138 @@ public class LaporanPengangkutanPanel extends javax.swing.JPanel {
         btnTampilkan = new javax.swing.JButton();
         scrollTable = new javax.swing.JScrollPane();
         tblData = new javax.swing.JTable();
+        pnlFilter = new javax.swing.JPanel();
+
 
         lblTitle.setText("Laporan Pengangkutan");
-        lblTitle.setForeground(new java.awt.Color(26, 43, 66));
         lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(26, 43, 66));
 
         lblHint.setText("Periode tanggal selesai pengangkutan (status SELESAI).");
-        lblHint.setForeground(new java.awt.Color(103, 121, 143));
         lblHint.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lblHint.setForeground(new java.awt.Color(103, 121, 143));
 
         lblAwal.setText("Tanggal Awal");
+        lblAwal.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblAwal.setForeground(new java.awt.Color(26, 43, 66));
 
+        choAwal.setBackground(new java.awt.Color(255, 255, 255));
+
         lblAkhir.setText("Tanggal Akhir");
+        lblAkhir.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblAkhir.setForeground(new java.awt.Color(26, 43, 66));
 
+        choAkhir.setBackground(new java.awt.Color(255, 255, 255));
+
         btnTampilkan.setText("Tampilkan");
-        btnTampilkan.setBackground(new java.awt.Color(43, 106, 230));
-        btnTampilkan.setForeground(new java.awt.Color(255, 255, 255));
-        btnTampilkan.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnTampilkan.setFocusPainted(false);
+        btnTampilkan.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnTampilkan.setForeground(new java.awt.Color(255, 255, 255));
+        btnTampilkan.setBackground(new java.awt.Color(43, 106, 230));
         btnTampilkan.addActionListener(this::btnTampilkanActionPerformed);
 
         scrollTable.setBackground(new java.awt.Color(255, 255, 255));
+
+        tblData.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        tblData.setRowHeight(28);
+        tblData.setGridColor(new java.awt.Color(226, 232, 240));
+
+        pnlFilter.setBackground(new java.awt.Color(255, 255, 255));
 
         tblData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Data"
+                "No.", "Tanggal Selesai", "Material", "Lokasi Tujuan", "Muatan (ton)"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tblData.setRowHeight(28);
+
+        javax.swing.GroupLayout pnlFilterLayout = new javax.swing.GroupLayout(pnlFilter);
+        pnlFilter.setLayout(pnlFilterLayout);
+        pnlFilterLayout.setHorizontalGroup(
+            pnlFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlFilterLayout.createSequentialGroup()
+                 .addGap(20, 20, 20)
+                 .addComponent(lblAwal, 110, 110, 110)
+                 .addGap(8, 8, 8)
+                 .addComponent(choAwal, 170, 170, 170)
+                 .addGap(24, 24, 24)
+                 .addComponent(lblAkhir, 110, 110, 110)
+                 .addGap(8, 8, 8)
+                 .addComponent(choAkhir, 170, 170, 170)
+                 .addGap(16, 16, 16)
+                 .addComponent(btnTampilkan, 140, 140, 140)
+                 .addGap(20, 20, 20)
+            )
+        );
+        pnlFilterLayout.setVerticalGroup(
+            pnlFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlFilterLayout.createSequentialGroup()
+                 .addGap(16, 16, 16)
+                 .addGroup(pnlFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                  .addComponent(lblAwal, 20, 20, 20)
+                  .addComponent(choAwal, 30, 30, 30)
+                  .addComponent(lblAkhir, 20, 20, 20)
+                  .addComponent(choAkhir, 30, 30, 30)
+                  .addComponent(btnTampilkan, 32, 32, 32)
+             )
+                 .addGap(16, 16, 16)
+            )
+        );
+
         scrollTable.setViewportView(tblData);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(lblTitle, 800, 800, 800))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(lblHint, 840, 840, 840))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(lblAwal, 110, 110, 110)
-                .addGap(8, 8, 8)
-                .addComponent(choAwal, 165, 165, 165)
-                .addGap(24, 24, 24)
-                .addComponent(lblAkhir, 110, 110, 110)
-                .addGap(8, 8, 8)
-                .addComponent(choAkhir, 165, 165, 165)
-                .addGap(24, 24, 24)
-                .addComponent(btnTampilkan, 140, 140, 140))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(scrollTable, 865, 865, 865))
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(layout.createSequentialGroup()
+                   .addComponent(lblTitle, 520, 520, 520)
+              )
+                  .addGroup(layout.createSequentialGroup()
+                   .addComponent(lblHint, 520, 520, 520)
+              )
+             )
+                 .addGap(0, 0, Short.MAX_VALUE)
+                 .addGap(24, 24, 24)
+            )
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addComponent(pnlFilter, 796, 796, 796)
+            )
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addComponent(scrollTable, 240, 380, Short.MAX_VALUE)
+                 .addGap(24, 24, 24)
+            )
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(lblTitle, 42, 42, 42))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(lblHint, 25, 25, 25))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(lblAwal, 32, 32, 32))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(choAwal, 32, 32, 32))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(lblAkhir, 32, 32, 32))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(choAkhir, 32, 32, 32))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(btnTampilkan, 32, 32, 32))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(scrollTable, 370, 370, 370))
+                .addGroup(layout.createSequentialGroup()
+                 .addGroup(layout.createSequentialGroup()
+                  .addGap(16, 16, 16)
+                  .addComponent(lblTitle, 40, 40, 40)
+                  .addGap(2, 2, 2)
+                  .addComponent(lblHint, 22, 22, 22)
+             )
+                 .addGap(14, 14, 14)
+                 .addComponent(pnlFilter, 62, 62, 62)
+                 .addGap(14, 14, 14)
+                 .addComponent(scrollTable, 240, 380, Short.MAX_VALUE)
+                 .addGap(20, 20, 20)
+            )
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -150,14 +188,15 @@ public class LaporanPengangkutanPanel extends javax.swing.JPanel {
         if (awal.isAfter(akhir))throw new IllegalArgumentException("Tanggal awal tidak boleh setelah tanggal akhir.");
         java.util.List<LaporanService.BarisPengangkutan> data = laporan.laporanPengangkutan(awal, akhir);
         javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
-            new String[]{"ID", "Tanggal Selesai", "Material", "Lokasi Tujuan", "Muatan (ton)"}, 0){
+            new String[]{"No.", "Tanggal Selesai", "Material", "Lokasi Tujuan", "Muatan (ton)"}, 0){
             @Override public boolean isCellEditable(int r,int c){return false;}
         };
 
-        for (LaporanService.BarisPengangkutan b : data)model.addRow(new Object[]{b.id, b.tanggalSelesai, b.material, b.tujuan, b.jumlahMuatan});
+        for (LaporanService.BarisPengangkutan b : data)model.addRow(new Object[]{model.getRowCount() + 1, b.tanggalSelesai, b.material, b.tujuan, b.jumlahMuatan});
         tblData.setModel(model);
         tblData.setAutoCreateRowSorter(true);
         tblData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        FormUtil.nomorUrut(tblData);
     }
 
     private void btnTampilkanActionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,13 +204,14 @@ public class LaporanPengangkutanPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTampilkan;
     private com.toedter.calendar.JDateChooser choAkhir;
     private com.toedter.calendar.JDateChooser choAwal;
-    private javax.swing.JButton btnTampilkan;
     private javax.swing.JLabel lblAkhir;
     private javax.swing.JLabel lblAwal;
     private javax.swing.JLabel lblHint;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JPanel pnlFilter;
     private javax.swing.JScrollPane scrollTable;
     private javax.swing.JTable tblData;
     // End of variables declaration//GEN-END:variables

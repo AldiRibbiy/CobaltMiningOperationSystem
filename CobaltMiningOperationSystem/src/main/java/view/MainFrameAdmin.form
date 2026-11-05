@@ -1,37 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="resizable" type="boolean" value="false"/>
+    <Property name="resizable" type="boolean" value="true" />
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSizePolicy" type="int" value="2"/>
+    <SyntheticProperty name="formSizePolicy" type="int" value="2" />
   </SyntheticProperties>
   <AuxValues>
-    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
-    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
-    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
-    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3"/>
-    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0" />
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true" />
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2" />
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3" />
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2" />
   </AuxValues>
 
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="pnlRoot" max="-2" attributes="0"/>
+          <Component id="pnlRoot" min="0" max="32767" attributes="0" />
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="pnlRoot" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="pnlRoot" min="0" max="32767" attributes="0" />
       </Group>
     </DimensionLayout>
   </Layout>
@@ -39,7 +33,7 @@
     <Container class="javax.swing.JPanel" name="pnlRoot">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="fc" green="f7" red="f4" type="rgb"/>
+          <Color blue="fc" green="f7" red="f4" type="rgb" />
         </Property>
       </Properties>
 
@@ -47,22 +41,16 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Component id="pnlSidebar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="pnlWorkspace" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                  <Component id="pnlSidebar" max="-2" attributes="0" />
+                  <EmptySpace min="0" pref="0" max="0" attributes="0" />
+                  <Component id="pnlWorkspace" min="0" max="32767" attributes="0" />
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pnlWorkspace" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="pnlSidebar" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+              <Component id="pnlSidebar" min="0" max="32767" attributes="0" />
+              <Component id="pnlWorkspace" min="0" max="32767" attributes="0" />
           </Group>
         </DimensionLayout>
       </Layout>
@@ -70,7 +58,7 @@
         <Container class="javax.swing.JPanel" name="pnlSidebar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="29" green="28" red="45" type="rgb"/>
+              <Color blue="33" green="1e" red="10" type="rgb" />
             </Property>
           </Properties>
 
@@ -78,104 +66,53 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace min="24" pref="24" max="24" attributes="0" />
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="28" pref="28" max="28" attributes="0"/>
-                              <Component id="lblBrand" min="200" pref="200" max="200" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="29" pref="29" max="29" attributes="0"/>
-                              <Component id="lblBrandSub" min="210" pref="210" max="210" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="28" pref="28" max="28" attributes="0"/>
-                              <Component id="lblNavTitle" min="215" pref="215" max="215" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="22" pref="22" max="22" attributes="0"/>
-                              <Component id="btnDashboard" min="210" pref="210" max="210" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="22" pref="22" max="22" attributes="0"/>
-                              <Component id="btnPegawai" min="210" pref="210" max="210" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="22" pref="22" max="22" attributes="0"/>
-                              <Component id="btnUser" min="210" pref="210" max="210" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="22" pref="22" max="22" attributes="0"/>
-                              <Component id="btnLokasi" min="210" pref="210" max="210" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="22" pref="22" max="22" attributes="0"/>
-                              <Component id="btnMaterial" min="210" pref="210" max="210" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="22" pref="22" max="22" attributes="0"/>
-                              <Component id="btnKendaraan" min="210" pref="210" max="210" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="22" pref="22" max="22" attributes="0"/>
-                              <Component id="btnLogout" min="210" pref="210" max="210" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="22" pref="22" max="22" attributes="0"/>
-                              <Component id="btnParameter" min="-2" pref="210" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lblBrand" min="202" pref="202" max="202" attributes="0" />
+                          <Component id="lblBrandSub" min="202" pref="202" max="202" attributes="0" />
+                          <Component id="lblNavTitle" min="202" pref="202" max="202" attributes="0" />
+                          <Component id="btnDashboard" min="202" pref="202" max="202" attributes="0" />
+                          <Component id="btnPegawai" min="202" pref="202" max="202" attributes="0" />
+                          <Component id="btnUser" min="202" pref="202" max="202" attributes="0" />
+                          <Component id="btnLokasi" min="202" pref="202" max="202" attributes="0" />
+                          <Component id="btnMaterial" min="202" pref="202" max="202" attributes="0" />
+                          <Component id="btnKendaraan" min="202" pref="202" max="202" attributes="0" />
+                          <Component id="btnParameter" min="202" pref="202" max="202" attributes="0" />
+                          <Component id="btnUbahAkun" min="202" pref="202" max="202" attributes="0" />
+                          <Component id="btnLogout" min="202" pref="202" max="202" attributes="0" />
                       </Group>
-                      <EmptySpace pref="17" max="32767" attributes="0"/>
+                      <EmptySpace min="24" pref="24" max="24" attributes="0" />
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="24" pref="24" max="24" attributes="0"/>
-                              <Component id="lblBrand" min="46" pref="46" max="46" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="76" pref="76" max="76" attributes="0"/>
-                              <Component id="lblBrandSub" min="20" pref="20" max="20" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="137" pref="137" max="137" attributes="0"/>
-                              <Component id="lblNavTitle" min="26" pref="26" max="26" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="177" pref="177" max="177" attributes="0"/>
-                              <Component id="btnDashboard" min="42" pref="42" max="42" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="229" pref="229" max="229" attributes="0"/>
-                              <Component id="btnPegawai" min="42" pref="42" max="42" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="281" pref="281" max="281" attributes="0"/>
-                              <Component id="btnUser" min="42" pref="42" max="42" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="333" pref="333" max="333" attributes="0"/>
-                              <Component id="btnLokasi" min="42" pref="42" max="42" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="385" pref="385" max="385" attributes="0"/>
-                              <Component id="btnMaterial" min="42" pref="42" max="42" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="437" pref="437" max="437" attributes="0"/>
-                              <Component id="btnKendaraan" min="42" pref="42" max="42" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="489" pref="489" max="489" attributes="0"/>
-                              <Component id="btnParameter" min="42" pref="42" max="42" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-                      <Component id="btnLogout" min="42" pref="42" max="42" attributes="0"/>
-                      <EmptySpace pref="25" max="32767" attributes="0"/>
+                      <EmptySpace min="26" pref="26" max="26" attributes="0" />
+                      <Component id="lblBrand" min="44" pref="44" max="44" attributes="0" />
+                      <EmptySpace min="2" pref="2" max="2" attributes="0" />
+                      <Component id="lblBrandSub" min="20" pref="20" max="20" attributes="0" />
+                      <EmptySpace min="22" pref="22" max="22" attributes="0" />
+                      <Component id="lblNavTitle" min="18" pref="18" max="18" attributes="0" />
+                      <EmptySpace min="10" pref="10" max="10" attributes="0" />
+                      <Component id="btnDashboard" min="42" pref="42" max="42" attributes="0" />
+                      <EmptySpace min="6" pref="6" max="6" attributes="0" />
+                      <Component id="btnPegawai" min="42" pref="42" max="42" attributes="0" />
+                      <EmptySpace min="6" pref="6" max="6" attributes="0" />
+                      <Component id="btnUser" min="42" pref="42" max="42" attributes="0" />
+                      <EmptySpace min="6" pref="6" max="6" attributes="0" />
+                      <Component id="btnLokasi" min="42" pref="42" max="42" attributes="0" />
+                      <EmptySpace min="6" pref="6" max="6" attributes="0" />
+                      <Component id="btnMaterial" min="42" pref="42" max="42" attributes="0" />
+                      <EmptySpace min="6" pref="6" max="6" attributes="0" />
+                      <Component id="btnKendaraan" min="42" pref="42" max="42" attributes="0" />
+                      <EmptySpace min="6" pref="6" max="6" attributes="0" />
+                      <Component id="btnParameter" min="42" pref="42" max="42" attributes="0" />
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0" />
+                      <Component id="btnUbahAkun" min="42" pref="42" max="42" attributes="0" />
+                      <EmptySpace min="6" pref="6" max="6" attributes="0" />
+                      <Component id="btnLogout" min="42" pref="42" max="42" attributes="0" />
+                      <EmptySpace min="24" pref="24" max="24" attributes="0" />
                   </Group>
               </Group>
             </DimensionLayout>
@@ -184,171 +121,196 @@
             <Component class="javax.swing.JLabel" name="lblBrand">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="31" style="1"/>
+                  <Font name="SansSerif" size="31" style="1" />
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
                 </Property>
-                <Property name="text" type="java.lang.String" value="C-MOS"/>
+                <Property name="text" type="java.lang.String" value="C-MOS" />
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblBrandSub">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="10" style="1"/>
+                  <Font name="SansSerif" size="10" style="1" />
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
+                  <Color blue="c2" green="a7" red="91" type="rgb" />
                 </Property>
-                <Property name="text" type="java.lang.String" value="COBALT MINING SYSTEM"/>
+                <Property name="text" type="java.lang.String" value="COBALT MINING SYSTEM" />
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblNavTitle">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="10" style="1"/>
+                  <Font name="SansSerif" size="10" style="1" />
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
+                  <Color blue="c2" green="a7" red="91" type="rgb" />
                 </Property>
-                <Property name="text" type="java.lang.String" value="NAVIGASI  /  ADMIN"/>
+                <Property name="text" type="java.lang.String" value="NAVIGASI  /  ADMIN" />
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnDashboard">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
+                  <Color blue="4a" green="2f" red="1b" type="rgb" />
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
+                  <Font name="SansSerif" size="12" style="1" />
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5b" green="59" red="57" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
                 </Property>
-                <Property name="text" type="java.lang.String" value="Dashboard"/>
-                <Property name="focusPainted" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" value="Dashboard" />
+                <Property name="focusPainted" type="boolean" value="false" />
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDashboardActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDashboardActionPerformed" />
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnPegawai">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
+                  <Color blue="4a" green="2f" red="1b" type="rgb" />
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
+                  <Font name="SansSerif" size="12" style="1" />
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5b" green="59" red="57" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
                 </Property>
-                <Property name="text" type="java.lang.String" value="Data Pegawai"/>
+                <Property name="text" type="java.lang.String" value="Data Pegawai" />
+                <Property name="focusPainted" type="boolean" value="false" />
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPegawaiActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPegawaiActionPerformed" />
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnUser">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
+                  <Color blue="4a" green="2f" red="1b" type="rgb" />
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
+                  <Font name="SansSerif" size="12" style="1" />
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5b" green="59" red="57" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
                 </Property>
-                <Property name="text" type="java.lang.String" value="Akun Pengguna"/>
+                <Property name="text" type="java.lang.String" value="Akun Pengguna" />
+                <Property name="focusPainted" type="boolean" value="false" />
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUserActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUserActionPerformed" />
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnLokasi">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
+                  <Color blue="4a" green="2f" red="1b" type="rgb" />
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
+                  <Font name="SansSerif" size="12" style="1" />
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5b" green="59" red="57" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
                 </Property>
-                <Property name="text" type="java.lang.String" value="Lokasi Tambang"/>
+                <Property name="text" type="java.lang.String" value="Lokasi Tambang" />
+                <Property name="focusPainted" type="boolean" value="false" />
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLokasiActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLokasiActionPerformed" />
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnMaterial">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
+                  <Color blue="4a" green="2f" red="1b" type="rgb" />
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
+                  <Font name="SansSerif" size="12" style="1" />
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5b" green="59" red="57" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
                 </Property>
-                <Property name="text" type="java.lang.String" value="Jenis Material"/>
+                <Property name="text" type="java.lang.String" value="Jenis Material" />
+                <Property name="focusPainted" type="boolean" value="false" />
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMaterialActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMaterialActionPerformed" />
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnKendaraan">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
+                  <Color blue="4a" green="2f" red="1b" type="rgb" />
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
+                  <Font name="SansSerif" size="12" style="1" />
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5b" green="59" red="57" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
                 </Property>
-                <Property name="text" type="java.lang.String" value="Kendaraan"/>
+                <Property name="text" type="java.lang.String" value="Kendaraan" />
+                <Property name="focusPainted" type="boolean" value="false" />
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKendaraanActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKendaraanActionPerformed" />
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnParameter">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
+                  <Color blue="4a" green="2f" red="1b" type="rgb" />
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
+                  <Font name="SansSerif" size="12" style="1" />
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5b" green="59" red="57" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
                 </Property>
-                <Property name="text" type="java.lang.String" value="Parameter Lingkungan"/>
+                <Property name="text" type="java.lang.String" value="Parameter Lingkungan" />
+                <Property name="focusPainted" type="boolean" value="false" />
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnParameterActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnParameterActionPerformed" />
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnUbahAkun">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="4a" green="2f" red="1b" type="rgb" />
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="SansSerif" size="12" style="1" />
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
+                </Property>
+                <Property name="text" type="java.lang.String" value="Ubah Akun" />
+                <Property name="focusPainted" type="boolean" value="false" />
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUbahAkunActionPerformed" />
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnLogout">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c5" green="d1" red="e8" type="rgb"/>
+                  <Color blue="4a" green="2f" red="1b" type="rgb" />
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
+                  <Font name="SansSerif" size="12" style="1" />
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5b" green="59" red="57" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
                 </Property>
-                <Property name="text" type="java.lang.String" value="Keluar Akun"/>
+                <Property name="text" type="java.lang.String" value="Keluar Akun" />
+                <Property name="focusPainted" type="boolean" value="false" />
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed" />
               </Events>
             </Component>
           </SubComponents>
@@ -356,30 +318,23 @@
         <Container class="javax.swing.JPanel" name="pnlWorkspace">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fc" green="f7" red="f4" type="rgb"/>
+              <Color blue="fc" green="f7" red="f4" type="rgb" />
             </Property>
           </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="pnlContent" max="32767" attributes="0"/>
-                          <Component id="pnlHeader" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="23" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="pnlHeader" min="0" max="32767" attributes="0" />
+                  <Component id="pnlContent" min="0" max="32767" attributes="0" />
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="12" max="32767" attributes="0"/>
-                      <Component id="pnlHeader" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="pnlContent" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlHeader" max="-2" attributes="0" />
+                      <EmptySpace min="12" pref="12" max="12" attributes="0" />
+                      <Component id="pnlContent" min="0" max="32767" attributes="0" />
                   </Group>
               </Group>
             </DimensionLayout>
@@ -388,7 +343,7 @@
             <Container class="javax.swing.JPanel" name="pnlHeader">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
                 </Property>
               </Properties>
 
@@ -396,35 +351,38 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
+                          <EmptySpace min="24" pref="24" max="24" attributes="0" />
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblEyebrow" alignment="0" min="520" pref="520" max="520" attributes="0"/>
-                              <Component id="lblPageTitle" alignment="0" min="550" pref="550" max="550" attributes="0"/>
+                              <Component id="lblEyebrow" min="460" pref="460" max="460" attributes="0" />
+                              <Component id="lblPageTitle" min="460" pref="460" max="460" attributes="0" />
                           </Group>
-                          <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lblRole" max="32767" attributes="0"/>
-                              <Component id="lblUser" pref="200" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0" />
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblUser" min="220" pref="220" max="220" attributes="0" />
+                              <Component id="lblRole" min="220" pref="220" max="220" attributes="0" />
                           </Group>
-                          <EmptySpace pref="20" max="32767" attributes="0"/>
+                          <EmptySpace min="24" pref="24" max="24" attributes="0" />
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                          <Component id="lblEyebrow" min="24" pref="24" max="24" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="35" pref="35" max="35" attributes="0"/>
-                          <Component id="lblPageTitle" min="45" pref="45" max="45" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                          <Component id="lblUser" min="-2" pref="27" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                          <Component id="lblRole" min="25" pref="25" max="25" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="14" pref="14" max="14" attributes="0" />
+                                  <Component id="lblEyebrow" min="18" pref="18" max="18" attributes="0" />
+                                  <EmptySpace min="2" pref="2" max="2" attributes="0" />
+                                  <Component id="lblPageTitle" min="40" pref="40" max="40" attributes="0" />
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="16" pref="16" max="16" attributes="0" />
+                                  <Component id="lblUser" min="24" pref="24" max="24" attributes="0" />
+                                  <EmptySpace min="3" pref="3" max="3" attributes="0" />
+                                  <Component id="lblRole" min="20" pref="20" max="20" attributes="0" />
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="14" max="-2" attributes="0" />
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -433,47 +391,47 @@
                 <Component class="javax.swing.JLabel" name="lblEyebrow">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="10" style="1"/>
+                      <Font name="SansSerif" size="10" style="1" />
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e6" green="6a" red="2b" type="rgb"/>
+                      <Color blue="e6" green="6a" red="2b" type="rgb" />
                     </Property>
-                    <Property name="text" type="java.lang.String" value="COBALT MINING  /  ADMIN"/>
+                    <Property name="text" type="java.lang.String" value="COBALT MINING  /  ADMIN" />
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblPageTitle">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="24" style="1"/>
+                      <Font name="SansSerif" size="24" style="1" />
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="42" green="2b" red="1a" type="rgb"/>
+                      <Color blue="42" green="2b" red="1a" type="rgb" />
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Dashboard"/>
+                    <Property name="text" type="java.lang.String" value="Dashboard" />
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblUser">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="13" style="1"/>
+                      <Font name="SansSerif" size="13" style="1" />
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="42" green="2b" red="1a" type="rgb"/>
+                      <Color blue="42" green="2b" red="1a" type="rgb" />
                     </Property>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Pengguna"/>
+                    <Property name="horizontalAlignment" type="int" value="0" />
+                    <Property name="text" type="java.lang.String" value="Pengguna" />
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblRole">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="11" style="0"/>
+                      <Font name="SansSerif" size="11" style="0" />
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="8f" green="79" red="67" type="rgb"/>
+                      <Color blue="8f" green="79" red="67" type="rgb" />
                     </Property>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="ADMIN"/>
+                    <Property name="horizontalAlignment" type="int" value="0" />
+                    <Property name="text" type="java.lang.String" value="ADMIN" />
                   </Properties>
                 </Component>
               </SubComponents>
@@ -481,22 +439,46 @@
             <Container class="javax.swing.JPanel" name="pnlContent">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="fc" green="f7" red="f4" type="rgb"/>
+                  <Color blue="fc" green="f7" red="f4" type="rgb" />
                 </Property>
               </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="scrollContent" min="0" max="32767" attributes="0" />
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="606" max="32767" attributes="0"/>
+                      <Component id="scrollContent" min="0" max="32767" attributes="0" />
                   </Group>
                 </DimensionLayout>
               </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="scrollContent">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="fc" green="f7" red="f4" type="rgb" />
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true" />
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout" />
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="pnlPageHost">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="fc" green="f7" red="f4" type="rgb" />
+                        </Property>
+                      </Properties>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" /></Container>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
             </Container>
           </SubComponents>
         </Container>

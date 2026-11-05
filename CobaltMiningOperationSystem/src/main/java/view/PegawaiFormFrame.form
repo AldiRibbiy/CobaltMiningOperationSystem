@@ -1,227 +1,222 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
+<?xml version='1.0' encoding='UTF-8'?>
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="resizable" type="boolean" value="false"/>
+    <Property name="defaultCloseOperation" type="int" value="2" />
+    <Property name="resizable" type="boolean" value="false" />
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSizePolicy" type="int" value="2"/>
+    <SyntheticProperty name="formSizePolicy" type="int" value="2" />
   </SyntheticProperties>
   <AuxValues>
-    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
-    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
-    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
-    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3"/>
-    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0" />
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true" />
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1" />
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3" />
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2" />
   </AuxValues>
 
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="34" pref="34" max="34" attributes="0"/>
-              <Component id="lblTitle" min="650" pref="650" max="650" attributes="0"/>
+              <EmptySpace min="34" pref="34" max="34" attributes="0" />
+              <Component id="lblTitle" min="650" pref="650" max="650" attributes="0" />
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="35" pref="35" max="35" attributes="0"/>
-              <Component id="lblHint" min="650" pref="650" max="650" attributes="0"/>
+              <EmptySpace min="35" pref="35" max="35" attributes="0" />
+              <Component id="lblHint" min="650" pref="650" max="650" attributes="0" />
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="35" pref="35" max="35" attributes="0"/>
-              <Component id="lblJenis" min="260" pref="260" max="260" attributes="0"/>
-              <EmptySpace min="15" pref="15" max="15" attributes="0"/>
-              <Component id="cmbJenis" min="365" pref="365" max="365" attributes="0"/>
+              <EmptySpace min="35" pref="35" max="35" attributes="0" />
+              <Component id="lblJenis" min="260" pref="260" max="260" attributes="0" />
+              <EmptySpace min="15" pref="15" max="15" attributes="0" />
+              <Component id="cmbJenis" min="365" pref="365" max="365" attributes="0" />
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="35" pref="35" max="35" attributes="0"/>
-              <Component id="lblNama" min="260" pref="260" max="260" attributes="0"/>
-              <EmptySpace min="15" pref="15" max="15" attributes="0"/>
-              <Component id="txtNama" min="365" pref="365" max="365" attributes="0"/>
+              <EmptySpace min="35" pref="35" max="35" attributes="0" />
+              <Component id="lblNama" min="260" pref="260" max="260" attributes="0" />
+              <EmptySpace min="15" pref="15" max="15" attributes="0" />
+              <Component id="txtNama" min="365" pref="365" max="365" attributes="0" />
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="35" pref="35" max="35" attributes="0"/>
-              <Component id="lblHp" min="260" pref="260" max="260" attributes="0"/>
-              <EmptySpace min="15" pref="15" max="15" attributes="0"/>
-              <Component id="txtHp" min="365" pref="365" max="365" attributes="0"/>
+              <EmptySpace min="35" pref="35" max="35" attributes="0" />
+              <Component id="lblHp" min="260" pref="260" max="260" attributes="0" />
+              <EmptySpace min="15" pref="15" max="15" attributes="0" />
+              <Component id="txtHp" min="365" pref="365" max="365" attributes="0" />
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="35" pref="35" max="35" attributes="0"/>
-              <Component id="lblTanggal" min="260" pref="260" max="260" attributes="0"/>
-              <EmptySpace min="15" pref="15" max="15" attributes="0"/>
-              <Component id="txtTanggal" min="365" pref="365" max="365" attributes="0"/>
+              <EmptySpace min="35" pref="35" max="35" attributes="0" />
+              <Component id="lblTanggal" min="260" pref="260" max="260" attributes="0" />
+              <EmptySpace min="15" pref="15" max="15" attributes="0" />
+              <Component id="txtTanggal" min="365" pref="365" max="365" attributes="0" />
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="35" pref="35" max="35" attributes="0"/>
-              <Component id="lblStatus" min="260" pref="260" max="260" attributes="0"/>
-              <EmptySpace min="15" pref="15" max="15" attributes="0"/>
-              <Component id="cmbStatus" min="365" pref="365" max="365" attributes="0"/>
+              <EmptySpace min="35" pref="35" max="35" attributes="0" />
+              <Component id="lblStatus" min="260" pref="260" max="260" attributes="0" />
+              <EmptySpace min="15" pref="15" max="15" attributes="0" />
+              <Component id="cmbStatus" min="365" pref="365" max="365" attributes="0" />
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="35" pref="35" max="35" attributes="0"/>
-              <Component id="lblKhusus1" min="260" pref="260" max="260" attributes="0"/>
-              <EmptySpace min="15" pref="15" max="15" attributes="0"/>
+              <EmptySpace min="35" pref="35" max="35" attributes="0" />
+              <Component id="lblKhusus1" min="260" pref="260" max="260" attributes="0" />
+              <EmptySpace min="15" pref="15" max="15" attributes="0" />
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txtKhusus1" min="365" pref="365" max="365" attributes="0"/>
-                  <Component id="cmbKhusus1" min="365" pref="365" max="365" attributes="0"/>
+                  <Component id="txtKhusus1" min="365" pref="365" max="365" attributes="0" />
+                  <Component id="cmbKhusus1" min="365" pref="365" max="365" attributes="0" />
               </Group>
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="35" pref="35" max="35" attributes="0"/>
-              <Component id="lblKhusus2" min="260" pref="260" max="260" attributes="0"/>
-              <EmptySpace min="15" pref="15" max="15" attributes="0"/>
-              <Component id="txtKhusus2" min="365" pref="365" max="365" attributes="0"/>
+              <EmptySpace min="35" pref="35" max="35" attributes="0" />
+              <Component id="lblKhusus2" min="260" pref="260" max="260" attributes="0" />
+              <EmptySpace min="15" pref="15" max="15" attributes="0" />
+              <Component id="txtKhusus2" min="365" pref="365" max="365" attributes="0" />
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="35" pref="35" max="35" attributes="0"/>
-              <Component id="lblDriverStatus" min="260" pref="260" max="260" attributes="0"/>
-              <EmptySpace min="15" pref="15" max="15" attributes="0"/>
-              <Component id="cmbDriverStatus" min="365" pref="365" max="365" attributes="0"/>
+              <EmptySpace min="35" pref="35" max="35" attributes="0" />
+              <Component id="lblDriverStatus" min="260" pref="260" max="260" attributes="0" />
+              <EmptySpace min="15" pref="15" max="15" attributes="0" />
+              <Component id="cmbDriverStatus" min="365" pref="365" max="365" attributes="0" />
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="310" pref="310" max="310" attributes="0"/>
-              <Component id="btnSimpan" min="173" pref="173" max="173" attributes="0"/>
-              <EmptySpace min="18" pref="18" max="18" attributes="0"/>
-              <Component id="btnBatal" min="174" pref="174" max="174" attributes="0"/>
+              <EmptySpace min="310" pref="310" max="310" attributes="0" />
+              <Component id="btnSimpan" min="173" pref="173" max="173" attributes="0" />
+              <EmptySpace min="18" pref="18" max="18" attributes="0" />
+              <Component id="btnBatal" min="174" pref="174" max="174" attributes="0" />
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="102" attributes="0">
-          <EmptySpace min="24" pref="24" max="24" attributes="0"/>
-          <Component id="lblTitle" min="43" pref="43" max="43" attributes="0"/>
-          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-          <Component id="lblHint" min="25" pref="25" max="25" attributes="0"/>
-          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="lblJenis" min="20" pref="20" max="20" attributes="0"/>
-              <Component id="cmbJenis" min="32" pref="32" max="32" attributes="0"/>
+          <EmptySpace min="24" pref="24" max="24" attributes="0" />
+          <Component id="lblTitle" min="36" pref="36" max="36" attributes="0" />
+          <EmptySpace min="1" pref="1" max="1" attributes="0" />
+          <Component id="lblHint" min="22" pref="22" max="22" attributes="0" />
+          <EmptySpace min="22" pref="22" max="22" attributes="0" />
+          <Group type="103" groupAlignment="2" attributes="0">
+              <Component id="lblJenis" min="24" pref="24" max="24" attributes="0" />
+              <Component id="cmbJenis" min="34" pref="34" max="34" attributes="0" />
           </Group>
-          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="lblNama" min="20" pref="20" max="20" attributes="0"/>
-              <Component id="txtNama" min="32" pref="32" max="32" attributes="0"/>
+          <EmptySpace min="12" pref="12" max="12" attributes="0" />
+          <Group type="103" groupAlignment="2" attributes="0">
+              <Component id="lblNama" min="24" pref="24" max="24" attributes="0" />
+              <Component id="txtNama" min="34" pref="34" max="34" attributes="0" />
           </Group>
-          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="lblHp" min="20" pref="20" max="20" attributes="0"/>
-              <Component id="txtHp" min="32" pref="32" max="32" attributes="0"/>
+          <EmptySpace min="12" pref="12" max="12" attributes="0" />
+          <Group type="103" groupAlignment="2" attributes="0">
+              <Component id="lblHp" min="24" pref="24" max="24" attributes="0" />
+              <Component id="txtHp" min="34" pref="34" max="34" attributes="0" />
           </Group>
-          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="lblTanggal" min="20" pref="20" max="20" attributes="0"/>
-              <Component id="txtTanggal" min="32" pref="32" max="32" attributes="0"/>
+          <EmptySpace min="12" pref="12" max="12" attributes="0" />
+          <Group type="103" groupAlignment="2" attributes="0">
+              <Component id="lblTanggal" min="24" pref="24" max="24" attributes="0" />
+              <Component id="txtTanggal" min="34" pref="34" max="34" attributes="0" />
           </Group>
-          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="lblStatus" min="20" pref="20" max="20" attributes="0"/>
-              <Component id="cmbStatus" min="32" pref="32" max="32" attributes="0"/>
+          <EmptySpace min="12" pref="12" max="12" attributes="0" />
+          <Group type="103" groupAlignment="2" attributes="0">
+              <Component id="lblStatus" min="24" pref="24" max="24" attributes="0" />
+              <Component id="cmbStatus" min="34" pref="34" max="34" attributes="0" />
           </Group>
-          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="lblKhusus1" min="20" pref="20" max="20" attributes="0"/>
-              <Component id="txtKhusus1" min="32" pref="32" max="32" attributes="0"/>
-              <Component id="cmbKhusus1" min="32" pref="32" max="32" attributes="0"/>
+          <EmptySpace min="12" pref="12" max="12" attributes="0" />
+          <Group type="103" groupAlignment="2" attributes="0">
+              <Component id="lblKhusus1" min="24" pref="24" max="24" attributes="0" />
+              <Component id="txtKhusus1" min="34" pref="34" max="34" attributes="0" />
+              <Component id="cmbKhusus1" min="34" pref="34" max="34" attributes="0" />
           </Group>
-          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="lblKhusus2" min="20" pref="20" max="20" attributes="0"/>
-              <Component id="txtKhusus2" min="32" pref="32" max="32" attributes="0"/>
+          <EmptySpace min="12" pref="12" max="12" attributes="0" />
+          <Group type="103" groupAlignment="2" attributes="0">
+              <Component id="lblKhusus2" min="24" pref="24" max="24" attributes="0" />
+              <Component id="txtKhusus2" min="34" pref="34" max="34" attributes="0" />
           </Group>
-          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="lblDriverStatus" min="20" pref="20" max="20" attributes="0"/>
-              <Component id="cmbDriverStatus" min="32" pref="32" max="32" attributes="0"/>
+          <EmptySpace min="12" pref="12" max="12" attributes="0" />
+          <Group type="103" groupAlignment="2" attributes="0">
+              <Component id="lblDriverStatus" min="24" pref="24" max="24" attributes="0" />
+              <Component id="cmbDriverStatus" min="34" pref="34" max="34" attributes="0" />
           </Group>
-          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="btnSimpan" min="42" pref="42" max="42" attributes="0"/>
-              <Component id="btnBatal" min="42" pref="42" max="42" attributes="0"/>
+          <EmptySpace min="24" pref="24" max="24" attributes="0" />
+          <Group type="103" groupAlignment="2" attributes="0">
+              <Component id="btnSimpan" min="42" pref="42" max="42" attributes="0" />
+              <Component id="btnBatal" min="42" pref="42" max="42" attributes="0" />
           </Group>
-          <EmptySpace pref="24" max="32767" attributes="0"/>
+          <EmptySpace min="28" pref="28" max="32767" attributes="0" />
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lblTitle">
       <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="42" green="2b" red="1a" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="FORM PEGAWAI"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="SansSerif" size="22" style="1"/>
+          <Font name="SansSerif" size="22" style="1" />
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="42" green="2b" red="1a" type="rgb" />
+        </Property>
+        <Property name="text" type="java.lang.String" value="FORM PEGAWAI" />
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblHint">
       <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="8f" green="79" red="67" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Pilih jenis pegawai; kolom khusus menyesuaikan otomatis."/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="SansSerif" size="12" style="1"/>
+          <Font name="SansSerif" size="12" style="1" />
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="8f" green="79" red="67" type="rgb" />
+        </Property>
+        <Property name="text" type="java.lang.String" value="Pilih jenis pegawai; kolom khusus menyesuaikan otomatis." />
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblJenis">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="42" green="2b" red="1a" type="rgb"/>
+          <Color blue="42" green="2b" red="1a" type="rgb" />
         </Property>
-        <Property name="text" type="java.lang.String" value="Jenis Pegawai"/>
+        <Property name="text" type="java.lang.String" value="Jenis Pegawai" />
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbJenis">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="5">
+            <StringItem index="0" value="ADMIN" />
+            <StringItem index="1" value="OPERASIONAL" />
+            <StringItem index="2" value="HSE" />
+            <StringItem index="3" value="MANAGER" />
+            <StringItem index="4" value="DRIVER" />
+          </StringArray>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbJenisActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbJenisActionPerformed" />
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNama">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="42" green="2b" red="1a" type="rgb"/>
+          <Color blue="42" green="2b" red="1a" type="rgb" />
         </Property>
-        <Property name="text" type="java.lang.String" value="Nama Pegawai"/>
+        <Property name="text" type="java.lang.String" value="Nama Pegawai" />
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNama">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblHp">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="42" green="2b" red="1a" type="rgb"/>
+          <Color blue="42" green="2b" red="1a" type="rgb" />
         </Property>
-        <Property name="text" type="java.lang.String" value="Nomor HP"/>
+        <Property name="text" type="java.lang.String" value="Nomor HP" />
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtHp">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTanggal">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="42" green="2b" red="1a" type="rgb"/>
+          <Color blue="42" green="2b" red="1a" type="rgb" />
         </Property>
-        <Property name="text" type="java.lang.String" value="Tanggal Masuk"/>
+        <Property name="text" type="java.lang.String" value="Tanggal Masuk" />
       </Properties>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="txtTanggal">
@@ -229,46 +224,48 @@
     <Component class="javax.swing.JLabel" name="lblStatus">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="42" green="2b" red="1a" type="rgb"/>
+          <Color blue="42" green="2b" red="1a" type="rgb" />
         </Property>
-        <Property name="text" type="java.lang.String" value="Status Pegawai"/>
+        <Property name="text" type="java.lang.String" value="Status Pegawai" />
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbStatus">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="AKTIF" />
+            <StringItem index="1" value="NONAKTIF" />
+          </StringArray>
         </Property>
-      </Properties>
+      <Property name="enabled" type="boolean" value="false" /></Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblKhusus1">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="42" green="2b" red="1a" type="rgb"/>
+          <Color blue="42" green="2b" red="1a" type="rgb" />
         </Property>
-        <Property name="text" type="java.lang.String" value="Data Khusus"/>
+        <Property name="text" type="java.lang.String" value="Data Khusus" />
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtKhusus1">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-      </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbKhusus1">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="PAGI" />
+            <StringItem index="1" value="SIANG" />
+            <StringItem index="2" value="MALAM" />
+          </StringArray>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblKhusus2">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="42" green="2b" red="1a" type="rgb"/>
+          <Color blue="42" green="2b" red="1a" type="rgb" />
         </Property>
-        <Property name="text" type="java.lang.String" value="Tanggal Khusus"/>
+        <Property name="text" type="java.lang.String" value="Tanggal Khusus" />
       </Properties>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="txtKhusus2">
@@ -276,52 +273,55 @@
     <Component class="javax.swing.JLabel" name="lblDriverStatus">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="42" green="2b" red="1a" type="rgb"/>
+          <Color blue="42" green="2b" red="1a" type="rgb" />
         </Property>
-        <Property name="text" type="java.lang.String" value="Status Driver"/>
+        <Property name="text" type="java.lang.String" value="Status Driver" />
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbDriverStatus">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="TERSEDIA" />
+            <StringItem index="1" value="NONAKTIF" />
+          </StringArray>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSimpan">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="e6" green="6a" red="2b" type="rgb"/>
+          <Color blue="e6" green="6a" red="2b" type="rgb" />
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="SansSerif" size="13" style="1" />
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="ff" green="ff" red="ff" type="rgb" />
         </Property>
-        <Property name="text" type="java.lang.String" value="Simpan"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="SansSerif" size="13" style="1"/>
-        </Property>
-        <Property name="focusPainted" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="Simpan" />
+        <Property name="focusPainted" type="boolean" value="false" />
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSimpanActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSimpanActionPerformed" />
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnBatal">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="42" green="2b" red="1a" type="rgb"/>
+          <Color blue="42" green="2b" red="1a" type="rgb" />
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="SansSerif" size="13" style="1" />
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="ff" green="ff" red="ff" type="rgb" />
         </Property>
-        <Property name="text" type="java.lang.String" value="Batal"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="SansSerif" size="13" style="1"/>
-        </Property>
-        <Property name="focusPainted" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="Batal" />
+        <Property name="focusPainted" type="boolean" value="false" />
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatalActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatalActionPerformed" />
       </Events>
     </Component>
   </SubComponents>

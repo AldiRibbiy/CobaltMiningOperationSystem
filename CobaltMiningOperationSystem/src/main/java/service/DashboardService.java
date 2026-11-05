@@ -3,183 +3,397 @@
  */
 package service;
 
-import enums.*;
-import java.util.*;
-import model.*;
-import repository.*;
+import enums.JenisLokasi;
+import enums.Periode;
+import enums.StatusDetail;
+import enums.StatusKendaraan;
+import enums.StatusLokasi;
+import enums.StatusMonitoring;
+import enums.StatusPegawai;
+import enums.StatusPenanganan;
+import enums.StatusPengangkutan;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import model.DetailMonitoring;
+import model.Kendaraan;
+import model.Lokasi;
+import model.MonitoringLingkungan;
+import model.Pegawai;
+import model.Pengangkutan;
+import model.ProduksiTambang;
+import model.User;
+import repository.KendaraanRepository;
+import repository.LokasiRepository;
+import repository.MaterialRepository;
+import repository.MonitoringRepository;
+import repository.PegawaiRepository;
+import repository.PengangkutanRepository;
+import repository.ParameterRepository;
+import repository.ProduksiRepository;
+import repository.UserRepository;
 
 /**
- * Mengumpulkan data agregat untuk dashboard setiap peran. Service ini hanya membaca data
- * melalui repository; validasi hak akses dilakukan oleh DashboardController.
+ * Menghitung seluruh angka KPI, data grafik, dan tabel prioritas untuk
+ * dashboard setiap jabatan. Seluruh angka dibaca dinamis dari database.
  *
  * @author zefrialrizkullah
  */
-
 public final class DashboardService {
-    private final PegawaiRepository pegawai;
-    private final UserRepository users;
-    private final LokasiRepository lokasi;
-    private final MaterialRepository material;
-    private final KendaraanRepository kendaraan;
-    private final ParameterRepository parameter;
-    private final ProduksiRepository produksi;
-    private final PengangkutanRepository pengangkutan;
-    private final MonitoringRepository monitoring;
+    private final PegawaiRepository pegawaiRepository;
+    private final UserRepository userRepository;
+    private final LokasiRepository lokasiRepository;
+    private final MaterialRepository materialRepository;
+    private final KendaraanRepository kendaraanRepository;
+    private final ParameterRepository parameterRepository;
+    private final ProduksiRepository produksiRepository;
+    private final PengangkutanRepository pengangkutanRepository;
+    private final MonitoringRepository monitoringRepository;
 
-    public DashboardService(PegawaiRepository p, UserRepository u, LokasiRepository l,
-            MaterialRepository m, KendaraanRepository k, ParameterRepository par,
-            ProduksiRepository pr, PengangkutanRepository pg, MonitoringRepository mo) {
-        pegawai = p;
-        users = u;
-        lokasi = l;
-        material = m;
-        kendaraan = k;
-        parameter = par;
-        produksi = pr;
-        pengangkutan = pg;
-        monitoring = mo;
+    public DashboardService(PegawaiRepository pegawaiRepository,
+            UserRepository userRepository,
+            LokasiRepository lokasiRepository,
+            MaterialRepository materialRepository,
+            KendaraanRepository kendaraanRepository,
+            ParameterRepository parameterRepository,
+            ProduksiRepository produksiRepository,
+            PengangkutanRepository pengangkutanRepository,
+            MonitoringRepository monitoringRepository) {
+        this.pegawaiRepository = pegawaiRepository;
+        this.userRepository = userRepository;
+        this.lokasiRepository = lokasiRepository;
+        this.materialRepository = materialRepository;
+        this.kendaraanRepository = kendaraanRepository;
+        this.parameterRepository = parameterRepository;
+        this.produksiRepository = produksiRepository;
+        this.pengangkutanRepository = pengangkutanRepository;
+        this.monitoringRepository = monitoringRepository;
     }
 
-    /* ---------------- Admin ---------------- */
+    /** Satu baris prioritas penanganan lingkungan (per parameter bermasalah). */
+    public static final class PrioritasRow {
+        public int idMonitoring;
+        public LocalDate tanggal;
+        public String lokasi;
+        public String parameter;
+        public String satuan;
+        public double nilai;
+        public Double batasMinimum;
+        public Double batasMaksimum;
+        public StatusPenanganan penanganan;
+        public String tindakLanjut;
+        public boolean diteruskanKeManager;
 
+        public String batasTeks() {
+            if (batasMinimum != null && batasMaksimum != null) return batasMinimum + " - " + batasMaksimum;
+            if (batasMaksimum != null) return "maks " + batasMaksimum;
+            if (batasMinimum != null) return "min " + batasMinimum;
+            return "-";
+        }
+    }
+
+    /** Satu baris rekap produksi per lokasi untuk Manager. */
+    public static final class RekapLokasiRow {
+        public String namaLokasi;
+        public String jenisLokasi;
+        public double produksi;
+        public double terkirim;
+        public double stok;
+    }
+
+    /** Kumpulan angka ringkasan yang dibaca langsung oleh panel dashboard. */
+    public static final class Data {
+        // ---- administrator
+        public int pegawaiTotal;
+        public int pegawaiAktif;
+        public int pegawaiNonaktif;
+        public int akunTotal;
+        public int akunAktif;
+        public int akunNonaktif;
+        public int aksesBelumTersedia;
+        public int akunPerluDiperiksa;
+        public int lokasiTotal;
+        public int lokasiAktif;
+        public int kendaraanTotal;
+        public int kendaraanTersedia;
+        public int materialTotal;
+        public int parameterTotal;
+        public Map<String, Integer> pegawaiPerJenis = new LinkedHashMap<>();
+        public List<PrioritasRow> prioritas = new ArrayList<>();
+
+        // ---- operasional
+        public double produksiTon;
+        public double stokTon;
+        public int produksiCount;
+        public int lokasiBerproduksi;
+        public Map<String, Double> produksiPerLokasi = new LinkedHashMap<>();
+        public List<LocalDate> trenTanggal = new ArrayList<>();
+        public List<Double> trenNilai = new ArrayList<>();
+        public List<ProduksiTambang> produksiTerbaru = new ArrayList<>();
+
+        // ---- HSE / lingkungan
+        public int monitoringTotal;
+        public int monitoringNormal;
+        public int monitoringPeringatan;
+        public int penangananBelumSelesai;
+        public Map<String, Integer> peringatanPerParameter = new LinkedHashMap<>();
+
+        // ---- manager
+        public List<RekapLokasiRow> rekapLokasi = new ArrayList<>();
+        public int lokasiPeringatan;
+    }
+
+    // ---------------------------------------------------------------- admin
     public Data admin() {
         Data d = new Data();
-        List<Pegawai> semua = pegawai.findAll();
+
+        List<Pegawai> semua = pegawaiRepository.findAll();
         d.pegawaiTotal = semua.size();
-        d.pegawaiAktif = (int) semua.stream().filter(x->x.getStatusPegawai() == StatusPegawai.AKTIF).count();
-        d.admin = (int) semua.stream().filter(x->x instanceof Admin).count();
-        d.ops = (int) semua.stream().filter(x->x instanceof PetugasOperasional).count();
-        d.hse = (int) semua.stream().filter(x->x instanceof PetugasHSE).count();
-        d.manager = (int) semua.stream().filter(x->x instanceof Manager).count();
-        d.driver = (int) semua.stream().filter(x->x instanceof Driver).count();
-        d.userTotal = users.findAll().size();
-        d.lokasiTotal = lokasi.findAll().size();
-        d.lokasiAktif = (int) lokasi.findAll().stream().filter(x->x.getStatusOperasional() == StatusLokasi.AKTIF).count();
-        d.materialTotal = material.findAll().size();
-        d.parameterTotal = parameter.findAll().size();
-        List<Kendaraan> k = kendaraan.findAll();
-        d.kendaraanTotal = k.size();
-        d.kendaraanTersedia = (int) k.stream().filter(x->x.getStatusKendaraan() == StatusKendaraan.TERSEDIA).count();
-        d.kendaraanDigunakan = (int) k.stream().filter(x->x.getStatusKendaraan() == StatusKendaraan.DIGUNAKAN).count();
-        d.kendaraanNonaktif = (int) k.stream().filter(x->x.getStatusKendaraan() == StatusKendaraan.NONAKTIF).count();
-        return d;
-    }
-
-    /* ------------- Petugas Operasional ------------- */
-
-    public Data operasional() {
-        Data d = new Data();
-        List<ProduksiTambang> prod = produksi.findAll();
-        d.produksiTotal = prod.size();
-        d.produksiTon = prod.stream().mapToDouble(ProduksiTambang::getJumlahProduksi).sum();
-        d.stokTersediaTon = prod.stream().mapToDouble(ProduksiTambang::getJumlahTersedia).sum();
-        d.produksiTersedia = (int) prod.stream().filter(x->x.getStatusProduksi() != StatusProduksi.HABIS && x.getJumlahTersedia()>0).count();
-
-        List<Pengangkutan> ang = pengangkutan.findAll();
-        d.angkutTotal = ang.size();
-        d.angkutDijadwalkan = (int) ang.stream().filter(x->x.getStatusPengangkutan() == StatusPengangkutan.DIJADWALKAN).count();
-        d.angkutPerjalanan = (int) ang.stream().filter(x->x.getStatusPengangkutan() == StatusPengangkutan.DALAM_PERJALANAN).count();
-        d.angkutSelesai = (int) ang.stream().filter(x->x.getStatusPengangkutan() == StatusPengangkutan.SELESAI).count();
-        d.angkutDibatalkan = (int) ang.stream().filter(x->x.getStatusPengangkutan() == StatusPengangkutan.DIBATALKAN).count();
-        d.angkutSelesaiTon = ang.stream().filter(x->x.getStatusPengangkutan() == StatusPengangkutan.SELESAI)
-                .mapToDouble(Pengangkutan::getJumlahMuatan).sum();
-
-        d.kendaraanTersedia = (int) kendaraan.findAll().stream().filter(x->x.getStatusKendaraan() == StatusKendaraan.TERSEDIA).count();
-        d.driverTersedia = (int) pegawai.findAll().stream().filter(x->x instanceof Driver
-                && ((Driver) x).getStatusDriver() == StatusDriver.TERSEDIA).count();
-
-        // Produksi terakhir per tanggal untuk tren grafik (maksimal 14 tanggal terakhir).
-        Map<java.time.LocalDate, Double> tren = new TreeMap<>();
-        for (ProduksiTambang p : prod)tren.merge(p.getTanggalProduksi(), p.getJumlahProduksi(), Double::sum);
-        isiTren(d, tren, 14);
-
-        // Total produksi per lokasi PIT.
-        for (ProduksiTambang p : prod)d.produksiPerLokasi.merge(p.getLokasi().getNamaLokasi(), p.getJumlahProduksi(), Double::sum);
-        return d;
-    }
-
-    /* ---------------- HSE ---------------- */
-
-    public Data hse() {
-        Data d = new Data();
-        List<MonitoringLingkungan> mon = monitoring.findAll();
-        d.monitoringTotal = mon.size();
-        d.monitoringNormal = (int) mon.stream().filter(x->x.getStatusMonitoring() == StatusMonitoring.NORMAL).count();
-        d.monitoringPeringatan = (int) mon.stream().filter(x->x.getStatusMonitoring() == StatusMonitoring.PERINGATAN).count();
-        d.penangananBelum = (int) mon.stream().filter(x->x.getStatusPenanganan() == StatusPenanganan.BELUM_DITANGANI).count();
-        d.penangananProses = (int) mon.stream().filter(x->x.getStatusPenanganan() == StatusPenanganan.DALAM_PENANGANAN).count();
-        d.penangananSelesai = (int) mon.stream().filter(x->x.getStatusPenanganan() == StatusPenanganan.SELESAI).count();
-        d.parameterTotal = parameter.findAll().size();
-
-        for (MonitoringLingkungan m : mon) {
-            for (DetailMonitoring dt : m.getDetailMonitoring()) {
-                String nama = dt.getParameter().getNamaParameter();
-                d.detailPerParameter.merge(nama, 1, Integer::sum);
-
-                if (dt.getStatusDetail() == StatusDetail.PERINGATAN)d.peringatanPerParameter.merge(nama, 1, Integer::sum);
-            }
-
+        for (Pegawai p : semua) {
+            if (p.getStatusPegawai() == StatusPegawai.AKTIF) d.pegawaiAktif++;
+            else d.pegawaiNonaktif++;
+            String jenis = labelJenis(p);
+            d.pegawaiPerJenis.merge(jenis, 1, Integer::sum);
         }
 
-        // Tren 14 hari terakhir untuk grafik.
-        Map<java.time.LocalDate, Double> tren = new TreeMap<>();
-        for (MonitoringLingkungan m : mon)tren.merge(m.getTanggalMonitoring().toLocalDate(), 1.0, Double::sum);
-        isiTren(d, tren, 14);
+        List<User> akun = userRepository.findAll();
+        d.akunTotal = akun.size();
+        for (User u : akun) {
+            Pegawai p = u.getPegawai();
+            if (p != null && p.getStatusPegawai() == StatusPegawai.AKTIF) d.akunAktif++;
+            else d.akunNonaktif++;
+        }
+
+        d.aksesBelumTersedia = 0;
+        for (Pegawai p : pegawaiRepository.findAllAktif()) {
+            if (p instanceof model.Driver) continue;               // driver tidak memerlukan akun
+            if (!userRepository.findByPegawai(p.getIdPegawai()).isPresent()) d.aksesBelumTersedia++;
+        }
+        d.akunPerluDiperiksa = d.akunNonaktif;                     // akun milik pegawai nonaktif
+
+        List<Lokasi> lokasi = lokasiRepository.findAll();
+        d.lokasiTotal = lokasi.size();
+        for (Lokasi l : lokasi) if (l.getStatusOperasional() == StatusLokasi.AKTIF) d.lokasiAktif++;
+
+        d.kendaraanTotal = 0;
+        d.kendaraanTersedia = 0;
+        for (Kendaraan k : kendaraanRepository.findAllDenganNonaktif()) {
+            d.kendaraanTotal++;
+            if (k.getStatusKendaraan() == StatusKendaraan.TERSEDIA) d.kendaraanTersedia++;
+        }
+
+        d.materialTotal = materialRepository.findAll().size();
+        d.parameterTotal = parameterRepository.findAll().size();
+
+        d.prioritas = barisPrioritas();
         return d;
     }
 
-    /* ---------------- Manager ---------------- */
+    /** Kumpulan id material yang sudah dipakai pada catatan produksi. */
+    public java.util.Set<Integer> materialTerpakaiSet() {
+        java.util.Set<Integer> unik = new java.util.HashSet<>();
+        for (ProduksiTambang p : produksiRepository.findAll()) {
+            if (p.getMaterial() != null)unik.add(p.getMaterial().getIdMaterial());
+        }
+        return unik;
+    }
 
-    public Data manager() {
-        Data d = operasional();
-        Data h = hse();
-        d.monitoringTotal = h.monitoringTotal;
-        d.monitoringNormal = h.monitoringNormal;
-        d.monitoringPeringatan = h.monitoringPeringatan;
-        d.penangananBelum = h.penangananBelum;
-        d.penangananProses = h.penangananProses;
-        d.penangananSelesai = h.penangananSelesai;
-        d.detailPerParameter.putAll(h.detailPerParameter);
-        d.peringatanPerParameter.putAll(h.peringatanPerParameter);
-        d.kendaraanDigunakan = (int) kendaraan.findAll().stream().filter(x->x.getStatusKendaraan() == StatusKendaraan.DIGUNAKAN).count();
-        d.kendaraanTotal = kendaraan.findAll().size();
+    // ----------------------------------------------------------- operasional
+    public Data operasional(Periode periode, LocalDate kustomAwal, LocalDate kustomAkhir) {
+        Data d = new Data();
+        LocalDate awal = periode.awal(kustomAwal);
+        LocalDate akhir = periode.akhir(kustomAkhir);
 
-        // Utilisasi muatan per kendaraan (ton terselesaikan).
-        for (Pengangkutan a : pengangkutan.findAll()) {
-            if (a.getStatusPengangkutan() == StatusPengangkutan.SELESAI) {
-                d.muatanPerKendaraan.merge(a.getKendaraan().getNomorPolisi(), a.getJumlahMuatan(), Double::sum);
+        double stok = 0;
+        Map<String, Double> perLokasi = new LinkedHashMap<>();
+        for (Lokasi l : lokasiRepository.findAll()) {
+            if (l.getJenisLokasi() == JenisLokasi.PIT && l.getStatusOperasional() == StatusLokasi.AKTIF) {
+                perLokasi.put(l.getNamaLokasi(), 0.0);
             }
         }
+        Map<LocalDate, Double> tren = new TreeMap<>();
+        List<ProduksiTambang> dalamPeriode = new ArrayList<>();
+        for (ProduksiTambang p : produksiRepository.findAll()) {
+            stok += p.getJumlahTersedia();
+            if (!Periode.dalam(p.getTanggalProduksi(), awal, akhir)) continue;
+            dalamPeriode.add(p);
+            d.produksiTon += p.getJumlahProduksi();
+            d.produksiCount++;
+            String nama = p.getLokasi() == null ? "-" : p.getLokasi().getNamaLokasi();
+            perLokasi.merge(nama, p.getJumlahProduksi(), Double::sum);
+            if (p.getTanggalProduksi() != null) tren.merge(p.getTanggalProduksi(), p.getJumlahProduksi(), Double::sum);
+        }
+        d.stokTon = stok;
+        d.lokasiBerproduksi = (int) perLokasi.values().stream().filter(v -> v > 0).count();
+        d.produksiPerLokasi = perLokasi;
+        for (Map.Entry<LocalDate, Double> e : tren.entrySet()) {
+            d.trenTanggal.add(e.getKey());
+            d.trenNilai.add(e.getValue());
+        }
+        dalamPeriode.sort((a, b) -> b.getTanggalProduksi().compareTo(a.getTanggalProduksi()));
+        for (int i = 0; i < dalamPeriode.size() && i < 8; i++) d.produksiTerbaru.add(dalamPeriode.get(i));
         return d;
     }
 
-    private void isiTren(Data d, Map<java.time.LocalDate, Double> sumber, int maks) {
-        List<java.time.LocalDate> tanggal = new ArrayList<>(sumber.keySet());
-        int awal = Math.max(0, tanggal.size()-maks);
+    // ------------------------------------------------------------------ hse
+    public Data hse(Periode periode, LocalDate kustomAwal, LocalDate kustomAkhir) {
+        Data d = new Data();
+        LocalDate awal = periode.awal(kustomAwal);
+        LocalDate akhir = periode.akhir(kustomAkhir);
 
-        for (int i = awal;i<tanggal.size();i++) {
-            java.time.LocalDate t = tanggal.get(i);
-            d.trenTanggal.add(t);
-            d.trenNilai.add(sumber.get(t));
+        for (MonitoringLingkungan m : monitoringRepository.findAll()) {
+            boolean dalam = Periode.dalam(m.getTanggalMonitoring() == null ? null
+                    : m.getTanggalMonitoring().toLocalDate(), awal, akhir);
+            if (dalam) {
+                d.monitoringTotal++;
+                if (m.getStatusMonitoring() == StatusMonitoring.NORMAL) d.monitoringNormal++;
+                else if (m.getStatusMonitoring() == StatusMonitoring.PERINGATAN) d.monitoringPeringatan++;
+                if (dalam) hitungPeringatanPerParameter(m, d.peringatanPerParameter);
+            }
+            if (m.getStatusMonitoring() == StatusMonitoring.PERINGATAN
+                    && (m.getStatusPenanganan() == StatusPenanganan.BELUM_DITANGANI
+                    || m.getStatusPenanganan() == StatusPenanganan.DALAM_PENANGANAN)) {
+                d.penangananBelumSelesai++;      // seluruh periode
+            }
+        }
+        d.prioritas = barisPrioritas();
+        return d;
+    }
+
+    // --------------------------------------------------------------- manager
+    public Data manager(Periode periode, LocalDate kustomAwal, LocalDate kustomAkhir) {
+        Data d = operasional(periode, kustomAwal, kustomAkhir);
+        LocalDate awal = periode.awal(kustomAwal);
+        LocalDate akhir = periode.akhir(kustomAkhir);
+
+        // terkirim per lokasi (periode) + stok saat ini
+        Map<Integer, Double> terkirim = new LinkedHashMap<>();
+        for (Pengangkutan a : pengangkutanRepository.findAll()) {
+            if (a.getStatusPengangkutan() != StatusPengangkutan.SELESAI) continue;
+            if (!Periode.dalam(a.getTanggalPengangkutan(), awal, akhir)) continue;
+            int idLokasi = a.getProduksi() != null && a.getProduksi().getLokasi() != null
+                    ? a.getProduksi().getLokasi().getIdLokasi() : -1;
+            terkirim.merge(idLokasi, a.getJumlahMuatan(), Double::sum);
+        }
+        for (Lokasi l : lokasiRepository.findAll()) {
+            RekapLokasiRow r = new RekapLokasiRow();
+            r.namaLokasi = l.getNamaLokasi();
+            r.jenisLokasi = l.getJenisLokasi() == JenisLokasi.PIT ? "PIT" : "Stockpile";
+            double produksi = d.produksiPerLokasi.getOrDefault(l.getNamaLokasi(), 0.0);
+            double stok = 0;
+            for (ProduksiTambang p : produksiRepository.findAll()) {
+                if (p.getLokasi() != null && p.getLokasi().getIdLokasi() == l.getIdLokasi()) stok += p.getJumlahTersedia();
+            }
+            r.produksi = produksi;
+            r.terkirim = terkirim.getOrDefault(l.getIdLokasi(), 0.0);
+            r.stok = stok;
+            d.rekapLokasi.add(r);
+        }
+
+        for (MonitoringLingkungan m : monitoringRepository.findAll()) {
+            if (m.getStatusMonitoring() == StatusMonitoring.PERINGATAN
+                    && (m.getStatusPenanganan() == StatusPenanganan.BELUM_DITANGANI
+                    || m.getStatusPenanganan() == StatusPenanganan.DALAM_PENANGANAN)) {
+                d.penangananBelumSelesai++;
+                if (Periode.dalam(m.getTanggalMonitoring() == null ? null
+                        : m.getTanggalMonitoring().toLocalDate(), awal, akhir)) {
+                    hitungPeringatanPerParameter(m, d.peringatanPerParameter);
+                }
+            }
+        }
+        d.prioritas = barisPrioritas();
+        d.lokasiPeringatan = hitungLokasiPeringatan();
+        return d;
+    }
+
+    // -------------------------------------------------------------- helpers
+    private void hitungPeringatanPerParameter(MonitoringLingkungan m, Map<String, Integer> target) {
+        if (m.getDetailMonitoring() == null) return;
+        for (DetailMonitoring dt : m.getDetailMonitoring()) {
+            if (dt.getStatusDetail() == StatusDetail.PERINGATAN && dt.getParameter() != null) {
+                target.merge(dt.getParameter().getNamaParameter(), 1, Integer::sum);
+            }
         }
     }
 
-    /** Struktur data ringkasan untuk ditampilkan dashboard. */
-    public static final class Data {
-        public int pegawaiTotal, pegawaiAktif, admin, ops, hse, manager, driver, userTotal;
-        public int lokasiTotal, lokasiAktif, materialTotal, parameterTotal;
-        public int kendaraanTotal, kendaraanTersedia, kendaraanDigunakan, kendaraanNonaktif;
-        public int produksiTotal, produksiTersedia;
-        public double produksiTon, stokTersediaTon, angkutSelesaiTon;
-        public int angkutTotal, angkutDijadwalkan, angkutPerjalanan, angkutSelesai, angkutDibatalkan;
-        public int driverTersedia;
-        public int monitoringTotal, monitoringNormal, monitoringPeringatan;
-        public int penangananBelum, penangananProses, penangananSelesai;
-        public final Map<String, Integer> detailPerParameter = new LinkedHashMap<>();
-        public final Map<String, Integer> peringatanPerParameter = new LinkedHashMap<>();
-        public final Map<String, Double> produksiPerLokasi = new LinkedHashMap<>();
-        public final Map<String, Double> muatanPerKendaraan = new LinkedHashMap<>();
-        public final List<java.time.LocalDate> trenTanggal = new ArrayList<>();
-        public final List<Double> trenNilai = new ArrayList<>();
+    /** Lokasi yang hasil monitoring terakhirnya PERINGATAN. */
+    private int hitungLokasiPeringatan() {
+        Map<Integer, MonitoringLingkungan> terakhir = new LinkedHashMap<>();
+        for (MonitoringLingkungan m : monitoringRepository.findAll()) {
+            int id = m.getLokasi() == null ? -1 : m.getLokasi().getIdLokasi();
+            MonitoringLingkungan ada = terakhir.get(id);
+            if (ada == null || (m.getTanggalMonitoring() != null && ada.getTanggalMonitoring() != null
+                    && m.getTanggalMonitoring().isAfter(ada.getTanggalMonitoring()))) {
+                terakhir.put(id, m);
+            }
+        }
+        int jumlah = 0;
+        for (MonitoringLingkungan m : terakhir.values()) {
+            if (m.getStatusMonitoring() == StatusMonitoring.PERINGATAN) jumlah++;
+        }
+        return jumlah;
+    }
+
+    /** Baris prioritas penanganan: monitoring PERINGATAN yang belum selesai ditangani. */
+    private List<PrioritasRow> barisPrioritas() {
+        List<PrioritasRow> out = new ArrayList<>();
+        List<MonitoringLingkungan> daftar = monitoringRepository.findAll();
+        daftar.sort((a, b) -> {
+            if (a.getTanggalMonitoring() == null || b.getTanggalMonitoring() == null) return 0;
+            return b.getTanggalMonitoring().compareTo(a.getTanggalMonitoring());
+        });
+        for (MonitoringLingkungan m : daftar) {
+            if (m.getStatusMonitoring() != StatusMonitoring.PERINGATAN) continue;
+            if (m.getStatusPenanganan() == StatusPenanganan.SELESAI
+                    || m.getStatusPenanganan() == StatusPenanganan.TIDAK_DIPERLUKAN) continue;
+            boolean adaBaris = false;
+            if (m.getDetailMonitoring() != null) {
+                for (DetailMonitoring dt : m.getDetailMonitoring()) {
+                    if (dt.getStatusDetail() != StatusDetail.PERINGATAN) continue;
+                    PrioritasRow r = new PrioritasRow();
+                    r.idMonitoring = m.getIdMonitoring();
+                    r.tanggal = m.getTanggalMonitoring() == null ? null : m.getTanggalMonitoring().toLocalDate();
+                    r.lokasi = m.getLokasi() == null ? "-" : m.getLokasi().getNamaLokasi();
+                    r.parameter = dt.getParameter() == null ? "-" : dt.getParameter().getNamaParameter();
+                    r.satuan = dt.getParameter() == null ? "" : dt.getParameter().getSatuan();
+                    r.nilai = dt.getNilaiPengukuran();
+                    r.batasMinimum = dt.getParameter() == null ? null : dt.getParameter().getBatasMinimum();
+                    r.batasMaksimum = dt.getParameter() == null ? null : dt.getParameter().getBatasMaksimum();
+                    r.penanganan = m.getStatusPenanganan();
+                    r.tindakLanjut = m.getTindakLanjut();
+                    r.diteruskanKeManager = m.getTindakLanjut() != null
+                            && m.getTindakLanjut().startsWith("Diteruskan ke Manager");
+                    out.add(r);
+                    adaBaris = true;
+                }
+            }
+            if (!adaBaris) {
+                PrioritasRow r = new PrioritasRow();
+                r.idMonitoring = m.getIdMonitoring();
+                r.tanggal = m.getTanggalMonitoring() == null ? null : m.getTanggalMonitoring().toLocalDate();
+                r.lokasi = m.getLokasi() == null ? "-" : m.getLokasi().getNamaLokasi();
+                r.parameter = "Parameter tidak tercatat";
+                r.satuan = "";
+                r.nilai = 0;
+                r.penanganan = m.getStatusPenanganan();
+                r.tindakLanjut = m.getTindakLanjut();
+                r.diteruskanKeManager = m.getTindakLanjut() != null
+                        && m.getTindakLanjut().startsWith("Diteruskan ke Manager");
+                out.add(r);
+            }
+        }
+        return out;
+    }
+
+    private static String labelJenis(Pegawai p) {
+        if (p instanceof model.Admin) return "Admin";
+        if (p instanceof model.PetugasOperasional) return "Petugas Operasional";
+        if (p instanceof model.PetugasHSE) return "Petugas HSE";
+        if (p instanceof model.Manager) return "Manager";
+        if (p instanceof model.Driver) return "Driver";
+        return "Lainnya";
     }
 }

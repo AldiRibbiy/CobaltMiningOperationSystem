@@ -108,7 +108,8 @@ public final class MasterDataService {
     
     public void hapusPegawai(int id) {
         cariPegawaiById(id);
-        check(!users.findByPegawai(id).isPresent(),"Pegawai memiliki akun.");
+        /* Soft delete: pegawai tidak dihapus fisik karena berpengaruh ke akun,
+         * produksi, pengangkutan, dan monitoring. Cukup dinonaktifkan. */
         pegawai.delete(id);
     }
     
@@ -117,7 +118,82 @@ public final class MasterDataService {
     }
     
     public List<Pegawai> tampilkanSemuaPegawai() {
-        return pegawai.findAll();
+        return pegawai.findAllAktif();
+    }
+    
+    /** Pegawai aktif non-driver yang belum memiliki akun pengguna. */
+    public List<Pegawai> tampilkanPegawaiTanpaAkun() {
+        List<Pegawai> out = new ArrayList<>();
+        for (Pegawai x:pegawai.findAllAktif()) {
+            if (!(x instanceof Driver) && !users.findByPegawai(x.getIdPegawai()).isPresent())out.add(x);
+        }
+        return out;
+    }
+    
+    /** KPI ringkasan pegawai: {total terdaftar, aktif, nonaktif, admin, ops, hse, manager, driver}. */
+    public int[] ringkasanPegawai() {
+        int[] k = new int[8];
+        for (Pegawai x:pegawai.findAll()) {
+            k[0]++;
+            if (x.getStatusPegawai() == StatusPegawai.AKTIF)k[1]++;
+            else k[2]++;
+            String jenis = x.getJenisPegawai() == null ? "" : x.getJenisPegawai();
+            switch (jenis) {
+                case "ADMIN": k[3]++; break;
+                case "PETUGASOPERASIONAL": k[4]++; break;
+                case "PETUGASHSE": k[5]++; break;
+                case "MANAGER": k[6]++; break;
+                case "DRIVER": k[7]++; break;
+                default: break;
+            }
+        }
+        return k;
+    }
+    
+    /** KPI akun pengguna: {total, aktif, nonaktif, belum-berakses}; status akun mengikuti status pegawainya. */
+    public int[] ringkasanUser() {
+        int[] k = new int[4];
+        List<User> semua = users.findAll();
+        k[0] = semua.size();
+        for (User u:semua) {
+            Pegawai p = u.getPegawai();
+            if (p != null && p.getStatusPegawai() == StatusPegawai.AKTIF)k[1]++;
+            else k[2]++;
+        }
+        k[3] = tampilkanPegawaiTanpaAkun().size();
+        return k;
+    }
+    
+    /** KPI lokasi: {total tampil, PIT, stockpile, aktif}. */
+    public int[] ringkasanLokasi() {
+        int[] k = new int[4];
+        for (Lokasi x:lokasi.findAll()) {
+            k[0]++;
+            if (x.getJenisLokasi() == JenisLokasi.PIT)k[1]++;
+            else k[2]++;
+            if (x.getStatusOperasional() == StatusLokasi.AKTIF)k[3]++;
+        }
+        return k;
+    }
+    
+    /** KPI kendaraan: {total tampil, tersedia, digunakan, perawatan/nonaktif}. */
+    public int[] ringkasanKendaraan() {
+        int[] k = new int[4];
+        for (Kendaraan x:kendaraan.findAll()) {
+            k[0]++;
+            if (x.getStatusKendaraan() == StatusKendaraan.TERSEDIA)k[1]++;
+            else if (x.getStatusKendaraan() == StatusKendaraan.DIGUNAKAN)k[2]++;
+            else k[3]++;
+        }
+        return k;
+    }
+    
+    public int totalMaterial() {
+        return material.findAll().size();
+    }
+    
+    public int totalParameter() {
+        return parameter.findAll().size();
     }
     
     public List<Pegawai> cariPegawaiByNama(String n) {
@@ -143,22 +219,9 @@ public final class MasterDataService {
         users.save(u);
     }
     
-    public void ubahUser(User u) {
-        validateUser(u);
-        User old = cariUserById(u.getIdUser());
-        check(old.getPegawai().getIdPegawai() == u.getPegawai().getIdPegawai(),
-                "Pemilik akun tidak dapat diganti.");
-        Optional<User> same = users.findByUsername(u.getUsername().trim());
-        check(!same.isPresent() || same.get().getIdUser() == u.getIdUser(),"Username digunakan.");
-        String pwd = u.getPassword();
-        if (pwd == null || pwd.isEmpty() || pwd.equals(old.getPassword()))u.setPassword(old.getPassword());
-        else u.setPassword(PasswordUtil.hashPassword(pwd));
-        u.setUsername(u.getUsername().trim());
-        users.update(u);
-    }
-    
     public void hapusUser(int id) {
         cariUserById(id);
+        /* Akun pengguna adalah data akses, bukan data induk: boleh dihapus fisik oleh Admin. */
         users.delete(id);
     }
     
@@ -194,6 +257,7 @@ public final class MasterDataService {
     
     public void hapusLokasi(int id) {
         cariLokasiById(id);
+        /* Soft delete: data historis yang memakai lokasi ini tetap utuh. */
         lokasi.delete(id);
     }
     
@@ -266,7 +330,8 @@ public final class MasterDataService {
     }
     
     public void hapusKendaraan(int id) {
-        check(cariKendaraanById(id).getStatusKendaraan() != StatusKendaraan.DIGUNAKAN,"Kendaraan digunakan.");
+        check(cariKendaraanById(id).getStatusKendaraan() != StatusKendaraan.DIGUNAKAN,"Kendaraan sedang digunakan.");
+        /* Soft delete: riwayat pengangkutan kendaraan ini tetap utuh. */
         kendaraan.delete(id);
     }
     
@@ -314,6 +379,16 @@ public final class MasterDataService {
         return filled(n)?parameter.findByNama(n.trim()):parameter.findAll();
     }
     
+    /** Driver aktif yang sedang tidak membawa tugas pengangkutan. */
+    public List<Pegawai> tampilkanDriverTersedia() {
+        List<Pegawai> out = new ArrayList<>();
+        for (Pegawai x:pegawai.findAll()) {
+            if (x instanceof Driver && x.getStatusPegawai() == StatusPegawai.AKTIF
+                    && ((Driver) x).getStatusDriver() == StatusDriver.TERSEDIA)out.add(x);
+        }
+        return out;
+    }
+
     public List<Kendaraan> tampilkanKendaraanTersedia() {
         List<Kendaraan> out = new ArrayList<>();
         for (Kendaraan x:kendaraan.findAll())if (x.getStatusKendaraan() == StatusKendaraan.TERSEDIA)out.add(x);

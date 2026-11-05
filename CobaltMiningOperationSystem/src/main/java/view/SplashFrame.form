@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3" />
+    <Property name="title" type="java.lang.String" value="C-MOS | Selamat Datang" />
+  </Properties>
+  <SyntheticProperties><SyntheticProperty name="formSizePolicy" type="int" value="1" /></SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0" />
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true" />
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3" />
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2" />
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2" />
+  </AuxValues>
+  <Layout><DimensionLayout dim="0"><Group type="103" groupAlignment="0" attributes="0"><Component id="pnlBackground" max="32767" attributes="0" /></Group></DimensionLayout>
+  <DimensionLayout dim="1"><Group type="103" groupAlignment="0" attributes="0"><Component id="pnlBackground" max="32767" attributes="0" /></Group></DimensionLayout></Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="pnlBackground">
+      <Properties><Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="f" green="1f" blue="34" type="rgb" /></Property></Properties>
+      <Layout><DimensionLayout dim="0"><Group type="103" groupAlignment="0" attributes="0"><Group type="102" attributes="0"><EmptySpace min="60" pref="60" max="60" /><Group type="103" groupAlignment="0" attributes="0"><Component id="lblBrand" min="540" pref="540" max="540" /><Component id="lblTitle" min="540" pref="540" max="540" /><Component id="lblSubtitle" min="540" pref="540" max="540" /><Component id="lblStatus" min="540" pref="540" max="540" /><Component id="progress" min="540" pref="540" max="540" /><Component id="btnMulai" min="235" pref="235" max="235" /></Group><EmptySpace min="60" pref="60" max="60" /></Group></Group></DimensionLayout>
+      <DimensionLayout dim="1"><Group type="103" groupAlignment="0" attributes="0"><Group type="102" attributes="0"><EmptySpace min="60" pref="60" max="60" /><Component id="lblBrand" min="28" pref="28" max="28" /><EmptySpace min="35" pref="35" max="35" /><Component id="lblTitle" min="58" pref="58" max="58" /><EmptySpace min="8" pref="8" max="8" /><Component id="lblSubtitle" min="30" pref="30" max="30" /><EmptySpace min="42" pref="42" max="42" /><Component id="btnMulai" min="48" pref="48" max="48" /><EmptySpace min="20" pref="20" max="20" /><Component id="progress" min="12" pref="12" max="12" /><EmptySpace min="14" pref="14" max="14" /><Component id="lblStatus" min="27" pref="27" max="27" /><EmptySpace min="50" pref="50" max="50" /></Group></Group></DimensionLayout></Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblBrand"><Properties><Property name="text" type="java.lang.String" value="C-MOS  /  COBALT MINING SYSTEM" /><Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor"><Font name="SansSerif" size="15" style="1" /></Property><Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="64" green="a8" blue="ff" type="rgb" /></Property></Properties></Component>
+        <Component class="javax.swing.JLabel" name="lblTitle"><Properties><Property name="text" type="java.lang.String" value="Selamat Datang" /><Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor"><Font name="SansSerif" size="37" style="1" /></Property><Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="ff" green="ff" blue="ff" type="rgb" /></Property></Properties></Component>
+        <Component class="javax.swing.JLabel" name="lblSubtitle"><Properties><Property name="text" type="java.lang.String" value="Sistem Pengelolaan Operasional Pertambangan Cobalt" /><Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor"><Font name="SansSerif" size="15" style="0" /></Property><Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="cf" green="dc" blue="ee" type="rgb" /></Property></Properties></Component>
+        <Component class="javax.swing.JLabel" name="lblStatus"><Properties><Property name="text" type="java.lang.String" value="Memuat aplikasi..." /><Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor"><Font name="SansSerif" size="13" style="0" /></Property><Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="cf" green="dc" blue="ee" type="rgb" /></Property></Properties></Component>
+        <Component class="javax.swing.JButton" name="btnMulai"><Properties><Property name="text" type="java.lang.String" value="MASUK KE APLIKASI" /><Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor"><Font name="SansSerif" size="13" style="1" /></Property><Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="ff" green="ff" blue="ff" type="rgb" /></Property><Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="2b" green="6a" blue="e6" type="rgb" /></Property></Properties><Events><EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mulai" /></Events></Component>
+        <Component class="javax.swing.JProgressBar" name="progress"><Properties><Property name="visible" type="boolean" value="false" /><Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="2b" green="6a" blue="e6" type="rgb" /></Property></Properties></Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

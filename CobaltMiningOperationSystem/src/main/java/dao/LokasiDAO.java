@@ -64,7 +64,9 @@ public final class LokasiDAO implements LokasiRepository {
     
     @Override
     public void delete(int id) {
-        try (Connection c = JdbcSupport.open(); PreparedStatement ps = c.prepareStatement("DELETE FROM lokasi WHERE id_lokasi=?")) {
+        /* Soft delete: lokasi tidak dihapus fisik karena direferensikan oleh
+         * produksi, pengangkutan, dan monitoring. Status menjadi NONAKTIF. */
+        try (Connection c = JdbcSupport.open(); PreparedStatement ps = c.prepareStatement("UPDATE lokasi SET status_operasional='NONAKTIF' WHERE id_lokasi=?")) {
             ps.setInt(1, id);
             JdbcSupport.requireChanged(ps.executeUpdate(), "Lokasi");
         }
@@ -91,6 +93,12 @@ public final class LokasiDAO implements LokasiRepository {
     
     @Override
     public List<Lokasi> findAll() {
+        /* Soft delete: lokasi berstatus NONAKTIF disembunyikan dari daftar. */
+        return search("SELECT * FROM lokasi WHERE status_operasional <> 'NONAKTIF' ORDER BY id_lokasi", null);
+    }
+    
+    @Override
+    public List<Lokasi> findAllDenganNonaktif() {
         return search("SELECT * FROM lokasi ORDER BY id_lokasi", null);
     }
     

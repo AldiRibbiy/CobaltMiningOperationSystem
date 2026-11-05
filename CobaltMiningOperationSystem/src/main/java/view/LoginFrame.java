@@ -58,32 +58,33 @@ public class LoginFrame extends javax.swing.JFrame {
 
         pnlRoot.setBackground(new java.awt.Color(245, 247, 251));
 
-        pnlLeft.setBackground(new java.awt.Color(69, 40, 41));
+        pnlLeft.setBackground(new java.awt.Color(73, 54, 40));
+        pnlLeft.setForeground(new java.awt.Color(228, 224, 225));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(243, 232, 223));
+        jLabel5.setForeground(new java.awt.Color(171, 136, 109));
         jLabel5.setText("◆  LOGIN FORM");
 
         lblBrand.setFont(new java.awt.Font("SansSerif", 1, 44)); // NOI18N
-        lblBrand.setForeground(new java.awt.Color(243, 232, 223));
+        lblBrand.setForeground(new java.awt.Color(214, 192, 179));
         lblBrand.setText("C-MOS");
 
         lblSub.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        lblSub.setForeground(new java.awt.Color(232, 209, 197));
+        lblSub.setForeground(new java.awt.Color(228, 224, 225));
         lblSub.setText("COBALT MINING OPERATIONS SYSTEMS");
 
-        jPanel1.setBackground(new java.awt.Color(232, 209, 197));
+        jPanel1.setBackground(new java.awt.Color(228, 224, 225));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 17)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(243, 232, 223));
+        jLabel4.setForeground(new java.awt.Color(214, 192, 179));
         jLabel4.setText("OPERATIONS PORTAL");
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(232, 209, 197));
+        jLabel3.setForeground(new java.awt.Color(228, 224, 225));
         jLabel3.setText("<html>Pengelolaan data pertambangan<br>terintegrasi dalam satu sistem.</html>");
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(232, 209, 197));
+        jLabel1.setForeground(new java.awt.Color(228, 224, 225));
         jLabel1.setText("CAPSTONE 2026");
 
         org.jdesktop.layout.GroupLayout pnlLeftLayout = new org.jdesktop.layout.GroupLayout(pnlLeft);
@@ -170,9 +171,9 @@ public class LoginFrame extends javax.swing.JFrame {
         chkPassword.setText("Tampilkan password");
         chkPassword.addActionListener(this::chkPasswordActionPerformed);
 
-        btnLogin.setBackground(new java.awt.Color(87, 89, 91));
+        btnLogin.setBackground(new java.awt.Color(171, 136, 109));
         btnLogin.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setForeground(new java.awt.Color(228, 224, 225));
         btnLogin.setText("MASUK KE C-MOS");
         btnLogin.addActionListener(this::btnLoginActionPerformed);
 
@@ -183,7 +184,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(222, 229, 239));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(148, 163, 184));
+        jLabel2.setForeground(new java.awt.Color(171, 136, 109));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("© 2026  C-MOS  by Kelompok 13 COBALT");
 

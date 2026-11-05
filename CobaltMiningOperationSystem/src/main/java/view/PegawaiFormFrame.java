@@ -27,7 +27,7 @@ public class PegawaiFormFrame extends javax.swing.JFrame {
 
         txtTanggal.setDateFormatString("dd/MM/yyyy");
         txtKhusus2.setDateFormatString("dd/MM/yyyy");
-        setSize(720, 575);
+        setSize(720, 620);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -61,137 +61,174 @@ public class PegawaiFormFrame extends javax.swing.JFrame {
         btnSimpan = new javax.swing.JButton();
         btnBatal = new javax.swing.JButton();
 
-        lblTitle.setForeground(new java.awt.Color(26, 43, 66));
-        lblTitle.setText("FORM PEGAWAI");
-        lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22));
-        lblHint.setForeground(new java.awt.Color(103, 121, 143));
-        lblHint.setText("Pilih jenis pegawai; kolom khusus menyesuaikan otomatis.");
-        lblHint.setFont(new java.awt.Font("SansSerif", 1, 12));
-        lblJenis.setForeground(new java.awt.Color(26, 43, 66));
-        lblJenis.setText("Jenis Pegawai");
-        cmbJenis.setBackground(new java.awt.Color(255, 255, 255));
-        lblNama.setForeground(new java.awt.Color(26, 43, 66));
-        lblNama.setText("Nama Pegawai");
-        txtNama.setBackground(new java.awt.Color(255, 255, 255));
-        lblHp.setForeground(new java.awt.Color(26, 43, 66));
-        lblHp.setText("Nomor HP");
-        txtHp.setBackground(new java.awt.Color(255, 255, 255));
-        lblTanggal.setForeground(new java.awt.Color(26, 43, 66));
-        lblTanggal.setText("Tanggal Masuk");
-        lblStatus.setForeground(new java.awt.Color(26, 43, 66));
-        lblStatus.setText("Status Pegawai");
-        cmbStatus.setBackground(new java.awt.Color(255, 255, 255));
-        lblKhusus1.setForeground(new java.awt.Color(26, 43, 66));
-        lblKhusus1.setText("Data Khusus");
-        txtKhusus1.setBackground(new java.awt.Color(255, 255, 255));
-        lblKhusus2.setForeground(new java.awt.Color(26, 43, 66));
-        lblKhusus2.setText("Tanggal Khusus");
-        lblDriverStatus.setForeground(new java.awt.Color(26, 43, 66));
-        lblDriverStatus.setText("Status Driver");
-        cmbDriverStatus.setBackground(new java.awt.Color(255, 255, 255));
-        btnSimpan.setBackground(new java.awt.Color(43, 106, 230));
-        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
-        btnSimpan.setText("Simpan");
-        btnSimpan.setFont(new java.awt.Font("SansSerif", 1, 13));
-        btnSimpan.setFocusPainted(false);
-        btnBatal.setBackground(new java.awt.Color(26, 43, 66));
-        btnBatal.setForeground(new java.awt.Color(255, 255, 255));
-        btnBatal.setText("Batal");
-        btnBatal.setFont(new java.awt.Font("SansSerif", 1, 13));
-        btnBatal.setFocusPainted(false);
-        cmbJenis.addActionListener(this::cmbJenisActionPerformed);
-        btnSimpan.addActionListener(this::btnSimpanActionPerformed);
-        btnBatal.addActionListener(this::btnBatalActionPerformed);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+
+        lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(26, 43, 66));
+        lblTitle.setText("FORM PEGAWAI");
+
+        lblHint.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lblHint.setForeground(new java.awt.Color(103, 121, 143));
+        lblHint.setText("Pilih jenis pegawai; kolom khusus menyesuaikan otomatis.");
+
+        lblJenis.setForeground(new java.awt.Color(26, 43, 66));
+        lblJenis.setText("Jenis Pegawai");
+
+        cmbJenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ADMIN", "OPERASIONAL", "HSE", "MANAGER", "DRIVER" }));
+        cmbJenis.addActionListener(this::cmbJenisActionPerformed);
+
+        lblNama.setForeground(new java.awt.Color(26, 43, 66));
+        lblNama.setText("Nama Pegawai");
+
+        lblHp.setForeground(new java.awt.Color(26, 43, 66));
+        lblHp.setText("Nomor HP");
+
+        lblTanggal.setForeground(new java.awt.Color(26, 43, 66));
+        lblTanggal.setText("Tanggal Masuk");
+
+        lblStatus.setForeground(new java.awt.Color(26, 43, 66));
+        lblStatus.setText("Status Pegawai");
+
+        cmbStatus.setEnabled(false);
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AKTIF", "NONAKTIF" }));
+
+        lblKhusus1.setForeground(new java.awt.Color(26, 43, 66));
+        lblKhusus1.setText("Data Khusus");
+
+        cmbKhusus1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PAGI", "SIANG", "MALAM" }));
+
+        lblKhusus2.setForeground(new java.awt.Color(26, 43, 66));
+        lblKhusus2.setText("Tanggal Khusus");
+
+        lblDriverStatus.setForeground(new java.awt.Color(26, 43, 66));
+        lblDriverStatus.setText("Status Driver");
+
+        cmbDriverStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TERSEDIA", "NONAKTIF" }));
+
+        btnSimpan.setBackground(new java.awt.Color(43, 106, 230));
+        btnSimpan.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setText("Simpan");
+        btnSimpan.setFocusPainted(false);
+        btnSimpan.addActionListener(this::btnSimpanActionPerformed);
+
+        btnBatal.setBackground(new java.awt.Color(26, 43, 66));
+        btnBatal.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnBatal.setForeground(new java.awt.Color(255, 255, 255));
+        btnBatal.setText("Batal");
+        btnBatal.setFocusPainted(false);
+        btnBatal.addActionListener(this::btnBatalActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup().addGap(34).addComponent(lblTitle, 650, 650, 650))
-                .addGroup(layout.createSequentialGroup().addGap(35).addComponent(lblHint, 650, 650, 650))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(35).addComponent(lblJenis, 260, 260, 260)
-                    .addGap(15).addComponent(cmbJenis, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(35).addComponent(lblNama, 260, 260, 260)
-                    .addGap(15).addComponent(txtNama, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(35).addComponent(lblHp, 260, 260, 260)
-                    .addGap(15).addComponent(txtHp, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(35).addComponent(lblTanggal, 260, 260, 260)
-                    .addGap(15).addComponent(txtTanggal, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(35).addComponent(lblStatus, 260, 260, 260)
-                    .addGap(15).addComponent(cmbStatus, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(35).addComponent(lblKhusus1, 260, 260, 260)
-                    .addGap(15)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtKhusus1, 365, 365, 365)
-                        .addComponent(cmbKhusus1, 365, 365, 365)))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(35).addComponent(lblKhusus2, 260, 260, 260)
-                    .addGap(15).addComponent(txtKhusus2, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(35).addComponent(lblDriverStatus, 260, 260, 260)
-                    .addGap(15).addComponent(cmbDriverStatus, 365, 365, 365))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(310).addComponent(btnSimpan, 173, 173, 173)
-                    .addGap(18).addComponent(btnBatal, 174, 174, 174))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(lblTitle, 650, 650, 650))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(lblHint, 650, 650, 650))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(lblJenis, 260, 260, 260)
+                .addGap(15, 15, 15)
+                .addComponent(cmbJenis, 365, 365, 365))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(lblNama, 260, 260, 260)
+                .addGap(15, 15, 15)
+                .addComponent(txtNama, 365, 365, 365))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(lblHp, 260, 260, 260)
+                .addGap(15, 15, 15)
+                .addComponent(txtHp, 365, 365, 365))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(lblTanggal, 260, 260, 260)
+                .addGap(15, 15, 15)
+                .addComponent(txtTanggal, 365, 365, 365))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(lblStatus, 260, 260, 260)
+                .addGap(15, 15, 15)
+                .addComponent(cmbStatus, 365, 365, 365))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(lblKhusus1, 260, 260, 260)
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtKhusus1, 365, 365, 365)
+                    .addComponent(cmbKhusus1, 365, 365, 365)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(lblKhusus2, 260, 260, 260)
+                .addGap(15, 15, 15)
+                .addComponent(txtKhusus2, 365, 365, 365))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(lblDriverStatus, 260, 260, 260)
+                .addGap(15, 15, 15)
+                .addComponent(cmbDriverStatus, 365, 365, 365))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(310, 310, 310)
+                .addComponent(btnSimpan, 173, 173, 173)
+                .addGap(18, 18, 18)
+                .addComponent(btnBatal, 174, 174, 174))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(24)
-                    .addComponent(lblTitle, 43, 43, 43)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(lblHint, 25, 25, 25)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblJenis, 20, 20, 20)
-                        .addComponent(cmbJenis, 32, 32, 32))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblNama, 20, 20, 20)
-                        .addComponent(txtNama, 32, 32, 32))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblHp, 20, 20, 20)
-                        .addComponent(txtHp, 32, 32, 32))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblTanggal, 20, 20, 20)
-                        .addComponent(txtTanggal, 32, 32, 32))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblStatus, 20, 20, 20)
-                        .addComponent(cmbStatus, 32, 32, 32))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblKhusus1, 20, 20, 20)
-                        .addComponent(txtKhusus1, 32, 32, 32)
-                        .addComponent(cmbKhusus1, 32, 32, 32))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblKhusus2, 20, 20, 20)
-                        .addComponent(txtKhusus2, 32, 32, 32))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblDriverStatus, 20, 20, 20)
-                        .addComponent(cmbDriverStatus, 32, 32, 32))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnSimpan, 42, 42, 42)
-                        .addComponent(btnBatal, 42, 42, 42))
-                    .addContainerGap(24, Short.MAX_VALUE))
+            layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(lblTitle, 36, 36, 36)
+                .addGap(1, 1, 1)
+                .addComponent(lblHint, 22, 22, 22)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblJenis, 24, 24, 24)
+                    .addComponent(cmbJenis, 34, 34, 34))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblNama, 24, 24, 24)
+                    .addComponent(txtNama, 34, 34, 34))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblHp, 24, 24, 24)
+                    .addComponent(txtHp, 34, 34, 34))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblTanggal, 24, 24, 24)
+                    .addComponent(txtTanggal, 34, 34, 34))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblStatus, 24, 24, 24)
+                    .addComponent(cmbStatus, 34, 34, 34))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblKhusus1, 24, 24, 24)
+                    .addComponent(txtKhusus1, 34, 34, 34)
+                    .addComponent(cmbKhusus1, 34, 34, 34))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblKhusus2, 24, 24, 24)
+                    .addComponent(txtKhusus2, 34, 34, 34))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblDriverStatus, 24, 24, 24)
+                    .addComponent(cmbDriverStatus, 34, 34, 34))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnSimpan, 42, 42, 42)
+                    .addComponent(btnBatal, 42, 42, 42))
+                .addGap(28, 28, Short.MAX_VALUE)
         );
-
-    }//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
 
     private void loadOptions() {
         cmbJenis.setModel(new DefaultComboBoxModel<>(new String[]{"ADMIN","OPERASIONAL","HSE","MANAGER","DRIVER"}));
+        cmbStatus.setEnabled(false);
+        cmbStatus.setToolTipText("Status otomatis dari sistem");
         cmbStatus.setModel(new DefaultComboBoxModel<>(new String[]{"AKTIF","NONAKTIF"}));
         cmbKhusus1.setModel(new DefaultComboBoxModel<>(new String[]{"PAGI","SIANG","MALAM"}));
         cmbDriverStatus.setModel(new DefaultComboBoxModel<>(new String[]{"TERSEDIA","NONAKTIF"}));
@@ -209,6 +246,7 @@ public class PegawaiFormFrame extends javax.swing.JFrame {
         boolean isManager = "MANAGER".equals(jenis);
         boolean isDriver = "DRIVER".equals(jenis);
 
+        lblKhusus1.setVisible(isAdmin || isOps || isHse || isManager || isDriver);
         lblKhusus1.setText(isAdmin ? "Kode Admin" : isOps ? "Shift Kerja" : isHse ? "No. Sertifikasi HSE"
                 : isManager ? "Divisi Tanggung Jawab" : "No. SIM");
         txtKhusus1.setVisible(isAdmin || isHse || isManager || isDriver);
@@ -221,6 +259,8 @@ public class PegawaiFormFrame extends javax.swing.JFrame {
 
         lblDriverStatus.setVisible(isDriver);
         cmbDriverStatus.setVisible(isDriver);
+        revalidate();
+        repaint();
     }
 
     private void cmbJenisActionPerformed(java.awt.event.ActionEvent evt) {
@@ -286,7 +326,7 @@ public class PegawaiFormFrame extends javax.swing.JFrame {
         FormUtil.require(nama,"Nama pegawai");FormUtil.require(hp,"Nomor HP");
         int id=original==null?0:original.getIdPegawai();
         LocalDate tanggal=tanggal(txtTanggal,"Tanggal masuk");
-        StatusPegawai status=StatusPegawai.valueOf(String.valueOf(cmbStatus.getSelectedItem()));
+        StatusPegawai status=(original == null ? StatusPegawai.AKTIF : original.getStatusPegawai());
         Pegawai p;
         switch(kind){
           case "ADMIN":p=new Admin(id,nama,hp,tanggal,status,khusus,tanggal(txtKhusus2,"Tanggal mulai akses"));break;
@@ -332,8 +372,8 @@ public class PegawaiFormFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtHp;
     private javax.swing.JTextField txtKhusus1;
-    private javax.swing.JTextField txtNama;
     private com.toedter.calendar.JDateChooser txtKhusus2;
+    private javax.swing.JTextField txtNama;
     private com.toedter.calendar.JDateChooser txtTanggal;
     // End of variables declaration//GEN-END:variables
 }

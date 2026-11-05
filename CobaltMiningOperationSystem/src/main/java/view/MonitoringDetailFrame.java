@@ -24,16 +24,17 @@ public class MonitoringDetailFrame extends javax.swing.JFrame {
         for(DetailMonitoring d:details)model.addRow(new Object[]{d.getParameter().getNamaParameter(),d.getNilaiPengukuran(),d.getParameter().getSatuan(),d.getStatusDetail()});
         tblDetail.setModel(model);
 
-        btnTambah.setEnabled(!readOnly);
-        btnUbah.setEnabled(!readOnly && !details.isEmpty());
-        btnHapus.setEnabled(!readOnly && !details.isEmpty());
-        btnTindak.setEnabled(!readOnly && data.getStatusMonitoring()==StatusMonitoring.PERINGATAN
+        btnTambah.setEnabled(!readOnly && AppConfig.getAuthController().isPetugasHSE());
+        btnUbah.setEnabled(!readOnly && AppConfig.getAuthController().isPetugasHSE() && !details.isEmpty());
+        btnHapus.setEnabled(!readOnly && AppConfig.getAuthController().isPetugasHSE() && !details.isEmpty());
+        boolean bolehTindak = AppConfig.getAuthController().isManager();
+        btnTindak.setEnabled(bolehTindak && data.getStatusMonitoring()==StatusMonitoring.PERINGATAN
             && data.getStatusPenanganan()!=StatusPenanganan.SELESAI);
-        btnMulai.setEnabled(!readOnly && data.getStatusMonitoring()==StatusMonitoring.PERINGATAN
+        btnMulai.setEnabled(bolehTindak && data.getStatusMonitoring()==StatusMonitoring.PERINGATAN
             && (data.getStatusPenanganan()==StatusPenanganan.BELUM_DITANGANI));
-        btnSelesai.setEnabled(!readOnly && data.getStatusPenanganan()==StatusPenanganan.DALAM_PENANGANAN);
+        btnSelesai.setEnabled(bolehTindak && data.getStatusPenanganan()==StatusPenanganan.DALAM_PENANGANAN);
 
-        if(!readOnly && data.getStatusMonitoring()==StatusMonitoring.PERINGATAN
+        if(bolehTindak && data.getStatusMonitoring()==StatusMonitoring.PERINGATAN
                 && (data.getTindakLanjut()==null||data.getTindakLanjut().trim().isEmpty())){
             lblInfo.setText(lblInfo.getText()+"  |  Isi tindak lanjut untuk memulai penanganan.");
         }
@@ -62,7 +63,7 @@ public class MonitoringDetailFrame extends javax.swing.JFrame {
             btn.setBorderPainted(false);
         }
 
-        setSize(735,600);setResizable(false);setLocationRelativeTo(null);
+        pack();setResizable(false);setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
     }
@@ -86,129 +87,160 @@ public class MonitoringDetailFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        lblTitle.setText("DETAIL MONITORING");
-        lblTitle.setForeground(new java.awt.Color(26, 43, 66));
+        lblTitle.setText("Detail Monitoring");
         lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(26, 43, 66));
 
         lblInfo.setText("Pilih pengukuran dan tindak lanjut.");
-        lblInfo.setForeground(new java.awt.Color(103, 121, 143));
         lblInfo.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lblInfo.setForeground(new java.awt.Color(103, 121, 143));
 
         scrollDetail.setBackground(new java.awt.Color(255, 255, 255));
-        scrollDetail.setViewportView(tblDetail);
+
+        tblDetail.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        tblDetail.setRowHeight(28);
+        tblDetail.setGridColor(new java.awt.Color(226, 232, 240));
 
         btnTambah.setText("Tambah Pengukuran");
-        btnTambah.setBackground(new java.awt.Color(43, 106, 230));
-        btnTambah.setForeground(new java.awt.Color(255, 255, 255));
-        btnTambah.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnTambah.setFocusPainted(false);
+        btnTambah.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnTambah.setForeground(new java.awt.Color(255, 255, 255));
+        btnTambah.setBackground(new java.awt.Color(43, 106, 230));
         btnTambah.addActionListener(this::btnTambahActionPerformed);
 
         btnUbah.setText("Ubah Pengukuran");
-        btnUbah.setBackground(new java.awt.Color(26, 43, 66));
-        btnUbah.setForeground(new java.awt.Color(255, 255, 255));
-        btnUbah.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnUbah.setFocusPainted(false);
+        btnUbah.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnUbah.setForeground(new java.awt.Color(255, 255, 255));
+        btnUbah.setBackground(new java.awt.Color(26, 43, 66));
         btnUbah.addActionListener(this::btnUbahActionPerformed);
 
         btnHapus.setText("Hapus Pengukuran");
-        btnHapus.setBackground(new java.awt.Color(160, 45, 62));
-        btnHapus.setForeground(new java.awt.Color(255, 255, 255));
-        btnHapus.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnHapus.setFocusPainted(false);
+        btnHapus.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnHapus.setForeground(new java.awt.Color(255, 255, 255));
+        btnHapus.setBackground(new java.awt.Color(160, 45, 62));
         btnHapus.addActionListener(this::btnHapusActionPerformed);
 
         btnTindak.setText("Tindak Lanjut");
-        btnTindak.setBackground(new java.awt.Color(26, 43, 66));
-        btnTindak.setForeground(new java.awt.Color(255, 255, 255));
-        btnTindak.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnTindak.setFocusPainted(false);
+        btnTindak.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnTindak.setForeground(new java.awt.Color(255, 255, 255));
+        btnTindak.setBackground(new java.awt.Color(26, 43, 66));
         btnTindak.addActionListener(this::btnTindakActionPerformed);
 
         btnMulai.setText("Mulai Penanganan");
-        btnMulai.setBackground(new java.awt.Color(26, 43, 66));
-        btnMulai.setForeground(new java.awt.Color(255, 255, 255));
-        btnMulai.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnMulai.setFocusPainted(false);
+        btnMulai.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnMulai.setForeground(new java.awt.Color(255, 255, 255));
+        btnMulai.setBackground(new java.awt.Color(26, 43, 66));
         btnMulai.addActionListener(this::btnMulaiActionPerformed);
 
         btnSelesai.setText("Selesai Penanganan");
-        btnSelesai.setBackground(new java.awt.Color(26, 43, 66));
-        btnSelesai.setForeground(new java.awt.Color(255, 255, 255));
-        btnSelesai.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnSelesai.setFocusPainted(false);
+        btnSelesai.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnSelesai.setForeground(new java.awt.Color(255, 255, 255));
+        btnSelesai.setBackground(new java.awt.Color(26, 43, 66));
         btnSelesai.addActionListener(this::btnSelesaiActionPerformed);
 
         btnTutup.setText("Tutup");
-        btnTutup.setBackground(new java.awt.Color(103, 121, 143));
-        btnTutup.setForeground(new java.awt.Color(255, 255, 255));
-        btnTutup.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnTutup.setFocusPainted(false);
+        btnTutup.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnTutup.setForeground(new java.awt.Color(255, 255, 255));
+        btnTutup.setBackground(new java.awt.Color(103, 121, 143));
         btnTutup.addActionListener(this::btnTutupActionPerformed);
+
+        tblDetail.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Parameter", "Nilai", "Satuan", "Hasil"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+
+        scrollDetail.setViewportView(tblDetail);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(lblTitle, 650, 650, 650))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(lblInfo, 650, 650, 650))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(scrollDetail, 650, 650, 650))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(btnTambah, 190, 190, 190)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnUbah, 190, 190, 190)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnHapus, 190, 190, 190))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(btnTindak, 190, 190, 190)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnMulai, 190, 190, 190)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSelesai, 190, 190, 190))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(490, 490, 490)
-                .addComponent(btnTutup, 190, 190, 190))
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(32, 32, 32)
+                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(layout.createSequentialGroup()
+                   .addComponent(lblTitle, 656, 656, 656)
+              )
+                  .addGroup(layout.createSequentialGroup()
+                   .addComponent(lblInfo, 656, 656, 656)
+              )
+             )
+                 .addGap(32, 32, 32)
+            )
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(32, 32, 32)
+                 .addComponent(scrollDetail, 656, 656, 656)
+                 .addGap(32, 32, 32)
+            )
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(32, 32, 32)
+                 .addComponent(btnTambah, 210, 210, 210)
+                 .addGap(8, 8, 8)
+                 .addComponent(btnUbah, 210, 210, 210)
+                 .addGap(8, 8, 8)
+                 .addComponent(btnHapus, 210, 210, 210)
+                 .addGap(32, 32, 32)
+            )
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(32, 32, 32)
+                 .addComponent(btnTindak, 210, 210, 210)
+                 .addGap(8, 8, 8)
+                 .addComponent(btnMulai, 210, 210, 210)
+                 .addGap(8, 8, 8)
+                 .addComponent(btnSelesai, 210, 210, 210)
+                 .addGap(32, 32, 32)
+            )
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(0, 0, Short.MAX_VALUE)
+                 .addComponent(btnTutup, 120, 120, 120)
+                 .addGap(32, 32, 32)
+            )
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(lblTitle, 40, 40, 40))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(lblInfo, 28, 28, 28))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(scrollDetail, 290, 290, 290))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(432, 432, 432)
-                .addComponent(btnTambah, 42, 42, 42))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(432, 432, 432)
-                .addComponent(btnUbah, 42, 42, 42))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(432, 432, 432)
-                .addComponent(btnHapus, 42, 42, 42))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(492, 492, 492)
-                .addComponent(btnTindak, 42, 42, 42))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(492, 492, 492)
-                .addComponent(btnMulai, 42, 42, 42))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(492, 492, 492)
-                .addComponent(btnSelesai, 42, 42, 42))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(552, 552, 552)
-                .addComponent(btnTutup, 42, 42, 42))
+                .addGroup(layout.createSequentialGroup()
+                 .addGap(24, 24, 24)
+                 .addComponent(lblTitle, 40, 40, 40)
+                 .addGap(4, 4, 4)
+                 .addComponent(lblInfo, 22, 22, 22)
+                 .addGap(14, 14, 14)
+                 .addComponent(scrollDetail, 240, 296, Short.MAX_VALUE)
+                 .addGap(14, 14, 14)
+                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(btnTambah, 42, 42, 42)
+                  .addComponent(btnUbah, 42, 42, 42)
+                  .addComponent(btnHapus, 42, 42, 42)
+             )
+                 .addGap(8, 8, 8)
+                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(btnTindak, 42, 42, 42)
+                  .addComponent(btnMulai, 42, 42, 42)
+                  .addComponent(btnSelesai, 42, 42, 42)
+             )
+                 .addGap(12, 12, 12)
+                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(btnTutup, 42, 42, 42)
+             )
+                 .addGap(24, 24, 24)
+            )
         );
     }// </editor-fold>//GEN-END:initComponents
 
