@@ -31,7 +31,8 @@
 
 > **Gambar 1. Identitas dan tampilan awal aplikasi C-MOS**
 
-![Gambar 1 - Tampilan Awal C-MOS](images/01_Tampilan_Awal_CMOS.png)
+<img width="738" height="607" alt="image" src="https://github.com/user-attachments/assets/486b9d69-2973-4fda-bff2-2270ee27213a" />
+
 
 **Arahan screenshot:** Jalankan aplikasi, ambil tampilan awal atau login yang menampilkan identitas C-MOS. Jangan memakai gambar desain contoh sebagai pengganti hasil program.
 
@@ -570,7 +571,8 @@ Package `view` menyimpan JFrame dan JPanel antarmuka. Berkas `.form` yang menyer
 
 > **Gambar 11. File `.java` dan `.form` pada GUI Builder**
 
-![Gambar 11 - GUI Builder](images/11_GUI_Builder_Form.png)
+<img width="1055" height="846" alt="image" src="https://github.com/user-attachments/assets/4b78f99e-99e0-45a1-b8f1-928e12c7df1e" />
+
 
 **Arahan screenshot:** Pilih `PegawaiFormFrame` atau form lain di NetBeans. Tampilkan tab Design, Palette, Inspector, dan Properties.
 
@@ -626,7 +628,10 @@ Kode tersebut menunjukkan hubungan pewarisan yang terdapat pada source. Setiap s
 
 > **Gambar 13. Bukti inheritance pada subclass Pegawai**
 
-![Gambar 13 - Inheritance](images/13_OOP_Inheritance.png)
+<img width="270" height="20" alt="image" src="https://github.com/user-attachments/assets/07330fd1-8bdd-4d01-9e8b-04a8883d54f5" />
+<img width="325" height="20" alt="image" src="https://github.com/user-attachments/assets/0136c289-3484-4634-beee-46e21fba39ea" />
+<img width="312" height="23" alt="image" src="https://github.com/user-attachments/assets/3e9aa7e0-c8f5-484e-b2b8-37fe3aa9e18b" />
+
 
 **Arahan screenshot:** Buka `Pegawai.java`, `Admin.java`, dan `Driver.java`. Sorot deklarasi `extends Pegawai`. Sertakan diagram hierarki kelas jika memungkinkan.
 
@@ -649,7 +654,6 @@ Baris pemanggilan `getJenisPegawai()` menggunakan tipe referensi `Pegawai`, teta
 
 > **Gambar 14. Bukti polymorphism pada `getJenisPegawai()`**
 
-![Gambar 14 - Polymorphism](images/14_OOP_Polymorphism.png)
 
 **Arahan screenshot:** Tampilkan deklarasi method di `Pegawai.java` dan implementasi override pada minimal dua subclass, misalnya `Driver.java` dan `PetugasHSE.java`.
 
