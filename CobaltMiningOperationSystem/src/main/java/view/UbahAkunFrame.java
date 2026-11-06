@@ -8,6 +8,15 @@ public class UbahAkunFrame extends javax.swing.JFrame {
 
     public UbahAkunFrame() {
         initComponents();
+        
+        JButton[] navButtons = {btnSimpan, btnBatal};
+
+        for (JButton btn : navButtons) {
+            btn.setOpaque(true);
+            btn.setContentAreaFilled(true);
+            btn.setBorderPainted(false);
+        }
+        
         txtUsername.setText(AppConfig.getAuthController().getCurrentUser().getUsername());
         pack();
         setResizable(false);
@@ -20,6 +29,7 @@ public class UbahAkunFrame extends javax.swing.JFrame {
 
         lblTitle = new javax.swing.JLabel();
         lblHint = new javax.swing.JLabel();
+        pnlCard = new javax.swing.JPanel();
         lblUsername = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
         lblLama = new javax.swing.JLabel();
@@ -28,173 +38,139 @@ public class UbahAkunFrame extends javax.swing.JFrame {
         pwdBaru = new javax.swing.JPasswordField();
         lblKonfirmasi = new javax.swing.JLabel();
         pwdKonfirmasi = new javax.swing.JPasswordField();
-        pnlCard = new javax.swing.JPanel();
         btnSimpan = new javax.swing.JButton();
         btnBatal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        lblTitle.setText("Ubah Akun Saya");
         lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(26, 43, 66));
+        lblTitle.setText("Ubah Akun Saya");
 
-        lblHint.setText("Perbarui username atau password akun Anda sendiri.");
         lblHint.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         lblHint.setForeground(new java.awt.Color(103, 121, 143));
-
-        lblUsername.setText("Username Baru");
-        lblUsername.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        lblUsername.setForeground(new java.awt.Color(26, 43, 66));
-
-        txtUsername.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        txtUsername.setBackground(new java.awt.Color(255, 255, 255));
-
-        lblLama.setText("Password Lama");
-        lblLama.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        lblLama.setForeground(new java.awt.Color(26, 43, 66));
-
-        pwdLama.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        pwdLama.setBackground(new java.awt.Color(255, 255, 255));
-
-        lblBaru.setText("Password Baru (opsional)");
-        lblBaru.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        lblBaru.setForeground(new java.awt.Color(26, 43, 66));
-
-        pwdBaru.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        pwdBaru.setBackground(new java.awt.Color(255, 255, 255));
-
-        lblKonfirmasi.setText("Konfirmasi Password Baru");
-        lblKonfirmasi.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        lblKonfirmasi.setForeground(new java.awt.Color(26, 43, 66));
-
-        pwdKonfirmasi.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        pwdKonfirmasi.setBackground(new java.awt.Color(255, 255, 255));
+        lblHint.setText("Perbarui username atau password akun Anda sendiri.");
 
         pnlCard.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnSimpan.setText("Simpan Perubahan");
-        btnSimpan.setFocusPainted(false);
-        btnSimpan.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
-        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
-        btnSimpan.setBackground(new java.awt.Color(43, 106, 230));
-        btnSimpan.addActionListener(this::btnSimpanActionPerformed);
+        lblUsername.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblUsername.setForeground(new java.awt.Color(26, 43, 66));
+        lblUsername.setText("Username Baru");
 
-        btnBatal.setText("Batal");
-        btnBatal.setFocusPainted(false);
-        btnBatal.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
-        btnBatal.setForeground(new java.awt.Color(255, 255, 255));
-        btnBatal.setBackground(new java.awt.Color(103, 121, 143));
-        btnBatal.addActionListener(this::btnBatalActionPerformed);
+        txtUsername.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
 
-        javax.swing.GroupLayout pnlCardLayout = new javax.swing.GroupLayout(pnlCard);
+        lblLama.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblLama.setForeground(new java.awt.Color(26, 43, 66));
+        lblLama.setText("Password Lama");
+
+        pwdLama.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+
+        lblBaru.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblBaru.setForeground(new java.awt.Color(26, 43, 66));
+        lblBaru.setText("Password Baru (opsional)");
+
+        pwdBaru.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+
+        lblKonfirmasi.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblKonfirmasi.setForeground(new java.awt.Color(26, 43, 66));
+        lblKonfirmasi.setText("Konfirmasi Password Baru");
+
+        pwdKonfirmasi.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+
+        org.jdesktop.layout.GroupLayout pnlCardLayout = new org.jdesktop.layout.GroupLayout(pnlCard);
         pnlCard.setLayout(pnlCardLayout);
         pnlCardLayout.setHorizontalGroup(
-            pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlCardLayout.createSequentialGroup()
-                 .addGap(24, 24, 24)
-                 .addComponent(lblUsername, 230, 230, 230)
-                 .addGap(14, 14, 14)
-                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addComponent(txtUsername, 352, 352, 352)
-             )
-            )
-                .addGroup(pnlCardLayout.createSequentialGroup()
-                 .addGap(24, 24, 24)
-                 .addComponent(lblLama, 230, 230, 230)
-                 .addGap(14, 14, 14)
-                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addComponent(pwdLama, 352, 352, 352)
-             )
-            )
-                .addGroup(pnlCardLayout.createSequentialGroup()
-                 .addGap(24, 24, 24)
-                 .addComponent(lblBaru, 230, 230, 230)
-                 .addGap(14, 14, 14)
-                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addComponent(pwdBaru, 352, 352, 352)
-             )
-            )
-                .addGroup(pnlCardLayout.createSequentialGroup()
-                 .addGap(24, 24, 24)
-                 .addComponent(lblKonfirmasi, 230, 230, 230)
-                 .addGap(14, 14, 14)
-                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addComponent(pwdKonfirmasi, 352, 352, 352)
-             )
-            )
+            pnlCardLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlCardLayout.createSequentialGroup()
+                .add(24, 24, 24)
+                .add(pnlCardLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(pnlCardLayout.createSequentialGroup()
+                        .add(lblUsername, 230, 230, 230)
+                        .add(14, 14, 14)
+                        .add(txtUsername, 352, 352, 352))
+                    .add(pnlCardLayout.createSequentialGroup()
+                        .add(lblLama, 230, 230, 230)
+                        .add(14, 14, 14)
+                        .add(pwdLama, 352, 352, 352))
+                    .add(pnlCardLayout.createSequentialGroup()
+                        .add(lblBaru, 230, 230, 230)
+                        .add(14, 14, 14)
+                        .add(pwdBaru, 352, 352, 352))
+                    .add(pnlCardLayout.createSequentialGroup()
+                        .add(lblKonfirmasi, 230, 230, 230)
+                        .add(14, 14, 14)
+                        .add(pwdKonfirmasi, 352, 352, 352))))
         );
         pnlCardLayout.setVerticalGroup(
-            pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlCardLayout.createSequentialGroup()
-                 .addGap(24, 24, 24)
-                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                  .addComponent(lblUsername, 20, 20, 20)
-                  .addComponent(txtUsername, 32, 32, 32)
-             )
-                 .addGap(14, 14, 14)
-                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                  .addComponent(lblLama, 20, 20, 20)
-                  .addComponent(pwdLama, 32, 32, 32)
-             )
-                 .addGap(14, 14, 14)
-                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                  .addComponent(lblBaru, 20, 20, 20)
-                  .addComponent(pwdBaru, 32, 32, 32)
-             )
-                 .addGap(14, 14, 14)
-                 .addGroup(pnlCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                  .addComponent(lblKonfirmasi, 20, 20, 20)
-                  .addComponent(pwdKonfirmasi, 32, 32, 32)
-             )
-                 .addGap(14, 14, 14)
-            )
+            pnlCardLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlCardLayout.createSequentialGroup()
+                .add(24, 24, 24)
+                .add(pnlCardLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
+                    .add(lblUsername, 20, 20, 20)
+                    .add(txtUsername, 32, 32, 32))
+                .add(14, 14, 14)
+                .add(pnlCardLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
+                    .add(lblLama, 20, 20, 20)
+                    .add(pwdLama, 32, 32, 32))
+                .add(14, 14, 14)
+                .add(pnlCardLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
+                    .add(lblBaru, 20, 20, 20)
+                    .add(pwdBaru, 32, 32, 32))
+                .add(14, 14, 14)
+                .add(pnlCardLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
+                    .add(lblKonfirmasi, 20, 20, 20)
+                    .add(pwdKonfirmasi, 32, 32, 32))
+                .add(14, 14, 14))
         );
 
+        btnSimpan.setBackground(new java.awt.Color(43, 106, 230));
+        btnSimpan.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setText("Simpan Perubahan");
+        btnSimpan.setFocusPainted(false);
+        btnSimpan.addActionListener(this::btnSimpanActionPerformed);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        btnBatal.setBackground(new java.awt.Color(103, 121, 143));
+        btnBatal.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        btnBatal.setForeground(new java.awt.Color(255, 255, 255));
+        btnBatal.setText("Batal");
+        btnBatal.setFocusPainted(false);
+        btnBatal.addActionListener(this::btnBatalActionPerformed);
+
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                 .addGap(38, 38, 38)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addGroup(layout.createSequentialGroup()
-                   .addComponent(lblTitle, 644, 644, 644)
-              )
-                  .addGroup(layout.createSequentialGroup()
-                   .addComponent(lblHint, 644, 644, 644)
-              )
-                  .addGroup(layout.createSequentialGroup()
-                   .addComponent(pnlCard, 644, 644, 644)
-              )
-             )
-                 .addGap(38, 38, 38)
-            )
-                .addGroup(layout.createSequentialGroup()
-                 .addGap(0, 0, Short.MAX_VALUE)
-                 .addComponent(btnBatal, 120, 120, 120)
-                 .addGap(10, 10, 10)
-                 .addComponent(btnSimpan, 180, 180, 180)
-                 .addGap(38, 38, 38)
-            )
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(38, 38, 38)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(lblTitle, 644, 644, 644)
+                            .add(lblHint, 644, 644, 644)
+                            .add(pnlCard)))
+                    .add(layout.createSequentialGroup()
+                        .add(0, 0, Short.MAX_VALUE)
+                        .add(btnBatal, 120, 120, 120)
+                        .add(10, 10, 10)
+                        .add(btnSimpan, 180, 180, 180)))
+                .add(38, 38, 38))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                 .addGap(26, 26, 26)
-                 .addComponent(lblTitle, 40, 40, 40)
-                 .addGap(6, 6, 6)
-                 .addComponent(lblHint, 22, 22, 22)
-                 .addGap(18, 18, 18)
-                 .addComponent(pnlCard, 218, 218, 218)
-                 .addGap(22, 22, 22)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                  .addComponent(btnSimpan, 42, 42, 42)
-                  .addComponent(btnBatal, 42, 42, 42)
-             )
-                 .addGap(26, 26, 26)
-            )
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .add(26, 26, 26)
+                .add(lblTitle, 40, 40, 40)
+                .add(6, 6, 6)
+                .add(lblHint, 22, 22, 22)
+                .add(18, 18, 18)
+                .add(pnlCard)
+                .add(22, 22, 22)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
+                    .add(btnSimpan, 42, 42, 42)
+                    .add(btnBatal, 42, 42, 42))
+                .add(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
 

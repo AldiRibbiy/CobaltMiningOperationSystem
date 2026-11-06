@@ -23,101 +23,74 @@ public class KartuLokasiPanel extends javax.swing.JPanel {
         lblPenanganan = new javax.swing.JLabel();
         lblBadge = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(234, 216, 192));
 
-        pnlStripe.setBackground(new java.awt.Color(148, 163, 184));
+        pnlStripe.setLayout(new java.awt.BorderLayout());
 
         lblNama.setText("Nama Lokasi");
-        lblNama.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        lblNama.setForeground(new java.awt.Color(26, 43, 66));
 
-        lblJenis.setText("PIT");
-        lblJenis.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        lblJenis.setBackground(new java.awt.Color(73, 54, 40));
         lblJenis.setForeground(new java.awt.Color(255, 255, 255));
-        lblJenis.setBackground(new java.awt.Color(43, 106, 230));
         lblJenis.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblJenis.setText("PIT");
         lblJenis.setOpaque(true);
 
         lblStatusOps.setText("AKTIF");
-        lblStatusOps.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        lblStatusOps.setForeground(new java.awt.Color(103, 121, 143));
 
         lblMonitoring.setText("Monitoring terakhir: belum ada");
-        lblMonitoring.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        lblMonitoring.setForeground(new java.awt.Color(103, 121, 143));
 
         lblHasil.setText("Hasil: belum ada data");
-        lblHasil.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
-        lblHasil.setForeground(new java.awt.Color(26, 43, 66));
 
         lblPenanganan.setText("Penanganan: -");
-        lblPenanganan.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        lblPenanganan.setForeground(new java.awt.Color(103, 121, 143));
 
-        lblBadge.setText("PERLU TINDAK LANJUT");
-        lblBadge.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        lblBadge.setBackground(new java.awt.Color(255, 51, 51));
         lblBadge.setForeground(new java.awt.Color(255, 255, 255));
-        lblBadge.setBackground(new java.awt.Color(160, 45, 62));
         lblBadge.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBadge.setText("PERLU TINDAK LANJUT");
         lblBadge.setOpaque(true);
 
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                 .addComponent(pnlStripe, 10, 10, 10)
-                 .addGap(14, 14, 14)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addGroup(layout.createSequentialGroup()
-                   .addComponent(lblNama, 10, 300, Short.MAX_VALUE)
-                   .addGap(0, 0, Short.MAX_VALUE)
-                   .addComponent(lblBadge, 10, 170, 170)
-              )
-                  .addGroup(layout.createSequentialGroup()
-                   .addComponent(lblJenis, 90, 90, 90)
-                   .addGap(8, 8, 8)
-                   .addComponent(lblStatusOps, 10, 150, Short.MAX_VALUE)
-              )
-                  .addGroup(layout.createSequentialGroup()
-                   .addComponent(lblMonitoring, 10, 470, Short.MAX_VALUE)
-              )
-                  .addGroup(layout.createSequentialGroup()
-                   .addComponent(lblHasil, 10, 470, Short.MAX_VALUE)
-              )
-                  .addGroup(layout.createSequentialGroup()
-                   .addComponent(lblPenanganan, 10, 470, Short.MAX_VALUE)
-              )
-             )
-                 .addGap(14, 14, 14)
-            )
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .add(pnlStripe, 10, 10, 10)
+                .add(14, 14, 14)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(lblNama, 10, 300, Short.MAX_VALUE)
+                        .add(0, 0, Short.MAX_VALUE)
+                        .add(lblBadge, 10, 170, 170))
+                    .add(layout.createSequentialGroup()
+                        .add(lblJenis, 90, 90, 90)
+                        .add(8, 8, 8)
+                        .add(lblStatusOps, 10, 150, Short.MAX_VALUE))
+                    .add(lblMonitoring, 10, 470, Short.MAX_VALUE)
+                    .add(lblHasil, 10, 470, Short.MAX_VALUE)
+                    .add(lblPenanganan, 10, 470, Short.MAX_VALUE))
+                .add(14, 14, 14))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                 .addGap(12, 12, 12)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addComponent(pnlStripe, 108, 108, Short.MAX_VALUE)
-                  .addGroup(layout.createSequentialGroup()
-                   .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNama, 20, 20, 20)
-                    .addComponent(lblBadge, 18, 18, 18)
-               )
-                   .addGap(4, 4, 4)
-                   .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblJenis, 18, 18, 18)
-                    .addComponent(lblStatusOps, 18, 18, 18)
-               )
-                   .addGap(5, 5, 5)
-                   .addComponent(lblMonitoring, 17, 17, 17)
-                   .addGap(3, 3, 3)
-                   .addComponent(lblHasil, 18, 18, 18)
-                   .addGap(3, 3, 3)
-                   .addComponent(lblPenanganan, 15, 15, 15)
-              )
-             )
-                 .addGap(12, 12, 12)
-            )
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .add(12, 12, 12)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(pnlStripe, 108, 108, Short.MAX_VALUE)
+                    .add(layout.createSequentialGroup()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(lblNama, 20, 20, 20)
+                            .add(lblBadge, 18, 18, 18))
+                        .add(4, 4, 4)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(lblJenis, 18, 18, 18)
+                            .add(lblStatusOps, 18, 18, 18))
+                        .add(5, 5, 5)
+                        .add(lblMonitoring, 17, 17, 17)
+                        .add(3, 3, 3)
+                        .add(lblHasil, 18, 18, 18)
+                        .add(3, 3, 3)
+                        .add(lblPenanganan, 15, 15, 15)))
+                .add(12, 12, 12))
         );
     }// </editor-fold>//GEN-END:initComponents
 

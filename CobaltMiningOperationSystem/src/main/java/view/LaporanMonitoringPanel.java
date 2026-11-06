@@ -30,115 +30,212 @@ public class LaporanMonitoringPanel extends javax.swing.JPanel {
 
         lblTitle = new javax.swing.JLabel();
         lblHint = new javax.swing.JLabel();
+        pnlFilter = new javax.swing.JPanel();
         lblAwal = new javax.swing.JLabel();
         choAwal = new com.toedter.calendar.JDateChooser();
         lblAkhir = new javax.swing.JLabel();
         choAkhir = new com.toedter.calendar.JDateChooser();
         btnTampilkan = new javax.swing.JButton();
-        pnlFilter = new javax.swing.JPanel();
+        pnlKpi0 = new javax.swing.JPanel();
         lblKpiTitle0 = new javax.swing.JLabel();
         lblKpiValue0 = new javax.swing.JLabel();
         lblKpiSub0 = new javax.swing.JLabel();
-        pnlKpi0 = new javax.swing.JPanel();
+        pnlKpi1 = new javax.swing.JPanel();
         lblKpiTitle1 = new javax.swing.JLabel();
         lblKpiValue1 = new javax.swing.JLabel();
         lblKpiSub1 = new javax.swing.JLabel();
-        pnlKpi1 = new javax.swing.JPanel();
+        pnlKpi2 = new javax.swing.JPanel();
         lblKpiTitle2 = new javax.swing.JLabel();
         lblKpiValue2 = new javax.swing.JLabel();
         lblKpiSub2 = new javax.swing.JLabel();
-        pnlKpi2 = new javax.swing.JPanel();
         btnDetail = new javax.swing.JButton();
         scrollTable = new javax.swing.JScrollPane();
         tblData = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(214, 192, 179));
 
-        lblTitle.setText("Laporan Monitoring");
         lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(26, 43, 66));
+        lblTitle.setText("Laporan Monitoring");
 
-        lblHint.setText("Riwayat monitoring dan detail hasil HSE. Manager dapat menindaklanjuti peringatan.");
         lblHint.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         lblHint.setForeground(new java.awt.Color(103, 121, 143));
+        lblHint.setText("Riwayat monitoring dan hasil HSE. Manager dapat menindaklanjuti peringatan.");
 
-        lblAwal.setText("Dari");
+        pnlFilter.setBackground(new java.awt.Color(234, 216, 192));
+
         lblAwal.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblAwal.setForeground(new java.awt.Color(26, 43, 66));
+        lblAwal.setText("Dari");
 
-        choAwal.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         choAwal.setBackground(new java.awt.Color(255, 255, 255));
+        choAwal.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
 
-        lblAkhir.setText("s/d");
         lblAkhir.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblAkhir.setForeground(new java.awt.Color(26, 43, 66));
+        lblAkhir.setText("s/d");
 
-        choAkhir.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         choAkhir.setBackground(new java.awt.Color(255, 255, 255));
+        choAkhir.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
 
-        btnTampilkan.setText("Tampilkan");
-        btnTampilkan.setFocusPainted(false);
+        btnTampilkan.setBackground(new java.awt.Color(167, 146, 119));
         btnTampilkan.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnTampilkan.setForeground(new java.awt.Color(255, 255, 255));
-        btnTampilkan.setBackground(new java.awt.Color(43, 106, 230));
+        btnTampilkan.setText("Tampilkan");
+        btnTampilkan.setFocusPainted(false);
         btnTampilkan.addActionListener(this::btnTampilkanActionPerformed);
 
-        pnlFilter.setBackground(new java.awt.Color(255, 255, 255));
+        org.jdesktop.layout.GroupLayout pnlFilterLayout = new org.jdesktop.layout.GroupLayout(pnlFilter);
+        pnlFilter.setLayout(pnlFilterLayout);
+        pnlFilterLayout.setHorizontalGroup(
+            pnlFilterLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlFilterLayout.createSequentialGroup()
+                .add(21, 21, 21)
+                .add(lblAwal, 36, 36, 36)
+                .add(20, 20, 20)
+                .add(choAwal, 130, 130, 130)
+                .add(20, 20, 20)
+                .add(lblAkhir, 26, 26, 26)
+                .add(20, 20, 20)
+                .add(choAkhir, 130, 130, 130)
+                .add(20, 20, 20)
+                .add(btnTampilkan, 120, 120, 120)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlFilterLayout.setVerticalGroup(
+            pnlFilterLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlFilterLayout.createSequentialGroup()
+                .add(14, 14, 14)
+                .add(pnlFilterLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
+                    .add(lblAwal, 32, 32, 32)
+                    .add(choAwal, 30, 30, 30)
+                    .add(lblAkhir, 32, 32, 32)
+                    .add(choAkhir, 30, 30, 30)
+                    .add(btnTampilkan, 32, 32, 32))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
 
-        lblKpiTitle0.setText("TOTAL MONITORING");
+        pnlKpi0.setBackground(new java.awt.Color(234, 216, 192));
+
         lblKpiTitle0.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         lblKpiTitle0.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiTitle0.setText("TOTAL MONITORING");
 
-        lblKpiValue0.setText("-");
         lblKpiValue0.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
         lblKpiValue0.setForeground(new java.awt.Color(26, 43, 66));
+        lblKpiValue0.setText("-");
 
-        lblKpiSub0.setText("periode terpilih");
         lblKpiSub0.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         lblKpiSub0.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiSub0.setText("periode terpilih");
 
-        pnlKpi0.setBackground(new java.awt.Color(255, 255, 255));
+        org.jdesktop.layout.GroupLayout pnlKpi0Layout = new org.jdesktop.layout.GroupLayout(pnlKpi0);
+        pnlKpi0.setLayout(pnlKpi0Layout);
+        pnlKpi0Layout.setHorizontalGroup(
+            pnlKpi0Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlKpi0Layout.createSequentialGroup()
+                .add(16, 16, 16)
+                .add(pnlKpi0Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(lblKpiTitle0, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(lblKpiValue0, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(lblKpiSub0, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        pnlKpi0Layout.setVerticalGroup(
+            pnlKpi0Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlKpi0Layout.createSequentialGroup()
+                .add(12, 12, 12)
+                .add(lblKpiTitle0, 14, 14, 14)
+                .add(4, 4, 4)
+                .add(lblKpiValue0, 28, 28, 28)
+                .add(3, 3, 3)
+                .add(lblKpiSub0, 16, 16, 16)
+                .add(12, 13, Short.MAX_VALUE))
+        );
 
-        lblKpiTitle1.setText("HASIL NORMAL");
+        pnlKpi1.setBackground(new java.awt.Color(234, 216, 192));
+
         lblKpiTitle1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         lblKpiTitle1.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiTitle1.setText("HASIL NORMAL");
 
-        lblKpiValue1.setText("-");
         lblKpiValue1.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
         lblKpiValue1.setForeground(new java.awt.Color(46, 125, 70));
+        lblKpiValue1.setText("-");
 
-        lblKpiSub1.setText("periode terpilih");
         lblKpiSub1.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         lblKpiSub1.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiSub1.setText("periode terpilih");
 
-        pnlKpi1.setBackground(new java.awt.Color(255, 255, 255));
+        org.jdesktop.layout.GroupLayout pnlKpi1Layout = new org.jdesktop.layout.GroupLayout(pnlKpi1);
+        pnlKpi1.setLayout(pnlKpi1Layout);
+        pnlKpi1Layout.setHorizontalGroup(
+            pnlKpi1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlKpi1Layout.createSequentialGroup()
+                .add(16, 16, 16)
+                .add(pnlKpi1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(lblKpiTitle1, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(lblKpiValue1, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(lblKpiSub1, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        pnlKpi1Layout.setVerticalGroup(
+            pnlKpi1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlKpi1Layout.createSequentialGroup()
+                .add(12, 12, 12)
+                .add(lblKpiTitle1, 14, 14, 14)
+                .add(4, 4, 4)
+                .add(lblKpiValue1, 28, 28, 28)
+                .add(3, 3, 3)
+                .add(lblKpiSub1, 16, 16, 16)
+                .add(12, 13, Short.MAX_VALUE))
+        );
 
-        lblKpiTitle2.setText("PERINGATAN");
+        pnlKpi2.setBackground(new java.awt.Color(234, 216, 192));
+
         lblKpiTitle2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         lblKpiTitle2.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiTitle2.setText("PERINGATAN");
 
-        lblKpiValue2.setText("-");
         lblKpiValue2.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
         lblKpiValue2.setForeground(new java.awt.Color(160, 45, 62));
+        lblKpiValue2.setText("-");
 
-        lblKpiSub2.setText("periode terpilih");
         lblKpiSub2.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         lblKpiSub2.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiSub2.setText("periode terpilih");
 
-        pnlKpi2.setBackground(new java.awt.Color(255, 255, 255));
+        org.jdesktop.layout.GroupLayout pnlKpi2Layout = new org.jdesktop.layout.GroupLayout(pnlKpi2);
+        pnlKpi2.setLayout(pnlKpi2Layout);
+        pnlKpi2Layout.setHorizontalGroup(
+            pnlKpi2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlKpi2Layout.createSequentialGroup()
+                .add(16, 16, 16)
+                .add(pnlKpi2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(lblKpiTitle2, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(lblKpiValue2, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(lblKpiSub2, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        pnlKpi2Layout.setVerticalGroup(
+            pnlKpi2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlKpi2Layout.createSequentialGroup()
+                .add(12, 12, 12)
+                .add(lblKpiTitle2, 14, 14, 14)
+                .add(4, 4, 4)
+                .add(lblKpiValue2, 28, 28, 28)
+                .add(3, 3, 3)
+                .add(lblKpiSub2, 16, 16, 16)
+                .add(12, 13, Short.MAX_VALUE))
+        );
 
-        btnDetail.setText("Detail Pengukuran");
-        btnDetail.setFocusPainted(false);
+        btnDetail.setBackground(new java.awt.Color(73, 54, 40));
         btnDetail.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnDetail.setForeground(new java.awt.Color(255, 255, 255));
-        btnDetail.setBackground(new java.awt.Color(26, 43, 66));
+        btnDetail.setText("Detail Pengukuran");
+        btnDetail.setFocusPainted(false);
         btnDetail.addActionListener(this::btnDetailActionPerformed);
 
         scrollTable.setBackground(new java.awt.Color(255, 255, 255));
 
         tblData.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        tblData.setRowHeight(28);
-        tblData.setGridColor(new java.awt.Color(226, 232, 240));
-
         tblData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -155,186 +252,54 @@ public class LaporanMonitoringPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-
-        javax.swing.GroupLayout pnlFilterLayout = new javax.swing.GroupLayout(pnlFilter);
-        pnlFilter.setLayout(pnlFilterLayout);
-        pnlFilterLayout.setHorizontalGroup(
-            pnlFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlFilterLayout.createSequentialGroup()
-                 .addGap(20, 20, 20)
-                 .addComponent(lblAwal, 36, 36, 36)
-                 .addGap(20, 20, 20)
-                 .addComponent(choAwal, 130, 130, 130)
-                 .addGap(20, 20, 20)
-                 .addComponent(lblAkhir, 26, 26, 26)
-                 .addGap(20, 20, 20)
-                 .addComponent(choAkhir, 130, 130, 130)
-                 .addGap(20, 20, 20)
-                 .addComponent(btnTampilkan, 120, 120, 120)
-                 .addGap(20, 20, 20)
-            )
-        );
-        pnlFilterLayout.setVerticalGroup(
-            pnlFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlFilterLayout.createSequentialGroup()
-                 .addGap(16, 16, 16)
-                 .addGroup(pnlFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                  .addComponent(lblAwal, 32, 32, 32)
-                  .addComponent(choAwal, 30, 30, 30)
-                  .addComponent(lblAkhir, 32, 32, 32)
-                  .addComponent(choAkhir, 30, 30, 30)
-                  .addComponent(btnTampilkan, 32, 32, 32)
-             )
-                 .addGap(16, 16, Short.MAX_VALUE)
-            )
-        );
-
-        javax.swing.GroupLayout pnlKpi0Layout = new javax.swing.GroupLayout(pnlKpi0);
-        pnlKpi0.setLayout(pnlKpi0Layout);
-        pnlKpi0Layout.setHorizontalGroup(
-            pnlKpi0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlKpi0Layout.createSequentialGroup()
-                 .addGap(16, 16, 16)
-                 .addGroup(pnlKpi0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addComponent(lblKpiTitle0, 10, 180, Short.MAX_VALUE)
-                  .addComponent(lblKpiValue0, 10, 180, Short.MAX_VALUE)
-                  .addComponent(lblKpiSub0, 10, 180, Short.MAX_VALUE)
-             )
-            )
-        );
-        pnlKpi0Layout.setVerticalGroup(
-            pnlKpi0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlKpi0Layout.createSequentialGroup()
-                 .addGap(12, 12, 12)
-                 .addComponent(lblKpiTitle0, 14, 14, 14)
-                 .addGap(4, 4, 4)
-                 .addComponent(lblKpiValue0, 28, 28, 28)
-                 .addGap(3, 3, 3)
-                 .addComponent(lblKpiSub0, 16, 16, 16)
-                 .addGap(12, 12, Short.MAX_VALUE)
-            )
-        );
-
-        javax.swing.GroupLayout pnlKpi1Layout = new javax.swing.GroupLayout(pnlKpi1);
-        pnlKpi1.setLayout(pnlKpi1Layout);
-        pnlKpi1Layout.setHorizontalGroup(
-            pnlKpi1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlKpi1Layout.createSequentialGroup()
-                 .addGap(16, 16, 16)
-                 .addGroup(pnlKpi1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addComponent(lblKpiTitle1, 10, 180, Short.MAX_VALUE)
-                  .addComponent(lblKpiValue1, 10, 180, Short.MAX_VALUE)
-                  .addComponent(lblKpiSub1, 10, 180, Short.MAX_VALUE)
-             )
-            )
-        );
-        pnlKpi1Layout.setVerticalGroup(
-            pnlKpi1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlKpi1Layout.createSequentialGroup()
-                 .addGap(12, 12, 12)
-                 .addComponent(lblKpiTitle1, 14, 14, 14)
-                 .addGap(4, 4, 4)
-                 .addComponent(lblKpiValue1, 28, 28, 28)
-                 .addGap(3, 3, 3)
-                 .addComponent(lblKpiSub1, 16, 16, 16)
-                 .addGap(12, 12, Short.MAX_VALUE)
-            )
-        );
-
-        javax.swing.GroupLayout pnlKpi2Layout = new javax.swing.GroupLayout(pnlKpi2);
-        pnlKpi2.setLayout(pnlKpi2Layout);
-        pnlKpi2Layout.setHorizontalGroup(
-            pnlKpi2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlKpi2Layout.createSequentialGroup()
-                 .addGap(16, 16, 16)
-                 .addGroup(pnlKpi2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addComponent(lblKpiTitle2, 10, 180, Short.MAX_VALUE)
-                  .addComponent(lblKpiValue2, 10, 180, Short.MAX_VALUE)
-                  .addComponent(lblKpiSub2, 10, 180, Short.MAX_VALUE)
-             )
-            )
-        );
-        pnlKpi2Layout.setVerticalGroup(
-            pnlKpi2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlKpi2Layout.createSequentialGroup()
-                 .addGap(12, 12, 12)
-                 .addComponent(lblKpiTitle2, 14, 14, 14)
-                 .addGap(4, 4, 4)
-                 .addComponent(lblKpiValue2, 28, 28, 28)
-                 .addGap(3, 3, 3)
-                 .addComponent(lblKpiSub2, 16, 16, 16)
-                 .addGap(12, 12, Short.MAX_VALUE)
-            )
-        );
-
+        tblData.setGridColor(new java.awt.Color(226, 232, 240));
+        tblData.setRowHeight(28);
         scrollTable.setViewportView(tblData);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                 .addGap(24, 24, 24)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addGroup(layout.createSequentialGroup()
-                   .addComponent(lblTitle, 10, 500, Short.MAX_VALUE)
-              )
-                  .addGroup(layout.createSequentialGroup()
-                   .addComponent(lblHint, 10, 500, Short.MAX_VALUE)
-              )
-             )
-                 .addGap(0, 0, Short.MAX_VALUE)
-                 .addComponent(btnDetail, 190, 190, 190)
-                 .addGap(24, 24, 24)
-            )
-                .addGroup(layout.createSequentialGroup()
-                 .addGap(24, 24, 24)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addGroup(layout.createSequentialGroup()
-                   .addComponent(pnlFilter, 562, 562, 562)
-              )
-                  .addGroup(layout.createSequentialGroup()
-                   .addComponent(pnlKpi0, 10, 212, Short.MAX_VALUE)
-                   .addGap(12, 12, Short.MAX_VALUE)
-                   .addComponent(pnlKpi1, 10, 212, Short.MAX_VALUE)
-                   .addGap(12, 12, Short.MAX_VALUE)
-                   .addComponent(pnlKpi2, 10, 212, Short.MAX_VALUE)
-              )
-                  .addGroup(layout.createSequentialGroup()
-                   .addGap(12, 12, 12)
-                   .addComponent(scrollTable, 10, 868, Short.MAX_VALUE)
-                   .addGap(24, 24, 24)
-              )
-             )
-            )
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .add(24, 24, 24)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, lblTitle, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, lblHint, 10, 880, Short.MAX_VALUE)
+                    .add(layout.createSequentialGroup()
+                        .add(pnlKpi0, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(18, 18, 18)
+                        .add(pnlKpi1, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(18, 18, 18)
+                        .add(pnlKpi2, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
+                        .add(pnlFilter, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(18, 18, 18)
+                        .add(btnDetail, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 269, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(scrollTable))
+                .add(24, 24, 24))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addGroup(layout.createSequentialGroup()
-                   .addGap(16, 16, 16)
-                   .addComponent(lblTitle, 40, 40, 40)
-                   .addGap(2, 2, 2)
-                   .addComponent(lblHint, 22, 22, 22)
-              )
-                  .addGroup(layout.createSequentialGroup()
-                   .addGap(16, 16, 16)
-                   .addComponent(btnDetail, 42, 42, 42)
-              )
-             )
-                 .addGap(12, 12, 12)
-                 .addComponent(pnlFilter, 62, 62, 62)
-                 .addGap(12, 12, 12)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addComponent(pnlKpi0, 90, 90, 90)
-                  .addComponent(pnlKpi1, 90, 90, 90)
-                  .addComponent(pnlKpi2, 90, 90, 90)
-             )
-                 .addGap(12, 12, 12)
-                 .addComponent(scrollTable, 520, 520, Short.MAX_VALUE)
-                 .addGap(16, 16, 16)
-            )
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .add(16, 16, 16)
+                .add(lblTitle, 40, 40, 40)
+                .add(2, 2, 2)
+                .add(lblHint, 22, 22, 22)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(pnlFilter, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(12, 12, 12))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(btnDetail, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 48, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(18, 18, 18)))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(pnlKpi0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(pnlKpi1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(pnlKpi2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(12, 12, 12)
+                .add(scrollTable, 520, 564, Short.MAX_VALUE)
+                .add(10, 10, 10))
         );
     }// </editor-fold>//GEN-END:initComponents
 

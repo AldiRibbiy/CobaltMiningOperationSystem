@@ -4,6 +4,7 @@ import config.AppConfig;
 import controller.AuthController;
 import java.awt.Cursor;
 import java.util.Arrays;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 
@@ -14,9 +15,19 @@ public class LoginFrame extends javax.swing.JFrame {
     public LoginFrame() {
         initComponents();
         authController = AppConfig.getAuthController();
+        
         if (authController == null) {
             throw new IllegalStateException("AuthController belum diinisialisasi.");
         }
+        
+        JButton[] navButtons = {btnLogin};
+        
+        for (JButton btn : navButtons) {
+            btn.setOpaque(true);
+            btn.setContentAreaFilled(true);
+            btn.setBorderPainted(false);
+        }
+        
         defaultEchoChar = txtPassword.getEchoChar();
         setResizable(false);
         setLocationRelativeTo(null);
@@ -276,7 +287,7 @@ public class LoginFrame extends javax.swing.JFrame {
                     .add(pnlRootLayout.createSequentialGroup()
                         .add(300, 300, 300)
                         .add(pnlRight, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         pnlRootLayout.setVerticalGroup(
             pnlRootLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

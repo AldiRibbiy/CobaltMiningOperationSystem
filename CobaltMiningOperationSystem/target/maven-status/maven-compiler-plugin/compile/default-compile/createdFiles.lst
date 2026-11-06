@@ -1,4 +1,5 @@
 util/BootstrapAdmin.class
+view/LandingFrame$3.class
 enums/StatusPegawai.class
 service/LaporanService$1.class
 view/MonitoringDetailFrame$2.class
@@ -50,6 +51,7 @@ view/KondisiLokasiPanel$2.class
 view/UbahAkunFrame.class
 view/MonitoringPanel$2.class
 dao/PengangkutanDAO.class
+view/LandingFrame.class
 enums/StatusMonitoring.class
 view/LokasiFormFrame.class
 view/MonitoringReadOnlyFrame$1.class
@@ -58,7 +60,6 @@ view/DashboardManagerPanel$3.class
 exception/ValidationException.class
 controller/PengangkutanController.class
 view/DashboardOperasionalPanel.class
-view/SplashFrame$1.class
 view/UserPanel$2.class
 service/DashboardService$Data.class
 view/ParameterPanel$3.class
@@ -89,6 +90,7 @@ repository/ParameterRepository.class
 view/DashboardManagerPanel$1.class
 view/UserPanel$4.class
 model/Pegawai.class
+view/LoadingFrame$1.class
 view/ParameterPanel$1.class
 view/KendaraanPanel$4.class
 view/DashboardManagerPanel$2.class
@@ -101,7 +103,6 @@ repository/CrudRepository.class
 service/LaporanService.class
 enums/StatusDetail.class
 controller/DashboardController.class
-view/SplashFrame.class
 view/LoginFrame.class
 model/JenisMaterial.class
 view/LaporanPengangkutanPanel$2.class
@@ -165,6 +166,7 @@ config/DatabaseConfig.class
 model/DetailMonitoring.class
 view/KendaraanFormFrame.class
 view/ParameterPanel$5.class
+view/LandingFrame$2.class
 view/PegawaiPanel$1.class
 service/LaporanService$DetailLaporanMonitoring.class
 controller/MonitoringController.class
@@ -174,6 +176,7 @@ view/MaterialPanel$2.class
 config/AppConfig.class
 view/MaterialPanel$5.class
 view/MaterialPanel$4.class
+view/LandingFrame$1.class
 view/LokasiPanel$2.class
 service/LaporanService$BarisDetail.class
 view/PengangkutanPanel$4.class
@@ -181,6 +184,7 @@ view/ProduksiFormFrame.class
 dao/JdbcSupport.class
 enums/StatusKendaraan.class
 view/MainFrameOperasional.class
+view/LoadingFrame.class
 view/LokasiPanel$1.class
 enums/StatusPenanganan.class
 view/MaterialPanel$3.class

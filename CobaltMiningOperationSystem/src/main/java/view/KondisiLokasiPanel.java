@@ -13,6 +13,15 @@ public class KondisiLokasiPanel extends javax.swing.JPanel {
 
     public KondisiLokasiPanel() {
         initComponents();
+        
+        JButton[] navButtons = {btnBuatMonitoring, btnInformasikan, btnKelola};
+        
+        for (JButton btn : navButtons) {
+            btn.setOpaque(true);
+            btn.setContentAreaFilled(true);
+            btn.setBorderPainted(false);
+        }
+        
         try { refreshData(); } catch (Exception ex) { FormUtil.error(this, ex); }
     }
 
@@ -22,20 +31,21 @@ public class KondisiLokasiPanel extends javax.swing.JPanel {
 
         lblTitle = new javax.swing.JLabel();
         lblHint = new javax.swing.JLabel();
+        pnlKpi0 = new javax.swing.JPanel();
         lblKpiTitle0 = new javax.swing.JLabel();
         lblKpiValue0 = new javax.swing.JLabel();
         lblKpiSub0 = new javax.swing.JLabel();
-        pnlKpi0 = new javax.swing.JPanel();
+        pnlKpi1 = new javax.swing.JPanel();
         lblKpiTitle1 = new javax.swing.JLabel();
         lblKpiValue1 = new javax.swing.JLabel();
         lblKpiSub1 = new javax.swing.JLabel();
-        pnlKpi1 = new javax.swing.JPanel();
+        pnlKpi2 = new javax.swing.JPanel();
         lblKpiTitle2 = new javax.swing.JLabel();
         lblKpiValue2 = new javax.swing.JLabel();
         lblKpiSub2 = new javax.swing.JLabel();
-        pnlKpi2 = new javax.swing.JPanel();
         scrollKatalog = new javax.swing.JScrollPane();
         pnlListKartu = new javax.swing.JPanel();
+        pnlDetail = new javax.swing.JPanel();
         lblDetailTitle = new javax.swing.JLabel();
         lblDNama = new javax.swing.JLabel();
         lblDBadge = new javax.swing.JLabel();
@@ -45,346 +55,335 @@ public class KondisiLokasiPanel extends javax.swing.JPanel {
         lblDHasil = new javax.swing.JLabel();
         lblDPenanganan = new javax.swing.JLabel();
         lblDTindakLanjut = new javax.swing.JLabel();
-        btnBuatMonitoring = new javax.swing.JButton();
-        btnInformasikan = new javax.swing.JButton();
-        btnSegarkan = new javax.swing.JButton();
-        pnlDetail = new javax.swing.JPanel();
         lblParameter = new javax.swing.JLabel();
         scrollParameter = new javax.swing.JScrollPane();
         tblParameter = new javax.swing.JTable();
+        btnBuatMonitoring = new javax.swing.JButton();
+        btnInformasikan = new javax.swing.JButton();
+        btnKelola = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(214, 192, 179));
 
-        lblTitle.setText("Kondisi Lokasi Tambang");
         lblTitle.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(26, 43, 66));
+        lblTitle.setText("Kondisi Lokasi Tambang");
 
-        lblHint.setText("Katalog PIT dan Stockpile beserta hasil monitoring terakhir");
+        lblHint.setBackground(new java.awt.Color(228, 224, 225));
         lblHint.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         lblHint.setForeground(new java.awt.Color(103, 121, 143));
+        lblHint.setText("Katalog PIT dan Stockpile beserta hasil monitoring terakhir");
 
-        lblKpiTitle0.setText("TOTAL LOKASI");
+        pnlKpi0.setBackground(new java.awt.Color(234, 216, 192));
+
         lblKpiTitle0.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         lblKpiTitle0.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiTitle0.setText("TOTAL LOKASI");
 
-        lblKpiValue0.setText("-");
         lblKpiValue0.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
         lblKpiValue0.setForeground(new java.awt.Color(26, 43, 66));
+        lblKpiValue0.setText("-");
 
-        lblKpiSub0.setText("PIT dan stockpile aktif");
         lblKpiSub0.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         lblKpiSub0.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiSub0.setText("PIT dan stockpile aktif");
 
-        pnlKpi0.setBackground(new java.awt.Color(255, 255, 255));
+        org.jdesktop.layout.GroupLayout pnlKpi0Layout = new org.jdesktop.layout.GroupLayout(pnlKpi0);
+        pnlKpi0.setLayout(pnlKpi0Layout);
+        pnlKpi0Layout.setHorizontalGroup(
+            pnlKpi0Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlKpi0Layout.createSequentialGroup()
+                .add(16, 16, 16)
+                .add(pnlKpi0Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(lblKpiTitle0, 10, 229, Short.MAX_VALUE)
+                    .add(lblKpiValue0, 10, 229, Short.MAX_VALUE)
+                    .add(lblKpiSub0, 10, 229, Short.MAX_VALUE)))
+        );
+        pnlKpi0Layout.setVerticalGroup(
+            pnlKpi0Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlKpi0Layout.createSequentialGroup()
+                .add(12, 12, 12)
+                .add(lblKpiTitle0, 14, 14, 14)
+                .add(4, 4, 4)
+                .add(lblKpiValue0, 28, 28, 28)
+                .add(3, 3, 3)
+                .add(lblKpiSub0, 16, 16, 16)
+                .add(12, 13, Short.MAX_VALUE))
+        );
 
-        lblKpiTitle1.setText("PERINGATAN TERAKHIR");
+        pnlKpi1.setBackground(new java.awt.Color(234, 216, 192));
+
         lblKpiTitle1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         lblKpiTitle1.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiTitle1.setText("PERINGATAN TERAKHIR");
 
-        lblKpiValue1.setText("-");
         lblKpiValue1.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
         lblKpiValue1.setForeground(new java.awt.Color(160, 45, 62));
+        lblKpiValue1.setText("-");
 
-        lblKpiSub1.setText("lokasi dengan hasil terakhir peringatan");
         lblKpiSub1.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         lblKpiSub1.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiSub1.setText("lokasi dengan hasil terakhir peringatan");
 
-        pnlKpi1.setBackground(new java.awt.Color(255, 255, 255));
+        org.jdesktop.layout.GroupLayout pnlKpi1Layout = new org.jdesktop.layout.GroupLayout(pnlKpi1);
+        pnlKpi1.setLayout(pnlKpi1Layout);
+        pnlKpi1Layout.setHorizontalGroup(
+            pnlKpi1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlKpi1Layout.createSequentialGroup()
+                .add(16, 16, 16)
+                .add(pnlKpi1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(lblKpiTitle1, 10, 229, Short.MAX_VALUE)
+                    .add(lblKpiValue1, 10, 229, Short.MAX_VALUE)
+                    .add(lblKpiSub1, 10, 229, Short.MAX_VALUE)))
+        );
+        pnlKpi1Layout.setVerticalGroup(
+            pnlKpi1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlKpi1Layout.createSequentialGroup()
+                .add(12, 12, 12)
+                .add(lblKpiTitle1, 14, 14, 14)
+                .add(4, 4, 4)
+                .add(lblKpiValue1, 28, 28, 28)
+                .add(3, 3, 3)
+                .add(lblKpiSub1, 16, 16, 16)
+                .add(12, 13, Short.MAX_VALUE))
+        );
 
-        lblKpiTitle2.setText("BELUM DITANGANI");
+        pnlKpi2.setBackground(new java.awt.Color(234, 216, 192));
+
         lblKpiTitle2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         lblKpiTitle2.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiTitle2.setText("BELUM DITANGANI");
 
-        lblKpiValue2.setText("-");
         lblKpiValue2.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
         lblKpiValue2.setForeground(new java.awt.Color(183, 121, 31));
+        lblKpiValue2.setText("-");
 
-        lblKpiSub2.setText("peringatan yang belum selesai ditangani");
         lblKpiSub2.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         lblKpiSub2.setForeground(new java.awt.Color(103, 121, 143));
+        lblKpiSub2.setText("peringatan yang belum selesai ditangani");
 
-        pnlKpi2.setBackground(new java.awt.Color(255, 255, 255));
+        org.jdesktop.layout.GroupLayout pnlKpi2Layout = new org.jdesktop.layout.GroupLayout(pnlKpi2);
+        pnlKpi2.setLayout(pnlKpi2Layout);
+        pnlKpi2Layout.setHorizontalGroup(
+            pnlKpi2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlKpi2Layout.createSequentialGroup()
+                .add(16, 16, 16)
+                .add(pnlKpi2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(lblKpiTitle2, 10, 229, Short.MAX_VALUE)
+                    .add(lblKpiValue2, 10, 229, Short.MAX_VALUE)
+                    .add(lblKpiSub2, 10, 229, Short.MAX_VALUE)))
+        );
+        pnlKpi2Layout.setVerticalGroup(
+            pnlKpi2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlKpi2Layout.createSequentialGroup()
+                .add(12, 12, 12)
+                .add(lblKpiTitle2, 14, 14, 14)
+                .add(4, 4, 4)
+                .add(lblKpiValue2, 28, 28, 28)
+                .add(3, 3, 3)
+                .add(lblKpiSub2, 16, 16, 16)
+                .add(12, 13, Short.MAX_VALUE))
+        );
 
         scrollKatalog.setBackground(new java.awt.Color(244, 247, 252));
 
-        pnlListKartu.setBackground(new java.awt.Color(244, 247, 252));
+        pnlListKartu.setBackground(new java.awt.Color(73, 54, 40));
 
-        lblDetailTitle.setText("DETAIL LOKASI");
-        lblDetailTitle.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
-        lblDetailTitle.setForeground(new java.awt.Color(26, 43, 66));
-
-        lblDNama.setText("-");
-        lblDNama.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        lblDNama.setForeground(new java.awt.Color(26, 43, 66));
-
-        lblDBadge.setText("PERLU TINDAK LANJUT");
-        lblDBadge.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        lblDBadge.setForeground(new java.awt.Color(255, 255, 255));
-        lblDBadge.setBackground(new java.awt.Color(160, 45, 62));
-        lblDBadge.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDBadge.setOpaque(true);
-
-        lblDJenis.setText("-");
-        lblDJenis.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        lblDJenis.setForeground(new java.awt.Color(103, 121, 143));
-
-        lblDStatus.setText("-");
-        lblDStatus.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        lblDStatus.setForeground(new java.awt.Color(103, 121, 143));
-
-        lblDMonTerakhir.setText("-");
-        lblDMonTerakhir.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        lblDMonTerakhir.setForeground(new java.awt.Color(26, 43, 66));
-
-        lblDHasil.setText("-");
-        lblDHasil.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
-        lblDHasil.setForeground(new java.awt.Color(26, 43, 66));
-
-        lblDPenanganan.setText("-");
-        lblDPenanganan.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        lblDPenanganan.setForeground(new java.awt.Color(103, 121, 143));
-
-        lblDTindakLanjut.setText("-");
-        lblDTindakLanjut.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        lblDTindakLanjut.setForeground(new java.awt.Color(103, 121, 143));
-
-        btnBuatMonitoring.setText("Buat Monitoring Lokasi Ini");
-        btnBuatMonitoring.setFocusPainted(false);
-        btnBuatMonitoring.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        btnBuatMonitoring.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuatMonitoring.setBackground(new java.awt.Color(43, 106, 230));
-        btnBuatMonitoring.addActionListener(this::btnBuatMonitoringActionPerformed);
-
-        btnInformasikan.setText("Informasikan ke Manager");
-        btnInformasikan.setFocusPainted(false);
-        btnInformasikan.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        btnInformasikan.setForeground(new java.awt.Color(255, 255, 255));
-        btnInformasikan.setBackground(new java.awt.Color(183, 121, 31));
-        btnInformasikan.addActionListener(this::btnInformasikanActionPerformed);
-
-        btnSegarkan.setText("Lihat / Kelola Pengukuran");
-        btnSegarkan.setFocusPainted(false);
-        btnSegarkan.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        btnSegarkan.setForeground(new java.awt.Color(255, 255, 255));
-        btnSegarkan.setBackground(new java.awt.Color(103, 121, 143));
-        btnSegarkan.addActionListener(this::btnSegarkanActionPerformed);
-
-        pnlDetail.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout pnlKpi0Layout = new javax.swing.GroupLayout(pnlKpi0);
-        pnlKpi0.setLayout(pnlKpi0Layout);
-        pnlKpi0Layout.setHorizontalGroup(
-            pnlKpi0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlKpi0Layout.createSequentialGroup()
-                 .addGap(16, 16, 16)
-                 .addGroup(pnlKpi0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addComponent(lblKpiTitle0, 10, 176, Short.MAX_VALUE)
-                  .addComponent(lblKpiValue0, 10, 176, Short.MAX_VALUE)
-                  .addComponent(lblKpiSub0, 10, 176, Short.MAX_VALUE)
-             )
-            )
-        );
-        pnlKpi0Layout.setVerticalGroup(
-            pnlKpi0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlKpi0Layout.createSequentialGroup()
-                 .addGap(12, 12, 12)
-                 .addComponent(lblKpiTitle0, 14, 14, 14)
-                 .addGap(4, 4, 4)
-                 .addComponent(lblKpiValue0, 28, 28, 28)
-                 .addGap(3, 3, 3)
-                 .addComponent(lblKpiSub0, 16, 16, 16)
-                 .addGap(12, 12, Short.MAX_VALUE)
-            )
-        );
-
-        javax.swing.GroupLayout pnlKpi1Layout = new javax.swing.GroupLayout(pnlKpi1);
-        pnlKpi1.setLayout(pnlKpi1Layout);
-        pnlKpi1Layout.setHorizontalGroup(
-            pnlKpi1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlKpi1Layout.createSequentialGroup()
-                 .addGap(16, 16, 16)
-                 .addGroup(pnlKpi1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addComponent(lblKpiTitle1, 10, 176, Short.MAX_VALUE)
-                  .addComponent(lblKpiValue1, 10, 176, Short.MAX_VALUE)
-                  .addComponent(lblKpiSub1, 10, 176, Short.MAX_VALUE)
-             )
-            )
-        );
-        pnlKpi1Layout.setVerticalGroup(
-            pnlKpi1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlKpi1Layout.createSequentialGroup()
-                 .addGap(12, 12, 12)
-                 .addComponent(lblKpiTitle1, 14, 14, 14)
-                 .addGap(4, 4, 4)
-                 .addComponent(lblKpiValue1, 28, 28, 28)
-                 .addGap(3, 3, 3)
-                 .addComponent(lblKpiSub1, 16, 16, 16)
-                 .addGap(12, 12, Short.MAX_VALUE)
-            )
-        );
-
-        javax.swing.GroupLayout pnlKpi2Layout = new javax.swing.GroupLayout(pnlKpi2);
-        pnlKpi2.setLayout(pnlKpi2Layout);
-        pnlKpi2Layout.setHorizontalGroup(
-            pnlKpi2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlKpi2Layout.createSequentialGroup()
-                 .addGap(16, 16, 16)
-                 .addGroup(pnlKpi2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addComponent(lblKpiTitle2, 10, 176, Short.MAX_VALUE)
-                  .addComponent(lblKpiValue2, 10, 176, Short.MAX_VALUE)
-                  .addComponent(lblKpiSub2, 10, 176, Short.MAX_VALUE)
-             )
-            )
-        );
-        pnlKpi2Layout.setVerticalGroup(
-            pnlKpi2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlKpi2Layout.createSequentialGroup()
-                 .addGap(12, 12, 12)
-                 .addComponent(lblKpiTitle2, 14, 14, 14)
-                 .addGap(4, 4, 4)
-                 .addComponent(lblKpiValue2, 28, 28, 28)
-                 .addGap(3, 3, 3)
-                 .addComponent(lblKpiSub2, 16, 16, 16)
-                 .addGap(12, 12, Short.MAX_VALUE)
-            )
-        );
-
-        javax.swing.GroupLayout pnlListKartuLayout = new javax.swing.GroupLayout(pnlListKartu);
+        org.jdesktop.layout.GroupLayout pnlListKartuLayout = new org.jdesktop.layout.GroupLayout(pnlListKartu);
         pnlListKartu.setLayout(pnlListKartuLayout);
         pnlListKartuLayout.setHorizontalGroup(
-            pnlListKartuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlListKartuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                 .addGap(0, 0, Short.MAX_VALUE)
-            )
+            pnlListKartuLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 548, Short.MAX_VALUE)
         );
         pnlListKartuLayout.setVerticalGroup(
-            pnlListKartuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlListKartuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                 .addGap(0, 0, Short.MAX_VALUE)
-            )
-        );
-
-        lblParameter.setText("PARAMETER PENGUKURAN TERAKHIR");
-        lblParameter.setFont(new java.awt.Font("SansSerif", 1, 12));
-        lblParameter.setForeground(new java.awt.Color(26, 43, 66));
-        tblParameter.setFont(new java.awt.Font("SansSerif", 0, 12));
-        tblParameter.setRowHeight(25);
-        tblParameter.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{}, new String[]{"Parameter", "Nilai", "Hasil"}) {
-            @Override public boolean isCellEditable(int r,int c){ return false; }
-        });
-        scrollParameter.setViewportView(tblParameter);
-
-        javax.swing.GroupLayout pnlDetailLayout = new javax.swing.GroupLayout(pnlDetail);
-        pnlDetail.setLayout(pnlDetailLayout);
-        pnlDetailLayout.setHorizontalGroup(
-            pnlDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlDetailLayout.createSequentialGroup()
-                 .addGap(16, 16, 16)
-                 .addGroup(pnlDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addComponent(lblDetailTitle, 10, 272, Short.MAX_VALUE)
-                  .addComponent(lblDNama, 10, 272, Short.MAX_VALUE)
-                  .addComponent(lblDBadge, 10, 272, Short.MAX_VALUE)
-                  .addComponent(lblDJenis, 10, 272, Short.MAX_VALUE)
-                  .addComponent(lblDStatus, 10, 272, Short.MAX_VALUE)
-                  .addComponent(lblDMonTerakhir, 10, 272, Short.MAX_VALUE)
-                  .addComponent(lblDHasil, 10, 272, Short.MAX_VALUE)
-                  .addComponent(lblDPenanganan, 10, 272, Short.MAX_VALUE)
-                  .addComponent(lblDTindakLanjut, 10, 272, Short.MAX_VALUE)
-                  .addComponent(lblParameter, 10, 272, Short.MAX_VALUE)
-                  .addComponent(scrollParameter, 10, 272, Short.MAX_VALUE)
-                  .addComponent(btnBuatMonitoring, 240, 240, 240)
-                  .addComponent(btnInformasikan, 240, 240, 240)
-                  .addComponent(btnSegarkan, 240, 240, 240)
-             )
-                 .addGap(16, 16, 16)
-            )
-        );
-        pnlDetailLayout.setVerticalGroup(
-            pnlDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlDetailLayout.createSequentialGroup()
-                 .addGap(14, 14, 14)
-                 .addComponent(lblDetailTitle, 18, 18, 18)
-                 .addGap(6, 6, 6)
-                 .addComponent(lblDNama, 24, 24, 24)
-                 .addGap(6, 6, 6)
-                 .addComponent(lblDBadge, 22, 22, 22)
-                 .addGap(8, 8, 8)
-                 .addComponent(lblDJenis, 18, 18, 18)
-                 .addGap(4, 4, 4)
-                 .addComponent(lblDStatus, 18, 18, 18)
-                 .addGap(10, 10, 10)
-                 .addComponent(lblDMonTerakhir, 18, 18, 18)
-                 .addGap(4, 4, 4)
-                 .addComponent(lblDHasil, 20, 20, 20)
-                 .addGap(4, 4, 4)
-                 .addComponent(lblDPenanganan, 18, 18, 18)
-                 .addGap(8, 8, 8)
-                 .addComponent(lblDTindakLanjut, 48, 48, 48)
-                 .addGap(8, 8, 8)
-                 .addComponent(lblParameter, 18, 18, 18)
-                 .addGap(5, 5, 5)
-                 .addComponent(scrollParameter, 100, 132, 160)
-                 .addGap(12, 12, 12)
-                 .addComponent(btnBuatMonitoring, 42, 42, 42)
-                 .addGap(8, 8, 8)
-                 .addComponent(btnInformasikan, 42, 42, 42)
-                 .addGap(8, 8, 8)
-                 .addComponent(btnSegarkan, 36, 36, 36)
-                 .addGap(14, 14, Short.MAX_VALUE)
-            )
+            pnlListKartuLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 658, Short.MAX_VALUE)
         );
 
         scrollKatalog.setViewportView(pnlListKartu);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        pnlDetail.setBackground(new java.awt.Color(73, 54, 40));
+
+        lblDetailTitle.setBackground(new java.awt.Color(214, 192, 179));
+        lblDetailTitle.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        lblDetailTitle.setForeground(new java.awt.Color(214, 192, 179));
+        lblDetailTitle.setText("DETAIL LOKASI");
+
+        lblDNama.setBackground(new java.awt.Color(214, 192, 179));
+        lblDNama.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        lblDNama.setForeground(new java.awt.Color(214, 192, 179));
+        lblDNama.setText("-");
+
+        lblDBadge.setBackground(new java.awt.Color(160, 45, 62));
+        lblDBadge.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        lblDBadge.setForeground(new java.awt.Color(255, 255, 255));
+        lblDBadge.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDBadge.setText("PERLU TINDAK LANJUT");
+        lblDBadge.setOpaque(true);
+
+        lblDJenis.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        lblDJenis.setForeground(new java.awt.Color(228, 224, 225));
+        lblDJenis.setText("-");
+
+        lblDStatus.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        lblDStatus.setForeground(new java.awt.Color(228, 224, 225));
+        lblDStatus.setText("-");
+
+        lblDMonTerakhir.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        lblDMonTerakhir.setForeground(new java.awt.Color(214, 192, 179));
+        lblDMonTerakhir.setText("-");
+
+        lblDHasil.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        lblDHasil.setForeground(new java.awt.Color(214, 192, 179));
+        lblDHasil.setText("-");
+
+        lblDPenanganan.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        lblDPenanganan.setForeground(new java.awt.Color(228, 224, 225));
+        lblDPenanganan.setText("-");
+
+        lblDTindakLanjut.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblDTindakLanjut.setForeground(new java.awt.Color(228, 224, 225));
+        lblDTindakLanjut.setText("-");
+
+        lblParameter.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lblParameter.setForeground(new java.awt.Color(214, 192, 179));
+        lblParameter.setText("PARAMETER PENGUKURAN TERAKHIR");
+
+        tblParameter.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        tblParameter.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Parameter", "Nilai", "Hasil"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblParameter.setRowHeight(25);
+        scrollParameter.setViewportView(tblParameter);
+
+        btnBuatMonitoring.setBackground(new java.awt.Color(209, 187, 158));
+        btnBuatMonitoring.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnBuatMonitoring.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuatMonitoring.setText("Buat Monitoring Lokasi Ini");
+        btnBuatMonitoring.setFocusPainted(false);
+        btnBuatMonitoring.addActionListener(this::btnBuatMonitoringActionPerformed);
+
+        btnInformasikan.setBackground(new java.awt.Color(167, 146, 119));
+        btnInformasikan.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnInformasikan.setForeground(new java.awt.Color(255, 255, 255));
+        btnInformasikan.setText("Informasikan ke Manager");
+        btnInformasikan.setFocusPainted(false);
+        btnInformasikan.addActionListener(this::btnInformasikanActionPerformed);
+
+        btnKelola.setBackground(new java.awt.Color(171, 136, 109));
+        btnKelola.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnKelola.setForeground(new java.awt.Color(255, 255, 255));
+        btnKelola.setText("Lihat / Kelola Pengukuran");
+        btnKelola.setFocusPainted(false);
+        btnKelola.addActionListener(this::btnKelolaActionPerformed);
+
+        org.jdesktop.layout.GroupLayout pnlDetailLayout = new org.jdesktop.layout.GroupLayout(pnlDetail);
+        pnlDetail.setLayout(pnlDetailLayout);
+        pnlDetailLayout.setHorizontalGroup(
+            pnlDetailLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlDetailLayout.createSequentialGroup()
+                .add(16, 16, 16)
+                .add(pnlDetailLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(lblDetailTitle, 10, 278, Short.MAX_VALUE)
+                    .add(lblDNama, 10, 278, Short.MAX_VALUE)
+                    .add(lblDBadge, 10, 278, Short.MAX_VALUE)
+                    .add(lblDJenis, 10, 278, Short.MAX_VALUE)
+                    .add(lblDStatus, 10, 278, Short.MAX_VALUE)
+                    .add(lblDMonTerakhir, 10, 278, Short.MAX_VALUE)
+                    .add(lblDHasil, 10, 278, Short.MAX_VALUE)
+                    .add(lblDPenanganan, 10, 278, Short.MAX_VALUE)
+                    .add(lblDTindakLanjut, 10, 278, Short.MAX_VALUE)
+                    .add(lblParameter, 10, 278, Short.MAX_VALUE)
+                    .add(scrollParameter, 10, 278, Short.MAX_VALUE)
+                    .add(btnBuatMonitoring, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(btnInformasikan, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(btnKelola, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(16, 16, 16))
+        );
+        pnlDetailLayout.setVerticalGroup(
+            pnlDetailLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlDetailLayout.createSequentialGroup()
+                .add(14, 14, 14)
+                .add(lblDetailTitle, 18, 18, 18)
+                .add(6, 6, 6)
+                .add(lblDNama, 24, 24, 24)
+                .add(6, 6, 6)
+                .add(lblDBadge, 22, 22, 22)
+                .add(8, 8, 8)
+                .add(lblDJenis, 18, 18, 18)
+                .add(4, 4, 4)
+                .add(lblDStatus, 18, 18, 18)
+                .add(10, 10, 10)
+                .add(lblDMonTerakhir, 18, 18, 18)
+                .add(4, 4, 4)
+                .add(lblDHasil, 20, 20, 20)
+                .add(4, 4, 4)
+                .add(lblDPenanganan, 18, 18, 18)
+                .add(8, 8, 8)
+                .add(lblDTindakLanjut, 48, 48, 48)
+                .add(8, 8, 8)
+                .add(lblParameter, 18, 18, 18)
+                .add(5, 5, 5)
+                .add(scrollParameter, 100, 160, 160)
+                .add(12, 12, 12)
+                .add(btnBuatMonitoring, 42, 42, 42)
+                .add(8, 8, 8)
+                .add(btnInformasikan, 42, 42, 42)
+                .add(8, 8, 8)
+                .add(btnKelola, 36, 36, 36)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                 .addGap(24, 24, 24)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addGroup(layout.createSequentialGroup()
-                   .addComponent(lblTitle, 10, 600, Short.MAX_VALUE)
-              )
-                  .addGroup(layout.createSequentialGroup()
-                   .addComponent(lblHint, 10, 600, Short.MAX_VALUE)
-              )
-                  .addGroup(layout.createSequentialGroup()
-                   .addComponent(pnlKpi0, 10, 208, Short.MAX_VALUE)
-                   .addGap(12, 12, Short.MAX_VALUE)
-                   .addComponent(pnlKpi1, 10, 208, Short.MAX_VALUE)
-                   .addGap(12, 12, Short.MAX_VALUE)
-                   .addComponent(pnlKpi2, 10, 208, Short.MAX_VALUE)
-              )
-                  .addGroup(layout.createSequentialGroup()
-                   .addComponent(scrollKatalog, 10, 544, Short.MAX_VALUE)
-                   .addGap(12, 12, Short.MAX_VALUE)
-                   .addComponent(pnlDetail, 10, 312, Short.MAX_VALUE)
-              )
-             )
-                 .addGap(24, 24, 24)
-            )
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .add(24, 24, 24)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(lblTitle, 10, 600, Short.MAX_VALUE)
+                    .add(lblHint, 10, 600, Short.MAX_VALUE)
+                    .add(layout.createSequentialGroup()
+                        .add(pnlKpi0, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(12, 65, Short.MAX_VALUE)
+                        .add(pnlKpi1, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(12, 68, Short.MAX_VALUE)
+                        .add(pnlKpi2, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
+                        .add(scrollKatalog, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(pnlDetail, 10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .add(24, 24, 24))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                 .addGap(16, 16, 16)
-                 .addComponent(lblTitle, 40, 40, 40)
-                 .addGap(2, 2, 2)
-                 .addComponent(lblHint, 22, 22, 22)
-                 .addGap(12, 12, 12)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addComponent(pnlKpi0, 90, 90, 90)
-                  .addComponent(pnlKpi1, 90, 90, 90)
-                  .addComponent(pnlKpi2, 90, 90, 90)
-             )
-                 .addGap(14, 14, 14)
-                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addComponent(scrollKatalog, 200, 660, Short.MAX_VALUE)
-                  .addComponent(pnlDetail, 200, 660, Short.MAX_VALUE)
-             )
-                 .addGap(16, 16, 16)
-            )
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .add(16, 16, 16)
+                .add(lblTitle, 40, 40, 40)
+                .add(2, 2, 2)
+                .add(lblHint, 22, 22, 22)
+                .add(12, 12, 12)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(pnlKpi0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(pnlKpi1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(pnlKpi2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(14, 14, 14)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(scrollKatalog, 200, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(pnlDetail, 200, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(16, 16, 16))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -530,7 +529,7 @@ public class KondisiLokasiPanel extends javax.swing.JPanel {
             lblDBadge.setVisible(false);
 
             btnInformasikan.setEnabled(false);
-            btnSegarkan.setEnabled(false);
+            btnKelola.setEnabled(false);
 
         } else {
 
@@ -544,7 +543,7 @@ public class KondisiLokasiPanel extends javax.swing.JPanel {
 
             lblDHasil.setText("Hasil: " + akhir.getStatusMonitoring());
 
-            lblDHasil.setForeground(peringatan ? new java.awt.Color(160, 45, 62) : new java.awt.Color(46, 125, 70));
+            lblDHasil.setForeground(peringatan ? new java.awt.Color(255,0,0) : new java.awt.Color(0,255,77));
 
             lblDPenanganan.setText("Penanganan: " + akhir.getStatusPenanganan());
 
@@ -557,7 +556,7 @@ public class KondisiLokasiPanel extends javax.swing.JPanel {
             lblDBadge.setVisible(perluTindak);
 
             btnInformasikan.setEnabled(perluTindak);
-            btnSegarkan.setEnabled(true);
+            btnKelola.setEnabled(true);
 
         }
 
@@ -617,7 +616,7 @@ public class KondisiLokasiPanel extends javax.swing.JPanel {
 
 
 
-    private void btnSegarkanActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnKelolaActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             if (terpilih == null) throw new IllegalArgumentException("Pilih lokasi terlebih dahulu.");
             model.MonitoringLingkungan mon = monitoringTerakhir(terpilih.getIdLokasi());
@@ -633,7 +632,7 @@ public class KondisiLokasiPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuatMonitoring;
     private javax.swing.JButton btnInformasikan;
-    private javax.swing.JButton btnSegarkan;
+    private javax.swing.JButton btnKelola;
     private javax.swing.JLabel lblDBadge;
     private javax.swing.JLabel lblDHasil;
     private javax.swing.JLabel lblDJenis;
@@ -653,15 +652,15 @@ public class KondisiLokasiPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblKpiValue0;
     private javax.swing.JLabel lblKpiValue1;
     private javax.swing.JLabel lblKpiValue2;
+    private javax.swing.JLabel lblParameter;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel pnlDetail;
-    private javax.swing.JLabel lblParameter;
-    private javax.swing.JScrollPane scrollParameter;
-    private javax.swing.JTable tblParameter;
     private javax.swing.JPanel pnlKpi0;
     private javax.swing.JPanel pnlKpi1;
     private javax.swing.JPanel pnlKpi2;
     private javax.swing.JPanel pnlListKartu;
     private javax.swing.JScrollPane scrollKatalog;
+    private javax.swing.JScrollPane scrollParameter;
+    private javax.swing.JTable tblParameter;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,7 +8,7 @@ import config.AppConfig;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import view.SplashFrame;
+import view.LoadingFrame;
 
 /**
  *
@@ -23,9 +23,11 @@ public final class Main {
         SwingUtilities.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                new SplashFrame().setVisible(true);
+                // Alur aplikasi: Loading (animasi + inisialisasi database)
+                //  -> Landing page (profil PT. Cobalt & tim) -> Login -> Sistem utama.
+                new LoadingFrame().setVisible(true);
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Aplikasi tidak dapat dijalankan.\n" + ex.getMessage() 
+                JOptionPane.showMessageDialog(null, "Aplikasi tidak dapat dijalankan.\n" + ex.getMessage()
                         + "\n\nPeriksa koneksi Database.", "C-MOS - Kesalahan Terjadi", JOptionPane.ERROR_MESSAGE);
             }
         });

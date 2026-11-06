@@ -8,6 +8,15 @@ public class UserFormFrame extends javax.swing.JFrame {
 
     public UserFormFrame() {
         initComponents();
+        
+        JButton[] navButtons = {btnBatal, btnSimpan};
+
+        for (JButton btn : navButtons) {
+            btn.setOpaque(true);
+            btn.setContentAreaFilled(true);
+            btn.setBorderPainted(false);
+        }
+        
         pack();
         setResizable(false);
         setLocationRelativeTo(null);

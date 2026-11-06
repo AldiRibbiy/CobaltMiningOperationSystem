@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
-  <SyntheticProperties>
-    <SyntheticProperty name="formSizePolicy" type="int" value="2"/>
-  </SyntheticProperties>
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="b3" green="c0" red="d6" type="rgb"/>
+    </Property>
+  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -14,65 +16,56 @@
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
   </AuxValues>
+
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-        <Group type="102" attributes="0">
-            <EmptySpace min="24" pref="24" max="24" attributes="0"/>
-            <Group type="103" groupAlignment="0" attributes="0">
-                <Group type="102" attributes="0">
-                    <Component id="lblTitle" min="10" pref="500" max="32767" attributes="0"/>
-                </Group>
-                <Group type="102" attributes="0">
-                    <Component id="lblHint" min="10" pref="500" max="32767" attributes="0"/>
-                </Group>
-            </Group>
-            <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-            <EmptySpace min="24" pref="24" max="24" attributes="0"/>
-        </Group>
-        <Group type="102" attributes="0">
-            <EmptySpace min="24" pref="24" max="24" attributes="0"/>
-            <Group type="103" groupAlignment="0" attributes="0">
-                <Group type="102" attributes="0">
-                    <Component id="pnlFilter" min="562" pref="562" max="562" attributes="0"/>
-                </Group>
-                <Group type="102" attributes="0">
-                    <Component id="pnlKpi0" min="10" pref="212" max="32767" attributes="0"/>
-                    <EmptySpace min="12" pref="12" max="32767" attributes="0"/>
-                    <Component id="pnlKpi1" min="10" pref="212" max="32767" attributes="0"/>
-                    <EmptySpace min="12" pref="12" max="32767" attributes="0"/>
-                    <Component id="pnlKpi2" min="10" pref="212" max="32767" attributes="0"/>
-                </Group>
-                <Group type="102" attributes="0">
-                    <EmptySpace min="12" pref="12" max="12" attributes="0"/>
-                    <Component id="scrollTable" min="10" pref="868" max="32767" attributes="0"/>
-                    <EmptySpace min="24" pref="24" max="24" attributes="0"/>
-                </Group>
-            </Group>
-        </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblTitle" min="10" pref="912" max="32767" attributes="0"/>
+                  <Component id="lblHint" min="10" pref="912" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="scrollTable" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="pnlFilter" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="pnlKpi0" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                      <Component id="pnlKpi1" min="10" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="pnlKpi2" min="10" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-        <Group type="102" attributes="0">
-            <Group type="102" attributes="0">
-                <EmptySpace min="16" pref="16" max="16" attributes="0"/>
-                <Component id="lblTitle" min="40" pref="40" max="40" attributes="0"/>
-                <EmptySpace min="2" pref="2" max="2" attributes="0"/>
-                <Component id="lblHint" min="22" pref="22" max="22" attributes="0"/>
-            </Group>
-            <EmptySpace min="12" pref="12" max="12" attributes="0"/>
-            <Component id="pnlFilter" min="62" pref="62" max="62" attributes="0"/>
-            <EmptySpace min="12" pref="12" max="12" attributes="0"/>
-            <Group type="103" groupAlignment="0" attributes="0">
-                <Component id="pnlKpi0" min="90" pref="90" max="90" attributes="0"/>
-                <Component id="pnlKpi1" min="90" pref="90" max="90" attributes="0"/>
-                <Component id="pnlKpi2" min="90" pref="90" max="90" attributes="0"/>
-            </Group>
-            <EmptySpace min="12" pref="12" max="12" attributes="0"/>
-            <Component id="scrollTable" min="520" pref="520" max="32767" attributes="0"/>
-            <EmptySpace min="16" pref="16" max="16" attributes="0"/>
-        </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="16" pref="16" max="16" attributes="0"/>
+              <Component id="lblTitle" min="40" pref="40" max="40" attributes="0"/>
+              <EmptySpace min="2" pref="2" max="2" attributes="0"/>
+              <Component id="lblHint" min="22" pref="22" max="22" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="pnlFilter" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="pnlKpi0" max="-2" attributes="0"/>
+                  <Component id="pnlKpi1" max="-2" attributes="0"/>
+                  <Component id="pnlKpi2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="12" pref="12" max="12" attributes="0"/>
+              <Component id="scrollTable" min="520" pref="564" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -102,311 +95,315 @@
     <Container class="javax.swing.JPanel" name="pnlFilter">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="c0" green="d8" red="ea" type="rgb"/>
         </Property>
       </Properties>
+
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-            <Group type="102" attributes="0">
-                <EmptySpace min="20" pref="20" max="20" attributes="0"/>
-                <Component id="lblAwal" min="36" pref="36" max="36" attributes="0"/>
-                <EmptySpace min="20" pref="20" max="20" attributes="0"/>
-                <Component id="choAwal" min="130" pref="130" max="130" attributes="0"/>
-                <EmptySpace min="20" pref="20" max="20" attributes="0"/>
-                <Component id="lblAkhir" min="26" pref="26" max="26" attributes="0"/>
-                <EmptySpace min="20" pref="20" max="20" attributes="0"/>
-                <Component id="choAkhir" min="130" pref="130" max="130" attributes="0"/>
-                <EmptySpace min="20" pref="20" max="20" attributes="0"/>
-                <Component id="btnTampilkan" min="120" pref="120" max="120" attributes="0"/>
-                <EmptySpace min="20" pref="20" max="20" attributes="0"/>
-            </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Component id="lblAwal" min="36" pref="36" max="36" attributes="0"/>
+                  <EmptySpace min="20" pref="20" max="20" attributes="0"/>
+                  <Component id="choAwal" min="130" pref="130" max="130" attributes="0"/>
+                  <EmptySpace min="20" pref="20" max="20" attributes="0"/>
+                  <Component id="lblAkhir" min="26" pref="26" max="26" attributes="0"/>
+                  <EmptySpace min="20" pref="20" max="20" attributes="0"/>
+                  <Component id="choAkhir" min="130" pref="130" max="130" attributes="0"/>
+                  <EmptySpace min="20" pref="20" max="20" attributes="0"/>
+                  <Component id="btnTampilkan" min="120" pref="120" max="120" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-            <Group type="102" attributes="0">
-                <EmptySpace min="16" pref="16" max="16" attributes="0"/>
-                <Group type="103" groupAlignment="2" attributes="0">
-                    <Component id="lblAwal" min="32" pref="32" max="32" attributes="0"/>
-                    <Component id="choAwal" min="30" pref="30" max="30" attributes="0"/>
-                    <Component id="lblAkhir" min="32" pref="32" max="32" attributes="0"/>
-                    <Component id="choAkhir" min="30" pref="30" max="30" attributes="0"/>
-                    <Component id="btnTampilkan" min="32" pref="32" max="32" attributes="0"/>
-                </Group>
-                <EmptySpace min="16" pref="16" max="32767" attributes="0"/>
-            </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="2" attributes="0">
+                      <Component id="lblAwal" min="32" pref="32" max="32" attributes="0"/>
+                      <Component id="choAwal" min="30" pref="30" max="30" attributes="0"/>
+                      <Component id="lblAkhir" min="32" pref="32" max="32" attributes="0"/>
+                      <Component id="choAkhir" min="30" pref="30" max="30" attributes="0"/>
+                      <Component id="btnTampilkan" min="32" pref="32" max="32" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="14" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-      <Component class="javax.swing.JLabel" name="lblAwal">
-        <Properties>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="13" style="0"/>
-          </Property>
-          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="42" green="2b" red="1a" type="rgb"/>
-          </Property>
-          <Property name="text" type="java.lang.String" value="Dari"/>
-        </Properties>
-      </Component>
-      <Component class="com.toedter.calendar.JDateChooser" name="choAwal">
-        <Properties>
-          <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="ff" green="ff" red="ff" type="rgb"/>
-          </Property>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="13" style="0"/>
-          </Property>
-        </Properties>
-      </Component>
-      <Component class="javax.swing.JLabel" name="lblAkhir">
-        <Properties>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="13" style="0"/>
-          </Property>
-          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="42" green="2b" red="1a" type="rgb"/>
-          </Property>
-          <Property name="text" type="java.lang.String" value="s/d"/>
-        </Properties>
-      </Component>
-      <Component class="com.toedter.calendar.JDateChooser" name="choAkhir">
-        <Properties>
-          <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="ff" green="ff" red="ff" type="rgb"/>
-          </Property>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="13" style="0"/>
-          </Property>
-        </Properties>
-      </Component>
-      <Component class="javax.swing.JButton" name="btnTampilkan">
-        <Properties>
-          <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="e6" green="6a" red="2b" type="rgb"/>
-          </Property>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="12" style="1"/>
-          </Property>
-          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="ff" green="ff" red="ff" type="rgb"/>
-          </Property>
-          <Property name="text" type="java.lang.String" value="Tampilkan"/>
-          <Property name="focusPainted" type="boolean" value="false"/>
-        </Properties>
-        <Events>
-          <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTampilkanActionPerformed"/>
-        </Events>
-      </Component>
+        <Component class="javax.swing.JLabel" name="lblAwal">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="13" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="42" green="2b" red="1a" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Dari"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="choAwal">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="13" style="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblAkhir">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="13" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="42" green="2b" red="1a" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="s/d"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="choAkhir">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="13" style="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnTampilkan">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="77" green="92" red="a7" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="12" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Tampilkan"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTampilkanActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlKpi0">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="c0" green="d8" red="ea" type="rgb"/>
         </Property>
       </Properties>
+
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-            <Group type="102" attributes="0">
-                <EmptySpace min="16" pref="16" max="16" attributes="0"/>
-                <Group type="103" groupAlignment="0" attributes="0">
-                    <Component id="lblKpiTitle0" min="10" pref="180" max="32767" attributes="0"/>
-                    <Component id="lblKpiValue0" min="10" pref="180" max="32767" attributes="0"/>
-                    <Component id="lblKpiSub0" min="10" pref="180" max="32767" attributes="0"/>
-                </Group>
-            </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="16" pref="16" max="16" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblKpiTitle0" min="10" pref="253" max="32767" attributes="0"/>
+                      <Component id="lblKpiValue0" min="10" max="32767" attributes="0"/>
+                      <Component id="lblKpiSub0" min="10" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-            <Group type="102" attributes="0">
-                <EmptySpace min="12" pref="12" max="12" attributes="0"/>
-                <Component id="lblKpiTitle0" min="14" pref="14" max="14" attributes="0"/>
-                <EmptySpace min="4" pref="4" max="4" attributes="0"/>
-                <Component id="lblKpiValue0" min="28" pref="28" max="28" attributes="0"/>
-                <EmptySpace min="3" pref="3" max="3" attributes="0"/>
-                <Component id="lblKpiSub0" min="16" pref="16" max="16" attributes="0"/>
-                <EmptySpace min="12" pref="12" max="32767" attributes="0"/>
-            </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="12" pref="12" max="12" attributes="0"/>
+                  <Component id="lblKpiTitle0" min="14" pref="14" max="14" attributes="0"/>
+                  <EmptySpace min="4" pref="4" max="4" attributes="0"/>
+                  <Component id="lblKpiValue0" min="28" pref="28" max="28" attributes="0"/>
+                  <EmptySpace min="3" pref="3" max="3" attributes="0"/>
+                  <Component id="lblKpiSub0" min="16" pref="16" max="16" attributes="0"/>
+                  <EmptySpace min="12" pref="13" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-      <Component class="javax.swing.JLabel" name="lblKpiTitle0">
-        <Properties>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="11" style="1"/>
-          </Property>
-          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="8f" green="79" red="67" type="rgb"/>
-          </Property>
-          <Property name="text" type="java.lang.String" value="TOTAL PRODUKSI PERIODE (TON)"/>
-        </Properties>
-      </Component>
-      <Component class="javax.swing.JLabel" name="lblKpiValue0">
-        <Properties>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="22" style="1"/>
-          </Property>
-          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="42" green="2b" red="1a" type="rgb"/>
-          </Property>
-          <Property name="text" type="java.lang.String" value="-"/>
-        </Properties>
-      </Component>
-      <Component class="javax.swing.JLabel" name="lblKpiSub0">
-        <Properties>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="11" style="0"/>
-          </Property>
-          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="8f" green="79" red="67" type="rgb"/>
-          </Property>
-          <Property name="text" type="java.lang.String" value="berdasarkan rentang tanggal"/>
-        </Properties>
-      </Component>
+        <Component class="javax.swing.JLabel" name="lblKpiTitle0">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="11" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="8f" green="79" red="67" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="TOTAL PRODUKSI PERIODE (TON)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblKpiValue0">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="22" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="42" green="2b" red="1a" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="-"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblKpiSub0">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="11" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="8f" green="79" red="67" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="berdasarkan rentang tanggal"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlKpi1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="c0" green="d8" red="ea" type="rgb"/>
         </Property>
       </Properties>
+
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-            <Group type="102" attributes="0">
-                <EmptySpace min="16" pref="16" max="16" attributes="0"/>
-                <Group type="103" groupAlignment="0" attributes="0">
-                    <Component id="lblKpiTitle1" min="10" pref="180" max="32767" attributes="0"/>
-                    <Component id="lblKpiValue1" min="10" pref="180" max="32767" attributes="0"/>
-                    <Component id="lblKpiSub1" min="10" pref="180" max="32767" attributes="0"/>
-                </Group>
-            </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="16" pref="16" max="16" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblKpiTitle1" min="10" pref="272" max="32767" attributes="0"/>
+                      <Component id="lblKpiValue1" min="10" pref="272" max="32767" attributes="0"/>
+                      <Component id="lblKpiSub1" min="10" pref="272" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-            <Group type="102" attributes="0">
-                <EmptySpace min="12" pref="12" max="12" attributes="0"/>
-                <Component id="lblKpiTitle1" min="14" pref="14" max="14" attributes="0"/>
-                <EmptySpace min="4" pref="4" max="4" attributes="0"/>
-                <Component id="lblKpiValue1" min="28" pref="28" max="28" attributes="0"/>
-                <EmptySpace min="3" pref="3" max="3" attributes="0"/>
-                <Component id="lblKpiSub1" min="16" pref="16" max="16" attributes="0"/>
-                <EmptySpace min="12" pref="12" max="32767" attributes="0"/>
-            </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="12" pref="12" max="12" attributes="0"/>
+                  <Component id="lblKpiTitle1" min="14" pref="14" max="14" attributes="0"/>
+                  <EmptySpace min="4" pref="4" max="4" attributes="0"/>
+                  <Component id="lblKpiValue1" min="28" pref="28" max="28" attributes="0"/>
+                  <EmptySpace min="3" pref="3" max="3" attributes="0"/>
+                  <Component id="lblKpiSub1" min="16" pref="16" max="16" attributes="0"/>
+                  <EmptySpace min="12" pref="13" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-      <Component class="javax.swing.JLabel" name="lblKpiTitle1">
-        <Properties>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="11" style="1"/>
-          </Property>
-          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="8f" green="79" red="67" type="rgb"/>
-          </Property>
-          <Property name="text" type="java.lang.String" value="STOK SAAT INI (TON)"/>
-        </Properties>
-      </Component>
-      <Component class="javax.swing.JLabel" name="lblKpiValue1">
-        <Properties>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="22" style="1"/>
-          </Property>
-          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="46" green="7d" red="2e" type="rgb"/>
-          </Property>
-          <Property name="text" type="java.lang.String" value="-"/>
-        </Properties>
-      </Component>
-      <Component class="javax.swing.JLabel" name="lblKpiSub1">
-        <Properties>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="11" style="0"/>
-          </Property>
-          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="8f" green="79" red="67" type="rgb"/>
-          </Property>
-          <Property name="text" type="java.lang.String" value="sisa material catatan terpilih"/>
-        </Properties>
-      </Component>
+        <Component class="javax.swing.JLabel" name="lblKpiTitle1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="11" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="8f" green="79" red="67" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="STOK SAAT INI (TON)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblKpiValue1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="22" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="46" green="7d" red="2e" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="-"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblKpiSub1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="11" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="8f" green="79" red="67" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="sisa material catatan terpilih"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlKpi2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="c0" green="d8" red="ea" type="rgb"/>
         </Property>
       </Properties>
+
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-            <Group type="102" attributes="0">
-                <EmptySpace min="16" pref="16" max="16" attributes="0"/>
-                <Group type="103" groupAlignment="0" attributes="0">
-                    <Component id="lblKpiTitle2" min="10" pref="180" max="32767" attributes="0"/>
-                    <Component id="lblKpiValue2" min="10" pref="180" max="32767" attributes="0"/>
-                    <Component id="lblKpiSub2" min="10" pref="180" max="32767" attributes="0"/>
-                </Group>
-            </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="16" pref="16" max="16" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblKpiTitle2" min="10" pref="270" max="32767" attributes="0"/>
+                      <Component id="lblKpiValue2" min="10" pref="270" max="32767" attributes="0"/>
+                      <Component id="lblKpiSub2" min="10" pref="270" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-            <Group type="102" attributes="0">
-                <EmptySpace min="12" pref="12" max="12" attributes="0"/>
-                <Component id="lblKpiTitle2" min="14" pref="14" max="14" attributes="0"/>
-                <EmptySpace min="4" pref="4" max="4" attributes="0"/>
-                <Component id="lblKpiValue2" min="28" pref="28" max="28" attributes="0"/>
-                <EmptySpace min="3" pref="3" max="3" attributes="0"/>
-                <Component id="lblKpiSub2" min="16" pref="16" max="16" attributes="0"/>
-                <EmptySpace min="12" pref="12" max="32767" attributes="0"/>
-            </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="12" pref="12" max="12" attributes="0"/>
+                  <Component id="lblKpiTitle2" min="14" pref="14" max="14" attributes="0"/>
+                  <EmptySpace min="4" pref="4" max="4" attributes="0"/>
+                  <Component id="lblKpiValue2" min="28" pref="28" max="28" attributes="0"/>
+                  <EmptySpace min="3" pref="3" max="3" attributes="0"/>
+                  <Component id="lblKpiSub2" min="16" pref="16" max="16" attributes="0"/>
+                  <EmptySpace min="12" pref="13" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-      <Component class="javax.swing.JLabel" name="lblKpiTitle2">
-        <Properties>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="11" style="1"/>
-          </Property>
-          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="8f" green="79" red="67" type="rgb"/>
-          </Property>
-          <Property name="text" type="java.lang.String" value="JUMLAH CATATAN"/>
-        </Properties>
-      </Component>
-      <Component class="javax.swing.JLabel" name="lblKpiValue2">
-        <Properties>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="22" style="1"/>
-          </Property>
-          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="e6" green="6a" red="2b" type="rgb"/>
-          </Property>
-          <Property name="text" type="java.lang.String" value="-"/>
-        </Properties>
-      </Component>
-      <Component class="javax.swing.JLabel" name="lblKpiSub2">
-        <Properties>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="11" style="0"/>
-          </Property>
-          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="8f" green="79" red="67" type="rgb"/>
-          </Property>
-          <Property name="text" type="java.lang.String" value="catatan produksi periode"/>
-        </Properties>
-      </Component>
+        <Component class="javax.swing.JLabel" name="lblKpiTitle2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="11" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="8f" green="79" red="67" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="JUMLAH CATATAN"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblKpiValue2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="22" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="e6" green="6a" red="2b" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="-"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblKpiSub2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="11" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="8f" green="79" red="67" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="catatan produksi periode"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JScrollPane" name="scrollTable">
@@ -418,22 +415,30 @@
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
+
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-      <Component class="javax.swing.JTable" name="tblData">
-        <Properties>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="13" style="0"/>
-          </Property>
-          <Property name="rowHeight" type="int" value="28"/>
-          <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="f0" green="e8" red="e2" type="rgb"/>
-          </Property>
-          <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-            <Table columnCount="6" rowCount="0"><Column editable="false" title="No." type="java.lang.Object"/><Column editable="false" title="Tanggal" type="java.lang.Object"/><Column editable="false" title="Material" type="java.lang.Object"/><Column editable="false" title="Lokasi" type="java.lang.Object"/><Column editable="false" title="Produksi (ton)" type="java.lang.Object"/><Column editable="false" title="Tersedia (ton)" type="java.lang.Object"/></Table>
-          </Property>
-        </Properties>
-      </Component>
+        <Component class="javax.swing.JTable" name="tblData">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="13" style="0"/>
+            </Property>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="6" rowCount="0">
+                <Column editable="false" title="No." type="java.lang.Object"/>
+                <Column editable="false" title="Tanggal" type="java.lang.Object"/>
+                <Column editable="false" title="Material" type="java.lang.Object"/>
+                <Column editable="false" title="Lokasi" type="java.lang.Object"/>
+                <Column editable="false" title="Produksi (ton)" type="java.lang.Object"/>
+                <Column editable="false" title="Tersedia (ton)" type="java.lang.Object"/>
+              </Table>
+            </Property>
+            <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="e8" red="e2" type="rgb"/>
+            </Property>
+            <Property name="rowHeight" type="int" value="28"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

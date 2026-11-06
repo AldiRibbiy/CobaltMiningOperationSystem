@@ -25,10 +25,11 @@ public class MainFrameAdmin extends javax.swing.JFrame {
         if (auth == null || !auth.isLoggedIn() || !auth.isAdmin()) {
             throw new IllegalStateException("Akses pengguna tidak sesuai.");
         }
+        
         pack();
+        
         setSize(1400, 800);
-        setMinimumSize(new java.awt.Dimension(1180, 700));
-        setResizable(true);
+        setResizable(false);
         setLocationRelativeTo(null);
         lblUser.setText(auth.getCurrentPegawai().getNamaPegawai());
         buttons.put("Dashboard", btnDashboard);
@@ -76,81 +77,80 @@ public class MainFrameAdmin extends javax.swing.JFrame {
         scrollContent = new javax.swing.JScrollPane();
         pnlPageHost = new javax.swing.JPanel();
 
-        setResizable(true);
-
         pnlRoot.setBackground(new java.awt.Color(244, 247, 252));
 
-        pnlSidebar.setBackground(new java.awt.Color(16, 30, 51));
+        pnlSidebar.setBackground(new java.awt.Color(73, 54, 40));
 
+        lblBrand.setBackground(new java.awt.Color(214, 192, 179));
         lblBrand.setFont(new java.awt.Font("SansSerif", 1, 31)); // NOI18N
-        lblBrand.setForeground(new java.awt.Color(255, 255, 255));
+        lblBrand.setForeground(new java.awt.Color(214, 192, 179));
         lblBrand.setText("C-MOS");
 
         lblBrandSub.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
-        lblBrandSub.setForeground(new java.awt.Color(145, 167, 194));
+        lblBrandSub.setForeground(new java.awt.Color(228, 224, 225));
         lblBrandSub.setText("COBALT MINING SYSTEM");
 
         lblNavTitle.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
-        lblNavTitle.setForeground(new java.awt.Color(145, 167, 194));
+        lblNavTitle.setForeground(new java.awt.Color(228, 224, 225));
         lblNavTitle.setText("NAVIGASI  /  ADMIN");
 
-        btnDashboard.setBackground(new java.awt.Color(27, 47, 74));
+        btnDashboard.setBackground(new java.awt.Color(171, 136, 109));
         btnDashboard.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnDashboard.setForeground(new java.awt.Color(255, 255, 255));
         btnDashboard.setText("Dashboard");
         btnDashboard.setFocusPainted(false);
         btnDashboard.addActionListener(this::btnDashboardActionPerformed);
 
-        btnPegawai.setBackground(new java.awt.Color(27, 47, 74));
+        btnPegawai.setBackground(new java.awt.Color(171, 136, 109));
         btnPegawai.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnPegawai.setForeground(new java.awt.Color(255, 255, 255));
         btnPegawai.setText("Data Pegawai");
         btnPegawai.setFocusPainted(false);
         btnPegawai.addActionListener(this::btnPegawaiActionPerformed);
 
-        btnUser.setBackground(new java.awt.Color(27, 47, 74));
+        btnUser.setBackground(new java.awt.Color(171, 136, 109));
         btnUser.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnUser.setForeground(new java.awt.Color(255, 255, 255));
         btnUser.setText("Akun Pengguna");
         btnUser.setFocusPainted(false);
         btnUser.addActionListener(this::btnUserActionPerformed);
 
-        btnLokasi.setBackground(new java.awt.Color(27, 47, 74));
+        btnLokasi.setBackground(new java.awt.Color(171, 136, 109));
         btnLokasi.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnLokasi.setForeground(new java.awt.Color(255, 255, 255));
         btnLokasi.setText("Lokasi Tambang");
         btnLokasi.setFocusPainted(false);
         btnLokasi.addActionListener(this::btnLokasiActionPerformed);
 
-        btnMaterial.setBackground(new java.awt.Color(27, 47, 74));
+        btnMaterial.setBackground(new java.awt.Color(171, 136, 109));
         btnMaterial.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnMaterial.setForeground(new java.awt.Color(255, 255, 255));
         btnMaterial.setText("Jenis Material");
         btnMaterial.setFocusPainted(false);
         btnMaterial.addActionListener(this::btnMaterialActionPerformed);
 
-        btnKendaraan.setBackground(new java.awt.Color(27, 47, 74));
+        btnKendaraan.setBackground(new java.awt.Color(171, 136, 109));
         btnKendaraan.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnKendaraan.setForeground(new java.awt.Color(255, 255, 255));
         btnKendaraan.setText("Kendaraan");
         btnKendaraan.setFocusPainted(false);
         btnKendaraan.addActionListener(this::btnKendaraanActionPerformed);
 
-        btnParameter.setBackground(new java.awt.Color(27, 47, 74));
+        btnParameter.setBackground(new java.awt.Color(171, 136, 109));
         btnParameter.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnParameter.setForeground(new java.awt.Color(255, 255, 255));
         btnParameter.setText("Parameter Lingkungan");
         btnParameter.setFocusPainted(false);
         btnParameter.addActionListener(this::btnParameterActionPerformed);
 
-        btnUbahAkun.setBackground(new java.awt.Color(27, 47, 74));
+        btnUbahAkun.setBackground(new java.awt.Color(171, 136, 109));
         btnUbahAkun.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnUbahAkun.setForeground(new java.awt.Color(255, 255, 255));
         btnUbahAkun.setText("Ubah Akun");
         btnUbahAkun.setFocusPainted(false);
         btnUbahAkun.addActionListener(this::btnUbahAkunActionPerformed);
 
-        btnLogout.setBackground(new java.awt.Color(27, 47, 74));
+        btnLogout.setBackground(new java.awt.Color(171, 136, 109));
         btnLogout.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnLogout.setForeground(new java.awt.Color(255, 255, 255));
         btnLogout.setText("Keluar Akun");
@@ -201,32 +201,32 @@ public class MainFrameAdmin extends javax.swing.JFrame {
                 .add(btnKendaraan, 42, 42, 42)
                 .add(6, 6, 6)
                 .add(btnParameter, 42, 42, 42)
-                .add(0, 0, Short.MAX_VALUE)
+                .add(0, 214, Short.MAX_VALUE)
                 .add(btnUbahAkun, 42, 42, 42)
                 .add(6, 6, 6)
                 .add(btnLogout, 42, 42, 42)
                 .add(24, 24, 24))
         );
 
-        pnlWorkspace.setBackground(new java.awt.Color(244, 247, 252));
+        pnlWorkspace.setBackground(new java.awt.Color(171, 136, 109));
 
-        pnlHeader.setBackground(new java.awt.Color(255, 255, 255));
+        pnlHeader.setBackground(new java.awt.Color(171, 136, 109));
 
         lblEyebrow.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
-        lblEyebrow.setForeground(new java.awt.Color(43, 106, 230));
+        lblEyebrow.setForeground(new java.awt.Color(73, 54, 40));
         lblEyebrow.setText("COBALT MINING  /  ADMIN");
 
         lblPageTitle.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        lblPageTitle.setForeground(new java.awt.Color(26, 43, 66));
+        lblPageTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblPageTitle.setText("Dashboard");
 
         lblUser.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
-        lblUser.setForeground(new java.awt.Color(26, 43, 66));
+        lblUser.setForeground(new java.awt.Color(255, 255, 255));
         lblUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUser.setText("Pengguna");
 
         lblRole.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        lblRole.setForeground(new java.awt.Color(103, 121, 143));
+        lblRole.setForeground(new java.awt.Color(73, 54, 40));
         lblRole.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRole.setText("ADMIN");
 
@@ -239,7 +239,7 @@ public class MainFrameAdmin extends javax.swing.JFrame {
                 .add(pnlHeaderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(lblEyebrow, 460, 460, 460)
                     .add(lblPageTitle, 460, 460, 460))
-                .add(0, 0, Short.MAX_VALUE)
+                .add(0, 422, Short.MAX_VALUE)
                 .add(pnlHeaderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(lblUser, 220, 220, 220)
                     .add(lblRole, 220, 220, 220))
@@ -266,10 +266,8 @@ public class MainFrameAdmin extends javax.swing.JFrame {
 
         scrollContent.setBackground(new java.awt.Color(244, 247, 252));
 
-        pnlPageHost.setBackground(new java.awt.Color(244, 247, 252));
-
+        pnlPageHost.setBackground(new java.awt.Color(214, 192, 179));
         pnlPageHost.setLayout(new java.awt.BorderLayout());
-
         scrollContent.setViewportView(pnlPageHost);
 
         org.jdesktop.layout.GroupLayout pnlContentLayout = new org.jdesktop.layout.GroupLayout(pnlContent);

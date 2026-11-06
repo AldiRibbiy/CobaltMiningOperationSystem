@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
-  <SyntheticProperties>
-    <SyntheticProperty name="formSizePolicy" type="int" value="2"/>
-  </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -14,48 +11,42 @@
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
   </AuxValues>
+
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-        <Group type="102" attributes="0">
-            <EmptySpace min="24" pref="24" max="24" attributes="0"/>
-            <Group type="103" groupAlignment="0" attributes="0">
-                <Group type="102" attributes="0">
-                    <Component id="lblTitle" min="520" pref="520" max="520" attributes="0"/>
-                </Group>
-                <Group type="102" attributes="0">
-                    <Component id="lblHint" min="520" pref="520" max="520" attributes="0"/>
-                </Group>
-            </Group>
-            <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-            <EmptySpace min="24" pref="24" max="24" attributes="0"/>
-        </Group>
-        <Group type="102" attributes="0">
-            <EmptySpace min="24" pref="24" max="24" attributes="0"/>
-            <Component id="pnlFilter" min="796" pref="796" max="796" attributes="0"/>
-        </Group>
-        <Group type="102" attributes="0">
-            <EmptySpace min="24" pref="24" max="24" attributes="0"/>
-            <Component id="scrollTable" min="240" pref="380" max="32767" attributes="0"/>
-            <EmptySpace min="24" pref="24" max="24" attributes="0"/>
-        </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblTitle" min="520" pref="520" max="520" attributes="0"/>
+                          <Component id="lblHint" min="520" pref="520" max="520" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="pnlFilter" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="scrollTable" min="240" max="32767" attributes="0"/>
+                      <EmptySpace min="24" pref="24" max="24" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-        <Group type="102" attributes="0">
-            <Group type="102" attributes="0">
-                <EmptySpace min="16" pref="16" max="16" attributes="0"/>
-                <Component id="lblTitle" min="40" pref="40" max="40" attributes="0"/>
-                <EmptySpace min="2" pref="2" max="2" attributes="0"/>
-                <Component id="lblHint" min="22" pref="22" max="22" attributes="0"/>
-            </Group>
-            <EmptySpace min="14" pref="14" max="14" attributes="0"/>
-            <Component id="pnlFilter" min="62" pref="62" max="62" attributes="0"/>
-            <EmptySpace min="14" pref="14" max="14" attributes="0"/>
-            <Component id="scrollTable" min="240" pref="380" max="32767" attributes="0"/>
-            <EmptySpace min="20" pref="20" max="20" attributes="0"/>
-        </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="16" pref="16" max="16" attributes="0"/>
+              <Component id="lblTitle" min="40" pref="40" max="40" attributes="0"/>
+              <EmptySpace min="2" pref="2" max="2" attributes="0"/>
+              <Component id="lblHint" min="22" pref="22" max="22" attributes="0"/>
+              <EmptySpace min="14" pref="14" max="14" attributes="0"/>
+              <Component id="pnlFilter" min="62" pref="62" max="62" attributes="0"/>
+              <EmptySpace min="14" pref="14" max="14" attributes="0"/>
+              <Component id="scrollTable" min="240" pref="380" max="32767" attributes="0"/>
+              <EmptySpace min="20" pref="20" max="20" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -79,7 +70,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="8f" green="79" red="67" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Periode tanggal selesai pengangkutan (status SELESAI)."/>
+        <Property name="text" type="java.lang.String" value="Periode tanggal selesai pengangkutan."/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="scrollTable">
@@ -91,22 +82,29 @@
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
+
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-      <Component class="javax.swing.JTable" name="tblData">
-        <Properties>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="13" style="0"/>
-          </Property>
-          <Property name="rowHeight" type="int" value="28"/>
-          <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="f0" green="e8" red="e2" type="rgb"/>
-          </Property>
-          <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-            <Table columnCount="5" rowCount="0"><Column editable="false" title="No." type="java.lang.Object"/><Column editable="false" title="Tanggal Selesai" type="java.lang.Object"/><Column editable="false" title="Material" type="java.lang.Object"/><Column editable="false" title="Lokasi Tujuan" type="java.lang.Object"/><Column editable="false" title="Muatan (ton)" type="java.lang.Object"/></Table>
-          </Property>
-        </Properties>
-      </Component>
+        <Component class="javax.swing.JTable" name="tblData">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="13" style="0"/>
+            </Property>
+            <Property name="rowHeight" type="int" value="28"/>
+            <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="e8" red="e2" type="rgb"/>
+            </Property>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="5" rowCount="0">
+                <Column editable="false" title="No." type="java.lang.Object"/>
+                <Column editable="false" title="Tanggal Selesai" type="java.lang.Object"/>
+                <Column editable="false" title="Material" type="java.lang.Object"/>
+                <Column editable="false" title="Lokasi Tujuan" type="java.lang.Object"/>
+                <Column editable="false" title="Muatan (ton)" type="java.lang.Object"/>
+              </Table>
+            </Property>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlFilter">
@@ -115,95 +113,96 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
       </Properties>
+
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-            <Group type="102" attributes="0">
-                <EmptySpace min="20" pref="20" max="20" attributes="0"/>
-                <Component id="lblAwal" min="110" pref="110" max="110" attributes="0"/>
-                <EmptySpace min="8" pref="8" max="8" attributes="0"/>
-                <Component id="choAwal" min="170" pref="170" max="170" attributes="0"/>
-                <EmptySpace min="24" pref="24" max="24" attributes="0"/>
-                <Component id="lblAkhir" min="110" pref="110" max="110" attributes="0"/>
-                <EmptySpace min="8" pref="8" max="8" attributes="0"/>
-                <Component id="choAkhir" min="170" pref="170" max="170" attributes="0"/>
-                <EmptySpace min="16" pref="16" max="16" attributes="0"/>
-                <Component id="btnTampilkan" min="140" pref="140" max="140" attributes="0"/>
-                <EmptySpace min="20" pref="20" max="20" attributes="0"/>
-            </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="20" pref="20" max="20" attributes="0"/>
+                  <Component id="lblAwal" min="110" pref="110" max="110" attributes="0"/>
+                  <EmptySpace min="8" pref="8" max="8" attributes="0"/>
+                  <Component id="choAwal" min="170" pref="170" max="170" attributes="0"/>
+                  <EmptySpace min="24" pref="24" max="24" attributes="0"/>
+                  <Component id="lblAkhir" min="110" pref="110" max="110" attributes="0"/>
+                  <EmptySpace min="8" pref="8" max="8" attributes="0"/>
+                  <Component id="choAkhir" min="170" pref="170" max="170" attributes="0"/>
+                  <EmptySpace min="16" pref="16" max="16" attributes="0"/>
+                  <Component id="btnTampilkan" min="140" pref="140" max="140" attributes="0"/>
+                  <EmptySpace min="20" pref="20" max="20" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-            <Group type="102" attributes="0">
-                <EmptySpace min="16" pref="16" max="16" attributes="0"/>
-                <Group type="103" groupAlignment="2" attributes="0">
-                    <Component id="lblAwal" min="20" pref="20" max="20" attributes="0"/>
-                    <Component id="choAwal" min="30" pref="30" max="30" attributes="0"/>
-                    <Component id="lblAkhir" min="20" pref="20" max="20" attributes="0"/>
-                    <Component id="choAkhir" min="30" pref="30" max="30" attributes="0"/>
-                    <Component id="btnTampilkan" min="32" pref="32" max="32" attributes="0"/>
-                </Group>
-                <EmptySpace min="16" pref="16" max="16" attributes="0"/>
-            </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="16" pref="16" max="16" attributes="0"/>
+                  <Group type="103" groupAlignment="2" attributes="0">
+                      <Component id="lblAwal" min="20" pref="20" max="20" attributes="0"/>
+                      <Component id="choAwal" min="30" pref="30" max="30" attributes="0"/>
+                      <Component id="lblAkhir" min="20" pref="20" max="20" attributes="0"/>
+                      <Component id="choAkhir" min="30" pref="30" max="30" attributes="0"/>
+                      <Component id="btnTampilkan" min="32" pref="32" max="32" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="16" pref="16" max="16" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-      <Component class="javax.swing.JLabel" name="lblAwal">
-        <Properties>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="13" style="0"/>
-          </Property>
-          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="42" green="2b" red="1a" type="rgb"/>
-          </Property>
-          <Property name="text" type="java.lang.String" value="Tanggal Awal"/>
-        </Properties>
-      </Component>
-      <Component class="com.toedter.calendar.JDateChooser" name="choAwal">
-        <Properties>
-          <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="ff" green="ff" red="ff" type="rgb"/>
-          </Property>
-        </Properties>
-      </Component>
-      <Component class="javax.swing.JLabel" name="lblAkhir">
-        <Properties>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="13" style="0"/>
-          </Property>
-          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="42" green="2b" red="1a" type="rgb"/>
-          </Property>
-          <Property name="text" type="java.lang.String" value="Tanggal Akhir"/>
-        </Properties>
-      </Component>
-      <Component class="com.toedter.calendar.JDateChooser" name="choAkhir">
-        <Properties>
-          <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="ff" green="ff" red="ff" type="rgb"/>
-          </Property>
-        </Properties>
-      </Component>
-      <Component class="javax.swing.JButton" name="btnTampilkan">
-        <Properties>
-          <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="e6" green="6a" red="2b" type="rgb"/>
-          </Property>
-          <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-            <Font name="SansSerif" size="12" style="1"/>
-          </Property>
-          <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-            <Color blue="ff" green="ff" red="ff" type="rgb"/>
-          </Property>
-          <Property name="text" type="java.lang.String" value="Tampilkan"/>
-          <Property name="focusPainted" type="boolean" value="false"/>
-        </Properties>
-        <Events>
-          <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTampilkanActionPerformed"/>
-        </Events>
-      </Component>
+        <Component class="javax.swing.JLabel" name="lblAwal">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="13" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="42" green="2b" red="1a" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Tanggal Awal"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="choAwal">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblAkhir">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="13" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="42" green="2b" red="1a" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Tanggal Akhir"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="choAkhir">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnTampilkan">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="e6" green="6a" red="2b" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="12" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Tampilkan"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTampilkanActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
