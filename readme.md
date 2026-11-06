@@ -31,7 +31,7 @@
 
 > **Gambar 1. Identitas dan tampilan awal aplikasi C-MOS**
 
-![Gambar 1 - Tampilan Awal C-MOS](images/01_Tampilan_Awal_CMOS.png)
+<img width="737" height="608" alt="image" src="https://github.com/user-attachments/assets/6079a107-8aa5-4d65-b18c-cbed83c77723" />
 
 **Arahan screenshot:** Jalankan aplikasi, ambil tampilan awal atau login yang menampilkan identitas C-MOS. Jangan memakai gambar desain contoh sebagai pengganti hasil program.
 
